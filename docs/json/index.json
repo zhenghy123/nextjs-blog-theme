@@ -1,0 +1,68 @@
+{
+    "drama": {
+        "name": "项目-2",
+        "description": "项目-2",
+        "fileVersion": "1.0.0",
+        "firstVideoId": "1589981597913006080"
+    },
+    "videoList": [
+        {
+            "videoId": "1589981597913006080",
+            "description": "",
+            "duration": "283009",
+            "filename": "1589981597887840256.mp4",
+            "interactNodeId": "interactNodeId2dbcd42abdb0467ebc794ed068436baa",
+            "path": "video/1589981597887840256.mp4",
+            "thumbnail": "assets/1590184239637413888.png",
+            "videoCoding": "待定",
+            "url": "http://192.168.1.155/nas/video/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589981597887840256.mp4",
+            "outPutFormat": "mp4",
+            "mediaHeight": "1080",
+            "mediaWidth": "1920",
+            "mediaSize": null,
+            "playType": "0"
+        },
+        {
+            "videoId": "1589981597913006080",
+            "description": "",
+            "duration": "283009",
+            "filename": "1589981597887840256.mp4",
+            "interactNodeId": "interactNodeId2dbcd42abdb0467ebc794ed068436baa",
+            "path": "video/1589981597887840256.mp4",
+            "thumbnail": "assets/1590183235915300864.png",
+            "videoCoding": "待定",
+            "url": "http://192.168.1.155/nas/video/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589981597887840256.mp4",
+            "outPutFormat": "mp4",
+            "mediaHeight": "1080",
+            "mediaWidth": "1920",
+            "mediaSize": null,
+            "playType": "0"
+        }
+    ],
+    "interactNodeList": [
+        {
+            "interactNodeId": "interactNodeId2dbcd42abdb0467ebc794ed068436baa",
+            "title": "点击",
+            "startTime": "0",
+            "duration": "10000",
+            "playState": "play",
+            "endState": "待定",
+            "interactInfo": {
+                "type": "PointClickModule"
+            },
+            "interactConfig": "interactConfig4476bf372af845be978d2143ef1e5a79.json"
+        },
+        {
+            "interactNodeId": "interactNodeId2dbcd42abdb0467ebc794ed068436baa",
+            "title": "点击",
+            "startTime": "0",
+            "duration": "10000",
+            "playState": "play",
+            "endState": "待定",
+            "interactInfo": {
+                "type": "PointClickModule"
+            },
+            "interactConfig": "interactConfig4476bf372af845be978d2143ef1e5a79.json"
+        }
+    ]
+}

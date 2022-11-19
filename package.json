@@ -1,0 +1,19 @@
+{
+  "name": "kplayer",
+  "version": "1.0.0",
+  "description": "A interact video 3d player by krpano",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run dev",
+    "serve": "npm run dev",
+    "dev": "webpack-dev-server",
+    "build": "webpack --mode=production --progress"
+  },
+  "author": "zhenghy & yujf",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^4.11.1"
+  }
+}

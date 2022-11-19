@@ -1,0 +1,466 @@
+{
+  "drama": {
+    "firstVideoId": "743279485",
+    "factorExpressList": "x=2",
+    "storylineSum": 0,
+    "honorAward": {
+      "StoryLinePath": [],
+      "successTip": "",
+      "shareImgAddr": "",
+      "shareBigImgAddr": ""
+    }
+  },
+  "factor": [
+    {
+      "key": "x",
+      "value": 0
+    }
+  ],
+  "videoList": [
+    {
+      "videoId": "743279485",
+      "duration": 0,
+      "filename": "开场视频",
+      "interactNodeId": "interactNodeId001",
+      "playType": 0,
+      "thumbnail": ""
+    },
+    {
+      "videoId": "743280664",
+      "duration": 0,
+      "filename": "视频1：单选功能的视频",
+      "interactNodeId": "interactNodeId002",
+      "playType": 0,
+      "thumbnail": ""
+    },
+    {
+      "videoId": "743284593",
+      "duration": 0,
+      "filename": "单选视频110：单选功能的视频",
+      "playType": 0,
+      "thumbnail": ""
+    },
+    {
+      "videoId": "743642841",
+      "duration": 0,
+      "filename": "单选视频119：单选功能的视频",
+      "playType": 0,
+      "thumbnail": ""
+    },
+    {
+      "videoId": "743281533",
+      "duration": 0,
+      "filename": "组合点选：组合点选功能",
+      "interactNodeId": "interactNodeId003",
+      "playType": 0,
+      "thumbnail": ""
+    },
+    {
+      "videoId": "744765842",
+      "duration": 0,
+      "filename": "组合点选：组合点选选T正确",
+      "playType": 0,
+      "thumbnail": ""
+    },
+    {
+      "videoId": "744767551",
+      "duration": 0,
+      "filename": "组合点选：组合点选选F错误",
+      "playType": 0,
+      "thumbnail": ""
+    },
+    {
+      "videoId": "744768365",
+      "duration": 0,
+      "filename": "视频3：组合顺序点选",
+      "interactNodeId": "interactNodeId004",
+      "playType": 0,
+      "thumbnail": ""
+    },
+    {
+      "videoId": "748014372",
+      "duration": 0,
+      "filename": "视频3：组合顺序34的结果视频",
+      "playType": 0,
+      "thumbnail": ""
+    },
+    {
+      "videoId": "748014661",
+      "duration": 0,
+      "filename": "视频3：组合顺序选择A的结果视频",
+      "playType": 0,
+      "thumbnail": ""
+    },
+    {
+      "videoId": "743284302",
+      "duration": 0,
+      "filename": "视频4：因子",
+      "interactNodeId": "interactNodeId005",
+      "playType": 0,
+      "thumbnail": ""
+    },
+    {
+      "videoId": "748015034",
+      "duration": 0,
+      "filename": "视频4：因子748015034",
+      "interactNodeId": "interactNodeId006",
+      "playType": 0,
+      "thumbnail": ""
+    },
+    {
+      "videoId": "748016928",
+      "duration": 0,
+      "filename": "视频4：因子748016928",
+      "playType": 0,
+      "thumbnail": ""
+    },
+    {
+      "videoId": "748016069",
+      "duration": 0,
+      "filename": "视频4：因子748016069",
+      "playType": 0,
+      "thumbnail": ""
+    },
+    {
+      "videoId": "748016500",
+      "duration": 0,
+      "filename": "视频4：因子748016069",
+      "playType": 0,
+      "thumbnail": ""
+    }
+  ],
+  "interactNodeList": [
+    {
+      "interactNodeId": "interactNodeId001",
+      "startTime": 0,
+      "playState": 0,
+      "endState": 0,
+      "interactInfoId": "interactInfoId001"
+    },
+    {
+      "interactNodeId": "interactNodeId002",
+      "startTime": 0,
+      "playState": 0,
+      "endState": 0,
+      "interactInfoId": "interactInfoId002"
+    },
+    {
+      "interactNodeId": "interactNodeId003",
+      "startTime": 0,
+      "playState": 0,
+      "endState": 0,
+      "interactInfoId": "interactInfoId003"
+    },
+    {
+      "interactNodeId": "interactNodeId004",
+      "startTime": 0,
+      "playState": 0,
+      "endState": 0,
+      "interactInfoId": "interactInfoId004"
+    },
+    {
+      "interactNodeId": "interactNodeId005",
+      "startTime": 0,
+      "playState": 0,
+      "endState": 0,
+      "interactInfoId": "interactInfoId005"
+    },
+    {
+      "interactNodeId": "interactNodeId006",
+      "startTime": 0,
+      "playState": 0,
+      "endState": 0,
+      "interactInfoId": "interactInfoId006"
+    }
+  ],
+  "interactInfoList": [
+    {
+      "interactInfoId": "interactInfoId001",
+      "interactInfoType": {
+        "type": 1
+      },
+      "interactConfig": 0
+    },
+    {
+      "interactInfoId": "interactInfoId002",
+      "interactInfoType": {
+        "type": 1
+      },
+      "interactConfig": 1
+    },
+    {
+      "interactInfoId": "interactInfoId003",
+      "interactInfoType": {
+        "type": 2
+      },
+      "interactConfig": 2
+    },
+    {
+      "interactInfoId": "interactInfoId004",
+      "interactInfoType": {
+        "type": 2
+      },
+      "interactConfig": 3
+    },
+    {
+      "interactInfoId": "interactInfoId005",
+      "interactInfoType": {
+        "type": 1
+      },
+      "interactConfig": 4
+    },
+    {
+      "interactInfoId": "interactInfoId006",
+      "interactInfoType": {
+        "type": 1
+      },
+      "interactConfig": 5
+    }
+  ],
+  "interCompConfig": [
+    {
+      "cameraViewType": 1,
+      "metas": [
+        {
+          "text": "开场视频，选择进入的不同的功能"
+        }
+      ],
+      "btns": [
+        {
+          "id": 1,
+          "text": "单选",
+          "action": [
+            {
+              "actionType": 1,
+              "nextVideo": "743280664"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "text": "组合点选",
+          "action": [
+            {
+              "actionType": 1,
+              "nextVideo": "743281533"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "text": "组合顺序点选",
+          "action": [
+            {
+              "actionType": 1,
+              "nextVideo": "744768365"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "text": "因子",
+          "action": [
+            {
+              "actionType": 1,
+              "nextVideo": "743284302"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cameraViewType": 1,
+      "metas": [
+        {
+          "text": "单选1：单选进入的节目"
+        }
+      ],
+      "btns": [
+        {
+          "id": 1,
+          "text": "单选：110",
+          "action": [
+            {
+              "actionType": 1,
+              "nextVideo": "743284593"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "text": "单选：119",
+          "action": [
+            {
+              "actionType": 1,
+              "nextVideo": "743642841"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cameraViewType": 1,
+      "metas": [
+        {
+          "text": "组合点选：选择两个T进入下个节目"
+        }
+      ],
+      "btns": [
+        {
+          "id": 1,
+          "text": "组合点选：T1"
+        },
+        {
+          "id": 2,
+          "text": "组合点选：T2"
+        },
+        {
+          "id": 3,
+          "text": "组合点选：F",
+          "action": [
+            {
+              "actionType": 0,
+              "nextVideo": "",
+              "factorList": ""
+            }
+          ]
+        }
+      ],
+      "ctrls": [
+        {
+          "ctrlType": 3,
+          "countdown": {
+            "text": "",
+            "time": 0,
+            "jumpNextVideoId": ""
+          },
+          "conditionConfig": {
+            "conditionValue": [
+              1,
+              2
+            ],
+            "correctMsg": "选择了两个T，回答正确",
+            "jumpVideoId": "744765842",
+            "errorJumpVideo": "",
+            "errorTip": ""
+          }
+        }
+      ]
+    },
+    {
+      "cameraViewType": 1,
+      "metas": [
+        {
+          "text": "组合点选：按顺序选择34进入下个节目"
+        }
+      ],
+      "btns": [
+        {
+          "id": 1,
+          "text": "组合顺序点选3",
+          "action": []
+        },
+        {
+          "id": 2,
+          "text": "组合顺序点选4",
+          "action": []
+        },
+        {
+          "id": 3,
+          "text": "组合顺序点选A",
+          "action": [
+            {
+              "actionType": 1,
+              "nextVideo": "748014661"
+            }
+          ]
+        }
+      ],
+      "ctrls": [
+        {
+          "ctrlType": 2,
+          "conditionConfig": {
+            "conditionValue": [
+              1,
+              2
+            ],
+            "correctMsg": "选择34进入下个节目",
+            "jumpVideoId": "748014372",
+            "errorJumpVideo": "",
+            "errorTip": ""
+          }
+        }
+      ]
+    },
+    {
+      "cameraViewType": 1,
+      "metas": [
+        {
+          "text": "因子：任意选择一个节目"
+        }
+      ],
+      "btns": [
+        {
+          "id": 1,
+          "text": "1",
+          "action": [
+            {
+              "actionType": 1,
+              "nextVideo": "748015034"
+            },
+            {
+              "actionType": 2,
+              "nextVideo": "748015034",
+              "factorList": "x=x+1"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "text": "互动因子选择B",
+          "action": [
+            {
+              "actionType": 1,
+              "nextVideo": "748016928"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cameraViewType": 1,
+      "metas": [
+        {
+          "text": "前一个选项与即将选择的相加结果为2时，解锁新的节目"
+        }
+      ],
+      "btns": [
+        {
+          "id": 1,
+          "text": "1",
+          "action": [
+            {
+              "actionType": 1,
+              "nextVideo": "748016500"
+            },
+            {
+              "actionType": 2,
+              "nextVideo": "748016500",
+              "factorList": "x=x+1"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "text": "组合顺序点选C",
+          "action": [
+            {
+              "actionType": 1,
+              "nextVideo": "748016069"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+// 单击互动组件
+{
+    "id": "a1b944cb333094369b89f4a477cbcfe09",
+    "trackId": "a73c62c66b934401682015c31978e2ba6",
+    "baseSetting": {
+        "name": "单击",
+        "type": "Interactive",
+        "interactiveType": "OneClick",
+        "angleFollow": false
+    },
+    "trackSetting": {
+        "trackFrom": 0,
+        "trackTo": 10000,
+        "trimFrom": 0,
+        "trimTo": 10000,
+        "duration": 10000
+    },
+    "originalData": {
+        "category": "Base",
+        "categoryName": "基础",
+        "materialId": "a1afe01269b9a466189f5654019d50337",
+        "materialName": "单击",
+        "materialPath": {
+            "beforeTrigger": {
+                "materialId": "a7729d134ec24442f814a25a6186b26ef",
+                "materialName": "单击-按钮-白色标准1",
+                "materialPath": "http://localhost:8001/src/assets/material/Interaction/OneClick/beforeTrigger.png",
+                "previewPath": "http://localhost:8001/src/assets/material/Interaction/OneClick/beforeTrigger.png",
+                "materialType": "Image",
+                "materialFileType": "png",
+                "materialOriginWidth": 500,
+                "materialOriginHeight": 500,
+                "image": null
+            },
+            "triggering": {
+                "materialId": "a7d572e48a9eb4048919db04047d62ab0",
+                "materialName": "单击-按钮-白色标准2",
+                "materialPath": "http://localhost:8001/src/assets/material/Interaction/OneClick/triggering.png",
+                "materialType": "Image",
+                "previewPath": "http://localhost:8001/src/assets/material/Interaction/OneClick/triggering.png",
+                "materialFileType": "png",
+                "materialOriginWidth": 500,
+                "materialOriginHeight": 500,
+                "image": null
+            }
+        },
+        "previewPath": "http://localhost:8001/src/assets/material/Interaction/OneClick/preview.svg",
+        "materialOriginWidth": 100,
+        "materialOriginHeight": 100,
+        "materialType": "Interactive",
+        "interactiveType": "OneClick"
+    },
+    "triggerSetting": {
+        "triggerType": "skipNode",
+        "skipTime": -1,
+        "hrefUrl": "",
+        "progressSkipTime": -1,
+        "jumpNodeId": ""
+    },
+    "timeSetting": {
+        "eventEndEffect": "play",
+        "eventStartEffect": "play",
+        "countdownTriggerEffect": "",
+        "countdownTime": 0
+    },
+    "interactiveGroup": [
+        {
+            "filterSetting": {
+                "contrast": 0,
+                "enhance": 0,
+                "blurRadius": 0,
+                "alpha": 0
+            },
+            "textSetting": {
+                "text": "",
+                "fontFamily": "Source Han Sans CN",
+                "fill": "rgb(255, 255, 255)",
+                "align": "center",
+                "fontSize": 33.333333333333336,
+                "fontStyle": "normal",
+                "textDecoration": "empty"
+            },
+            "styleSetting": {
+                "styleEffect": {
+                    "beforeTrigger": {
+                        "materialId": "a7729d134ec24442f814a25a6186b26ef",
+                        "materialName": "单击-按钮-白色标准1",
+                        "materialPath": "http://localhost:8001/src/assets/material/Interaction/OneClick/beforeTrigger.png",
+                        "previewPath": "http://localhost:8001/src/assets/material/Interaction/OneClick/beforeTrigger.png",
+                        "materialType": "Image",
+                        "materialFileType": "png",
+                        "materialOriginWidth": 500,
+                        "materialOriginHeight": 500,
+                        "image": null
+                    },
+                    "triggering": {
+                        "materialId": "a7d572e48a9eb4048919db04047d62ab0",
+                        "materialName": "单击-按钮-白色标准2",
+                        "materialPath": "http://localhost:8001/src/assets/material/Interaction/OneClick/triggering.png",
+                        "materialType": "Image",
+                        "previewPath": "http://localhost:8001/src/assets/material/Interaction/OneClick/triggering.png",
+                        "materialFileType": "png",
+                        "materialOriginWidth": 500,
+                        "materialOriginHeight": 500,
+                        "image": null
+                    }
+                },
+                "soundEffectmediaContext": null,
+                "soundEffectSetting": null
+            },
+            "transform2DSetting": {
+                "x": 960,
+                "y": 540,
+                "rotation": 0,
+                "scaleX": 1,
+                "scaleY": 1,
+                "width": 100,
+                "height": 100,
+                "offset": {
+                    "x": 50,
+                    "y": 50
+                }
+            },
+            "id": "a5a70f3ccbfc54862a992a5ef9709475d",
+            "mId": "a1b944cb333094369b89f4a477cbcfe09",
+            "trackId": "a73c62c66b934401682015c31978e2ba6",
+            "baseSetting": {
+                "shapeRefContext": null,
+                "name": "按钮1",
+                "draggable": true,
+                "visible": true,
+                "type": "Interactive",
+                "interactiveType": "OneClick"
+            }
+        }
+    ]
+}

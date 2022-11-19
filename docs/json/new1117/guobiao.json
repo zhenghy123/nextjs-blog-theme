@@ -1,0 +1,241 @@
+{
+  "drama": {
+    "firstVideoId": "743279485",
+    "factorExpressList": "x=2",
+    "storylineSum": 0,
+    "honorAward": {
+      "StoryLinePath": [],
+      "successTip": "",
+      "shareImgAddr": "",
+      "shareBigImgAddr": ""
+    }
+  },
+  "factor": [
+    {
+      "key": "x",
+      "value": 0
+    }
+  ],
+  "videoList": [
+    {
+      "videoId": "743279481",
+      "duration": 0,
+      "filename": "1开场视频",
+      "interactNodeId": "interactNodeId001",
+      "playType": 0,
+      "thumbnail": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/testUserId/1592395551020883968.jpg"
+    },
+    {
+      "videoId": "743279482",
+      "duration": 0,
+      "filename": "视频2",
+      "interactNodeId": "interactNodeId002",
+      "playType": 0,
+      "thumbnail": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/testUserId/1592395551020883968.jpg"
+    },
+    {
+      "videoId": "743279483",
+      "duration": 0,
+      "filename": "视频3",
+      "playType": 0,
+      "thumbnail": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/testUserId/1592395551020883968.jpg"
+    },
+    {
+      "videoId": "743279484",
+      "duration": 0,
+      "filename": "视频4",
+      "interactNodeId": "interactNodeId003",
+      "playType": 0,
+      "thumbnail": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/testUserId/1592395551020883968.jpg"
+    },
+    {
+      "videoId": "743279485",
+      "duration": 0,
+      "filename": "视频5",
+      "playType": 0,
+      "thumbnail": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/testUserId/1592395551020883968.jpg"
+    },
+    {
+      "videoId": "743279486",
+      "duration": 0,
+      "filename": "视频6",
+      "playType": 0,
+      "thumbnail": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/testUserId/1592395551020883968.jpg"
+    }
+  ],
+  "interactNodeList": [
+    {
+      "interactNodeId": "interactNodeId001",
+      "startTime": 0,
+      "playState": 0,
+      "endState": 0,
+      "interactInfoId": "interactInfoId001"
+    },
+    {
+      "interactNodeId": "interactNodeId002",
+      "startTime": 0,
+      "playState": 0,
+      "endState": 0,
+      "interactInfoId": "interactInfoId002"
+    },
+    {
+      "interactNodeId": "interactNodeId003",
+      "startTime": 0,
+      "playState": 0,
+      "endState": 0,
+      "interactInfoId": "interactInfoId003"
+    }
+  ],
+  "interactInfoList": [
+    {
+      "interactInfoId": "interactInfoId001",
+      "interactInfoType": {
+        "type": 1
+      },
+      "interactConfig": 0
+    },
+    {
+      "interactInfoId": "interactInfoId002",
+      "interactInfoType": {
+        "type": 2
+      },
+      "interactConfig": 1
+    },
+    {
+      "interactInfoId": "interactInfoId003",
+      "interactInfoType": {
+        "type": 3
+      },
+      "interactConfig": 2
+    }
+  ],
+  "interCompConfig": [
+    {
+      "cameraViewType": 1,
+      "metas": [
+        {
+          "text": "开场视频，选择进入的不同的功能"
+        }
+      ],
+      "btns": [
+        {
+          "id": 1,
+          "text": "跳转视频2",
+          "action": [
+            {
+              "actionType": 1,
+              "nextVideo": "743279482"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "text": "跳转视频3",
+          "action": [
+            {
+              "actionType": 1,
+              "nextVideo": "743279483"
+            },
+            {
+              "actionType": 2,
+              "factorList": "x=x+1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cameraViewType": 1,
+      "metas": [
+        {
+          "text": "正确输入密码解锁"
+        }
+      ],
+      "btns": [
+        {
+          "id": 1,
+          "text": "1"
+        },
+        {
+          "id": 2,
+          "text": "2"
+        },
+        {
+          "id": 3,
+          "text": "3"
+        },
+        {
+          "id": 4,
+          "text": "4",
+          "action": [
+            {
+              "actionType": 1,
+              "nextVideo": "743279484"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "text": "5"
+        }
+      ],
+      "ctrls": [
+        {
+          "ctrlType": 2,
+          "conditionConfig": {
+            "conditionValue": [
+              1,
+              2,
+              3
+            ],
+            "jumpVideoId": "743279485",
+            "errorTip": "密码输入错误"
+          }
+        }
+      ]
+    },
+    {
+      "cameraViewType": 1,
+      "metas": [
+        {
+          "text": "输入关键字解锁"
+        }
+      ],
+      "btns": [
+        {
+          "id": 1,
+          "text": "孙悟空"
+        },
+        {
+          "id": 2,
+          "text": "猪八戒"
+        },
+        {
+          "id": 3,
+          "text": "沙悟净"
+        },
+        {
+          "id": 4,
+          "text": "白龙马"
+        },
+        {
+          "id": 5,
+          "text": "唐僧"
+        }
+      ],
+      "ctrls": [
+        {
+          "ctrlType": 3,
+          "conditionConfig": {
+            "conditionValue": [
+              4,
+              5
+            ],
+            "jumpVideoId": "743279486",
+            "errorTip": "密码输入错误"
+          }
+        }
+      ]
+    }
+  ]
+}

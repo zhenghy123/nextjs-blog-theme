@@ -1,0 +1,107 @@
+// 1117互动json整理
+{
+    "drama": {
+        "firstVideoId": "743279485",
+        "fileVersion": "json版本", // TODO: 待确认要不
+    },
+    // 互动因子集合（相当于全局变量）
+    "factor": [
+        {
+            "name": "幸运值", // TODO: 可能还会有一个自定义名称
+            "key": "x", // 初始字段
+            "value": 0 // 初始值
+        },
+        {
+            "key": "y", // 初始字段
+            "value": 2 // 初始值
+        }
+    ],
+    // 视频集合铺开
+    "videoList": [
+        {
+            // TODO: 视频地址呢
+            "videoId": "743279485",
+            "duration": 0,
+            "filename": "开场视频",
+            // 互动节点-国标是在节点上加视频id，我们是在视频上加节点id
+            "interactNodeId": "interactNodeId001,interactNodeId002",
+            "playType": 0, //0: 2d视频    1: vr视频
+            "thumbnail": "" //节点封面图 TODO: 可用于整体节点树展示
+        }
+    ],
+    // 互动节点
+    "interactNodeList": [
+        {
+            "interactNodeId": "interactNodeId001",
+            "startTime": 0,
+            "playState": 0,
+            "endState": 0, // TODO: 不需要
+            "interactInfoId": "interactInfoId001" // 互动节点参数配置
+        },
+    ],
+    // 互动节点信息
+    "interactInfoList": [
+        {
+            "interactInfoId": "interactInfoId001",
+            "interactInfoType": {
+                "type": 1 //1 单选，2 组合点击，3 组合顺序点选，4 因子
+            },
+            "interactConfig": 0 //interCompConfig 的索引 TODO: 索引会有问题，可能改成唯一标识
+        }
+    ],
+    "interCompConfig": [
+        {
+            "xxxxxid": "", // TODO:缺少id
+            "cameraViewType": 1, //1 2d UI  / 2 3d UI跟随视角 / 3 3d UI固定视角
+            "metas": [
+                {
+                    "text": "开场视频，选择进入的不同的功能" //标题文本
+                }
+            ],
+            "btns": [
+                {
+                    "id": 1, //按钮id
+                    "text": "单选", //按钮文案 可改
+                    "action": [
+                        {
+                            "actionType": 1,
+                            "nextVideo": "743280664"
+                        }
+                    ],
+                    // 国标有此字段
+                    "position": []
+                },
+                {
+                    "id": 2,
+                    "text": "组合点选",
+                    "action": [
+                        {
+                            "actionType": 1,
+                            "nextVideo": "743281533"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "text": "组合顺序点选",
+                    "action": [
+                        {
+                            "actionType": 1,
+                            "nextVideo": "744768365"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "text": "因子",
+                    "action": [
+                        {
+                            "actionType": 1,
+                            "nextVideo": "743284302"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

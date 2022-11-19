@@ -1,0 +1,901 @@
+{
+    "nodeName": "节点1-1",
+    "nodeId": "111111",
+    "nodeType": 0,
+    "nodePoster": "http://192.168.1.155/nas/image/source/local/bigFile/4382b52098a/1e22db65e7eb20319cf2d/user/1/1589856402959187968.jpg",
+    "trackList": [
+        {
+            "id": "4476bf372af845be978d2143ef1e5a79",
+            "mute": "1",
+            "trackType": 2,
+            "weight": 2,
+            "materials": [
+                {
+                    "id": "2dbcd42abdb0467ebc794ed068436baa",
+                    "trackId": "4476bf372af845be978d2143ef1e5a79",
+                    "baseSetting": {
+                        "name": "点击",
+                        "type": "Interactive",
+                        "interactiveType": "OptionBranch"
+                    },
+                    "trackSetting": {
+                        "trackFrom": 258400,
+                        "trackTo": 268400,
+                        "trimFrom": 0,
+                        "trimTo": 10000,
+                        "duration": 10000
+                    },
+                    "originalData": {
+                        "category": "Advanced",
+                        "categoryName": "高级",
+                        "materialId": "16f0bbe4f12b4fa6bd125fcb1b2ba0ea",
+                        "materialName": "点击",
+                        "materialPath": {
+                            "beforeTrigger": {
+                                "materialId": "7af1171279864513854b6a7f3efb35dd",
+                                "materialName": "单击-按钮-白色标准1",
+                                "materialPath": "/src/packages/components/Interactive/OptionBranch/assets/beforeTrigger.png",
+                                "previewPath": "/src/packages/components/Interactive/OptionBranch/assets/beforeTrigger.png",
+                                "materialType": "Image",
+                                "materialFileType": "png",
+                                "materialOriginWidth": 500,
+                                "materialOriginHeight": 500
+                            },
+                            "triggering": {
+                                "materialId": "6b9cdb8c8cf04b39bb6627cfdef2a51c",
+                                "materialName": "单击-按钮-白色标准2",
+                                "materialPath": "/src/packages/components/Interactive/OptionBranch/assets/triggering.png",
+                                "materialType": "Image",
+                                "previewPath": "/src/packages/components/Interactive/OptionBranch/assets/triggering.png",
+                                "materialFileType": "png",
+                                "materialOriginWidth": 500,
+                                "materialOriginHeight": 500
+                            }
+                        },
+                        "previewPath": "/src/packages/components/Interactive/OptionBranch/assets/preview.svg",
+                        "materialOriginWidth": 150,
+                        "materialOriginHeight": 70,
+                        "materialType": "Interactive",
+                        "interactiveType": "OptionBranch"
+                    },
+                    "timeSetting": {
+                        "eventEndEffect": "play",
+                        "eventStartEffect": "play",
+                        "countdownTriggerEffect": "",
+                        "countdownTime": 0
+                    },
+                    "skipSetting": {
+                        "skipTimeType": "immediatelySkip",
+                        "delayTime": 0
+                    },
+                    "interactiveGroup": [
+                        {
+                            "filterSetting": {
+                                "contrast": 0,
+                                "enhance": 0,
+                                "blurRadius": 0,
+                                "alpha": 0
+                            },
+                            "triggerSetting": {
+                                "triggerType": "skipNode",
+                                "skipTime": -1,
+                                "hrefUrl": "",
+                                "progressSkipTime": -1,
+                                "jumpNodeId": "222222"
+                            },
+                            "textSetting": {
+                                "text": "选项1",
+                                "fontFamily": "Source Han Sans CN",
+                                "fill": "rgb(255, 255, 255)",
+                                "align": "center",
+                                "fontSize": 23.333333333333332,
+                                "fontStyle": "normal",
+                                "textDecoration": "empty"
+                            },
+                            "styleSetting": {
+                                "styleEffect": {
+                                    "beforeTrigger": {
+                                        "materialId": "1589923519326797826",
+                                        "materialName": "1589923519251300353.png",
+                                        "materialPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589923519251300353.png",
+                                        "previewPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589923519330992128.png",
+                                        "materialType": "Image",
+                                        "materialFileType": "png",
+                                        "materialOriginWidth": null,
+                                        "materialOriginHeight": null,
+                                        "image": null,
+                                        "relatedId": "1589923519251300353",
+                                        "parentId": "0",
+                                        "sourceBelong": null,
+                                        "status": 0,
+                                        "createBy": "daj",
+                                        "createTime": "2022-11-08 18:11:21",
+                                        "updateBy": null,
+                                        "updateTime": "2022-11-08 18:11:21",
+                                        "type": 1,
+                                        "materialDuration": "0",
+                                        "resolvePower": "null*null",
+                                        "timeShift": null
+                                    },
+                                    "triggering": {
+                                        "materialId": "1589922737185570816",
+                                        "materialName": "1589922732911575040.jpeg",
+                                        "materialPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922732911575040.jpeg",
+                                        "materialType": "Image",
+                                        "previewPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922737189765120.jpeg",
+                                        "materialFileType": "png",
+                                        "materialOriginWidth": null,
+                                        "materialOriginHeight": null,
+                                        "image": null,
+                                        "relatedId": "1589922732911575040",
+                                        "parentId": "0",
+                                        "sourceBelong": null,
+                                        "status": 0,
+                                        "createBy": "daj",
+                                        "createTime": "2022-11-08 18:08:15",
+                                        "updateBy": null,
+                                        "updateTime": "2022-11-08 18:08:15",
+                                        "type": 1,
+                                        "materialDuration": "0",
+                                        "resolvePower": "null*null",
+                                        "timeShift": null
+                                    }
+                                },
+                                "soundEffectmediaContext": null,
+                                "soundEffectSetting": null
+                            },
+                            "transform2DSetting": {
+                                "x": 390,
+                                "y": 550.0000000000001,
+                                "rotation": 0,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "width": null,
+                                "height": null,
+                                "offset": {
+                                    "x": 0,
+                                    "y": 0
+                                }
+                            },
+                            "id": "42fc2cc600cb4495a81230b986012bc4",
+                            "mId": "2dbcd42abdb0467ebc794ed068436baa",
+                            "trackId": "4476bf372af845be978d2143ef1e5a79",
+                            "baseSetting": {
+                                "shapeRefContext": null,
+                                "name": "选项1",
+                                "draggable": true,
+                                "visible": true,
+                                "type": "Interactive",
+                                "interactiveType": "OptionBranch"
+                            }
+                        },
+                        {
+                            "filterSetting": {
+                                "contrast": 0,
+                                "enhance": 0,
+                                "blurRadius": 0,
+                                "alpha": 0
+                            },
+                            "triggerSetting": {
+                                "triggerType": "skipNode",
+                                "skipTime": -1,
+                                "hrefUrl": "",
+                                "progressSkipTime": -1,
+                                "jumpNodeId": ""
+                            },
+                            "textSetting": {
+                                "text": "选项2",
+                                "fontFamily": "Source Han Sans CN",
+                                "fill": "rgb(255, 255, 255)",
+                                "align": "center",
+                                "fontSize": 23.333333333333332,
+                                "fontStyle": "normal",
+                                "textDecoration": "empty"
+                            },
+                            "styleSetting": {
+                                "styleEffect": {
+                                    "beforeTrigger": {
+                                        "materialId": "1589922751605587968",
+                                        "materialName": "1589922751588810752.png",
+                                        "materialPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922751588810752.png",
+                                        "previewPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922751605587969.png",
+                                        "materialType": "Image",
+                                        "materialFileType": "png",
+                                        "materialOriginWidth": null,
+                                        "materialOriginHeight": null,
+                                        "image": null,
+                                        "relatedId": "1589922751588810752",
+                                        "parentId": "0",
+                                        "sourceBelong": null,
+                                        "status": 0,
+                                        "createBy": "daj",
+                                        "createTime": "2022-11-08 18:08:18",
+                                        "updateBy": null,
+                                        "updateTime": "2022-11-08 18:08:18",
+                                        "type": 1,
+                                        "materialDuration": "0",
+                                        "resolvePower": "null*null",
+                                        "timeShift": null
+                                    },
+                                    "triggering": {
+                                        "materialId": "1589922737185570816",
+                                        "materialName": "1589922732911575040.jpeg",
+                                        "materialPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922732911575040.jpeg",
+                                        "materialType": "Image",
+                                        "previewPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922737189765120.jpeg",
+                                        "materialFileType": "png",
+                                        "materialOriginWidth": null,
+                                        "materialOriginHeight": null,
+                                        "image": null,
+                                        "relatedId": "1589922732911575040",
+                                        "parentId": "0",
+                                        "sourceBelong": null,
+                                        "status": 0,
+                                        "createBy": "daj",
+                                        "createTime": "2022-11-08 18:08:15",
+                                        "updateBy": null,
+                                        "updateTime": "2022-11-08 18:08:15",
+                                        "type": 1,
+                                        "materialDuration": "0",
+                                        "resolvePower": "null*null",
+                                        "timeShift": null
+                                    }
+                                },
+                                "soundEffectmediaContext": null,
+                                "soundEffectSetting": null
+                            },
+                            "transform2DSetting": {
+                                "x": 810.0000000000001,
+                                "y": 550.0000000000001,
+                                "rotation": 0,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "width": null,
+                                "height": null,
+                                "offset": {
+                                    "x": 0,
+                                    "y": 0
+                                }
+                            },
+                            "id": "703f38523a93421dbf420afe34d62837",
+                            "mId": "2dbcd42abdb0467ebc794ed068436baa",
+                            "trackId": "4476bf372af845be978d2143ef1e5a79",
+                            "baseSetting": {
+                                "shapeRefContext": null,
+                                "name": "选项2",
+                                "draggable": true,
+                                "visible": true,
+                                "type": "Interactive",
+                                "interactiveType": "OptionBranch"
+                            }
+                        },
+                        {
+                            "filterSetting": {
+                                "contrast": 0,
+                                "enhance": 0,
+                                "blurRadius": 0,
+                                "alpha": 0
+                            },
+                            "triggerSetting": {
+                                "triggerType": "skipNode",
+                                "skipTime": -1,
+                                "hrefUrl": "",
+                                "progressSkipTime": -1,
+                                "jumpNodeId": ""
+                            },
+                            "textSetting": {
+                                "text": "选项3",
+                                "fontFamily": "Source Han Sans CN",
+                                "fill": "rgb(255, 255, 255)",
+                                "align": "center",
+                                "fontSize": 23.333333333333332,
+                                "fontStyle": "normal",
+                                "textDecoration": "empty"
+                            },
+                            "styleSetting": {
+                                "styleEffect": {
+                                    "beforeTrigger": {
+                                        "materialId": "1589922751605587968",
+                                        "materialName": "1589922751588810752.png",
+                                        "materialPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922751588810752.png",
+                                        "previewPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922751605587969.png",
+                                        "materialType": "Image",
+                                        "materialFileType": "png",
+                                        "materialOriginWidth": null,
+                                        "materialOriginHeight": null,
+                                        "image": null,
+                                        "relatedId": "1589922751588810752",
+                                        "parentId": "0",
+                                        "sourceBelong": null,
+                                        "status": 0,
+                                        "createBy": "daj",
+                                        "createTime": "2022-11-08 18:08:18",
+                                        "updateBy": null,
+                                        "updateTime": "2022-11-08 18:08:18",
+                                        "type": 1,
+                                        "materialDuration": "0",
+                                        "resolvePower": "null*null",
+                                        "timeShift": null
+                                    },
+                                    "triggering": {
+                                        "materialId": "1589922737185570816",
+                                        "materialName": "1589922732911575040.jpeg",
+                                        "materialPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922732911575040.jpeg",
+                                        "materialType": "Image",
+                                        "previewPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922737189765120.jpeg",
+                                        "materialFileType": "png",
+                                        "materialOriginWidth": null,
+                                        "materialOriginHeight": null,
+                                        "image": null,
+                                        "relatedId": "1589922732911575040",
+                                        "parentId": "0",
+                                        "sourceBelong": null,
+                                        "status": 0,
+                                        "createBy": "daj",
+                                        "createTime": "2022-11-08 18:08:15",
+                                        "updateBy": null,
+                                        "updateTime": "2022-11-08 18:08:15",
+                                        "type": 1,
+                                        "materialDuration": "0",
+                                        "resolvePower": "null*null",
+                                        "timeShift": null
+                                    }
+                                },
+                                "soundEffectmediaContext": null,
+                                "soundEffectSetting": null
+                            },
+                            "transform2DSetting": {
+                                "x": 1257.5000000000005,
+                                "y": 550.0000000000002,
+                                "rotation": 0,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "width": null,
+                                "height": null,
+                                "offset": {
+                                    "x": 0,
+                                    "y": 0
+                                }
+                            },
+                            "id": "60a05ca355444c26a3f1de85210da54d",
+                            "mId": "2dbcd42abdb0467ebc794ed068436baa",
+                            "trackId": "4476bf372af845be978d2143ef1e5a79",
+                            "baseSetting": {
+                                "shapeRefContext": null,
+                                "name": "选项3",
+                                "draggable": true,
+                                "visible": true,
+                                "type": "Interactive",
+                                "interactiveType": "OptionBranch"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "visible": true,
+            "main": false
+        },
+        {
+            "id": "6e808c3401e44531bfada1f599a4dd71",
+            "mute": "1",
+            "trackType": 0,
+            "weight": 1,
+            "materials": [
+                {
+                    "id": "de45624c16af458a8b7c99fabc0ae9ec",
+                    "trackId": "6e808c3401e44531bfada1f599a4dd71",
+                    "baseSetting": {
+                        "name": "1589981597887840256.mp4",
+                        "draggable": true,
+                        "visible": true,
+                        "type": "Video",
+                        "image": null,
+                        "mediaContext": null,
+                        "shapeRefContext": null,
+                        "mediaState": false,
+                        "isPlay": false
+                    },
+                    "trackSetting": {
+                        "trackFrom": 0,
+                        "trackTo": 283009,
+                        "trimFrom": 0,
+                        "trimTo": 283009,
+                        "duration": 283009
+                    },
+                    "originalData": {
+                        "materialId": "1589981597913006080",
+                        "materialType": "Video",
+                        "relatedId": "1589981597887840256",
+                        "materialName": "1589981597887840256.mp4",
+                        "parentId": "0",
+                        "sourceBelong": null,
+                        "status": 0,
+                        "createBy": "daj",
+                        "createTime": "2022-11-08 22:02:12",
+                        "updateBy": null,
+                        "updateTime": "2022-11-08 22:02:12",
+                        "type": 8,
+                        "materialDuration": 283009,
+                        "resolvePower": "1280*720",
+                        "materialPath": "http://192.168.1.155/nas/video/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589981597887840256.mp4",
+                        "previewPath": "",
+                        "timeShift": null,
+                        "materialOriginWidth": 1920,
+                        "materialOriginHeight": 1080
+                    },
+                    "transform2DSetting": {
+                        "x": 960,
+                        "y": 540,
+                        "rotation": 0,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "width": 1920,
+                        "height": 1079.99865,
+                        "offset": {
+                            "x": 960,
+                            "y": 539.999325
+                        }
+                    },
+                    "videoSetting": {
+                        "volume": 1,
+                        "speed": 1
+                    }
+                }
+            ],
+            "visible": true,
+            "main": true
+        }
+    ],
+    "children": [
+        {
+            "nodeName": "节点2-1",
+            "nodeId": "222222",
+            "nodePoster": "http://192.168.1.155/nas/image/source/local/bigFile/ab2f69456fa/e5b0e47f7c3ebc74d19d8/user/1/1589855089722605568.jpg",
+            "nodeType": 1,
+            "trackList": [
+                {
+                    "id": "4476bf372af845be978d2143ef1e5a79",
+                    "mute": "1",
+                    "trackType": 2,
+                    "weight": 2,
+                    "materials": [
+                        {
+                            "id": "2dbcd42abdb0467ebc794ed068436baa",
+                            "trackId": "4476bf372af845be978d2143ef1e5a79",
+                            "baseSetting": {
+                                "name": "点击",
+                                "type": "Interactive",
+                                "interactiveType": "OptionBranch"
+                            },
+                            "trackSetting": {
+                                "trackFrom": 258400,
+                                "trackTo": 268400,
+                                "trimFrom": 0,
+                                "trimTo": 10000,
+                                "duration": 10000
+                            },
+                            "originalData": {
+                                "category": "Advanced",
+                                "categoryName": "高级",
+                                "materialId": "16f0bbe4f12b4fa6bd125fcb1b2ba0ea",
+                                "materialName": "点击",
+                                "materialPath": {
+                                    "beforeTrigger": {
+                                        "materialId": "7af1171279864513854b6a7f3efb35dd",
+                                        "materialName": "单击-按钮-白色标准1",
+                                        "materialPath": "/src/packages/components/Interactive/OptionBranch/assets/beforeTrigger.png",
+                                        "previewPath": "/src/packages/components/Interactive/OptionBranch/assets/beforeTrigger.png",
+                                        "materialType": "Image",
+                                        "materialFileType": "png",
+                                        "materialOriginWidth": 500,
+                                        "materialOriginHeight": 500
+                                    },
+                                    "triggering": {
+                                        "materialId": "6b9cdb8c8cf04b39bb6627cfdef2a51c",
+                                        "materialName": "单击-按钮-白色标准2",
+                                        "materialPath": "/src/packages/components/Interactive/OptionBranch/assets/triggering.png",
+                                        "materialType": "Image",
+                                        "previewPath": "/src/packages/components/Interactive/OptionBranch/assets/triggering.png",
+                                        "materialFileType": "png",
+                                        "materialOriginWidth": 500,
+                                        "materialOriginHeight": 500
+                                    }
+                                },
+                                "previewPath": "/src/packages/components/Interactive/OptionBranch/assets/preview.svg",
+                                "materialOriginWidth": 150,
+                                "materialOriginHeight": 70,
+                                "materialType": "Interactive",
+                                "interactiveType": "OptionBranch"
+                            },
+                            "timeSetting": {
+                                "eventEndEffect": "play",
+                                "eventStartEffect": "play",
+                                "countdownTriggerEffect": "",
+                                "countdownTime": 0
+                            },
+                            "skipSetting": {
+                                "skipTimeType": "immediatelySkip",
+                                "delayTime": 0
+                            },
+                            "interactiveGroup": [
+                                {
+                                    "filterSetting": {
+                                        "contrast": 0,
+                                        "enhance": 0,
+                                        "blurRadius": 0,
+                                        "alpha": 0
+                                    },
+                                    "triggerSetting": {
+                                        "triggerType": "skipNode",
+                                        "skipTime": -1,
+                                        "hrefUrl": "",
+                                        "progressSkipTime": -1,
+                                        "jumpNodeId": ""
+                                    },
+                                    "textSetting": {
+                                        "text": "选项1",
+                                        "fontFamily": "Source Han Sans CN",
+                                        "fill": "rgb(255, 255, 255)",
+                                        "align": "center",
+                                        "fontSize": 23.333333333333332,
+                                        "fontStyle": "normal",
+                                        "textDecoration": "empty"
+                                    },
+                                    "styleSetting": {
+                                        "styleEffect": {
+                                            "beforeTrigger": {
+                                                "materialId": "1589923519326797826",
+                                                "materialName": "1589923519251300353.png",
+                                                "materialPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589923519251300353.png",
+                                                "previewPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589923519330992128.png",
+                                                "materialType": "Image",
+                                                "materialFileType": "png",
+                                                "materialOriginWidth": null,
+                                                "materialOriginHeight": null,
+                                                "image": null,
+                                                "relatedId": "1589923519251300353",
+                                                "parentId": "0",
+                                                "sourceBelong": null,
+                                                "status": 0,
+                                                "createBy": "daj",
+                                                "createTime": "2022-11-08 18:11:21",
+                                                "updateBy": null,
+                                                "updateTime": "2022-11-08 18:11:21",
+                                                "type": 1,
+                                                "materialDuration": "0",
+                                                "resolvePower": "null*null",
+                                                "timeShift": null
+                                            },
+                                            "triggering": {
+                                                "materialId": "1589922737185570816",
+                                                "materialName": "1589922732911575040.jpeg",
+                                                "materialPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922732911575040.jpeg",
+                                                "materialType": "Image",
+                                                "previewPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922737189765120.jpeg",
+                                                "materialFileType": "png",
+                                                "materialOriginWidth": null,
+                                                "materialOriginHeight": null,
+                                                "image": null,
+                                                "relatedId": "1589922732911575040",
+                                                "parentId": "0",
+                                                "sourceBelong": null,
+                                                "status": 0,
+                                                "createBy": "daj",
+                                                "createTime": "2022-11-08 18:08:15",
+                                                "updateBy": null,
+                                                "updateTime": "2022-11-08 18:08:15",
+                                                "type": 1,
+                                                "materialDuration": "0",
+                                                "resolvePower": "null*null",
+                                                "timeShift": null
+                                            }
+                                        },
+                                        "soundEffectmediaContext": null,
+                                        "soundEffectSetting": null
+                                    },
+                                    "transform2DSetting": {
+                                        "x": 390,
+                                        "y": 550.0000000000001,
+                                        "rotation": 0,
+                                        "scaleX": 1,
+                                        "scaleY": 1,
+                                        "width": null,
+                                        "height": null,
+                                        "offset": {
+                                            "x": 0,
+                                            "y": 0
+                                        }
+                                    },
+                                    "id": "42fc2cc600cb4495a81230b986012bc4",
+                                    "mId": "2dbcd42abdb0467ebc794ed068436baa",
+                                    "trackId": "4476bf372af845be978d2143ef1e5a79",
+                                    "baseSetting": {
+                                        "shapeRefContext": null,
+                                        "name": "选项1",
+                                        "draggable": true,
+                                        "visible": true,
+                                        "type": "Interactive",
+                                        "interactiveType": "OptionBranch"
+                                    }
+                                },
+                                {
+                                    "filterSetting": {
+                                        "contrast": 0,
+                                        "enhance": 0,
+                                        "blurRadius": 0,
+                                        "alpha": 0
+                                    },
+                                    "triggerSetting": {
+                                        "triggerType": "skipNode",
+                                        "skipTime": -1,
+                                        "hrefUrl": "",
+                                        "progressSkipTime": -1,
+                                        "jumpNodeId": ""
+                                    },
+                                    "textSetting": {
+                                        "text": "选项2",
+                                        "fontFamily": "Source Han Sans CN",
+                                        "fill": "rgb(255, 255, 255)",
+                                        "align": "center",
+                                        "fontSize": 23.333333333333332,
+                                        "fontStyle": "normal",
+                                        "textDecoration": "empty"
+                                    },
+                                    "styleSetting": {
+                                        "styleEffect": {
+                                            "beforeTrigger": {
+                                                "materialId": "1589922751605587968",
+                                                "materialName": "1589922751588810752.png",
+                                                "materialPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922751588810752.png",
+                                                "previewPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922751605587969.png",
+                                                "materialType": "Image",
+                                                "materialFileType": "png",
+                                                "materialOriginWidth": null,
+                                                "materialOriginHeight": null,
+                                                "image": null,
+                                                "relatedId": "1589922751588810752",
+                                                "parentId": "0",
+                                                "sourceBelong": null,
+                                                "status": 0,
+                                                "createBy": "daj",
+                                                "createTime": "2022-11-08 18:08:18",
+                                                "updateBy": null,
+                                                "updateTime": "2022-11-08 18:08:18",
+                                                "type": 1,
+                                                "materialDuration": "0",
+                                                "resolvePower": "null*null",
+                                                "timeShift": null
+                                            },
+                                            "triggering": {
+                                                "materialId": "1589922737185570816",
+                                                "materialName": "1589922732911575040.jpeg",
+                                                "materialPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922732911575040.jpeg",
+                                                "materialType": "Image",
+                                                "previewPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922737189765120.jpeg",
+                                                "materialFileType": "png",
+                                                "materialOriginWidth": null,
+                                                "materialOriginHeight": null,
+                                                "image": null,
+                                                "relatedId": "1589922732911575040",
+                                                "parentId": "0",
+                                                "sourceBelong": null,
+                                                "status": 0,
+                                                "createBy": "daj",
+                                                "createTime": "2022-11-08 18:08:15",
+                                                "updateBy": null,
+                                                "updateTime": "2022-11-08 18:08:15",
+                                                "type": 1,
+                                                "materialDuration": "0",
+                                                "resolvePower": "null*null",
+                                                "timeShift": null
+                                            }
+                                        },
+                                        "soundEffectmediaContext": null,
+                                        "soundEffectSetting": null
+                                    },
+                                    "transform2DSetting": {
+                                        "x": 810.0000000000001,
+                                        "y": 550.0000000000001,
+                                        "rotation": 0,
+                                        "scaleX": 1,
+                                        "scaleY": 1,
+                                        "width": null,
+                                        "height": null,
+                                        "offset": {
+                                            "x": 0,
+                                            "y": 0
+                                        }
+                                    },
+                                    "id": "703f38523a93421dbf420afe34d62837",
+                                    "mId": "2dbcd42abdb0467ebc794ed068436baa",
+                                    "trackId": "4476bf372af845be978d2143ef1e5a79",
+                                    "baseSetting": {
+                                        "shapeRefContext": null,
+                                        "name": "选项2",
+                                        "draggable": true,
+                                        "visible": true,
+                                        "type": "Interactive",
+                                        "interactiveType": "OptionBranch"
+                                    }
+                                },
+                                {
+                                    "filterSetting": {
+                                        "contrast": 0,
+                                        "enhance": 0,
+                                        "blurRadius": 0,
+                                        "alpha": 0
+                                    },
+                                    "triggerSetting": {
+                                        "triggerType": "skipNode",
+                                        "skipTime": -1,
+                                        "hrefUrl": "",
+                                        "progressSkipTime": -1,
+                                        "jumpNodeId": ""
+                                    },
+                                    "textSetting": {
+                                        "text": "选项3",
+                                        "fontFamily": "Source Han Sans CN",
+                                        "fill": "rgb(255, 255, 255)",
+                                        "align": "center",
+                                        "fontSize": 23.333333333333332,
+                                        "fontStyle": "normal",
+                                        "textDecoration": "empty"
+                                    },
+                                    "styleSetting": {
+                                        "styleEffect": {
+                                            "beforeTrigger": {
+                                                "materialId": "1589922751605587968",
+                                                "materialName": "1589922751588810752.png",
+                                                "materialPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922751588810752.png",
+                                                "previewPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922751605587969.png",
+                                                "materialType": "Image",
+                                                "materialFileType": "png",
+                                                "materialOriginWidth": null,
+                                                "materialOriginHeight": null,
+                                                "image": null,
+                                                "relatedId": "1589922751588810752",
+                                                "parentId": "0",
+                                                "sourceBelong": null,
+                                                "status": 0,
+                                                "createBy": "daj",
+                                                "createTime": "2022-11-08 18:08:18",
+                                                "updateBy": null,
+                                                "updateTime": "2022-11-08 18:08:18",
+                                                "type": 1,
+                                                "materialDuration": "0",
+                                                "resolvePower": "null*null",
+                                                "timeShift": null
+                                            },
+                                            "triggering": {
+                                                "materialId": "1589922737185570816",
+                                                "materialName": "1589922732911575040.jpeg",
+                                                "materialPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922732911575040.jpeg",
+                                                "materialType": "Image",
+                                                "previewPath": "http://192.168.1.155/nas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589922737189765120.jpeg",
+                                                "materialFileType": "png",
+                                                "materialOriginWidth": null,
+                                                "materialOriginHeight": null,
+                                                "image": null,
+                                                "relatedId": "1589922732911575040",
+                                                "parentId": "0",
+                                                "sourceBelong": null,
+                                                "status": 0,
+                                                "createBy": "daj",
+                                                "createTime": "2022-11-08 18:08:15",
+                                                "updateBy": null,
+                                                "updateTime": "2022-11-08 18:08:15",
+                                                "type": 1,
+                                                "materialDuration": "0",
+                                                "resolvePower": "null*null",
+                                                "timeShift": null
+                                            }
+                                        },
+                                        "soundEffectmediaContext": null,
+                                        "soundEffectSetting": null
+                                    },
+                                    "transform2DSetting": {
+                                        "x": 1257.5000000000005,
+                                        "y": 550.0000000000002,
+                                        "rotation": 0,
+                                        "scaleX": 1,
+                                        "scaleY": 1,
+                                        "width": null,
+                                        "height": null,
+                                        "offset": {
+                                            "x": 0,
+                                            "y": 0
+                                        }
+                                    },
+                                    "id": "60a05ca355444c26a3f1de85210da54d",
+                                    "mId": "2dbcd42abdb0467ebc794ed068436baa",
+                                    "trackId": "4476bf372af845be978d2143ef1e5a79",
+                                    "baseSetting": {
+                                        "shapeRefContext": null,
+                                        "name": "选项3",
+                                        "draggable": true,
+                                        "visible": true,
+                                        "type": "Interactive",
+                                        "interactiveType": "OptionBranch"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "visible": true,
+                    "main": false
+                },
+                {
+                    "id": "6e808c3401e44531bfada1f599a4dd71",
+                    "mute": "1",
+                    "trackType": 0,
+                    "weight": 1,
+                    "materials": [
+                        {
+                            "id": "de45624c16af458a8b7c99fabc0ae9ec",
+                            "trackId": "6e808c3401e44531bfada1f599a4dd71",
+                            "baseSetting": {
+                                "name": "1589981597887840256.mp4",
+                                "draggable": true,
+                                "visible": true,
+                                "type": "Video",
+                                "image": null,
+                                "mediaContext": null,
+                                "shapeRefContext": null,
+                                "mediaState": false,
+                                "isPlay": false
+                            },
+                            "trackSetting": {
+                                "trackFrom": 0,
+                                "trackTo": 283009,
+                                "trimFrom": 0,
+                                "trimTo": 283009,
+                                "duration": 283009
+                            },
+                            "originalData": {
+                                "materialId": "1589981597913006080",
+                                "materialType": "Video",
+                                "relatedId": "1589981597887840256",
+                                "materialName": "1589981597887840256.mp4",
+                                "parentId": "0",
+                                "sourceBelong": null,
+                                "status": 0,
+                                "createBy": "daj",
+                                "createTime": "2022-11-08 22:02:12",
+                                "updateBy": null,
+                                "updateTime": "2022-11-08 22:02:12",
+                                "type": 8,
+                                "materialDuration": 283009,
+                                "resolvePower": "1280*720",
+                                "materialPath": "http://192.168.1.155/nas/video/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/daj/1589981597887840256.mp4",
+                                "previewPath": "",
+                                "timeShift": null,
+                                "materialOriginWidth": 1920,
+                                "materialOriginHeight": 1080
+                            },
+                            "transform2DSetting": {
+                                "x": 960,
+                                "y": 540,
+                                "rotation": 0,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "width": 1920,
+                                "height": 1079.99865,
+                                "offset": {
+                                    "x": 960,
+                                    "y": 539.999325
+                                }
+                            },
+                            "videoSetting": {
+                                "volume": 1,
+                                "speed": 1
+                            }
+                        }
+                    ],
+                    "visible": true,
+                    "main": true
+                }
+            ],
+            "children": []
+        }
+    ]
+}

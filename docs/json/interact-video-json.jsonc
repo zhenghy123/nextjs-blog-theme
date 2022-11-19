@@ -1,0 +1,315 @@
+// 爱奇艺：index.json
+{
+    "base": {
+        "filename": "当用户首次播放互动视频时，播放的第一个片段的视频文件名称; 对于同一互动视频，第一个片段是唯一的需包含扩展名，扩展名固定为“.mp4”; 最大长度为20个英文字母或数字",
+        "fileVersion": "索引脚本文件的文件版本号，当索引脚本文件被修改后，需要更新此节点以做区分; 三个小于10的正整数以点分割，例如1.0.1",
+        "protocolVersion": " 协议版本号，当前协议版本号固定为1.0",
+        "interactMode": " 互动能力类型:0: 画面信息探索互动能力;1: 分支剧情互动能力;关于互动能力请参见《互动视频标准》中的互动能力支持",
+    },
+    "globle": {
+        // "X因子列表; 包含了全部X因子的名称及初始值; 数组中元素个数最大值为20; 关于X因子的介绍可参见《互动视频基础指南》中的X因子",
+        "varList": [
+            {
+                "name": " x因子名称：var1",
+                "initValue": " 初始值，默认0",
+            }
+        ]
+    },
+    // 互动区间
+    "interactBlockList": [
+        {
+            "blockid": " 交互区间id,格式：interact+编号（三位数字）",
+            "inPlayBlockid": " 该交互区间所在播放区间id，可从playBlockList中找到",
+            "startTime": " 区间开始时间,单位：s",
+            "duration": " 区间时长",
+            "exeShowAnimation": "是否展示动画,0:不展示，1：展示",
+            "desc": "描述",
+            // 交互区间展示条件，
+            "showConditionList": [
+                {
+                    "expressType": "表达式类型：条件判断「condition」最大值「max」最小值「min」",
+                    "express": "表达式，条件判断如：var1>2&&var2>3，max或min如：var1, var2  , ",
+                    "expressPara": "express为max或min时需要，表示最大或最小值是否为此选项",
+                }
+            ],
+            "state": {
+                // "交互区间展示时当前视频播放状态「play」或「pause」，默认play",
+                "playState": "play"
+            },
+            // 交互组件操作后可能触发的视频片段跳转信息
+            "preLoadList": [
+                {
+                    "playerBlockid": "需要预加载的播放区间id",
+                    "preloadTime": "起播时间，单位s"
+                }
+            ],
+            // "UI样式"======我们不涉及模版暂无此选项=======
+            "UIInfo": {
+                "UIid": "UI模版编号",
+                "paraFile": "脚本地址"
+            }
+        }
+    ],
+    // 播放区间
+    "playBlockList": [
+        {
+            "blockid": "播放区间id",
+            "filename": "视频名称，以.mp4结尾",
+            // 播放结束后需要的操作
+            "endAction": {
+                "actionName": "下一步操作事件名,切换视频：「SWITCHVIDEO」根据表达式计算怎么做：「CONDITIONSWITCH」",
+                "nextPlayBlockid": "下一区间id，SWITCHVIDEO时必填，interactMode为0时必填固定第一个视频播放区间id",
+                "nextPlayTime": "下一个视频起播时间,SWITCHVIDEO时必填",
+                // CONDITIONSWITCH时必填
+                "switchConditionList": [
+                    {
+                        "expressType": "表达式类型，同上",
+                        "express": "表达式，同上",
+                        "expressPara": "min或max变量，同上",
+                        "nextPlayBlockid": "下一播放区间id",
+                        "nextPlayTime": "起播时间"
+                    }
+                ]
+            }
+        }
+    ]
+}
+// 爱奇艺： interact001-Para.json
+{
+    "base": {
+        "interactid": "交互区间id",
+        "fileVersion": "",
+        "pretocolVersion": ""
+    },
+    "metas": [
+        {
+            "id": "",
+            "text": "xx"
+        }
+    ],
+    "imgs": [
+        {
+            "id": "",
+            "url": "/xx.png"
+        }
+    ],
+    "btns": [
+        {
+            "id": "按钮id",
+            "text": "按钮文本",
+            "des": "描述",
+            "isDefaultSelect": "1默认选项，非1",
+            "backImgNormal": "按钮背景图",
+            "showConditionList": [],
+            "statistics": {
+                "reseat": "",
+                "block": ""
+            },
+            "actionList": [
+                {
+                    "actionName": "ALGORITHM",
+                    "actionPara": {
+                        "algorithmList": []
+                    }
+                },
+                {
+                    "actionName": "SWITCHVIDEO",
+                    "actionPara": {
+                        "insertToTime": "0",
+                        "nextPlayBlockid": "",
+                        "nextPlayTime": "0",
+                    }
+                },
+                {
+                    "actionName": "CONDITIIONSWITCH",
+                    "actionPara": {
+                        "switchConditionList": [
+                            {
+                                "express": "",
+                                "expressType": "",
+                                "expressPara": "",
+                                "insertToTime": "",
+                                "nextPlayBlockid": "",
+                                "nextPlayTime": ""
+                            }
+                        ],
+                    }
+                }
+            ],
+        }
+    ],
+    // 定制
+    "ctrls": [
+        {
+            "id": "",
+            "controlType": "仅倒计时，COUNTDOWN",
+            "controlBbackColor": "",
+            "totalTime": "",
+            "statistcs": {},
+            "actionList": [],
+        }
+    ],
+    "statistics": {}
+}
+// 脚本目录结构
+- index.json
+- interact001
+    - interact001-Para.json
+- interact002
+    - interact002-Para.json
+- res
+    - select.png
+    - seleted.png
+
+// 我方目录结构
+- assets
+    - xx.png
+    - xxx.png
+- video
+    - 001.mp4
+    - 002.mp4
+    - index.json
+- interact001-Para.json
+- interact002-Para.json
+
+// 我方index.json
+{
+    "drama": {
+        "name": "互动视频集名",
+        "description": "描述",
+        "fileVersion": "json版本",
+        "firstVideoId": "第一个视频id",
+    },
+    "videoList": [
+        {
+            "videoId": "视频id",
+            "description": "",
+            "duration": "",
+            "filename": "",
+            "interactNodeId": "互动节点id",
+            "showFactorExpress": "使用互动因子",
+            "thumbnail": "背景图"
+        }
+    ],
+    "interactNodeList": [
+        {
+            "interactNodeId": "互动节点id",
+            "title": "标题",
+            "startTime": "",
+            "duration": "",
+            "playState": "play|pause",
+            "endState": "pause|countDown|hide",
+            "interactInfoId": "组件id,interactInfoId+编号",
+        }
+    ],
+    "interactInfoList": [
+        {
+            "interactInfoId": "组件id,interactInfoId+编号",
+            "interactInfo": {
+                "type": "点选（PointClickModule）、点击组合(ClickGroupModule)、连续点击(ContinueClickMdule)、拖拽(DragModule)、凝视(GaseModule)、语音识别(SpeechRecognitionMdule)、滑动(SlideMdule)、路径识别(PathIndextityMdule)、视角切换(SwitchViewMdule)",
+                // "compoundMode": "",
+                // "clickCount": "",
+                // "startDragPos": "",
+                // "targetPos": "",
+                // "gazeTime": "",
+                // "speechRecongitionContent": "",
+                // "startPos": "",
+                // "endPos": "",
+                // "errRange": "",
+                // "pathPos": "",
+                // "appearTime": ""
+            },
+            "interactConfig": "interact001-Para.json"
+        }
+    ],
+    // X因子
+    "factorList": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ]
+}
+// 我方 interact001-Para.json
+{
+    "metas": [
+        {
+            "text": "",
+            "style": {
+                "color": "",
+                "posX": "",
+                "posY": "",
+                "posZ": "",
+                "width": "",
+                "height": "",
+                "opacity": "",
+                "rotate": "",
+            }
+        }
+    ],
+    "imgs": {
+        "url": "xx.png"
+    },
+    "btns": [
+        {
+            "id": "",
+            "text": "",
+            "style": {
+                "color": "",
+                "posX": "",
+                "posY": "",
+                "posZ": "",
+                "width": "",
+                "height": "",
+                "opacity": "",
+                "rotate": "",
+            },
+            "audio": "",
+            "backgroundImageBeforeClick": "xx.png",
+            "action": [
+                {
+                    "actionType": "SWITCHVIDEO|FACTOR|FACTOREXPRESS|PLAY|SWITCHVIEW",
+                    "nextVideo": "",
+                    // FACTOR时需要
+                    "factorList": [],
+                    "factorExpressList": []
+                }
+            ]
+        }
+    ],
+    "ctrls": [
+        {
+            "name": "",
+            "text": "",
+            "style": {
+                "color": "",
+                "posX": "",
+                "posY": "",
+                "posZ": "",
+                "width": "",
+                "height": "",
+                "opacity": "",
+                "rotate": "",
+            },
+            "time": "",
+            "conditionConfig": {
+                "conditionValue": "",
+                "jumpVideoId": "",
+                "errorJumpVideo": "",
+                "errorTip": ""
+            },
+            "audio": ""
+        }
+    ],
+}
+
+
+
+
+
+/**
+* TODO:
+- 注意视频时间，需要转化Number
+- 注意非必填参数和默认值，需要在代码中处理以防在json中找不到导致报错
+- 视频起播时间待确认是否根据时间轴算
+* /
