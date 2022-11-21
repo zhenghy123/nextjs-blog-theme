@@ -10,7 +10,7 @@ module.exports = {
   mode: 'development',
   // 入口
   entry: {
-    xrpano: [path.resolve(__dirname, './src/index.js')],
+    kplayer: [path.resolve(__dirname, './src/index.js')],
   },
   // 出口
   output: {
