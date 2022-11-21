@@ -29,7 +29,6 @@
 		pausedonstart="true"
 		loop="true"
 		volume="1.0"
-		onloaded="add_video_sources();"
 	 />
 
 	<view hlookat="0" vlookat="0" fovtype="DFOV" fov="130" fovmin="75" fovmax="150" distortion="0.0" />
@@ -156,6 +155,6 @@
 	</action>
 	<action name="add_video_sources">
 		<!-- videointerface_addsource('video720', './video720.mp4', './imgs/preview1.jpeg'); -->
-		videointerface_play('video360');
+		<!-- videointerface_play('video360'); -->
 	</action>
 </krpano>

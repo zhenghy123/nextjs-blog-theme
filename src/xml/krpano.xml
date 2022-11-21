@@ -1,7 +1,7 @@
 ﻿<krpano>
 	<include url="./plugins/showtext.xml" />
-  <!-- 引入皮肤 -->
-  <include url="./skin/videointerface.xml" />
+	<!-- 引入皮肤 -->
+	<include url="./skin/videointerface.xml" />
 	<!-- 
 	<image>
 		<sphere url='../imgs/preview1.jpeg' />
@@ -25,14 +25,14 @@
 		</image>
 	</scene>
 
-  <plugin name="video"
-		        pausedonstart="true"
-		        loop="true"
-		        volume="1.0"
-		        onloaded="add_video_sources();"
-		        />
+	<plugin name="video"
+		pausedonstart="true"
+		loop="true"
+		volume="1.0"
+		onloaded="add_video_sources();"
+	 />
 
-  <view hlookat="0" vlookat="0" fovtype="DFOV" fov="130" fovmin="75" fovmax="150" distortion="0.0" />
+	<view hlookat="0" vlookat="0" fovtype="DFOV" fov="130" fovmin="75" fovmax="150" distortion="0.0" />
 
 	<!-- 
 		<area mode="border" left="0" top="0" right="0" bottom="0" cliplayers="true" /> 
@@ -154,8 +154,8 @@
 		);
         
 	</action>
-  <action name="add_video_sources" >
-      <!-- videointerface_addsource('video720', './video720.mp4', './imgs/preview1.jpeg'); -->
-			videointerface_play('video360');
-		</action>
+	<action name="add_video_sources">
+		<!-- videointerface_addsource('video720', './video720.mp4', './imgs/preview1.jpeg'); -->
+		<!-- videointerface_play('video360'); -->
+	</action>
 </krpano>

@@ -10,9 +10,9 @@ const path = require('path')
 module.exports = {
   mode: 'development',
   // 入口
-  // entry: {
-  //   kplayer: [path.resolve(__dirname, './src/index.js')],
-  // },
+  entry: {
+    kplayer: [path.resolve(__dirname, './src/index.js')],
+  },
   // // 出口
   // output: {
   //   path: path.resolve(__dirname, 'dist'),

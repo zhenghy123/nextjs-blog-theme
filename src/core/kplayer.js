@@ -1,100 +1,55 @@
-//  视频事件常量
-const VideoEvents = {
-  VIDEO_LOADSTART: 'loadstart', // 开始加载数据
-  VIDEO_PROGRESS: 'progress', // 正在请求数据
-  VIDEO_LOADEDDATA: 'loadeddata', //媒体的第一帧已经加载完毕
-  VIDEO_LOADEDMETADATA: 'loadedmetadata', //媒体的元数据已经加载完毕，现在所有的属性包含了它们应有的有效信息
-  VIDEO_ABORT: 'abort', // 图像的加载被中断
-  VIDEO_ERROR: 'error', // 请求数据错误
-  VIDEO_STALLED: 'stalled', // 网速失速
-  VIDEO_WAITING: 'waiting', // 缓冲数据
-  VIDEO_CANPLAY: 'canplay', // 可以播放
-  VIDEO_PLAYING: 'playing', // 在媒体开始播放时触发（不论是初次播放、在暂停后恢复、或是在结束后重新开始）
-  VIDEO_CANPLAYTHROUGH: 'canplaythrough', // 可以播放，全部加载完毕
-  VIDEO_SEEKING: 'seeking', // 在跳跃操作开始时触发
-  VIDEO_SEEKED: 'seeked', // 在跳跃操作完成时触发
-  VIDEO_TIMEUPDATE: 'timeupdate', // 时间改变
-  VIDEO_ENDED: 'ended', // 播放结束
-  VIDEO_RATECHANGE: 'ratechange', // 播放速度改变
-  VIDEO_VOLUMECHANGE: 'volumechange', //音量改变
-  VIDEO_PAUSE: 'pause', //暂停
-  VIDEO_PLAY: 'play', //播放
-}
+import { PlayerEvents } from './player-events'
+import { InteractiveEnums } from './player-interactives'
+import { DefaultVideoOptions } from './player-config'
 
-const InteractiveEnums = {
-  单击: {
-    beforeTrigger: './imgs/beforeTrigger.png',
-    triggering: './imgs/triggering.png',
-  },
-}
+import EventEmitter from 'events'
 
-// 视频参数设置
-const VideoOptions = {
-  crossorigin: 'anonymous',
-  muted: true,
-  volume: 1,
-  poster: '',
-  preload: 'auto',
-  loop: false,
-  autoplay: false,
-  // playbackRate: 1,
-  'webkit-playsinline': true,
-  playsinline: 'playsinline',
-  'x-webkit-airplay': true,
-}
+var _krpano = null
 
 // 互动视频VR播放器
 class KPlayer {
-  constructor(options) {
-    this._options = Object.assign(options, {
-      videoOptions: { ...VideoOptions, ...options.videoOptions },
-      events: options.events || {},
-      // events: {
-      //   loadstart: function () {},
-      // },
-      ispreview: false, // 是否预览模式
-    })
-    this._videoEvents = VideoEvents
-    this._events = {}
+  constructor(options = {}) {
+    this._krpano = options.krpano
+    this._options = {
+      ...DefaultVideoOptions,
+      ...options,
+      ispreview: options.ispreview || false,
+    }
 
+    this._emitter = new EventEmitter()
+
+    _krpano = options.krpano
     this.init()
+    this.initVideo()
   }
 
   init() {
-    this._plugin = krpano.plugin
-    this._actions = krpano.actions
-    this._layer = krpano.layer
-    this._hotspot = krpano.hotspot
+    _krpano.global.ispreview = this._options.ispreview
+    window.hotspotClick = this.hotspotClick.bind(this)
 
-    this.initVideo()
-    // console.error('_plugin===', this._plugin.getItem('video'));
-    let that = this
-
-    krpano.global.ispreview = this._options.ispreview
     Object.defineProperty(this._options, 'ispreview', {
       set(val) {
-        // that._options.ispreview = val;
-        krpano.global.ispreview = val
+        _krpano.global.ispreview = val
         // 预览模式下去除选中框
-        if (val) {
-          let layers = krpano.layer.getArray()
-          layers.map((item) => {
-            if (item.name.indexOf('border_') != -1) {
-              item.visible = false
-            }
-          })
-        }
+        val && this.displayAllBorder()
       },
       get() {
-        return that._options.ispreview
+        return _krpano.global.ispreview
       },
     })
+  }
 
-    window.hotspotClick = this.hotspotClick.bind(this)
+  displayAllBorder() {
+    const layers = _krpano.layer.getArray()
+    layers.map((item) => {
+      if (item.name.indexOf('border_') != -1) {
+        item.visible = false
+      }
+    })
   }
 
   hotspotClick(name) {
-    let layers = krpano.layer.getArray()
+    const layers = _krpano.layer.getArray()
     layers.map((item) => {
       if (
         item.name.indexOf('border_') != -1 &&
@@ -113,14 +68,16 @@ class KPlayer {
     // addplugin是异步操作，不能马上获取到添加的plugin对象
 
     const checkPluginInit = () => {
-      let videoPlugin = this._plugin.getItem('video')
+      let videoPlugin = _krpano.plugin.getItem('video')
       if (videoPlugin) {
-        videoPlugin.videoOptions = this._options.videoOptions
-        videoPlugin.VideoEvents = VideoEvents
-        videoPlugin.events = this._options.events
+        videoPlugin.DefaultVideoOptions = DefaultVideoOptions
+        videoPlugin.options = this._options
+        videoPlugin._emitter = this._emitter
+        videoPlugin.PlayerEvents = PlayerEvents
+        // videoPlugin.events = this._options.events
         videoPlugin.videourl = this._options.url
-        videoPlugin.url = './plugins/videoplayer.js'
-        // videoPlugin.url = './plugins/videoplayer_basic_source.js';
+        // videoPlugin.url = './plugins/videoplayer.js'
+        videoPlugin.url = './plugins/videoplayer_basic_source.js'
         console.log('url===', this._options.url)
       } else {
         setTimeout(() => {
@@ -132,23 +89,23 @@ class KPlayer {
   }
 
   setVideoSrc() {
-    this._plugin.getItem('video').videourl = this._options.url
+    _krpano.plugin.getItem('video').videourl = this._options.url
   }
 
   changeVideo(url) {
-    this._plugin.getItem('video').togglevideo(url)
+    _krpano.plugin.getItem('video').togglevideo(url)
   }
 
-  /**
-   * 设置并返回场景主视角
-   * 不传则返回视角信息
-   */
-  setMainFov(hlookat, vlookat, fov) {
-    let view = krpano.view
-    if (hlookat && vlookat) {
+  // 设置或返回初始视角
+  setInitialView(info = null) {
+    let view = _krpano.view
+
+    if (info) {
+      let infoObj = JSON.parse(info)
+      const { hlookat, vlookat, fov } = infoObj
       view.hlookat = hlookat
       view.vlookat = vlookat
-      view.fov = fov || 90
+      view.fov = fov
     }
     return {
       hlookat: view.hlookat,
@@ -158,11 +115,11 @@ class KPlayer {
   }
 
   play() {
-    this._plugin.getItem('video').play()
+    _krpano.plugin.getItem('video').play()
   }
 
   pause() {
-    this._plugin.getItem('video').pause()
+    _krpano.plugin.getItem('video').pause()
   }
 
   /**
@@ -226,7 +183,7 @@ class KPlayer {
     transform2DSetting = null
   ) {
     if (type == 'hotspot') {
-      krpano.call(
+      _krpano.call(
         `
         addhotspot(${name});
         set(hotspot[${name}].keep,true);
@@ -260,7 +217,7 @@ class KPlayer {
     } else {
       // set(layer[${name}].x,${transform2DSetting?.x ||110});
       // set(layer[${name}].y,${transform2DSetting?.y ||110});
-      krpano.call(
+      _krpano.call(
         `
         addlayer(${name});
         set(layer[${name}].keep,true);
@@ -295,7 +252,7 @@ class KPlayer {
     // 判断热点 tooltip plugin 是否成功加载
     let tootipObj = null
     const checkHasOnloaded = () => {
-      tootipObj = this._plugin.getItem('tooltip_' + name)
+      tootipObj = _krpano.plugin.getItem('tooltip_' + name)
       if (!tootipObj) {
         setTimeout(() => {
           checkHasOnloaded()
@@ -349,14 +306,14 @@ class KPlayer {
    */
   setHotspot(name, keyvalue, type = 'hotspot') {
     if (type == 'hotspot') {
-      let obj = krpano.hotspot.getItem(name)
+      let obj = _krpano.hotspot.getItem(name)
       Object.keys(keyvalue).map((item) => {
         // console.log(item, keyvalue[item]);
         obj[item] = keyvalue[item]
       })
       return obj
     } else {
-      let obj = krpano.plugin.getItem('tooltip_' + name)
+      let obj = _krpano.plugin.getItem('tooltip_' + name)
       Object.keys(keyvalue).map((item) => {
         if (item == 'css') {
           let kvs = keyvalue[item]
@@ -383,7 +340,7 @@ class KPlayer {
 
   // 获取屏幕中心layer坐标
   getCenterLayerPos() {
-    let id = krpano.embeddingsettings.id
+    let id = _krpano.embeddingsettings.id
     let width = document.getElementById(id).offsetWidth
     let height = document.getElementById(id).offsetHeight
     return { x: width / 2, y: height / 2 }
@@ -397,12 +354,12 @@ class KPlayer {
 
   // ath atv to  x y
   spheretoscreen(ath, atv) {
-    return krpano.spheretoscreen(ath, atv)
+    return _krpano.spheretoscreen(ath, atv)
   }
 
   // x y to ath atv
   screentosphere(x, y) {
-    return krpano.screentosphere(x, y)
+    return _krpano.screentosphere(x, y)
   }
 
   // 下划线
@@ -415,17 +372,17 @@ class KPlayer {
    * @param {String} name
    */
   removeHotspot(name) {
-    let hot = krpano.hotspot.getItem(name)
-    let layer = krpano.layer.getItem(name)
+    let hot = _krpano.hotspot.getItem(name)
+    let layer = _krpano.layer.getItem(name)
 
     if (hot) {
-      krpano.actions.removehotspot(name)
+      _krpano.actions.removehotspot(name)
     } else if (layer) {
-      krpano.actions.removelayer(name, true)
+      _krpano.actions.removelayer(name, true)
     }
 
-    krpano.actions.removeplugin('tooltip_' + name)
-    krpano.actions.removeplugin('border_' + name)
+    _krpano.actions.removeplugin('tooltip_' + name)
+    _krpano.actions.removeplugin('border_' + name)
   }
 
   /**
@@ -433,7 +390,7 @@ class KPlayer {
    * @param {Array} names
    */
   showHotspot(names = []) {
-    let hots = krpano.hotspot.getArray()
+    let hots = _krpano.hotspot.getArray()
     hots.map((item) => {
       if (names.includes(item.name)) {
         item.visible = true
@@ -442,7 +399,7 @@ class KPlayer {
       }
     })
 
-    let layers = krpano.layer.getArray()
+    let layers = _krpano.layer.getArray()
     layers.map((item) => {
       if (names.includes(item.name)) {
         item.visible = true
@@ -454,15 +411,15 @@ class KPlayer {
 
   // 隐藏全部选择框
   hideAllBorderSelect() {
-    let layers = krpano.layer.getArray()
+    let layers = _krpano.layer.getArray()
     layers.map((item) => {
       item.visible = false
     })
   }
 
   toggleHotspot(name, isShow = false) {
-    let hot = krpano.hotspot.getItem(name)
-    let layer = krpano.layer.getItem(name)
+    let hot = _krpano.hotspot.getItem(name)
+    let layer = _krpano.layer.getItem(name)
     hot && (hot.visible = isShow)
     layer && (layer.visible = isShow)
   }
@@ -473,20 +430,20 @@ class KPlayer {
    * @param {String} name
    */
   changeScene(name) {
-    krpano.actions.loadscene(name)
-    krpano.plugin.getItem(0).lastCurrentTime = Math.random()
-    krpano.actions.updatescreen()
+    _krpano.actions.loadscene(name)
+    _krpano.plugin.getItem(0).lastCurrentTime = Math.random()
+    _krpano.actions.updatescreen()
   }
 
   getPlugin(name) {
-    return this._plugin.getItem(name)
+    return _krpano.plugin.getItem(name)
   }
 
   getHotspot(name, type = 'hotspot') {
-    return krpano.hotspot.getItem(name) || krpano.layer.getItem(name)
+    return _krpano.hotspot.getItem(name) || _krpano.layer.getItem(name)
     // if (type == 'hotspot') {
     // } else {
-    //   return krpano.layer.getItem(name);
+    //   return _krpano.layer.getItem(name);
     // }
   }
 
@@ -495,17 +452,17 @@ class KPlayer {
    */
   destroy() {
     // video不删除
-    while (krpano.plugin.count > 1) {
-      krpano.plugin.removeItem(1)
+    while (_krpano.plugin.count > 1) {
+      _krpano.plugin.removeItem(1)
     }
 
     // video不删除
-    while (krpano.layer.count > 1) {
-      krpano.hotspot.removeItem(1)
+    while (_krpano.layer.count > 1) {
+      _krpano.hotspot.removeItem(1)
     }
 
-    while (krpano.hotspot.count) {
-      krpano.hotspot.removeItem(0)
+    while (_krpano.hotspot.count) {
+      _krpano.hotspot.removeItem(0)
     }
 
     // 假装销毁
@@ -516,5 +473,3 @@ class KPlayer {
 }
 
 export default KPlayer
-
-window.KPlayer = KPlayer
