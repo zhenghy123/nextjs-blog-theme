@@ -19,14 +19,14 @@ const VideoEvents = {
   VIDEO_VOLUMECHANGE: 'volumechange', //音量改变
   VIDEO_PAUSE: 'pause', //暂停
   VIDEO_PLAY: 'play', //播放
-};
+}
 
 const InteractiveEnums = {
   单击: {
     beforeTrigger: './imgs/beforeTrigger.png',
     triggering: './imgs/triggering.png',
   },
-};
+}
 
 // 视频参数设置
 const VideoOptions = {
@@ -41,7 +41,7 @@ const VideoOptions = {
   'webkit-playsinline': true,
   playsinline: 'playsinline',
   'x-webkit-airplay': true,
-};
+}
 
 // 互动视频VR播放器
 class KPlayer {
@@ -53,56 +53,59 @@ class KPlayer {
       //   loadstart: function () {},
       // },
       ispreview: false, // 是否预览模式
-    });
-    this._videoEvents = VideoEvents;
-    this._events = {};
+    })
+    this._videoEvents = VideoEvents
+    this._events = {}
 
-    this.init();
+    this.init()
   }
 
   init() {
-    this._plugin = krpano.plugin;
-    this._actions = krpano.actions;
-    this._layer = krpano.layer;
-    this._hotspot = krpano.hotspot;
+    this._plugin = krpano.plugin
+    this._actions = krpano.actions
+    this._layer = krpano.layer
+    this._hotspot = krpano.hotspot
 
-    this.initVideo();
+    this.initVideo()
     // console.error('_plugin===', this._plugin.getItem('video'));
-    let that = this;
+    let that = this
 
-    krpano.global.ispreview = this._options.ispreview;
+    krpano.global.ispreview = this._options.ispreview
     Object.defineProperty(this._options, 'ispreview', {
       set(val) {
         // that._options.ispreview = val;
-        krpano.global.ispreview = val;
+        krpano.global.ispreview = val
         // 预览模式下去除选中框
         if (val) {
-          let layers = krpano.layer.getArray();
+          let layers = krpano.layer.getArray()
           layers.map((item) => {
             if (item.name.indexOf('border_') != -1) {
-              item.visible = false;
+              item.visible = false
             }
-          });
+          })
         }
       },
       get() {
-        return that._options.ispreview;
+        return that._options.ispreview
       },
-    });
+    })
 
-    window.hotspotClick = this.hotspotClick.bind(this);
+    window.hotspotClick = this.hotspotClick.bind(this)
   }
 
   hotspotClick(name) {
-    let layers = krpano.layer.getArray();
+    let layers = krpano.layer.getArray()
     layers.map((item) => {
-      if (item.name.indexOf('border_') != -1 && item.name !== 'border_' + name) {
-        item.visible = false;
+      if (
+        item.name.indexOf('border_') != -1 &&
+        item.name !== 'border_' + name
+      ) {
+        item.visible = false
       }
-    });
+    })
 
     if (this._options.hotspotClick) {
-      this._options.hotspotClick(name);
+      this._options.hotspotClick(name)
     }
   }
 
@@ -110,30 +113,30 @@ class KPlayer {
     // addplugin是异步操作，不能马上获取到添加的plugin对象
 
     const checkPluginInit = () => {
-      let videoPlugin = this._plugin.getItem('video');
+      let videoPlugin = this._plugin.getItem('video')
       if (videoPlugin) {
-        videoPlugin.videoOptions = this._options.videoOptions;
-        videoPlugin.VideoEvents = VideoEvents;
-        videoPlugin.events = this._options.events;
-        videoPlugin.videourl = this._options.url;
-        videoPlugin.url = './plugins/videoplayer.js';
+        videoPlugin.videoOptions = this._options.videoOptions
+        videoPlugin.VideoEvents = VideoEvents
+        videoPlugin.events = this._options.events
+        videoPlugin.videourl = this._options.url
+        videoPlugin.url = './plugins/videoplayer.js'
         // videoPlugin.url = './plugins/videoplayer_basic_source.js';
-        console.log('url===', this._options.url);
+        console.log('url===', this._options.url)
       } else {
         setTimeout(() => {
-          checkPluginInit();
-        }, 0);
+          checkPluginInit()
+        }, 0)
       }
-    };
-    checkPluginInit();
+    }
+    checkPluginInit()
   }
 
   setVideoSrc() {
-    this._plugin.getItem('video').videourl = this._options.url;
+    this._plugin.getItem('video').videourl = this._options.url
   }
 
   changeVideo(url) {
-    this._plugin.getItem('video').togglevideo(url);
+    this._plugin.getItem('video').togglevideo(url)
   }
 
   /**
@@ -141,25 +144,25 @@ class KPlayer {
    * 不传则返回视角信息
    */
   setMainFov(hlookat, vlookat, fov) {
-    let view = krpano.view;
+    let view = krpano.view
     if (hlookat && vlookat) {
-      view.hlookat = hlookat;
-      view.vlookat = vlookat;
-      view.fov = fov || 90;
+      view.hlookat = hlookat
+      view.vlookat = vlookat
+      view.fov = fov || 90
     }
     return {
       hlookat: view.hlookat,
       vlookat: view.vlookat,
       fov: view.fov,
-    };
+    }
   }
 
   play() {
-    this._plugin.getItem('video').play();
+    this._plugin.getItem('video').play()
   }
 
   pause() {
-    this._plugin.getItem('video').pause();
+    this._plugin.getItem('video').pause()
   }
 
   /**
@@ -172,16 +175,16 @@ class KPlayer {
       // if (info.baseSetting.interactiveType == 'OneClick') {
       // 单击组件添加
       info.interactiveGroup.map((group) => {
-        const hotSpot = this.getHotspot(group.id);
-        console.log(hotSpot);
+        const hotSpot = this.getHotspot(group.id)
+        console.log(hotSpot)
         if (hotSpot) {
           if (info.baseSetting.angleFollow == 'layer') {
-            this.setHotspot(group.id, group.styleSetting, 'layer');
+            this.setHotspot(group.id, group.styleSetting, 'layer')
           } else {
-            this.setHotspot(group.id, group.styleSetting, 'layer');
+            this.setHotspot(group.id, group.styleSetting, 'layer')
           }
         } else {
-          console.log('添加组件', group.id);
+          console.log('添加组件', group.id)
           // TODO:多坐标组件需要在添加前计算好坐标，具体坐标计算方法会提供
           this.addInteractiveHotspot(
             group.id,
@@ -190,10 +193,10 @@ class KPlayer {
             info.baseSetting.angleFollow ? 'layer' : 'hotspot',
             group.styleSetting,
             group.textSetting,
-            group.transform2DSetting,
-          );
+            group.transform2DSetting
+          )
         }
-      });
+      })
       // }
     } else if (info.baseSetting.type == 'Image') {
       // 图片
@@ -220,7 +223,7 @@ class KPlayer {
     type = 'hotspot',
     styleSetting = null,
     textSetting = null,
-    transform2DSetting = null,
+    transform2DSetting = null
   ) {
     if (type == 'hotspot') {
       krpano.call(
@@ -252,8 +255,8 @@ class KPlayer {
         set(hotspot[${name}].onloaded,add_all_the_time_tooltip);
         set(hotspot[${name}].ondown,ondownfn);
         set(hotspot[${name}].onup,onupfn);
-        `,
-      );
+        `
+      )
     } else {
       // set(layer[${name}].x,${transform2DSetting?.x ||110});
       // set(layer[${name}].y,${transform2DSetting?.y ||110});
@@ -285,18 +288,18 @@ class KPlayer {
         set(layer[${name}].onloaded,add_all_the_time_tooltip);
         set(layer[${name}].ondown,ondownfn);
         set(layer[${name}].onup,onupfn);
-        `,
-      );
+        `
+      )
     }
 
     // 判断热点 tooltip plugin 是否成功加载
-    let tootipObj = null;
+    let tootipObj = null
     const checkHasOnloaded = () => {
-      tootipObj = this._plugin.getItem('tooltip_' + name);
+      tootipObj = this._plugin.getItem('tooltip_' + name)
       if (!tootipObj) {
         setTimeout(() => {
-          checkHasOnloaded();
-        }, 200);
+          checkHasOnloaded()
+        }, 200)
       } else {
         // 设置tooltip文本样式
         if (textSetting) {
@@ -308,15 +311,19 @@ class KPlayer {
             'font-family': textSetting.fontFamily,
             'font-style': textSetting.fontStyle,
             'text-decoration': textSetting.textDecoration,
-          };
+          }
 
-          this.setHotspot(name, { css: obj }, 'tooltip');
+          this.setHotspot(name, { css: obj }, 'tooltip')
         }
       }
-    };
-    checkHasOnloaded();
+    }
+    checkHasOnloaded()
 
-    return { name: name, tooltipname: 'tooltip_' + name, bordername: 'border_' + name };
+    return {
+      name: name,
+      tooltipname: 'tooltip_' + name,
+      bordername: 'border_' + name,
+    }
   }
 
   /**
@@ -342,65 +349,65 @@ class KPlayer {
    */
   setHotspot(name, keyvalue, type = 'hotspot') {
     if (type == 'hotspot') {
-      let obj = krpano.hotspot.getItem(name);
+      let obj = krpano.hotspot.getItem(name)
       Object.keys(keyvalue).map((item) => {
         // console.log(item, keyvalue[item]);
-        obj[item] = keyvalue[item];
-      });
-      return obj;
+        obj[item] = keyvalue[item]
+      })
+      return obj
     } else {
-      let obj = krpano.plugin.getItem('tooltip_' + name);
+      let obj = krpano.plugin.getItem('tooltip_' + name)
       Object.keys(keyvalue).map((item) => {
         if (item == 'css') {
-          let kvs = keyvalue[item];
-          let cssStyle = obj.css.split(';');
+          let kvs = keyvalue[item]
+          let cssStyle = obj.css.split(';')
 
           Object.keys(kvs).map((kvitem) => {
-            let middlekvitem = this.toMiddleLine(kvitem);
+            let middlekvitem = this.toMiddleLine(kvitem)
             cssStyle.map((citem, index) => {
               if (citem.indexOf(middlekvitem) != -1) {
-                cssStyle.splice(index, 1);
+                cssStyle.splice(index, 1)
               }
-            });
-            cssStyle.push(`${middlekvitem}:${kvs[kvitem]}`);
-          });
+            })
+            cssStyle.push(`${middlekvitem}:${kvs[kvitem]}`)
+          })
 
-          obj.css = cssStyle.join(';');
+          obj.css = cssStyle.join(';')
         } else {
-          obj[item] = keyvalue[item];
+          obj[item] = keyvalue[item]
         }
-      });
-      return obj;
+      })
+      return obj
     }
   }
 
   // 获取屏幕中心layer坐标
   getCenterLayerPos() {
-    let id = krpano.embeddingsettings.id;
-    let width = document.getElementById(id).offsetWidth;
-    let height = document.getElementById(id).offsetHeight;
-    return { x: width / 2, y: height / 2 };
+    let id = krpano.embeddingsettings.id
+    let width = document.getElementById(id).offsetWidth
+    let height = document.getElementById(id).offsetHeight
+    return { x: width / 2, y: height / 2 }
   }
 
   // 获取屏幕中心hotspot坐标
   getCenterHotspotPos() {
-    let obj = this.getCenterLayerPos();
-    return this.screentosphere(obj.x, obj.y);
+    let obj = this.getCenterLayerPos()
+    return this.screentosphere(obj.x, obj.y)
   }
 
   // ath atv to  x y
   spheretoscreen(ath, atv) {
-    return krpano.spheretoscreen(ath, atv);
+    return krpano.spheretoscreen(ath, atv)
   }
 
   // x y to ath atv
   screentosphere(x, y) {
-    return krpano.screentosphere(x, y);
+    return krpano.screentosphere(x, y)
   }
 
   // 下划线
   toMiddleLine(str) {
-    return str.replace(/([A-Z])/g, '-$1').toLowerCase();
+    return str.replace(/([A-Z])/g, '-$1').toLowerCase()
   }
 
   /**
@@ -408,17 +415,17 @@ class KPlayer {
    * @param {String} name
    */
   removeHotspot(name) {
-    let hot = krpano.hotspot.getItem(name);
-    let layer = krpano.layer.getItem(name);
+    let hot = krpano.hotspot.getItem(name)
+    let layer = krpano.layer.getItem(name)
 
     if (hot) {
-      krpano.actions.removehotspot(name);
+      krpano.actions.removehotspot(name)
     } else if (layer) {
-      krpano.actions.removelayer(name, true);
+      krpano.actions.removelayer(name, true)
     }
 
-    krpano.actions.removeplugin('tooltip_' + name);
-    krpano.actions.removeplugin('border_' + name);
+    krpano.actions.removeplugin('tooltip_' + name)
+    krpano.actions.removeplugin('border_' + name)
   }
 
   /**
@@ -426,38 +433,38 @@ class KPlayer {
    * @param {Array} names
    */
   showHotspot(names = []) {
-    let hots = krpano.hotspot.getArray();
+    let hots = krpano.hotspot.getArray()
     hots.map((item) => {
       if (names.includes(item.name)) {
-        item.visible = true;
+        item.visible = true
       } else {
-        item.visible = false;
+        item.visible = false
       }
-    });
+    })
 
-    let layers = krpano.layer.getArray();
+    let layers = krpano.layer.getArray()
     layers.map((item) => {
       if (names.includes(item.name)) {
-        item.visible = true;
+        item.visible = true
       } else {
-        item.visible = false;
+        item.visible = false
       }
-    });
+    })
   }
 
   // 隐藏全部选择框
   hideAllBorderSelect() {
-    let layers = krpano.layer.getArray();
+    let layers = krpano.layer.getArray()
     layers.map((item) => {
-      item.visible = false;
-    });
+      item.visible = false
+    })
   }
 
   toggleHotspot(name, isShow = false) {
-    let hot = krpano.hotspot.getItem(name);
-    let layer = krpano.layer.getItem(name);
-    hot && (hot.visible = isShow);
-    layer && (layer.visible = isShow);
+    let hot = krpano.hotspot.getItem(name)
+    let layer = krpano.layer.getItem(name)
+    hot && (hot.visible = isShow)
+    layer && (layer.visible = isShow)
   }
 
   /**
@@ -466,17 +473,17 @@ class KPlayer {
    * @param {String} name
    */
   changeScene(name) {
-    krpano.actions.loadscene(name);
-    krpano.plugin.getItem(0).lastCurrentTime = Math.random();
-    krpano.actions.updatescreen();
+    krpano.actions.loadscene(name)
+    krpano.plugin.getItem(0).lastCurrentTime = Math.random()
+    krpano.actions.updatescreen()
   }
 
   getPlugin(name) {
-    return this._plugin.getItem(name);
+    return this._plugin.getItem(name)
   }
 
   getHotspot(name, type = 'hotspot') {
-    return krpano.hotspot.getItem(name) || krpano.layer.getItem(name);
+    return krpano.hotspot.getItem(name) || krpano.layer.getItem(name)
     // if (type == 'hotspot') {
     // } else {
     //   return krpano.layer.getItem(name);
@@ -489,23 +496,25 @@ class KPlayer {
   destroy() {
     // video不删除
     while (krpano.plugin.count > 1) {
-      krpano.plugin.removeItem(1);
+      krpano.plugin.removeItem(1)
     }
 
     // video不删除
     while (krpano.layer.count > 1) {
-      krpano.hotspot.removeItem(1);
+      krpano.hotspot.removeItem(1)
     }
 
     while (krpano.hotspot.count) {
-      krpano.hotspot.removeItem(0);
+      krpano.hotspot.removeItem(0)
     }
 
     // 假装销毁
-    this.changeScene('noscene');
+    this.changeScene('noscene')
 
     // removepano('krpanoHTMLObject');
   }
 }
 
-window.KPlayer = KPlayer;
+export default KPlayer
+
+window.KPlayer = KPlayer

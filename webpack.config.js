@@ -22,13 +22,6 @@ module.exports = {
     open: true,
     port: 8001,
   },
-  // build: {
-  //   assetsPublicpath: '/',
-  //   assetsSubDirectory: 'static',
-  // },
-  resolve: {
-    fallback: { path: require.resolve('path-browserify') },
-  },
   // devtool: 'cheap-module-eval-source-map', // 'inline-source-map',
   // 'cheap-module-eval-source-map',
   // 'eval-source-map',
@@ -61,20 +54,6 @@ module.exports = {
       },
     ],
   },
-  // optimization: {
-  //   minimize: true,
-  //   minimizer: [
-  //     // devtool要注释掉！！！
-  //     // new TerserPlugin({
-  //     //   sourceMap: true,
-  //     //   terserOptions: {
-  //     //     compress: {
-  //     //       drop_console: true,
-  //     //     },
-  //     //   },
-  //     // }),
-  //   ],
-  // },
 
   plugins: [
     new CleanWebpackPlugin(),

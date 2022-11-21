@@ -1,5 +1,5 @@
 ﻿<krpano>
-	<include url="./showtext.xml" />
+	<include url="./plugins/showtext.xml" />
 	<!-- 引入皮肤 -->
 	<!-- <include url="./skin/videointerface.xml" /> -->
 	<!-- 
