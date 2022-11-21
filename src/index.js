@@ -1,10 +1,19 @@
 // make it compatible with browserify's umd wrapper
 // module.exports = require('./kplayer.js').default
-import { resolve } from 'path'
+import krpanoxml from './xml/krpano.xml'
+// const path = require('path')
+import { resolve } from 'path-browserify'
+
+console.log(1, krpanoxml)
+console.log(2, resolve)
+
+console.log(3, resolve(__dirname, './src/xml/krpano.xml'))
+
+console.log(URL.createObjectURL)
 
 krpanoJS.embedpano({
   id: 'kplayer',
-  xml: resolve(__dirname, './xml/krpano.xml'),
+  xml: './krpano.xml',
   target: 'krpanoSWFObject',
   html5: 'only',
   consolelog: false,

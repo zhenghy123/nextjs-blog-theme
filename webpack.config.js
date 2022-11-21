@@ -1,5 +1,6 @@
 // const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 // const TerserPlugin = require('terser-webpack-plugin')
 
@@ -9,20 +10,24 @@ const path = require('path')
 module.exports = {
   mode: 'development',
   // 入口
-  entry: {
-    kplayer: [path.resolve(__dirname, './src/index.js')],
-  },
-  // 出口
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
-  },
+  // entry: {
+  //   kplayer: [path.resolve(__dirname, './src/index.js')],
+  // },
+  // // 出口
+  // output: {
+  //   path: path.resolve(__dirname, 'dist'),
+  //   filename: '[name].js',
+  // },
   devServer: {
-    // contentBase: __dirname,
     open: true,
     port: 8001,
-    hot: true,
-    // https: true,
+  },
+  // build: {
+  //   assetsPublicpath: '/',
+  //   assetsSubDirectory: 'static',
+  // },
+  resolve: {
+    fallback: { path: require.resolve('path-browserify') },
   },
   // devtool: 'cheap-module-eval-source-map', // 'inline-source-map',
   // 'cheap-module-eval-source-map',
@@ -40,11 +45,15 @@ module.exports = {
       },
       // {
       //   test: /\.html$/,
-      //   use: ['raw-loader']
+      //   use: ['raw-loader'],
       // },
       {
         test: /\.(jpg|jpeg|png)$/,
         use: ['url-loader'],
+      },
+      {
+        test: /\.xml$/,
+        use: 'xml-loader',
       },
       {
         test: /\.less$/,
@@ -52,20 +61,20 @@ module.exports = {
       },
     ],
   },
-  optimization: {
-    minimize: true,
-    minimizer: [
-      // devtool要注释掉！！！
-      // new TerserPlugin({
-      //   sourceMap: true,
-      //   terserOptions: {
-      //     compress: {
-      //       drop_console: true,
-      //     },
-      //   },
-      // }),
-    ],
-  },
+  // optimization: {
+  //   minimize: true,
+  //   minimizer: [
+  //     // devtool要注释掉！！！
+  //     // new TerserPlugin({
+  //     //   sourceMap: true,
+  //     //   terserOptions: {
+  //     //     compress: {
+  //     //       drop_console: true,
+  //     //     },
+  //     //   },
+  //     // }),
+  //   ],
+  // },
 
   plugins: [
     new CleanWebpackPlugin(),
@@ -74,6 +83,16 @@ module.exports = {
       template: 'src/index.html',
       filename: 'index.html',
       inject: 'head',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          to({ context, absoluteFilename }) {
+            return `${path.relative(context, absoluteFilename)}`
+          },
+          from: 'public',
+        },
+      ],
     }),
   ],
 }
