@@ -32,20 +32,8 @@ var krpanoplugin = function () {
     video.currentTime = 4
     // register attributes
 
-    plugin.registerattribute(
-      'videourl',
-      plugin.videourl || '',
-      (val) => (video.src = val),
-      () => video.src
-    )
-    plugin.registerattribute('onvideoready', null)
-
-    // register actions
-    plugin.registerattribute('play', play)
-    plugin.registerattribute('pause', pause)
-    plugin.registerattribute('togglepause', togglepause)
-    plugin.registerattribute('togglevideo', togglevideo)
-    plugin.registerattribute('update', update)
+    // 注册属性或方法
+    registerAttrFn()
 
     // add state variables
     plugin.videowidth = 0
@@ -61,6 +49,102 @@ var krpanoplugin = function () {
     krpano.trace(0, 'basic videoplayer video.src=' + video.src)
 
     check_ready_state()
+  }
+
+  function registerAttrFn() {
+    const arr = [
+      {
+        key: 'videourl',
+        value: plugin.videourl || '',
+        setter: (val) => (video.src = val),
+        getter: () => video.src,
+      },
+      {
+        key: 'volume',
+        value: plugin.volume || 1,
+        setter: (val) => (video.volume = val),
+        getter: () => video.paused,
+      },
+      {
+        key: 'ispaused',
+        value: video.paused,
+        setter: null,
+        getter: () => video.volume,
+      },
+      {
+        key: 'time',
+        value: plugin.currentTime || 0,
+        setter: (val) => (video.currentTime = val),
+        getter: () => video.currentTime,
+      },
+      {
+        key: 'totaltime',
+        value: plugin.duration || 0,
+        setter: null,
+        getter: () => video.duration,
+      },
+      {
+        key: 'onvideoready',
+        value: plugin.onvideoready,
+        setter: null,
+        getter: null,
+      },
+      {
+        key: 'play',
+        value: play,
+        setter: null,
+        getter: null,
+      },
+      {
+        key: 'pause',
+        value: pause,
+        setter: null,
+        getter: null,
+      },
+      {
+        key: 'togglepause',
+        value: togglepause,
+        setter: null,
+        getter: null,
+      },
+      {
+        key: 'togglevideo',
+        value: togglevideo,
+        setter: null,
+        getter: null,
+      },
+      {
+        key: 'update',
+        value: update,
+        setter: null,
+        getter: null,
+      },
+      {
+        key: 'seek',
+        value: seek,
+        setter: null,
+        getter: null,
+      },
+    ]
+
+    arr.map((item) => {
+      plugin.registerattribute(item.key, item.value, item.setter, item.getter)
+    })
+
+    // plugin.registerattribute(
+    //   'videourl',
+    //   plugin.videourl || '',
+    //   (val) => (video.src = val),
+    //   () => video.src
+    // )
+    // plugin.registerattribute('onvideoready', null)
+
+    // // register actions
+    // plugin.registerattribute('play', play)
+    // plugin.registerattribute('pause', pause)
+    // plugin.registerattribute('togglepause', togglepause)
+    // plugin.registerattribute('togglevideo', togglevideo)
+    // plugin.registerattribute('update', update)
   }
 
   // 设置视频的属性值
@@ -213,6 +297,10 @@ var krpanoplugin = function () {
 
   function pause() {
     video.pause()
+  }
+
+  function seek(val) {
+    video.currentTime = val
   }
 
   function togglepause() {

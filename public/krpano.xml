@@ -1,7 +1,5 @@
 ﻿<krpano>
 	<include url="./plugins/showtext.xml" />
-	<!-- 引入皮肤 -->
-	<!-- <include url="./skin/videointerface.xml" /> -->
 	<!-- 
 	<image>
 		<sphere url='../imgs/preview1.jpeg' />
@@ -33,27 +31,6 @@
 
 	<view hlookat="0" vlookat="0" fovtype="DFOV" fov="130" fovmin="75" fovmax="150" distortion="0.0" />
 
-	<!-- 
-		<area mode="border" left="0" top="0" right="0" bottom="0" cliplayers="true" /> 
-	-->
-
-
-	<!-- <layer name="mytext1" type="text" x="10" y="10" html="Text...[br][b]Bold Text...[/b]" css="font-family:Arial; font-size:16px; color:#000000;writing-mode: vertical-lr; " ondown="draghotspot();" /> -->
-
-
-	<!-- <hotspot name="mytext" type="text" ath="0" atv="0" width="200" edge="center" distorted="true" renderer="webgl" html="这是一段测试文字" css="font-family:Arial; font-size:16px; color:#000000;writing-mode: vertical-lr;" onloaded="add_all_the_time_tooltip();" bgborder="10px #00ff00" ondown="draghotspot();" onhover="showtext(提示文字,STYLE12);" /> -->
-
-
-	<!-- <plugin name="hotspot_pos_info" type="text" html="drag the hotspots..." padding="8" x="10" y="10" width="200" enabled="true" distorted="true" />
--->
-	<!-- <layer name="hot1" type="image" url="/kplayer/imgs/beforeTrigger.png" width="100" height="100" x="100.0" y="110.0" zoom="true" distorted="true" onclick="looktohotspot(get(name),90); " text="xxxxxxxaaaaaaaaaccccccc" /> -->
-
-
-	<!-- <view hlookat="0.0" vlookat="0.0" fov="90.0" fovmin="1.0" fovmax="179.0" maxpixelzoom="" /> -->
-
-	<!-- 加入一个按钮，控制音乐播放暂停 -->
-	<!-- <plugin name="snd" url="../imgs/img1.jpeg" align="leftbottom" x="100" y="100" scale="0.5" onover="tween(alpha,1);" onout="tween(alpha,0.25);" crop="0|0|50|50" onclick="pausesoundtoggle(bgsnd); switch(crop, 0|0|50|50, 0|50|50|50);" /> -->
-
 
 	<!-- the action for dragging the hotspot - call it once in the ondown event -->
 	<action name="draghotspot">
@@ -77,23 +54,20 @@
 	</action>
 
 
-	<!-- 测试互动组件点击图片效果 -->
-	<!-- <hotspot name="spottest1" url="../imgs/beforeTrigger.png" beforeTrigger="../imgs/beforeTrigger.png" triggering="../imgs/triggering.png" afterTrigger="../imgs/beforeTrigger.png" onloaded="add_all_the_time_tooltip();" ath="-15" atv="-12" width="110" height="110" ondown="ondownfn" onup="onupfn" /> -->
-
 	<!-- 预览模式下有点击效果，编辑模式下拖动效果 -->
 	<action name="ondownfn" scope="global">
 		if(ispreview AND flag == 'hotspot',set(hotspot[get(name)].url,get(hotspot[get(name)].triggering)));
 		if(ispreview AND flag == 'layer',set(layer[get(name)].url,get(layer[get(name)].triggering)));
 		def(b, string, tolower('vCCCAA'));
 		if(!ispreview,
-			txtadd(tooltipname, 'border_', get(name));
-			set(plugin[get(tooltipname)].visible, true);
+			txtadd(bordername, 'border_', get(name));
+			set(plugin[get(bordername)].visible, true);
 		<!-- 放弃了，inlinefunction无法调用 -->
 		<!-- for(set(i,0), i LT layer.count, inc(i), 
 			trace(get(b)); -->
 		<!-- trace(contains(get((layer[get(i)].name),'border_')); -->
-		<!-- if(indexof((layer[get(i)].name,'border_') !=-1  AND layer[get(i)].name == get(tooltipname),set(layer[get(tooltipname)].visible, true));
-			if(indexof((layer[get(i)].name,'border_') !=-1  AND layer[get(i)].name !== get(tooltipname),set(layer[get(tooltipname)].visible, false)); -->
+		<!-- if(indexof((layer[get(i)].name,'border_') !=-1  AND layer[get(i)].name == get(bordername),set(layer[get(bordername)].visible, true));
+			if(indexof((layer[get(i)].name,'border_') !=-1  AND layer[get(i)].name !== get(bordername),set(layer[get(bordername)].visible, false)); -->
 		<!-- ); -->
 		draghotspot()
 		);
@@ -134,22 +108,22 @@
 
 	<!-- 热点上添加选中框 -->
 	<action name="add_all_the_time_border">
-		txtadd(tooltipname, 'border_', get(name));
-		callwhen(!plugin[get(tooltipname)],
-			addplugin(get(tooltipname));
+		txtadd(bordername, 'border_', get(name));
+		callwhen(!plugin[get(bordername)],
+			addplugin(get(bordername));
 			if(flag == 'hotspot',
-				txtadd(plugin[get(tooltipname)].parent, 'hotspot[', get(name), ']'),
-				txtadd(plugin[get(tooltipname)].parent, 'layer[', get(name), ']')
+				txtadd(plugin[get(bordername)].parent, 'hotspot[', get(name), ']'),
+				txtadd(plugin[get(bordername)].parent, 'layer[', get(name), ']')
 			);
 			
-			set(plugin[get(tooltipname)].url,'./imgs/hotspot_selected_bg.png');
-			set(plugin[get(tooltipname)].keep, true);
-			set(plugin[get(tooltipname)].visible, false);
-			set(plugin[get(tooltipname)].edge, center);
-			set(plugin[get(tooltipname)].align, center);
-			set(plugin[get(tooltipname)].width, '110%');
-			set(plugin[get(tooltipname)].height,'110%');
-			set(plugin[get(tooltipname)].enabled,false);
+			set(plugin[get(bordername)].url,'./imgs/hotspot_selected_bg.png');
+			set(plugin[get(bordername)].keep, true);
+			set(plugin[get(bordername)].visible, false);
+			set(plugin[get(bordername)].edge, center);
+			set(plugin[get(bordername)].align, center);
+			set(plugin[get(bordername)].width, '110%');
+			set(plugin[get(bordername)].height,'110%');
+			set(plugin[get(bordername)].enabled,false);
 		);
         
 	</action>
