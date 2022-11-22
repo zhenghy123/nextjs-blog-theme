@@ -1,0 +1,124 @@
+{
+    "metas": null,
+    "imgs": {
+        "url": "../assets/1O3UCUOFVBEVL.png"
+    },
+    "btns": [
+        {	
+			"id":1,
+            "text": "1",
+            "style": {
+                "color": "#000",
+                "posX": 100,
+                "posY": 100,
+                "posZ": 300,
+                "width": 100,
+                "heigth": 200,
+                "opacity": 0.5,
+                "rotate": 30,
+                "rotateX": 30,
+                "rotateY": 30,
+                "rotateZ": 30,
+                "fontSize": 32,
+                "scaleX": 1,
+                "scaleY": 1
+            },
+            "audio": "../assets/active.mp3",
+            "backgroundImageBeforeClick": "../assets/1O3UCUOFVBEVL.png",
+            "backgroundImageClick": "../assets/1O3UCUOFVBEVL.png", 
+            "backgroundImageAfterClick": "../assets/1O3UCUOFVBEVL.png",
+            "action": [
+            ]
+        },
+        {
+			"id":2,
+            "text": "2",
+            "style": {
+                "color": "#000",
+                "posX": 100,
+                "posY": 100,
+                "posZ": 300,
+                "width": 100,
+                "heigth": 200,
+                "opacity": 0.5,
+                "rotate": 30,
+                "rotateX": 30,
+                "rotateY": 30,
+                "rotateZ": 30,
+                "fontSize": 32,
+                "scaleX": 1,
+                "scaleY": 1
+            },
+            "audio": "../assets/active.mp3",
+            "backgroundImageBeforeClick": "../assets/1O3UCUOFVBEVL.png",
+            "backgroundImageClick": "../assets/1O3UCUOFVBEVL.png", 
+            "backgroundImageAfterClick": "../assets/1O3UCUOFVBEVL.png",
+            "action": [
+            ]
+        },
+        {
+			"id":3,
+            "text": "3",
+            "style": {
+                "color": "#000",
+                "posX": 100,
+                "posY": 100,
+                "posZ": 300,
+                "width": 100,
+                "heigth": 200,
+                "opacity": 0.5,
+                "rotate": 30,
+                "rotateX": 30,
+                "rotateY": 30,
+                "rotateZ": 30,
+                "fontSize": 32,
+                "scaleX": 1,
+                "scaleY": 1
+            },
+            "audio": "../assets/active.mp3",
+            "backgroundImageBeforeClick": "../assets/1O3UCUOFVBEVL.png",
+            "backgroundImageClick": "../assets/1O3UCUOFVBEVL.png", 
+            "backgroundImageAfterClick": "../assets/1O3UCUOFVBEVL.png",
+            "action": [
+            ]
+        },
+        {
+			"id":4,
+            "text": "4",
+            "style": {
+                "color": "#000",
+                "posX": 100,
+                "posY": 100,
+                "posZ": 300,
+                "width": 100,
+                "heigth": 200,
+                "opacity": 0.5,
+                "rotate": 30,
+                "rotateX": 30,
+                "rotateY": 30,
+                "rotateZ": 30,
+                "fontSize": 32,
+                "scaleX": 1,
+                "scaleY": 1
+            },
+            "audio": "../assets/active.mp3",
+            "backgroundImageBeforeClick": "../assets/1O3UCUOFVBEVL.png",
+            "backgroundImageClick": "../assets/1O3UCUOFVBEVL.png", 
+            "backgroundImageAfterClick": "../assets/1O3UCUOFVBEVL.png",
+            "action": [
+            ]
+        }
+    ],
+	"ctrls": [
+		{
+		  "conditionConfig": {
+            "conditionValue": [
+              1,
+              2
+            ],
+            "jumpVideoId": "732228246",
+            "errorTip": ""
+          }
+		}
+	]
+}
