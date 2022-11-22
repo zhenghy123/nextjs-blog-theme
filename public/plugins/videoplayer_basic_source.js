@@ -18,8 +18,6 @@ var krpanoplugin = function () {
     device = krpano.device
     plugin = pluginobject
 
-    console.log(11)
-
     // create the HTML5 video object
     // video = document.createElement('video');
     video =
@@ -29,11 +27,11 @@ var krpanoplugin = function () {
     // internal: provide access to the video object for usage as WebGL texture
     plugin.videoDOM = video
 
-    video.currentTime = 4
-    // register attributes
-
+    if (video.currentTime == 0) {
+      video.currentTime = 0.00001
+    }
     // 注册属性或方法
-    registerAttrFn()
+    registerAttrFn.apply()
 
     // add state variables
     plugin.videowidth = 0
@@ -73,8 +71,10 @@ var krpanoplugin = function () {
       },
       {
         key: 'time',
-        value: plugin.currentTime || 0,
-        setter: (val) => (video.currentTime = val),
+        value: video.currentTime || 0,
+        setter: (val) => {
+          video.currentTime = val
+        },
         getter: () => video.currentTime,
       },
       {
@@ -130,21 +130,6 @@ var krpanoplugin = function () {
     arr.map((item) => {
       plugin.registerattribute(item.key, item.value, item.setter, item.getter)
     })
-
-    // plugin.registerattribute(
-    //   'videourl',
-    //   plugin.videourl || '',
-    //   (val) => (video.src = val),
-    //   () => video.src
-    // )
-    // plugin.registerattribute('onvideoready', null)
-
-    // // register actions
-    // plugin.registerattribute('play', play)
-    // plugin.registerattribute('pause', pause)
-    // plugin.registerattribute('togglepause', togglepause)
-    // plugin.registerattribute('togglevideo', togglevideo)
-    // plugin.registerattribute('update', update)
   }
 
   // 设置视频的属性值
@@ -264,7 +249,6 @@ var krpanoplugin = function () {
       plugin.lastCurrentTime = Math.random()
       krpano.actions.updatescreen()
 
-      console.log('video ready')
       plugin.update()
     }
   }
