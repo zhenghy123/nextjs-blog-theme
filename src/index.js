@@ -1,5 +1,6 @@
 // export const kplayerJS = Promise.resolve(require('./kplayer').default)
 import { KPlayer } from './core/index'
+import PlayerData from './core/player-data'
 
 function createPlayer(id = '', url = '', options = {}) {
   return new Promise((resolve, reject) => {
@@ -13,6 +14,10 @@ function createPlayer(id = '', url = '', options = {}) {
         console.log('krpanoJS init ')
         const _krpano = krpano.get('global')
         const _options = { ...options, url: url, krpano: _krpano }
+        
+        const playList = new PlayerData()
+        window.playList = playList
+
         const kplayer = new KPlayer(_options)
 
         window.kxplayer = kplayer

@@ -1,0 +1,223 @@
+{
+    "drama": {
+        "name": "互动视频",
+        "description": "互动视频简介",
+        "fileVersion": "1.0.0",
+        "firstVideoId": "732160621" 
+    },
+	"factorList"  : [
+		{
+		  "key": "x", 
+		  "name": "x因子",
+		  "value": 0
+		},
+		{
+		  "key": "y", 
+		  "name": "y因子",
+		  "value": 2
+		}
+	  ],
+    "videoList": [
+        {
+            "videoId": "732160621", 
+            "description": "视频1",
+            "duration": 204,  
+            "filename": "住厂日记",
+            "interactNodeId": "interactNodeId001,interactNodeId002",
+            "videoPath": "qwer.mp4",
+            "thumbnail": "../assets/1O3UCUOGQ7V1R.png", 
+            "videoCoding": "h265",
+            "outPutFormat": "mp4",
+            "mediaHeight": "1920",
+            "mediaWidth": "3840",
+            "mediaSize": "524759324",
+			"playType": 1, 
+            "fovInfo": "{\"hlookat\":0,\"vlookat\":0,\"fov\":75}"  
+        },
+        {
+            "videoId": "732961994",
+            "description": "视频2：厂弟的隔离感受",
+            "duration": 270,  
+            "filename": "厂弟的隔离感受",
+            "videoPath": "asdf.mp4",
+            "interactNodeId": "interactNodeId003,interactNodeId004",
+            "thumbnail": "../assets/1O3UCUOGQ7V1R.png", 
+            "videoCoding": "h265",
+            "outPutFormat": "mp4",
+            "mediaHeight": "1920",
+            "mediaWidth": "3840",
+            "mediaSize": "524759324",
+			"playType": 0, 
+			"fovInfo":""
+        },
+        {
+            "videoId": "733419335",
+            "description": "视频3：又是被感动的一天，直接跳转到时间线的页面",
+            "duration": 270,
+            "filename": "又是被感动的一天",
+            "videoPath": "zxcv.mp4",
+            "interactNodeId": "interactNodeId005,interactNodeId006",
+            "thumbnail": "../assets/1O3UCUOGQ7V1R.png", 
+            "videoCoding": "h265",
+            "outPutFormat": "mp4",
+            "mediaHeight": "1920",
+            "mediaWidth": "3840",
+            "mediaSize": "524759324",
+			"playType": 0, 
+			"fovInfo":""
+        },
+        {
+            "videoId": "732228246",
+            "description": "视频4：厂哥回来了",
+            "duration": 106,
+            "filename": "又是被感动的一天",
+            "videoPath": "tyui.mp4",
+            "interactNodeId": null,
+            "thumbnail": "../assets/1O3UCUOGQ7V1R.png", 
+            "videoCoding": "h265",
+            "outPutFormat": "mp4",
+            "mediaHeight": "1920",
+            "mediaWidth": "3840",
+            "mediaSize": "524759324",
+			"playType": 0, 
+			"fovInfo":""
+        },
+        {
+            "videoId": "732228247",
+            "description": "视频5：花园变废草",
+            "duration": 106,
+            "filename": "花园变废草",
+            "videoPath": "ghjk.mp4",
+            "interactNodeId": null,
+            "thumbnail": "../assets/1O3UCUOGQ7V1R.png", 
+            "videoCoding": "h265",
+            "outPutFormat": "mp4",
+            "mediaHeight": "1920",
+            "mediaWidth": "3840",
+            "mediaSize": "524759324",
+			"playType": 0, 
+			"fovInfo":""
+        }
+    ],
+    "interactNodeList": [
+        {
+            "interactNodeId": "interactNodeId001",
+            "title": "选择接下来要去哪",
+            "startTime": 0,
+            "duration": 185,  
+            "playState": "pause", 
+            "endState": "active", 
+            "interactInfoId": "interactInfoId001",
+			"showConditionList": [
+				{ "key": "x", "operator": ">", "temp": 2 },
+				{ "key": "y", "operator": "<=", "temp": 5 }
+			]
+        },
+        {
+            "interactNodeId": "interactNodeId002",
+            "title": "选择接下来要去哪",
+            "startTime": 0,
+            "duration": 185,  
+            "playState": "pause", 
+            "endState": "active", 
+            "interactInfoId": "interactInfoId002",
+			"showConditionList": [
+			]
+        },
+        {
+            "interactNodeId": "interactNodeId003",
+            "title": "输入密码解锁",
+            "startTime": 0,
+            "duration": 106,
+            "playState": "pause", 
+            "endState": "active", 
+            "interactInfoId": "interactInfoId003",
+			"showConditionList": [
+			]
+        },
+        {
+            "interactNodeId": "interactNodeId004",
+            "title": "输入密码解锁",
+            "startTime": 0,
+            "duration": 106,
+            "playState": "pause", 
+            "endState": "active", 
+            "interactInfoId": "interactInfoId004",
+			"showConditionList": [
+			]
+        },
+        {
+            "interactNodeId": "interactNodeId005",
+            "title": "武器最重的两个人",
+            "startTime": 0,
+            "duration": 116,
+            "playState": "pause", 
+            "endState": "active", 
+            "interactInfoId": "interactInfoId005",
+			"showConditionList": [
+			]
+        },
+        {
+            "interactNodeId": "interactNodeId006",
+            "title": "武器最重的两个人",
+            "startTime": 0,
+            "duration": 116,
+            "playState": "pause", 
+            "endState": "active", 
+            "interactInfoId": "interactInfoId006",
+			"showConditionList": [
+			]
+        }
+    ],
+    "interactInfoList": [
+        {
+            "interactInfoId": "interactInfoId001",
+            "interactInfo": {
+                "type": "TextModule"
+            },
+            "interactConfig": "interactConfig1.json"
+        },
+        {
+            "interactInfoId": "interactInfoId002",
+			"isFollowCamera":false,
+            "interactInfo": {
+                "type": "PointClickModule"
+            },
+            "interactConfig": "interactConfig2.json"
+        },
+        {
+            "interactInfoId": "interactInfoId003",
+            "interactInfo": {
+                "type": "TextModule"
+            },
+            "interactConfig": "interactConfig3.json"
+        },
+        {
+            "interactInfoId": "interactInfoId004",
+			"isFollowCamera":false,
+            "interactInfo": {
+                "type": "ClickGroupModule",
+                "compoundMode": "order", 
+                "clickCount": "2"
+            },
+            "interactConfig": "interactConfig4.json"
+        },
+        {
+            "interactInfoId": "interactInfoId005",
+            "interactInfo": {
+                "type": "TextModule"
+            },
+            "interactConfig": "interactConfig5.json"
+        },
+        {
+            "interactInfoId": "interactInfoId006",
+			"isFollowCamera":false,
+            "interactInfo": {
+                "type": "ClickGroupModule",
+                "compoundMode": "disorder", 
+                "clickCount": "2"
+            },
+            "interactConfig": "interactConfig6.json"
+        }
+    ]
+}
