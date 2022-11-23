@@ -1,6 +1,6 @@
 /*
-	krpano Basic/Simplified HTML5 Videoplayer Plugin
-	- for krpano 1.19
+  krpano Basic/Simplified HTML5 Videoplayer Plugin
+  - for krpano 1.19
 */
 // 视频事件常量
 
@@ -61,26 +61,24 @@ var krpanoplugin = function () {
         key: 'volume',
         value: plugin.volume || 1,
         setter: (val) => (video.volume = val),
-        getter: () => video.paused,
+        getter: () => video.volume,
       },
       {
         key: 'ispaused',
         value: video.paused,
-        setter: null,
-        getter: () => video.volume,
+        setter: () => { },
+        getter: () => video.paused,
       },
       {
         key: 'time',
         value: video.currentTime || 0,
-        setter: (val) => {
-          video.currentTime = val
-        },
+        setter: () => { },
         getter: () => video.currentTime,
       },
       {
         key: 'totaltime',
         value: plugin.duration || 0,
-        setter: null,
+        setter: () => { },
         getter: () => video.duration,
       },
       {
@@ -284,7 +282,7 @@ var krpanoplugin = function () {
   }
 
   function seek(val) {
-    video.currentTime = val
+    video.currentTime = video.duration * val
   }
 
   function togglepause() {
