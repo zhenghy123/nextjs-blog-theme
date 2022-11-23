@@ -358,7 +358,7 @@
 		set(videosources['v%1'].sourcename, '%1');
 		set(videosources['v%1'].videourl, '%2');
 		set(videosources['v%1'].posterurl, '%3');
-
+    skin_volumectrl_update();
 		<!-- calc(lname, 'skin_settings_q' + videosources.count);
 		addlayer(get(lname));
 		copy(ly, layer[get(lname)]);
@@ -384,7 +384,8 @@
 	-->
 	<action name="videointerface_play">
 		set(layer[skin_error].visible, false);
-		skin_volumectrl_update();
+    copy(vs, videosources['v%1']);
+    plugin[video].playvideo(get(vs.videourl), get(vs.posterurl), get(plugin[video].pausedonstart), get(plugin[video].time));
 	</action>
 
 </krpano>

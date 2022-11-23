@@ -13,15 +13,15 @@ function createPlayer(id = '', url = '', options = {}) {
       onready: function (krpano) {
         console.log('krpanoJS init ')
         const _krpano = krpano.get('global')
-        const _options = { ...options, url: url, krpano: _krpano }
-        
-        const playList = new PlayerData()
-        window.playList = playList
+        const _options = { ...options, url: url, krpano: _krpano,ispreview: true }
 
         const kplayer = new KPlayer(_options)
 
         window.kxplayer = kplayer
         window._krpano = _krpano
+
+        const playList = new PlayerData()
+        window.playList = playList
 
         _krpano.actions.showlog()
         resolve(kplayer)

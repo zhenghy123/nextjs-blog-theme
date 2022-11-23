@@ -192,26 +192,28 @@ class KPlayer {
         set(hotspot[${name}].distorted,${distorted});
         set(hotspot[${name}].ath,${transform2DSetting?.x || 0});
         set(hotspot[${name}].atv,${transform2DSetting?.y || 0});
-        set(hotspot[${name}].width,${transform2DSetting?.width || 'prop'});
+        set(hotspot[${name}].width,${transform2DSetting?.width || '100'});
         set(hotspot[${name}].height,${transform2DSetting?.height || '100'});
         set(hotspot[${name}].scale,${transform2DSetting?.scaleX || 1});
-        set(hotspot[${name}].rotate,${transform2DSetting?.rotation || 0});
+        set(hotspot[${name}].rotate,${transform2DSetting?.rotate || 0});
+        set(hotspot[${name}].alpha,${transform2DSetting?.opacity || 1});
+        set(hotspot[${name}].rx,${transform2DSetting?.rotateX || 0});
+        set(hotspot[${name}].ry,${transform2DSetting?.rotateY || 0});
+        set(hotspot[${name}].rz,${transform2DSetting?.rotateZ || 0});
         set(hotspot[${name}].text,${textSetting?.text || '默认文本'});
-        set(hotspot[${name}].url,${
-          styleSetting?.styleEffect.beforeTrigger.previewPath ||
-          InteractiveEnums[materialName].beforeTrigger
+        set(hotspot[${name}].url,${styleSetting?.beforeTrigger ||
+        InteractiveEnums[materialName].beforeTrigger
         });
-        set(hotspot[${name}].beforeTrigger,${
-          styleSetting?.styleEffect.beforeTrigger.previewPath ||
-          InteractiveEnums[materialName].beforeTrigger
+        set(hotspot[${name}].beforeTrigger,${styleSetting?.beforeTrigger ||
+        InteractiveEnums[materialName].beforeTrigger
         });
-        set(hotspot[${name}].triggering,${
-          styleSetting?.styleEffect.triggering.previewPath ||
-          InteractiveEnums[materialName].triggering
+        set(hotspot[${name}].triggering,${styleSetting?.triggering ||
+        InteractiveEnums[materialName].triggering
         });
         set(hotspot[${name}].onloaded,add_all_the_time_tooltip);
         set(hotspot[${name}].ondown,ondownfn);
         set(hotspot[${name}].onup,onupfn);
+        set(hotspot[${name}].onclick, videointerface_play('video720'));
         `
       )
     } else {
@@ -225,22 +227,23 @@ class KPlayer {
         set(layer[${name}].flag,'layer');
         set(layer[${name}].x,${transform2DSetting?.x || 110});
         set(layer[${name}].y,${transform2DSetting?.y || 110});
-        set(layer[${name}].width,${transform2DSetting?.width || 'prop'});
+        set(layer[${name}].width,${transform2DSetting?.width || '100'});
         set(layer[${name}].height,${transform2DSetting?.height || '100'});
         set(layer[${name}].scale,${transform2DSetting?.scaleX || 1});
-        set(layer[${name}].rotate,${transform2DSetting?.rotation || 0});
+        set(layer[${name}].rotate,${transform2DSetting?.rotate || 0});
+        set(layer[${name}].alpha,${transform2DSetting?.opacity || 1});
+        set(layer[${name}].rx,${transform2DSetting?.rotateX || 0});
+        set(layer[${name}].ry,${transform2DSetting?.rotateY || 0});
+        set(layer[${name}].rz,${transform2DSetting?.rotateZ || 0});
         set(layer[${name}].text,${textSetting?.text || '默认文本'});
-        set(layer[${name}].url,${
-          styleSetting?.styleEffect.beforeTrigger.previewPath ||
-          InteractiveEnums[materialName].beforeTrigger
+        set(layer[${name}].url,${styleSetting?.beforeTrigger ||
+        InteractiveEnums[materialName].beforeTrigger
         });
-        set(layer[${name}].beforeTrigger,${
-          styleSetting?.styleEffect.beforeTrigger.previewPath ||
-          InteractiveEnums[materialName].beforeTrigger
+        set(layer[${name}].beforeTrigger,${styleSetting?.beforeTrigger ||
+        InteractiveEnums[materialName].beforeTrigger
         });
-        set(layer[${name}].triggering,${
-          styleSetting?.styleEffect.triggering.previewPath ||
-          InteractiveEnums[materialName].triggering
+        set(layer[${name}].triggering,${styleSetting?.triggering ||
+        InteractiveEnums[materialName].triggering
         });
         set(layer[${name}].onloaded,add_all_the_time_tooltip);
         set(layer[${name}].ondown,ondownfn);
@@ -252,7 +255,11 @@ class KPlayer {
     // 判断热点 tooltip plugin 是否成功加载
     let tootipObj = null
     const checkHasOnloaded = () => {
-      tootipObj = _krpano.plugin.getItem('tooltip_' + name)
+      if (type == 'hotspot') {
+        tootipObj = _krpano.hotspot.getItem(name)
+      } else {
+        tootipObj = _krpano.plugin.getItem('tooltip_' + name)
+      }
       if (!tootipObj) {
         setTimeout(() => {
           checkHasOnloaded()
@@ -270,7 +277,11 @@ class KPlayer {
             'text-decoration': textSetting.textDecoration,
           }
 
-          this.setHotspot(name, { css: obj }, 'tooltip')
+          if (type == 'hotspot') {
+            this.setHotspot(name, obj, 'hotspot')
+          } else {
+            this.setHotspot(name, { css: obj }, 'tooltip')
+          }
         }
       }
     }
@@ -286,17 +297,17 @@ class KPlayer {
   /**
    * 添加文本热点
    */
-  addImageHotspot() {}
+  addImageHotspot() { }
 
   /**
    * 添加文字热点
    */
-  addTextHotspot() {}
+  addTextHotspot() { }
 
   /**
    * 添加视频热点
    */
-  addVideoHotspot() {}
+  addVideoHotspot() { }
 
   /**
    * 修改热点

@@ -72,7 +72,7 @@ var krpanoplugin = function () {
       {
         key: 'time',
         value: video.currentTime || 0,
-        setter: () => { },
+        setter: (val) => (video.currentTime = val),
         getter: () => video.currentTime,
       },
       {
@@ -120,6 +120,12 @@ var krpanoplugin = function () {
       {
         key: 'seek',
         value: seek,
+        setter: null,
+        getter: null,
+      },
+      {
+        key: 'playvideo',
+        value: playvideo,
         setter: null,
         getter: null,
       },
@@ -307,6 +313,20 @@ var krpanoplugin = function () {
     plugin.videourl = url
     flag ? video.pause() : video.play()
     plugin.lastCurrentTime = Math.random()
+    krpano.actions.updatescreen()
+  }
+
+  /**
+   * 视频切换
+   * 播放器不做视频提前缓存，可外部缓存好后传入地址浏览器缓存可以复用
+   */
+  function playvideo(url, posterurl, pausedonstart, starttime) {
+    let flag = video.paused
+    plugin.videourl = url
+    plugin.posterurl = posterurl
+    plugin.pausedonstart = pausedonstart
+    flag ? video.pause() : video.play()
+    plugin.lastCurrentTime = starttime
     krpano.actions.updatescreen()
   }
 }
