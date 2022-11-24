@@ -178,7 +178,7 @@ class PlayerData {
           kxplayer.addInteractiveHotspot(
             id,
             true,
-            'pointClick',
+            'TextModule',
             'tooltip',
             null,
             textSetting,
@@ -224,7 +224,7 @@ class PlayerData {
           kxplayer.addInteractiveHotspot(
             id,
             true,
-            'pointClick',
+            'PointClickModule',
             'hotspot',
             styleSetting,
             textSetting,

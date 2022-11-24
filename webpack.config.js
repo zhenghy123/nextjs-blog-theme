@@ -20,7 +20,7 @@ module.exports = {
   // },
   devServer: {
     open: true,
-    port: 8001,
+    // port: 8002,
   },
   // devtool: 'cheap-module-eval-source-map', // 'inline-source-map',
   // 'cheap-module-eval-source-map',

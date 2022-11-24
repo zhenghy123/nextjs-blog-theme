@@ -96,13 +96,16 @@ class KPlayer {
     _krpano.plugin.getItem('video').togglevideo(url)
   }
 
-  // 设置或返回初始视角
+  /**
+   * 设置初始视角
+   * @param {String} info view字符串对象
+   * @returns {Object}
+   */
   setInitialView(info = null) {
     let view = _krpano.view
 
     if (info) {
-      let infoObj = JSON.parse(info)
-      const { hlookat, vlookat, fov } = infoObj
+      const { hlookat, vlookat, fov } = JSON.parse(info)
       view.hlookat = hlookat
       view.vlookat = vlookat
       view.fov = fov
@@ -176,7 +179,7 @@ class KPlayer {
   addInteractiveHotspot(
     name = 'a' + Math.random(),
     distorted = true,
-    materialName = '单击',
+    materialName = 'PointClickModule',
     type = 'hotspot',
     styleSetting = null,
     textSetting = null,
@@ -308,6 +311,148 @@ class KPlayer {
       tooltipname: 'tooltip_' + name,
       bordername: 'border_' + name,
     }
+  }
+
+  /**
+   * 添加热点(跟随视角)
+   * 注意：为确保位置统一，layer使用相对位置% --拖动action需特殊处理
+   * @param {String} name 热点名（唯一标识，不能以数字开头哦）
+   * @param {String} moduleType 互动组件类型，参考player-interactives
+   * @param {Object} styleSetting 组件背景信息
+   * @param {Object} textSetting 组件文本信息
+   * @param {Object} transform2DSetting 组件变换信息
+   */
+  addLayer({
+    name,
+    type,
+    styleSetting = null,
+    textSetting = null,
+    transform2DSetting = null,
+  }) {
+    if (!name) {
+      throw new Error('addLayer params of name can not empty!')
+    }
+
+    if (!type) {
+      throw new Error('addLayer params of type can not empty!')
+    }
+
+    _krpano.call(
+      `
+      addlayer(${name});
+      set(layer[${name}].keep,true);
+      set(layer[${name}].edge,center);
+      set(layer[${name}].flag,'layer');
+      set(layer[${name}].x,${transform2DSetting?.x || '50%'});
+      set(layer[${name}].y,${transform2DSetting?.y || '50%'});
+      set(layer[${name}].width,${transform2DSetting?.width || '100'});
+      set(layer[${name}].height,${transform2DSetting?.height || '100'});
+      set(layer[${name}].scale,${transform2DSetting?.scaleX || 1});
+      set(layer[${name}].rotate,${transform2DSetting?.rotate || 0});
+      set(layer[${name}].alpha,${transform2DSetting?.opacity || 1});
+      set(layer[${name}].text,${textSetting?.text || '默认文本'});
+      set(layer[${name}].url,${
+        styleSetting?.beforeTrigger ||
+        InteractiveEnums[materialName].beforeTrigger
+      });
+      set(layer[${name}].beforeTrigger,${
+        styleSetting?.beforeTrigger ||
+        InteractiveEnums[materialName].beforeTrigger
+      });
+      set(layer[${name}].triggering,${
+        styleSetting?.triggering || InteractiveEnums[materialName].triggering
+      });
+      set(layer[${name}].afterTrigger,${
+        styleSetting?.afterTrigger ||
+        InteractiveEnums[materialName].afterTrigger
+      });
+      set(layer[${name}].onloaded,add_all_the_time_tooltip);
+      set(layer[${name}].ondown,ondownfn);
+      set(layer[${name}].onup,onupfn);
+      `
+    )
+  }
+
+  /**
+   * 添加热点(空间位置)
+   * 注意：hotspot使用的是球面坐标+depth，如需转换三维坐标需要调用spheretospace
+   * @param {String} name 热点名（唯一标识，不能以数字开头哦）
+   * @param {String} moduleType 互动组件类型，参考player-interactives
+   * @param {Object} styleSetting 组件背景信息
+   * @param {Object} textSetting 组件文本信息
+   * @param {Object} transform2DSetting 组件变换信息
+   */
+  addHotspot({
+    name,
+    type,
+    styleSetting = null,
+    textSetting = null,
+    transform2DSetting = null,
+  }) {}
+
+  /**
+   * 检查是否已经加载
+   * 注意：krpano添加热点等一些方法是异步行为，添加后无法立即获取
+   * @param {String} name 热点名
+   * @param {String} type 热点类型
+   */
+  checkHasLoaded(name, type = 'hotspot') {
+    return new Promise((resolve, reject) => {
+      let count = 0
+      let isLoaded = () => {
+        let obj =
+          type == 'hotspot'
+            ? _krpano.hotspot.getItem(name)
+            : _krpano.layer.getItem(name)
+        if (obj) {
+          resolve(name)
+        } else {
+          if (count >= 10) {
+            reject('checkHasLoaded error please check whether the name exists!')
+          }
+          count++
+          setTimeout(isLoaded, 200)
+        }
+      }
+
+      isLoaded()
+    })
+  }
+
+  // setHotspot(){}
+
+  /**
+   * 修改热点信息
+   * 注意：layer的文字信息修改是tooltip_`name`
+   * @param {String} name 热点名
+   * @param {Object} info 修改信息对象
+   */
+  setLayer(name, info) {
+    let tooltip = _krpano.plugin.getItem('tooltip_' + name)
+    Object.keys(info).map((item) => {
+      // 修改style样式
+      if (item == 'css') {
+        let cssObj = info.css
+        let cssStyle = tooltip.css.split(';')
+
+        Object.keys(cssObj).map((citem) => {
+          // 样式需要转换成中划线的形式
+          let citemML = this.toMiddleLine(citem)
+          cssStyle.map((citem, index) => {
+            if (citem.indexOf(citemML) != -1) {
+              cssStyle.splice(index, 1)
+            }
+          })
+          cssStyle.push(`${citemML}:${cssObj[citem]}`)
+        })
+
+        tooltip.css = cssStyle.join(';')
+      } else {
+        // 修改layer本身
+        tooltip[item] = info[item]
+      }
+    })
+    return obj
   }
 
   /**
