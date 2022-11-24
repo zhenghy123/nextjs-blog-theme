@@ -184,6 +184,7 @@
 
 
 	<action name="skin_video_updatetime" scope="local">
+    if(%1 !== null, set(plugin[video].time, %1); );
 		copy(t1, plugin[video].time);
 		copy(t2, plugin[video].totaltime);
 		if(%1 !== null, calc(t1, %1 * t2); );
@@ -385,7 +386,7 @@
 	<action name="videointerface_play">
 		set(layer[skin_error].visible, false);
     copy(vs, videosources['v%1']);
-    plugin[video].playvideo(get(vs.videourl), get(vs.posterurl), get(plugin[video].pausedonstart), get(plugin[video].time));
+    plugin[video].playvideo(get(vs.videourl), get(vs.posterurl), get(vs.sourcename), get(plugin[video].time));
 	</action>
 
 </krpano>

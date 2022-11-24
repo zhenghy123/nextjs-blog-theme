@@ -76,6 +76,7 @@ class KPlayer {
         videoPlugin.PlayerEvents = PlayerEvents
         // videoPlugin.events = this._options.events
         videoPlugin.videourl = this._options.url
+        videoPlugin.videoId = this._options.videoId
         // videoPlugin.url = './plugins/videoplayer.js'
         videoPlugin.url = './plugins/videoplayer_basic_source.js'
         console.log('url===', this._options.url)
@@ -224,9 +225,13 @@ class KPlayer {
         set(hotspot[${name}].onup,onupfn);
         `
       )
-      if (styleSetting.nextVideo) {
+      if (styleSetting.action.actionType == 'SWITCHVIDEO') {
         _krpano.call(
-          `set(hotspot[${name}].onclick, videointerface_play(${styleSetting.nextVideo}));`
+          `set(hotspot[${name}].onclick, videointerface_play(${styleSetting.action.nextVideo}));`
+        )
+      } else if (styleSetting.action.actionType == 'JUMPTIME') {
+        _krpano.call(
+          `set(hotspot[${name}].onclick, skin_video_updatetime(${styleSetting.action.jumpTime}));`
         )
       }
     } else {

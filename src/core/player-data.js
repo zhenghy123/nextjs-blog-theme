@@ -28,8 +28,7 @@ class PlayerData {
         })
 
         //添加组件
-        let interactNodeId = this.getFirstVideo()?.interactNodeId
-        this.setVideoHotspot(interactNodeId)
+        this.addVideoHotspot(this._json.drama?.firstVideoId)
       }
     }
   }
@@ -80,14 +79,11 @@ class PlayerData {
   }
 
   /**
-   * 获取第一个视频JSON
+   * 获取视频JSON
    */
-  getFirstVideo() {
-    let firstVideoId = this._json.drama?.firstVideoId
-    let firstVideo = this.getPlayList().find(
-      (val) => val.videoId == firstVideoId
-    )
-    return firstVideo
+  getVideoParam(id) {
+    let video = this.getPlayList().find((val) => val.videoId == id)
+    return video
   }
 
   /**
@@ -95,7 +91,6 @@ class PlayerData {
    * interactNodeId:视频参数interactNodeId
    */
   getVidioInteract(interactNodeId) {
-    // let interactNodeId = this.getFirstVideo()?.interactNodeId
     let id = interactNodeId.split(',')
     let list = []
     id.forEach((item) => {
@@ -189,9 +184,8 @@ class PlayerData {
         //点选
         info.btns.forEach((item) => {
           let id = listInfo[i].interactInfoId + item.id
-          let nextVideo = ''
-          if (item.action && item.action.length > 0)
-            nextVideo = item.action[0].nextVideo
+          let action = {}
+          if (item.action && item.action.length > 0) action = item.action[0]
           let style = item.style
           let textSetting = {
             text: item.text,
@@ -206,9 +200,8 @@ class PlayerData {
             beforeTrigger: this.getImageUrl(item.backgroundImageBeforeClick),
             triggering: this.getImageUrl(item.backgroundImageClick),
             afterTrigger: this.getImageUrl(item.backgroundImageAfterClick),
-            nextVideo: nextVideo,
+            action: action,
           }
-          console.log('aaa:', styleSetting)
           let transform2DSetting = {
             x: style.posX,
             y: style.posY,
@@ -231,16 +224,78 @@ class PlayerData {
             transform2DSetting
           )
         })
-      } else if (type == 'TextModule') {
+      } else if (type == 'ClickGroupModule') {
         //点击组合
-        kxplayer.addInteractiveHotspot('name33')
+        info.btns.forEach((item) => {
+          let id = listInfo[i].interactInfoId + item.id
+          let action = {}
+          if (item.action && item.action.length > 0) action = item.action[0]
+          let style = item.style
+          let textSetting = {
+            text: item.text,
+            align: 'left',
+            color: style.color,
+            'font-size': style.fontSize,
+            'font-family': '',
+            'font-style': 'italic',
+            'text-decoration': 'line-through',
+          }
+          let styleSetting = {
+            beforeTrigger: this.getImageUrl(item.backgroundImageBeforeClick),
+            triggering: this.getImageUrl(item.backgroundImageClick),
+            afterTrigger: this.getImageUrl(item.backgroundImageAfterClick),
+            action: action,
+          }
+          let transform2DSetting = {
+            x: style.posX,
+            y: style.posY,
+            width: style.width,
+            height: style.height,
+            scaleX: style.scaleX,
+            rotate: style.rotate,
+            opacity: style.opacity,
+            rotateX: style.rotateX,
+            rotateY: style.rotateY,
+            rotateZ: style.rotateZ,
+          }
+          kxplayer.addInteractiveHotspot(
+            id,
+            true,
+            'PointClickModule',
+            'hotspot',
+            styleSetting,
+            textSetting,
+            transform2DSetting
+          )
+        })
       }
     }
   }
-
+  /**
+   * 获取图片地址
+   * @param {图片url} imgUrl
+   * @returns
+   */
   getImageUrl(imgUrl) {
     let imgStr = imgUrl.replace('../', '')
     return this.jsonUrl.replace('video/index.json', imgStr)
+  }
+  /**
+   * 获取视频下节点名称
+   * @param {视频id} id
+   * @returns
+   */
+  getAllVideoNodeName(id) {
+    let interactNodeId = this.getVideoParam(id)?.interactNodeId
+    return this.getVidioInteractInfo(interactNodeId)
+  }
+  /**
+   * 添加组件
+   * @param {视频id} id
+   */
+  addVideoHotspot(id) {
+    let interactNodeId = this.getVideoParam(id)?.interactNodeId
+    this.setVideoHotspot(interactNodeId)
   }
 }
 
