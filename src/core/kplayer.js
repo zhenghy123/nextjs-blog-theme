@@ -201,21 +201,31 @@ class KPlayer {
         set(hotspot[${name}].ry,${transform2DSetting?.rotateY || 0});
         set(hotspot[${name}].rz,${transform2DSetting?.rotateZ || 0});
         set(hotspot[${name}].text,${textSetting?.text || '默认文本'});
-        set(hotspot[${name}].url,${styleSetting?.beforeTrigger ||
-        InteractiveEnums[materialName].beforeTrigger
+        set(hotspot[${name}].url,${
+          styleSetting?.beforeTrigger ||
+          InteractiveEnums[materialName].beforeTrigger
         });
-        set(hotspot[${name}].beforeTrigger,${styleSetting?.beforeTrigger ||
-        InteractiveEnums[materialName].beforeTrigger
+        set(hotspot[${name}].beforeTrigger,${
+          styleSetting?.beforeTrigger ||
+          InteractiveEnums[materialName].beforeTrigger
         });
-        set(hotspot[${name}].triggering,${styleSetting?.triggering ||
-        InteractiveEnums[materialName].triggering
+        set(hotspot[${name}].triggering,${
+          styleSetting?.triggering || InteractiveEnums[materialName].triggering
+        });
+        set(hotspot[${name}].afterTrigger,${
+          styleSetting?.afterTrigger ||
+          InteractiveEnums[materialName].afterTrigger
         });
         set(hotspot[${name}].onloaded,add_all_the_time_tooltip);
         set(hotspot[${name}].ondown,ondownfn);
         set(hotspot[${name}].onup,onupfn);
-        set(hotspot[${name}].onclick, videointerface_play('video720'));
         `
       )
+      if (styleSetting.nextVideo) {
+        _krpano.call(
+          `set(hotspot[${name}].onclick, videointerface_play(${styleSetting.nextVideo}));`
+        )
+      }
     } else {
       // set(layer[${name}].x,${transform2DSetting?.x ||110});
       // set(layer[${name}].y,${transform2DSetting?.y ||110});
@@ -236,14 +246,20 @@ class KPlayer {
         set(layer[${name}].ry,${transform2DSetting?.rotateY || 0});
         set(layer[${name}].rz,${transform2DSetting?.rotateZ || 0});
         set(layer[${name}].text,${textSetting?.text || '默认文本'});
-        set(layer[${name}].url,${styleSetting?.beforeTrigger ||
-        InteractiveEnums[materialName].beforeTrigger
+        set(layer[${name}].url,${
+          styleSetting?.beforeTrigger ||
+          InteractiveEnums[materialName].beforeTrigger
         });
-        set(layer[${name}].beforeTrigger,${styleSetting?.beforeTrigger ||
-        InteractiveEnums[materialName].beforeTrigger
+        set(layer[${name}].beforeTrigger,${
+          styleSetting?.beforeTrigger ||
+          InteractiveEnums[materialName].beforeTrigger
         });
-        set(layer[${name}].triggering,${styleSetting?.triggering ||
-        InteractiveEnums[materialName].triggering
+        set(layer[${name}].triggering,${
+          styleSetting?.triggering || InteractiveEnums[materialName].triggering
+        });
+        set(layer[${name}].afterTrigger,${
+          styleSetting?.afterTrigger ||
+          InteractiveEnums[materialName].afterTrigger
         });
         set(layer[${name}].onloaded,add_all_the_time_tooltip);
         set(layer[${name}].ondown,ondownfn);
@@ -297,17 +313,17 @@ class KPlayer {
   /**
    * 添加文本热点
    */
-  addImageHotspot() { }
+  addImageHotspot() {}
 
   /**
    * 添加文字热点
    */
-  addTextHotspot() { }
+  addTextHotspot() {}
 
   /**
    * 添加视频热点
    */
-  addVideoHotspot() { }
+  addVideoHotspot() {}
 
   /**
    * 修改热点

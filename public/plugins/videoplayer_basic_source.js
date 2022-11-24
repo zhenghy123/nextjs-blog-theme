@@ -66,7 +66,7 @@ var krpanoplugin = function () {
       {
         key: 'ispaused',
         value: video.paused,
-        setter: () => { },
+        setter: () => {},
         getter: () => video.paused,
       },
       {
@@ -78,7 +78,7 @@ var krpanoplugin = function () {
       {
         key: 'totaltime',
         value: plugin.duration || 0,
-        setter: () => { },
+        setter: () => {},
         getter: () => video.duration,
       },
       {
@@ -325,6 +325,9 @@ var krpanoplugin = function () {
     plugin.videourl = url
     plugin.posterurl = posterurl
     plugin.pausedonstart = pausedonstart
+    if (video.currentTime == 0) {
+      video.currentTime = 0.00001
+    }
     flag ? video.pause() : video.play()
     plugin.lastCurrentTime = starttime
     krpano.actions.updatescreen()

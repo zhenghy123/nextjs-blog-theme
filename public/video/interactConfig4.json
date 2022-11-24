@@ -1,7 +1,7 @@
 {
     "metas": null,
     "imgs": {
-        "url": "../assets/1O3UCUOFVBEVL.png"
+        "url": "../assets/preview1.png"
     },
     "btns": [
         {	
@@ -24,9 +24,9 @@
                 "scaleY": 1
             },
             "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/1O3UCUOFVBEVL.png",
-            "backgroundImageClick": "../assets/1O3UCUOFVBEVL.png", 
-            "backgroundImageAfterClick": "../assets/1O3UCUOFVBEVL.png",
+            "backgroundImageBeforeClick": "../assets/preview1.png",
+            "backgroundImageClick": "../assets/preview1.png", 
+            "backgroundImageAfterClick": "../assets/preview1.png",
             "action": [
             ]
         },
@@ -50,9 +50,9 @@
                 "scaleY": 1
             },
             "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/1O3UCUOFVBEVL.png",
-            "backgroundImageClick": "../assets/1O3UCUOFVBEVL.png", 
-            "backgroundImageAfterClick": "../assets/1O3UCUOFVBEVL.png",
+            "backgroundImageBeforeClick": "../assets/preview1.png",
+            "backgroundImageClick": "../assets/preview1.png", 
+            "backgroundImageAfterClick": "../assets/preview1.png",
             "action": [
             ]
         },
@@ -76,9 +76,9 @@
                 "scaleY": 1
             },
             "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/1O3UCUOFVBEVL.png",
-            "backgroundImageClick": "../assets/1O3UCUOFVBEVL.png", 
-            "backgroundImageAfterClick": "../assets/1O3UCUOFVBEVL.png",
+            "backgroundImageBeforeClick": "../assets/preview1.png",
+            "backgroundImageClick": "../assets/preview1.png", 
+            "backgroundImageAfterClick": "../assets/preview1.png",
             "action": [
             ]
         },
@@ -102,9 +102,9 @@
                 "scaleY": 1
             },
             "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/1O3UCUOFVBEVL.png",
-            "backgroundImageClick": "../assets/1O3UCUOFVBEVL.png", 
-            "backgroundImageAfterClick": "../assets/1O3UCUOFVBEVL.png",
+            "backgroundImageBeforeClick": "../assets/preview1.png",
+            "backgroundImageClick": "../assets/preview1.png", 
+            "backgroundImageAfterClick": "../assets/preview1.png",
             "action": [
             ]
         }

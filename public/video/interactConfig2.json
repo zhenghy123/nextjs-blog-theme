@@ -1,7 +1,7 @@
 {
     "metas": null,
     "imgs": {
-        "url": "../assets/1O3UCUOFVBEVL.png"
+        "url": "../assets/preview1.png"
     },
     "btns": [
         {
@@ -24,9 +24,9 @@
                 "scaleY": 1 
             },
             "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/1O3UCUOFVBEVL.png",
-            "backgroundImageClick": "../assets/1O3UCUOFVBEVL.png", 
-            "backgroundImageAfterClick": "../assets/1O3UCUOFVBEVL.png", 
+            "backgroundImageBeforeClick": "../assets/preview1.png",
+            "backgroundImageClick": "../assets/preview2.png", 
+            "backgroundImageAfterClick": "../assets/preview3.png", 
             "action": [
                 {
                     "actionType": "SWITCHVIDEO", 
@@ -54,13 +54,13 @@
                 "scaleY": 1 
             },
             "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/1O3UCUOFVBEVL.png",
-            "backgroundImageClick": "../assets/1O3UCUOFVBEVL.png", 
-            "backgroundImageAfterClick": "../assets/1O3UCUOFVBEVL.png", 
+            "backgroundImageBeforeClick": "../assets/preview1.png",
+            "backgroundImageClick": "../assets/preview2.png", 
+            "backgroundImageAfterClick": "../assets/preview3.png", 
             "action": [
                 {
                     "actionType": "SWITCHVIDEO",
-                    "nextVideo": "733419335"
+                    "nextVideo": "732160621"
                 }
             ]
         },
@@ -84,9 +84,9 @@
                 "scaleY": 1 
             },
             "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/1O3UCUOFVBEVL.png",
-            "backgroundImageClick": "../assets/1O3UCUOFVBEVL.png", 
-            "backgroundImageAfterClick": "../assets/1O3UCUOFVBEVL.png", 
+            "backgroundImageBeforeClick": "../assets/preview1.png",
+            "backgroundImageClick": "../assets/preview2.png", 
+            "backgroundImageAfterClick": "../assets/preview3.png", 
 			"showConditionList": [
 				{ "key": "x", "operator": ">", "temp": 2 },
 				{ "key": "y", "operator": "<=", "temp": 5 }
