@@ -2,6 +2,7 @@ class PlayerData {
   constructor(url) {
     this._json = {}
     this.jsonUrl = url
+    this.factorList = []
     this.init()
     // window.getPlayList = this.getPlayList.bind(this);
   }
@@ -13,7 +14,7 @@ class PlayerData {
     request.onload = () => {
       if (request.status == '200') {
         this._json = JSON.parse(request.responseText)
-
+        this.factorList = this._json.factorList
         // 添加视频
         this._json.videoList.forEach((item) => {
           let name = item.videoId
@@ -33,6 +34,9 @@ class PlayerData {
     }
   }
 
+  getFactorList() {
+    return this.factorList
+  }
   getFileJson(url) {
     return new Promise((resolve, reject) => {
       let request = new XMLHttpRequest()

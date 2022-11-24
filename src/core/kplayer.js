@@ -26,6 +26,7 @@ class KPlayer {
   init() {
     _krpano.global.ispreview = this._options.ispreview
     window.hotspotClick = this.hotspotClick.bind(this)
+    window.updatetime = this.updatetime.bind(this)
 
     Object.defineProperty(this._options, 'ispreview', {
       set(val) {
@@ -190,6 +191,7 @@ class KPlayer {
       _krpano.call(
         `
         addhotspot(${name});
+        set(hotspot[${name}].visible,false);
         set(hotspot[${name}].keep,true);
         set(hotspot[${name}].zoom,true);
         set(hotspot[${name}].flag,'hotspot');
@@ -240,6 +242,7 @@ class KPlayer {
       _krpano.call(
         `
         addlayer(${name});
+        set(layer[${name}].visible,false);
         set(layer[${name}].keep,true);
         set(layer[${name}].edge,center);
         set(layer[${name}].flag,'layer');
@@ -646,6 +649,58 @@ class KPlayer {
     this.changeScene('noscene')
 
     // removepano('krpanoHTMLObject');
+  }
+
+  updatetime(time) {
+    let ispaused = _krpano.plugin.getItem('video').ispaused
+    let id = _krpano.plugin.getItem('video').videoId
+    let interactNodeId = playList.getVideoParam(id)?.interactNodeId
+    let list = playList.getVidioInteract(interactNodeId)
+    let factorList = playList.getFactorList()
+    list.forEach((item) => {
+      let interactInfoId = item.interactInfoId
+      let startTime = item.startTime
+      let duration = item.duration
+      let playState = item.playState
+      let endState = item.endState
+      let visible_item = true // 显隐
+      let showConditionList = item.showConditionList
+      showConditionList.forEach((item) => {
+        let value = factorList.find((val) => val.key == item.key)?.value
+        if (!eval(value + item.operator + item.temp)) {
+          visible_item = false
+        }
+      })
+      if (visible_item) {
+        if (time >= startTime && time < duration) {
+          visible_item = true
+          // if(playState == 'pause'){
+          //   _krpano.plugin.getItem('video').pause()
+          // } else {
+          //   _krpano.plugin.getItem('video').play()
+          // }
+        } else if (time >= duration) {
+          if (endState == 'hide') {
+            visible_item = false
+          }
+        } else {
+          visible_item = false
+        }
+      }
+      let interactInfoIdItem = playList
+        .getInteractInfoList()
+        .find((val) => val.interactInfoId == item.interactInfoId)
+      if (interactInfoIdItem.interactInfo.type == 'TextModule') {
+        _krpano.call(
+          `set(layer[${interactInfoIdItem.interactInfoId}].visible, ${visible_item});`
+        )
+      } else if (interactInfoIdItem.interactInfo.type == 'PointClickModule') {
+        let hotspot_list = _krpano.hotspot.getArray()
+        hotspot_list.forEach((item) => {
+          _krpano.call(`set(hotspot[${item.name}].visible, ${visible_item});`)
+        })
+      }
+    })
   }
 }
 

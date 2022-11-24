@@ -103,13 +103,13 @@
         {
             "interactNodeId": "interactNodeId001",
             "title": "选择接下来要去哪",
-            "startTime": 0,
-            "duration": 185,  
+            "startTime": 1,
+            "duration": 6,  
             "playState": "pause", 
-            "endState": "active", 
+            "endState": "hide", 
             "interactInfoId": "interactInfoId001",
 			"showConditionList": [
-				{ "key": "x", "operator": ">", "temp": 2 },
+				{ "key": "x", "operator": "<", "temp": 2 },
 				{ "key": "y", "operator": "<=", "temp": 5 }
 			]
         },
@@ -117,9 +117,9 @@
             "interactNodeId": "interactNodeId002",
             "title": "选择接下来要去哪",
             "startTime": 0,
-            "duration": 185,  
+            "duration": 9,  
             "playState": "pause", 
-            "endState": "active", 
+            "endState": "hide", 
             "interactInfoId": "interactInfoId002",
 			"showConditionList": [
 			]
