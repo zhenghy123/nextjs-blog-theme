@@ -9,8 +9,8 @@
             "text": "按钮1",
             "style": {
                 "color": "#000",
-                "posX": 100,
-                "posY": 100,
+                "posX": 10,
+                "posY": 10,
                 "posZ": 300,
                 "width": 100,
                 "heigth": 200,
@@ -39,8 +39,8 @@
             "text": "按钮2",
             "style": {
                 "color": "#000",
-                "posX": 100,
-                "posY": 100,
+                "posX": 20,
+                "posY": 20,
                 "posZ": 300,
                 "width": 100,
                 "heigth": 200,
@@ -65,12 +65,12 @@
             ]
         },
 		{
-			"id":1,
+			"id":3,
             "text": "跳时间按钮",
             "style": {
                 "color": "#000",
-                "posX": 100,
-                "posY": 100,
+                "posX": 30,
+                "posY": 30,
                 "posZ": 300,
                 "width": 100,
                 "heigth": 200,

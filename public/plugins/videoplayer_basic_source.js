@@ -1,6 +1,6 @@
 /*
-	krpano Basic/Simplified HTML5 Videoplayer Plugin
-	- for krpano 1.19
+  krpano Basic/Simplified HTML5 Videoplayer Plugin
+  - for krpano 1.19
 */
 // 视频事件常量
 
@@ -61,26 +61,24 @@ var krpanoplugin = function () {
         key: 'volume',
         value: plugin.volume || 1,
         setter: (val) => (video.volume = val),
-        getter: () => video.paused,
+        getter: () => video.volume,
       },
       {
         key: 'ispaused',
         value: video.paused,
-        setter: null,
-        getter: () => video.volume,
+        setter: () => { },
+        getter: () => video.paused,
       },
       {
         key: 'time',
         value: video.currentTime || 0,
-        setter: (val) => {
-          video.currentTime = val
-        },
+        setter: (val) => (video.currentTime = val),
         getter: () => video.currentTime,
       },
       {
         key: 'totaltime',
         value: plugin.duration || 0,
-        setter: null,
+        setter: () => { },
         getter: () => video.duration,
       },
       {
@@ -122,6 +120,12 @@ var krpanoplugin = function () {
       {
         key: 'seek',
         value: seek,
+        setter: null,
+        getter: null,
+      },
+      {
+        key: 'playvideo',
+        value: playvideo,
         setter: null,
         getter: null,
       },
@@ -284,7 +288,7 @@ var krpanoplugin = function () {
   }
 
   function seek(val) {
-    video.currentTime = val
+    video.currentTime = video.duration * val
   }
 
   function togglepause() {
@@ -309,6 +313,20 @@ var krpanoplugin = function () {
     plugin.videourl = url
     flag ? video.pause() : video.play()
     plugin.lastCurrentTime = Math.random()
+    krpano.actions.updatescreen()
+  }
+
+  /**
+   * 视频切换
+   * 播放器不做视频提前缓存，可外部缓存好后传入地址浏览器缓存可以复用
+   */
+  function playvideo(url, posterurl, pausedonstart, starttime) {
+    let flag = video.paused
+    plugin.videourl = url
+    plugin.posterurl = posterurl
+    plugin.pausedonstart = pausedonstart
+    flag ? video.pause() : video.play()
+    plugin.lastCurrentTime = starttime
     krpano.actions.updatescreen()
   }
 }

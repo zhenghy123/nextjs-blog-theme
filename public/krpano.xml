@@ -1,8 +1,10 @@
 ﻿<krpano>
 	<include url="./plugins/showtext.xml" />
-	<!-- 
+  <!-- 引入皮肤 -->
+  <include url="./plugins/videointerface.xml" />
+  <!-- 	
 	<image>
-		<sphere url='../imgs/preview1.jpeg' />
+		<sphere url='./imgs/preview1.jpeg' />
 	</image> -->
 
 	<scene name="videoscene" keep="true" autoload="true">
@@ -27,6 +29,7 @@
 		pausedonstart="true"
 		loop="true"
 		volume="1.0"
+    onloaded="add_video_sources();"
 	 />
 
 	<view hlookat="0" vlookat="0" fovtype="DFOV" fov="130" fovmin="75" fovmax="150" distortion="0.0" />
@@ -116,7 +119,7 @@
 				txtadd(plugin[get(bordername)].parent, 'layer[', get(name), ']')
 			);
 			
-			set(plugin[get(bordername)].url,'./imgs/hotspot_selected_bg.png');
+			set(plugin[get(bordername)].url,'assets/imgs/hotspot_selected_bg.png');
 			set(plugin[get(bordername)].keep, true);
 			set(plugin[get(bordername)].visible, false);
 			set(plugin[get(bordername)].edge, center);
@@ -128,7 +131,7 @@
         
 	</action>
 	<action name="add_video_sources">
-		<!-- videointerface_addsource('video720', './video720.mp4', './imgs/preview1.jpeg'); -->
-		<!-- videointerface_play('video360'); -->
+		videointerface_addsource('video360', './video360.mp4', './assets/imgs/videointerface.png');
+		videointerface_addsource('video720', './video720.mp4', './assets/imgs/preview1.jpeg');
 	</action>
 </krpano>
