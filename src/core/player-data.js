@@ -84,6 +84,14 @@ class PlayerData {
   getFactorList() {
     return this._json.factorList
   }
+
+  setFactorList(arr) {
+    this._json.factorList.map((item) => {
+      let arrItem = arr.find((val) => val.key == item.key)
+      item.value = eval(item.value + arrItem.operator + arrItem.temp)
+    })
+  }
+
   getFileJson(url) {
     return new Promise((resolve, reject) => {
       let request = new XMLHttpRequest()

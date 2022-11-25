@@ -145,18 +145,6 @@ class KPlayer {
     return _krpano.plugin.getItem('video').videoId
   }
 
-  getLayerArray() {
-    return _krpano.layer.getArray()
-  }
-
-  delAllHotspot() {
-    _krpano.call('loop(hotspot.count GT 0, removehotspot(0));')
-  }
-
-  delLayer(name) {
-    _krpano.removelayer(name, true)
-  }
-
   /**
    * 添加互动组件
    * @param {*} info 参考互动组件JSON.json

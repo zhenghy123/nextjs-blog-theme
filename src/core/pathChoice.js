@@ -10,7 +10,6 @@ export function pathTimeUpdate(val) {
   let id = kxplayer.getVideoId()
   let interactNodeId = playList.getVideoParam(id)?.interactNodeId
   let list = playList.getVidioInteract(interactNodeId)
-  let factorList = playList.getFactorList()
   list.forEach((item) => {
     let startTime = item.startTime
     let duration = item.duration
@@ -28,14 +27,7 @@ export function pathTimeUpdate(val) {
       kxplayer.pause()
     }
 
-    let visible_item = true // 显隐状态
-    let showConditionList = item.showConditionList // 互动因子
-    showConditionList.forEach((item) => {
-      let value = factorList.find((val) => val.key == item.key)?.value
-      if (!eval(value + item.operator + item.temp)) {
-        visible_item = false
-      }
-    })
+    let visible_item = factorState(item) // 互动因子显隐
     // 时间段
     if (visible_item) {
       if (time >= startTime && time < duration) {
@@ -58,7 +50,12 @@ export function pathTimeUpdate(val) {
         ? interactInfoIdItem?.interactConfigJson?.metas
         : interactInfoIdItem?.interactConfigJson?.btns
     list.forEach((item) => {
-      kxplayer.showOrHideComp(item.name?.toLowerCase(), type, visible_item)
+      let factor = factorState(item)
+      kxplayer.showOrHideComp(
+        item.name?.toLowerCase(),
+        type,
+        visible_item && factor
+      )
     })
   })
 }
@@ -78,6 +75,9 @@ export function pathSpotClick(val) {
       (item) => item.name.toLowerCase() == val
     )
 
+    let factor = factorState(hotspotBtn)
+    kxplayer.showOrHideComp(hotspotBtn?.name?.toLowerCase(), 'hotspot', factor)
+
     hotspotBtn?.action?.forEach((actItem) => {
       if (actItem.actionType == HotToState.SWITCHVIDEO) {
         // 删除上一个视频的热点和文本
@@ -94,26 +94,48 @@ export function pathSpotClick(val) {
       } else if (actItem.actionType == HotToState.JUMPTIME) {
         // 切进度
         kxplayer.setCurrentTime(actItem.jumpTime)
+      } else if (actItem.actionType == HotToState.FACTOR) {
+        // 更新互动因子
+        let factorExpressList = actItem.factorExpressList
+        playList.setFactorList(factorExpressList)
+
+        let factor = factorState(hotspotBtn)
+        kxplayer.showOrHideComp(
+          hotspotBtn?.name?.toLowerCase(),
+          'hotspot',
+          factor
+        )
       }
     })
   })
 }
 
 function delHotspot(interactNodeId) {
-  kxplayer.delAllHotspot()
-  let list = kxplayer.getLayerArray()
-  list.forEach((item) => {
-    if (item.name.indexOf('tooltip_') != -1) {
-      kxplayer.delLayer(item.name)
-    }
-  })
-
   let interactlist = playList.getVidioInteract(interactNodeId)
   interactlist.forEach((item) => {
     let interactInfoIdItem = item.interactInfoIdJson
     let metas = interactInfoIdItem?.interactConfigJson?.metas
     metas?.forEach((item) => {
-      kxplayer.delLayer(item.name?.toLowerCase())
+      kxplayer.removeHotspot(item.name?.toLowerCase())
+    })
+    let btns = interactInfoIdItem?.interactConfigJson?.btns
+    btns?.forEach((item) => {
+      kxplayer.removeHotspot(item.name?.toLowerCase())
     })
   })
+}
+
+// 互动因子 显隐状态
+function factorState(factorItem) {
+  if (!factorItem) return true
+  let visible_item = true
+  let factorList = playList.getFactorList()
+  let showConditionList = factorItem.showConditionList
+  showConditionList?.forEach((item) => {
+    let value = factorList.find((val) => val.key == item.key)?.value
+    if (!eval(value + item.operator + item.temp)) {
+      visible_item = false
+    }
+  })
+  return visible_item
 }
