@@ -1,5 +1,6 @@
 class PlayerData {
   constructor(url) {
+    this._url = url
     this._json = {}
     this.jsonUrl = url
     this.factorList = []
@@ -8,30 +9,78 @@ class PlayerData {
   }
 
   init() {
-    let request = new XMLHttpRequest()
-    request.open('get', this.jsonUrl)
-    request.send(null)
-    request.onload = () => {
-      if (request.status == '200') {
-        this._json = JSON.parse(request.responseText)
-        this.factorList = this._json.factorList
-        // 添加视频
-        this._json.videoList.forEach((item) => {
-          let name = item.videoId
-          let videourl = this.jsonUrl.replace('index.json', item.videoPath)
-          _krpano.call(
-            `
-            videointerface_addsource(${name}, ${videourl}, ${this.getImageUrl(
-              item.thumbnail
-            )});
-            `
-          )
-        })
+    // let request = new XMLHttpRequest()
+    // request.open('get', this.jsonUrl)
+    // request.send(null)
+    // request.onload = () => {
+    //   if (request.status == '200') {
+    //     this._json = JSON.parse(request.responseText)
+    //     this.factorList = this._json.factorList
+    //     // 添加视频
+    //     this._json.videoList.forEach((item) => {
+    //       let name = item.videoId
+    //       let videourl = this.jsonUrl.replace('index.json', item.videoPath)
+    //       _krpano.call(
+    //         `
+    //         videointerface_addsource(${name}, ${videourl}, ${this.getImageUrl(
+    //           item.thumbnail
+    //         )});
+    //         `
+    //       )
+    //     })
 
-        //添加组件
-        this.addVideoHotspot(this._json.drama?.firstVideoId)
-      }
-    }
+    //     //添加组件
+    //     this.addVideoHotspot(this._json.drama?.firstVideoId)
+    //   }
+    // }
+
+    this.fetchJson(this._url).then((json) => {
+      this._json = json
+      console.log('json==', json)
+
+      this.fetchInteractConfig()
+    })
+  }
+
+  /**
+   * 获取互动组件配置json
+   */
+  fetchInteractConfig() {
+    const interactInfoList = this._json.interactInfoList
+    let count = 0
+    interactInfoList.map((item) => {
+      let url = this._url.replace('index.json', '') + item.interactConfig
+      this.fetchJson(url).then((json) => {
+        count++
+        // 请求完最后一个json开始拼接进interactInfoList
+        if (count == interactInfoList.length) {
+          this.concatJsonToInteractNodeList()
+        }
+        item.interactConfigJson = json
+      })
+    })
+
+    console.error(this._json)
+  }
+
+  concatJsonToInteractNodeList() {
+    const interactNodeList = this._json.interactNodeList
+    interactNodeList.map((item) => {
+      item.interactInfoIdJson = this._json.interactInfoList.find(
+        (info) => info.interactInfoId == item.interactInfoId
+      )
+    })
+
+    console.log('interactConfigJson==', this._json)
+  }
+
+  /**
+   * 请求json
+   * @param {String} url
+   * @returns Promise<json>
+   */
+  fetchJson(url) {
+    return fetch(url).then((response) => response.json())
   }
 
   getFactorList() {
@@ -176,7 +225,6 @@ class PlayerData {
           }
           kxplayer.addInteractiveHotspot(
             id,
-            true,
             'TextModule',
             'tooltip',
             null,
@@ -220,7 +268,6 @@ class PlayerData {
           }
           kxplayer.addInteractiveHotspot(
             id,
-            true,
             'PointClickModule',
             'hotspot',
             styleSetting,
@@ -264,7 +311,6 @@ class PlayerData {
           }
           kxplayer.addInteractiveHotspot(
             id,
-            true,
             'PointClickModule',
             'hotspot',
             styleSetting,

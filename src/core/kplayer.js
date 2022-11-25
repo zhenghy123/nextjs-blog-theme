@@ -82,9 +82,7 @@ class KPlayer {
         videoPlugin.url = './plugins/videoplayer_basic_source.js'
         console.log('url===', this._options.url)
       } else {
-        setTimeout(() => {
-          checkPluginInit()
-        }, 0)
+        setTimeout(checkPluginInit, 0)
       }
     }
     checkPluginInit()
@@ -132,25 +130,37 @@ class KPlayer {
    * @param {*} info 参考互动组件JSON.json
    */
   addComponent(info) {
+    console.log('addComponent==', info)
     if (info.baseSetting.type == 'Interactive') {
-      // 互动组件
-      // if (info.baseSetting.interactiveType == 'OneClick') {
-      // 单击组件添加
       info.interactiveGroup.map((group) => {
         const hotSpot = this.getHotspot(group.id)
         console.log(hotSpot)
+        // 修改组件属性
         if (hotSpot) {
-          if (info.baseSetting.angleFollow == 'layer') {
-            this.setHotspot(group.id, group.styleSetting, 'layer')
-          } else {
-            this.setHotspot(group.id, group.styleSetting, 'layer')
+          if (info.baseSetting.name == '文本') {
+            this.setTextComp(
+              group.id,
+              info.baseSetting.angleFollow ? 'layer' : 'hotspot',
+              group.styleSetting,
+              group.textSetting,
+              group.transform2DSetting
+            )
+          } else if (
+            info.baseSetting.name == '点击' ||
+            info.baseSetting.name == '组合点击'
+          ) {
+            this.setOptionBranchComp(
+              group.id,
+              info.baseSetting.angleFollow ? 'layer' : 'hotspot',
+              group.styleSetting,
+              group.textSetting,
+              group.transform2DSetting
+            )
           }
         } else {
           console.log('添加组件', group.id)
-          // TODO:多坐标组件需要在添加前计算好坐标，具体坐标计算方法会提供
           this.addInteractiveHotspot(
             group.id,
-            true,
             info.baseSetting.name,
             info.baseSetting.angleFollow ? 'layer' : 'hotspot',
             group.styleSetting,
@@ -159,19 +169,12 @@ class KPlayer {
           )
         }
       })
-      // }
-    } else if (info.baseSetting.type == 'Image') {
-      // 图片
-    } else if (info.baseSetting.type == 'Text') {
-      // 文本
     }
   }
 
   /**
    * 添加互动组件热点（会绑定title plugin,border plugin）
    * @param {String} name 热点名（唯一标识，不能以数字开头哦）
-   * @param {String} text 热点文字
-   * @param {Boolean} distorted 畸变（设置后才能进行3D旋转） TODO:hotspot类型热点先写死true，是否需要此字段待定
    * @param {String} compName 组件类型名（如单击）
    * @param {String} type 热点类型（hotspot,layer）
    * @param {Object} styleSetting 组件背景信息
@@ -180,139 +183,45 @@ class KPlayer {
    */
   addInteractiveHotspot(
     name = 'a' + Math.random(),
-    distorted = true,
-    materialName = 'PointClickModule',
+    compName = 'PointClickModule',
     type = 'hotspot',
     styleSetting = null,
     textSetting = null,
     transform2DSetting = null
   ) {
-    if (type == 'hotspot') {
-      _krpano.call(
-        `
-        addhotspot(${name});
-        set(hotspot[${name}].visible,false);
-        set(hotspot[${name}].keep,true);
-        set(hotspot[${name}].zoom,true);
-        set(hotspot[${name}].flag,'hotspot');
-        set(hotspot[${name}].distorted,${distorted});
-        set(hotspot[${name}].ath,${transform2DSetting?.x || 0});
-        set(hotspot[${name}].atv,${transform2DSetting?.y || 0});
-        set(hotspot[${name}].width,${transform2DSetting?.width || '100'});
-        set(hotspot[${name}].height,${transform2DSetting?.height || '100'});
-        set(hotspot[${name}].scale,${transform2DSetting?.scaleX || 1});
-        set(hotspot[${name}].rotate,${transform2DSetting?.rotate || 0});
-        set(hotspot[${name}].alpha,${transform2DSetting?.opacity || 1});
-        set(hotspot[${name}].rx,${transform2DSetting?.rotateX || 0});
-        set(hotspot[${name}].ry,${transform2DSetting?.rotateY || 0});
-        set(hotspot[${name}].rz,${transform2DSetting?.rotateZ || 0});
-        set(hotspot[${name}].text,${textSetting?.text || '默认文本'});
-        set(hotspot[${name}].url,${
-          styleSetting?.beforeTrigger ||
-          InteractiveEnums[materialName].beforeTrigger
-        });
-        set(hotspot[${name}].beforeTrigger,${
-          styleSetting?.beforeTrigger ||
-          InteractiveEnums[materialName].beforeTrigger
-        });
-        set(hotspot[${name}].triggering,${
-          styleSetting?.triggering || InteractiveEnums[materialName].triggering
-        });
-        set(hotspot[${name}].afterTrigger,${
-          styleSetting?.afterTrigger ||
-          InteractiveEnums[materialName].afterTrigger
-        });
-        set(hotspot[${name}].onloaded,add_all_the_time_tooltip);
-        set(hotspot[${name}].ondown,ondownfn);
-        set(hotspot[${name}].onup,onupfn);
-        `
+    if (compName == 'TextModule') {
+      this.addTextComp(
+        name,
+        type,
+        styleSetting,
+        textSetting,
+        transform2DSetting
       )
-      if (styleSetting.action.actionType == 'SWITCHVIDEO') {
-        _krpano.call(
-          `set(hotspot[${name}].onclick, videointerface_play(${styleSetting.action.nextVideo}));`
-        )
-      } else if (styleSetting.action.actionType == 'JUMPTIME') {
-        _krpano.call(
-          `set(hotspot[${name}].onclick, skin_video_updatetime(${styleSetting.action.jumpTime}));`
-        )
-      }
-    } else {
-      // set(layer[${name}].x,${transform2DSetting?.x ||110});
-      // set(layer[${name}].y,${transform2DSetting?.y ||110});
-      _krpano.call(
-        `
-        addlayer(${name});
-        set(layer[${name}].visible,false);
-        set(layer[${name}].keep,true);
-        set(layer[${name}].edge,center);
-        set(layer[${name}].flag,'layer');
-        set(layer[${name}].x,${transform2DSetting?.x || 110});
-        set(layer[${name}].y,${transform2DSetting?.y || 110});
-        set(layer[${name}].width,${transform2DSetting?.width || '100'});
-        set(layer[${name}].height,${transform2DSetting?.height || '100'});
-        set(layer[${name}].scale,${transform2DSetting?.scaleX || 1});
-        set(layer[${name}].rotate,${transform2DSetting?.rotate || 0});
-        set(layer[${name}].alpha,${transform2DSetting?.opacity || 1});
-        set(layer[${name}].rx,${transform2DSetting?.rotateX || 0});
-        set(layer[${name}].ry,${transform2DSetting?.rotateY || 0});
-        set(layer[${name}].rz,${transform2DSetting?.rotateZ || 0});
-        set(layer[${name}].text,${textSetting?.text || '默认文本'});
-        set(layer[${name}].url,${
-          styleSetting?.beforeTrigger ||
-          InteractiveEnums[materialName].beforeTrigger
-        });
-        set(layer[${name}].beforeTrigger,${
-          styleSetting?.beforeTrigger ||
-          InteractiveEnums[materialName].beforeTrigger
-        });
-        set(layer[${name}].triggering,${
-          styleSetting?.triggering || InteractiveEnums[materialName].triggering
-        });
-        set(layer[${name}].afterTrigger,${
-          styleSetting?.afterTrigger ||
-          InteractiveEnums[materialName].afterTrigger
-        });
-        set(layer[${name}].onloaded,add_all_the_time_tooltip);
-        set(layer[${name}].ondown,ondownfn);
-        set(layer[${name}].onup,onupfn);
-        `
+    } else if (compName == 'PointClickModule') {
+      this.addOptionBranchComp(
+        name,
+        type,
+        styleSetting,
+        textSetting,
+        transform2DSetting
+      )
+    } else if (compName == 'ClickGroupModule') {
+      this.addOptionBranchComp(
+        name,
+        type,
+        styleSetting,
+        textSetting,
+        transform2DSetting
+      )
+    } else if (compName == 'ContinueClickModule') {
+      this.addOptionBranchComp(
+        name,
+        type,
+        styleSetting,
+        textSetting,
+        transform2DSetting
       )
     }
-
-    // 判断热点 tooltip plugin 是否成功加载
-    let tootipObj = null
-    const checkHasOnloaded = () => {
-      if (type == 'hotspot') {
-        tootipObj = _krpano.hotspot.getItem(name)
-      } else {
-        tootipObj = _krpano.plugin.getItem('tooltip_' + name)
-      }
-      if (!tootipObj) {
-        setTimeout(() => {
-          checkHasOnloaded()
-        }, 200)
-      } else {
-        // 设置tooltip文本样式
-        if (textSetting) {
-          // TODO:貌似中划线才能识别
-          let obj = {
-            align: textSetting.align,
-            color: textSetting.fill,
-            'font-size': textSetting.fontSize + 'px',
-            'font-family': textSetting.fontFamily,
-            'font-style': textSetting.fontStyle,
-            'text-decoration': textSetting.textDecoration,
-          }
-
-          if (type == 'hotspot') {
-            this.setHotspot(name, obj, 'hotspot')
-          } else {
-            this.setHotspot(name, { css: obj }, 'tooltip')
-          }
-        }
-      }
-    }
-    checkHasOnloaded()
 
     return {
       name: name,
@@ -320,83 +229,6 @@ class KPlayer {
       bordername: 'border_' + name,
     }
   }
-
-  /**
-   * 添加热点(跟随视角)
-   * 注意：为确保位置统一，layer使用相对位置% --拖动action需特殊处理
-   * @param {String} name 热点名（唯一标识，不能以数字开头哦）
-   * @param {String} moduleType 互动组件类型，参考player-interactives
-   * @param {Object} styleSetting 组件背景信息
-   * @param {Object} textSetting 组件文本信息
-   * @param {Object} transform2DSetting 组件变换信息
-   */
-  addLayer({
-    name,
-    type,
-    styleSetting = null,
-    textSetting = null,
-    transform2DSetting = null,
-  }) {
-    if (!name) {
-      throw new Error('addLayer params of name can not empty!')
-    }
-
-    if (!type) {
-      throw new Error('addLayer params of type can not empty!')
-    }
-
-    _krpano.call(
-      `
-      addlayer(${name});
-      set(layer[${name}].keep,true);
-      set(layer[${name}].edge,center);
-      set(layer[${name}].flag,'layer');
-      set(layer[${name}].x,${transform2DSetting?.x || '50%'});
-      set(layer[${name}].y,${transform2DSetting?.y || '50%'});
-      set(layer[${name}].width,${transform2DSetting?.width || '100'});
-      set(layer[${name}].height,${transform2DSetting?.height || '100'});
-      set(layer[${name}].scale,${transform2DSetting?.scaleX || 1});
-      set(layer[${name}].rotate,${transform2DSetting?.rotate || 0});
-      set(layer[${name}].alpha,${transform2DSetting?.opacity || 1});
-      set(layer[${name}].text,${textSetting?.text || '默认文本'});
-      set(layer[${name}].url,${
-        styleSetting?.beforeTrigger ||
-        InteractiveEnums[materialName].beforeTrigger
-      });
-      set(layer[${name}].beforeTrigger,${
-        styleSetting?.beforeTrigger ||
-        InteractiveEnums[materialName].beforeTrigger
-      });
-      set(layer[${name}].triggering,${
-        styleSetting?.triggering || InteractiveEnums[materialName].triggering
-      });
-      set(layer[${name}].afterTrigger,${
-        styleSetting?.afterTrigger ||
-        InteractiveEnums[materialName].afterTrigger
-      });
-      set(layer[${name}].onloaded,add_all_the_time_tooltip);
-      set(layer[${name}].ondown,ondownfn);
-      set(layer[${name}].onup,onupfn);
-      `
-    )
-  }
-
-  /**
-   * 添加热点(空间位置)
-   * 注意：hotspot使用的是球面坐标+depth，如需转换三维坐标需要调用spheretospace
-   * @param {String} name 热点名（唯一标识，不能以数字开头哦）
-   * @param {String} moduleType 互动组件类型，参考player-interactives
-   * @param {Object} styleSetting 组件背景信息
-   * @param {Object} textSetting 组件文本信息
-   * @param {Object} transform2DSetting 组件变换信息
-   */
-  addHotspot({
-    name,
-    type,
-    styleSetting = null,
-    textSetting = null,
-    transform2DSetting = null,
-  }) {}
 
   /**
    * 检查是否已经加载
@@ -427,94 +259,224 @@ class KPlayer {
     })
   }
 
-  // setHotspot(){}
-
-  /**
-   * 修改热点信息
-   * 注意：layer的文字信息修改是tooltip_`name`
-   * @param {String} name 热点名
-   * @param {Object} info 修改信息对象
-   */
-  setLayer(name, info) {
-    let tooltip = _krpano.plugin.getItem('tooltip_' + name)
-    Object.keys(info).map((item) => {
-      // 修改style样式
-      if (item == 'css') {
-        let cssObj = info.css
-        let cssStyle = tooltip.css.split(';')
-
-        Object.keys(cssObj).map((citem) => {
-          // 样式需要转换成中划线的形式
-          let citemML = this.toMiddleLine(citem)
-          cssStyle.map((citem, index) => {
-            if (citem.indexOf(citemML) != -1) {
-              cssStyle.splice(index, 1)
-            }
-          })
-          cssStyle.push(`${citemML}:${cssObj[citem]}`)
-        })
-
-        tooltip.css = cssStyle.join(';')
-      } else {
-        // 修改layer本身
-        tooltip[item] = info[item]
-      }
-    })
-    return obj
-  }
-
-  /**
-   * 添加文本热点
-   */
-  addImageHotspot() {}
-
   /**
    * 添加文字热点
    */
-  addTextHotspot() {}
-
-  /**
-   * 添加视频热点
-   */
-  addVideoHotspot() {}
-
-  /**
-   * 修改热点
-   * @param {String} name 热点名
-   * @param {Object} keyvalue 热点属性key:value
-   * @param {String} type hotspot|tooltip
-   */
-  setHotspot(name, keyvalue, type = 'hotspot') {
+  addTextComp(name, type, styleSetting, textSetting, transform2DSetting) {
     if (type == 'hotspot') {
-      let obj = _krpano.hotspot.getItem(name)
-      Object.keys(keyvalue).map((item) => {
-        // console.log(item, keyvalue[item]);
-        obj[item] = keyvalue[item]
-      })
-      return obj
+      krpano.call(
+        `
+        addhotspot(${name});
+        set(hotspot[${name}].type,text);
+        set(hotspot[${name}].keep,true);
+        set(hotspot[${name}].zoom,true);
+        set(hotspot[${name}].edge,center);
+        set(hotspot[${name}].bg,false);
+        set(hotspot[${name}].flag,'hotspot');
+        set(hotspot[${name}].distorted,true);
+        set(hotspot[${name}].ondown,ondownfn);
+        set(hotspot[${name}].onup,onupfn);
+        set(hotspot[${name}].onloaded,add_all_the_time_border);
+        `
+      )
     } else {
-      let obj = _krpano.plugin.getItem('tooltip_' + name)
-      Object.keys(keyvalue).map((item) => {
-        if (item == 'css') {
-          let kvs = keyvalue[item]
-          let cssStyle = obj.css.split(';')
+      // 注意layer的scale需要加到css上
+      krpano.call(
+        `
+        addlayer(${name});
+        set(layer[${name}].type,text);
+        set(layer[${name}].keep,true);
+        set(layer[${name}].zoom,true);
+        set(layer[${name}].edge,center);
+        set(layer[${name}].bg,false);
+        set(layer[${name}].flag,'layer');
+        set(layer[${name}].autowidth,auto);
+        set(layer[${name}].autoheight,auto);
+        set(layer[${name}].ondown,ondownfn);
+        set(layer[${name}].onup,onupfn);
+        set(layer[${name}].onloaded,add_all_the_time_border);
+        `
+      )
+    }
+    this.setTextComp(name, type, styleSetting, textSetting, transform2DSetting)
+  }
 
-          Object.keys(kvs).map((kvitem) => {
-            let middlekvitem = this.toMiddleLine(kvitem)
-            cssStyle.map((citem, index) => {
-              if (citem.indexOf(middlekvitem) != -1) {
-                cssStyle.splice(index, 1)
-              }
-            })
-            cssStyle.push(`${middlekvitem}:${kvs[kvitem]}`)
-          })
+  /**
+   * 添加选项分支组件
+   */
+  addOptionBranchComp(
+    name,
+    type,
+    styleSetting,
+    textSetting,
+    transform2DSetting,
+    compName
+  ) {
+    if (type == 'hotspot') {
+      krpano.call(
+        `
+        addhotspot(${name});
+        set(hotspot[${name}].type,image);
+        set(hotspot[${name}].keep,true);
+        set(hotspot[${name}].zoom,true);
+        set(hotspot[${name}].edge,center);
+        set(hotspot[${name}].flag,'hotspot');
+        set(hotspot[${name}].distorted,true);
+        set(hotspot[${name}].ondown,ondownfn);
+        set(hotspot[${name}].onup,onupfn);
+        set(hotspot[${name}].onloaded,add_all_the_time_tooltip);
+        `
+      )
+    } else {
+      // 注意layer的scale需要加到css上
+      krpano.call(
+        `
+        addlayer(${name});
+        set(layer[${name}].type,image);
+        set(layer[${name}].keep,true);
+        set(layer[${name}].zoom,true);
+        set(layer[${name}].edge,center);
+        set(layer[${name}].flag,'layer');
+        set(layer[${name}].ondown,ondownfn);
+        set(layer[${name}].onup,onupfn);
+        set(layer[${name}].onloaded,add_all_the_time_tooltip);
+        `
+      )
+    }
+    this.setOptionBranchComp(
+      name,
+      type,
+      styleSetting,
+      textSetting,
+      transform2DSetting
+    )
+  }
 
-          obj.css = cssStyle.join(';')
-        } else {
-          obj[item] = keyvalue[item]
-        }
-      })
-      return obj
+  /**
+   * 设置文本组件属性值
+   */
+  setTextComp(name, type, styleSetting, textSetting, transform2DSetting) {
+    // 后面如果需要设置别的再加
+    //   let css = {
+    //     // align: textSetting.align,
+    //     color: textSetting.fill,
+    //     'font-size': textSetting.fontSize + 'px',
+    //     // 'font-family': textSetting.fontFamily,
+    //     // 'font-style': textSetting.fontStyle,
+    //     // 'text-decoration': textSetting.textDecoration,
+    //     scale: transform2DSetting?.scaleX || 1,
+    //   };
+    //   params.css = css;
+    // }
+
+    if (type == 'hotspot') {
+      krpano.call(
+        `
+        set(hotspot[${name}].ath,${transform2DSetting?.x || 0});
+        set(hotspot[${name}].atv,${transform2DSetting?.y || 0});
+        set(hotspot[${name}].depth,${transform2DSetting?.z || 200});
+        set(hotspot[${name}].rx,${transform2DSetting?.rotationX || 0});
+        set(hotspot[${name}].ry,${transform2DSetting?.rotationY || 0});
+        set(hotspot[${name}].rz,${transform2DSetting?.rotationZ || 0});
+        set(hotspot[${name}].scale,${transform2DSetting?.scale || 1});
+        set(hotspot[${name}].html,${textSetting?.text || '默认文本'});
+        set(hotspot[${name}].css,"color:${
+          textSetting?.fill || '0xffffff'
+        };font-size:${textSetting?.fontSize || 16}px;");
+        `
+      )
+    } else {
+      krpano.call(
+        `
+        set(layer[${name}].x,${
+          transform2DSetting?.x ? transform2DSetting?.x + '%' : '50%'
+        });
+        set(layer[${name}].y,${
+          transform2DSetting?.y ? transform2DSetting?.y + '%' : '50%'
+        });
+        set(layer[${name}].rotate,${transform2DSetting?.rotation || 0});
+        set(layer[${name}].html,${textSetting?.text || '默认文本'});
+        set(layer[${name}].css,"color:${
+          textSetting?.fill || '0xffffff'
+        };font-size:${textSetting?.fontSize || 16}px;scale:${
+          transform2DSetting?.scaleX || 1
+        }");
+        `
+      )
+    }
+  }
+
+  setOptionBranchComp(
+    name,
+    type,
+    styleSetting,
+    textSetting,
+    transform2DSetting
+  ) {
+    if (type == 'hotspot') {
+      krpano.call(
+        `
+        set(hotspot[${name}].ath,${transform2DSetting?.x || 0});
+        set(hotspot[${name}].atv,${transform2DSetting?.y || 0});
+        set(hotspot[${name}].depth,${transform2DSetting?.z || 800});
+        set(hotspot[${name}].width,${transform2DSetting?.width || '100'});
+        set(hotspot[${name}].height,${transform2DSetting?.height || '100'});
+        set(hotspot[${name}].rx,${transform2DSetting?.rotationX || 0});
+        set(hotspot[${name}].ry,${transform2DSetting?.rotationY || 0});
+        set(hotspot[${name}].rz,${transform2DSetting?.rotationZ || 0});
+        set(hotspot[${name}].scale,${transform2DSetting?.scale || 1});
+        set(hotspot[${name}].url,${
+          styleSetting?.styleEffect.beforeTrigger.previewPath ||
+          InteractiveEnums[materialName].beforeTrigger
+        });
+       set(hotspot[${name}].beforeTrigger,${
+          styleSetting?.styleEffect.beforeTrigger.previewPath ||
+          InteractiveEnums[materialName].beforeTrigger
+        });
+       set(hotspot[${name}].triggering,${
+          styleSetting?.styleEffect.triggering.previewPath ||
+          InteractiveEnums[materialName].triggering
+        });
+        set(hotspot[${name}].text,${textSetting?.text || '默认文本'});
+        set(hotspot[${name}].html,${textSetting?.text || '默认文本'});
+        set(hotspot[${name}].css,"color:${
+          textSetting?.fill || '0xffffff'
+        };font-size:${textSetting?.fontSize || 16}px;");
+        `
+      )
+    } else {
+      krpano.call(
+        `
+        set(layer[${name}].x,${
+          transform2DSetting?.x ? transform2DSetting?.x + '%' : '50%'
+        });
+        set(layer[${name}].y,${
+          transform2DSetting?.y ? transform2DSetting?.y + '%' : '50%'
+        });
+        set(layer[${name}].width,${transform2DSetting?.width || '100'});
+        set(layer[${name}].height,${transform2DSetting?.height || '100'});
+        set(layer[${name}].rotate,${transform2DSetting?.rotation || 0});
+        set(layer[${name}].url,${
+          styleSetting?.styleEffect.beforeTrigger.previewPath ||
+          InteractiveEnums[materialName].beforeTrigger
+        });
+        set(layer[${name}].beforeTrigger,${
+          styleSetting?.styleEffect.beforeTrigger.previewPath ||
+          InteractiveEnums[materialName].beforeTrigger
+        });
+         set(layer[${name}].triggering,${
+          styleSetting?.styleEffect.triggering.previewPath ||
+          InteractiveEnums[materialName].triggering
+        });
+        set(layer[${name}].text,${textSetting?.text || '默认文本'});
+        set(layer[${name}].html,${textSetting?.text || '默认文本'});
+        set(layer[${name}].css,"color:${
+          textSetting?.fill || '0xffffff'
+        };font-size:${textSetting?.fontSize || 16}px;scale:${
+          transform2DSetting?.scaleX || 1
+        }");
+        `
+      )
     }
   }
 
@@ -621,10 +583,6 @@ class KPlayer {
 
   getHotspot(name, type = 'hotspot') {
     return _krpano.hotspot.getItem(name) || _krpano.layer.getItem(name)
-    // if (type == 'hotspot') {
-    // } else {
-    //   return _krpano.layer.getItem(name);
-    // }
   }
 
   /**
