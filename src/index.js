@@ -26,7 +26,7 @@ function createPlayer(id = '', url = '', options = {}) {
         window._krpano = _krpano
 
         const playList = new PlayerData(
-          'http://localhost:8001/video/index.json'
+          'http://localhost:8080/video/index.json'
         )
         window.playList = playList
 

@@ -1,6 +1,7 @@
 import { PlayerEvents } from './player-events'
 import { InteractiveEnums } from './player-interactives'
 import { DefaultVideoOptions } from './player-config'
+import { pathTimeUpdate, pathSpotClick } from './pathChoice'
 
 import EventEmitter from 'events'
 
@@ -26,7 +27,6 @@ class KPlayer {
   init() {
     _krpano.global.ispreview = this._options.ispreview
     window.hotspotClick = this.hotspotClick.bind(this)
-    window.updatetime = this.updatetime.bind(this)
 
     Object.defineProperty(this._options, 'ispreview', {
       set(val) {
@@ -37,6 +37,13 @@ class KPlayer {
       get() {
         return _krpano.global.ispreview
       },
+    })
+
+    this._emitter.on('timeupdate', (val) => {
+      pathTimeUpdate(val)
+    })
+    this._emitter.on('hotspotClick', (val) => {
+      pathSpotClick(val)
     })
   }
 
@@ -59,10 +66,11 @@ class KPlayer {
         item.visible = false
       }
     })
-
     if (this._options.hotspotClick) {
       this._options.hotspotClick(name)
     }
+
+    this._emitter.emit('hotspotClick', name)
   }
 
   initVideo() {
@@ -92,8 +100,8 @@ class KPlayer {
     _krpano.plugin.getItem('video').videourl = this._options.url
   }
 
-  changeVideo(url) {
-    _krpano.plugin.getItem('video').togglevideo(url)
+  changeVideo(url, id) {
+    _krpano.plugin.getItem('video').togglevideo(url, id)
   }
 
   /**
@@ -123,6 +131,30 @@ class KPlayer {
 
   pause() {
     _krpano.plugin.getItem('video').pause()
+  }
+
+  setCurrentTime(time) {
+    _krpano.plugin.getItem('video').time = time
+  }
+
+  getCurrentTime() {
+    return _krpano.plugin.getItem('video').time
+  }
+
+  getVideoId() {
+    return _krpano.plugin.getItem('video').videoId
+  }
+
+  getLayerArray() {
+    return _krpano.layer.getArray()
+  }
+
+  delAllHotspot() {
+    _krpano.call('loop(hotspot.count GT 0, removehotspot(0));')
+  }
+
+  delLayer(name) {
+    _krpano.removelayer(name, true)
   }
 
   /**
@@ -213,14 +245,6 @@ class KPlayer {
         textSetting,
         transform2DSetting
       )
-    } else if (compName == 'ContinueClickModule') {
-      this.addOptionBranchComp(
-        name,
-        type,
-        styleSetting,
-        textSetting,
-        transform2DSetting
-      )
     }
 
     return {
@@ -231,40 +255,11 @@ class KPlayer {
   }
 
   /**
-   * 检查是否已经加载
-   * 注意：krpano添加热点等一些方法是异步行为，添加后无法立即获取
-   * @param {String} name 热点名
-   * @param {String} type 热点类型
-   */
-  checkHasLoaded(name, type = 'hotspot') {
-    return new Promise((resolve, reject) => {
-      let count = 0
-      let isLoaded = () => {
-        let obj =
-          type == 'hotspot'
-            ? _krpano.hotspot.getItem(name)
-            : _krpano.layer.getItem(name)
-        if (obj) {
-          resolve(name)
-        } else {
-          if (count >= 10) {
-            reject('checkHasLoaded error please check whether the name exists!')
-          }
-          count++
-          setTimeout(isLoaded, 200)
-        }
-      }
-
-      isLoaded()
-    })
-  }
-
-  /**
    * 添加文字热点
    */
   addTextComp(name, type, styleSetting, textSetting, transform2DSetting) {
     if (type == 'hotspot') {
-      krpano.call(
+      _krpano.call(
         `
         addhotspot(${name});
         set(hotspot[${name}].type,text);
@@ -281,9 +276,10 @@ class KPlayer {
       )
     } else {
       // 注意layer的scale需要加到css上
-      krpano.call(
+      _krpano.call(
         `
         addlayer(${name});
+        set(layer[${name}].enabled,false);
         set(layer[${name}].type,text);
         set(layer[${name}].keep,true);
         set(layer[${name}].zoom,true);
@@ -309,11 +305,10 @@ class KPlayer {
     type,
     styleSetting,
     textSetting,
-    transform2DSetting,
-    compName
+    transform2DSetting
   ) {
     if (type == 'hotspot') {
-      krpano.call(
+      _krpano.call(
         `
         addhotspot(${name});
         set(hotspot[${name}].type,image);
@@ -329,7 +324,7 @@ class KPlayer {
       )
     } else {
       // 注意layer的scale需要加到css上
-      krpano.call(
+      _krpano.call(
         `
         addlayer(${name});
         set(layer[${name}].type,image);
@@ -370,7 +365,7 @@ class KPlayer {
     // }
 
     if (type == 'hotspot') {
-      krpano.call(
+      _krpano.call(
         `
         set(hotspot[${name}].ath,${transform2DSetting?.x || 0});
         set(hotspot[${name}].atv,${transform2DSetting?.y || 0});
@@ -386,7 +381,7 @@ class KPlayer {
         `
       )
     } else {
-      krpano.call(
+      _krpano.call(
         `
         set(layer[${name}].x,${
           transform2DSetting?.x ? transform2DSetting?.x + '%' : '50%'
@@ -394,7 +389,7 @@ class KPlayer {
         set(layer[${name}].y,${
           transform2DSetting?.y ? transform2DSetting?.y + '%' : '50%'
         });
-        set(layer[${name}].rotate,${transform2DSetting?.rotation || 0});
+        set(layer[${name}].rotate,${transform2DSetting?.rotate || 0});
         set(layer[${name}].html,${textSetting?.text || '默认文本'});
         set(layer[${name}].css,"color:${
           textSetting?.fill || '0xffffff'
@@ -414,7 +409,7 @@ class KPlayer {
     transform2DSetting
   ) {
     if (type == 'hotspot') {
-      krpano.call(
+      _krpano.call(
         `
         set(hotspot[${name}].ath,${transform2DSetting?.x || 0});
         set(hotspot[${name}].atv,${transform2DSetting?.y || 0});
@@ -426,16 +421,19 @@ class KPlayer {
         set(hotspot[${name}].rz,${transform2DSetting?.rotationZ || 0});
         set(hotspot[${name}].scale,${transform2DSetting?.scale || 1});
         set(hotspot[${name}].url,${
-          styleSetting?.styleEffect.beforeTrigger.previewPath ||
+          styleSetting?.beforeTrigger ||
           InteractiveEnums[materialName].beforeTrigger
         });
        set(hotspot[${name}].beforeTrigger,${
-          styleSetting?.styleEffect.beforeTrigger.previewPath ||
+          styleSetting?.beforeTrigger ||
           InteractiveEnums[materialName].beforeTrigger
         });
        set(hotspot[${name}].triggering,${
-          styleSetting?.styleEffect.triggering.previewPath ||
-          InteractiveEnums[materialName].triggering
+          styleSetting?.triggering || InteractiveEnums[materialName].triggering
+        });
+        set(hotspot[${name}].afterTrigger,${
+          styleSetting?.afterTrigger ||
+          InteractiveEnums[materialName].afterTrigger
         });
         set(hotspot[${name}].text,${textSetting?.text || '默认文本'});
         set(hotspot[${name}].html,${textSetting?.text || '默认文本'});
@@ -445,7 +443,7 @@ class KPlayer {
         `
       )
     } else {
-      krpano.call(
+      _krpano.call(
         `
         set(layer[${name}].x,${
           transform2DSetting?.x ? transform2DSetting?.x + '%' : '50%'
@@ -455,18 +453,21 @@ class KPlayer {
         });
         set(layer[${name}].width,${transform2DSetting?.width || '100'});
         set(layer[${name}].height,${transform2DSetting?.height || '100'});
-        set(layer[${name}].rotate,${transform2DSetting?.rotation || 0});
+        set(layer[${name}].rotate,${transform2DSetting?.rotate || 0});
         set(layer[${name}].url,${
-          styleSetting?.styleEffect.beforeTrigger.previewPath ||
+          styleSetting?.beforeTrigger ||
           InteractiveEnums[materialName].beforeTrigger
         });
         set(layer[${name}].beforeTrigger,${
-          styleSetting?.styleEffect.beforeTrigger.previewPath ||
+          styleSetting?.beforeTrigger ||
           InteractiveEnums[materialName].beforeTrigger
         });
          set(layer[${name}].triggering,${
-          styleSetting?.styleEffect.triggering.previewPath ||
-          InteractiveEnums[materialName].triggering
+          styleSetting?.triggering || InteractiveEnums[materialName].triggering
+        });
+        set(layer[${name}].afterTrigger,${
+          styleSetting?.afterTrigger ||
+          InteractiveEnums[materialName].afterTrigger
         });
         set(layer[${name}].text,${textSetting?.text || '默认文本'});
         set(layer[${name}].html,${textSetting?.text || '默认文本'});
@@ -551,6 +552,17 @@ class KPlayer {
     })
   }
 
+  showOrHideComp(name, type, visible) {
+    let arr =
+      type == 'layer' ? _krpano.layer.getArray() : _krpano.hotspot.getArray()
+
+    arr.map((item) => {
+      if (name == item.name) {
+        item.visible = visible
+      }
+    })
+  }
+
   // 隐藏全部选择框
   hideAllBorderSelect() {
     let layers = _krpano.layer.getArray()
@@ -607,58 +619,6 @@ class KPlayer {
     this.changeScene('noscene')
 
     // removepano('krpanoHTMLObject');
-  }
-
-  updatetime(time) {
-    let ispaused = _krpano.plugin.getItem('video').ispaused
-    let id = _krpano.plugin.getItem('video').videoId
-    let interactNodeId = playList.getVideoParam(id)?.interactNodeId
-    let list = playList.getVidioInteract(interactNodeId)
-    let factorList = playList.getFactorList()
-    list.forEach((item) => {
-      let interactInfoId = item.interactInfoId
-      let startTime = item.startTime
-      let duration = item.duration
-      let playState = item.playState
-      let endState = item.endState
-      let visible_item = true // 显隐
-      let showConditionList = item.showConditionList
-      showConditionList.forEach((item) => {
-        let value = factorList.find((val) => val.key == item.key)?.value
-        if (!eval(value + item.operator + item.temp)) {
-          visible_item = false
-        }
-      })
-      if (visible_item) {
-        if (time >= startTime && time < duration) {
-          visible_item = true
-          // if(playState == 'pause'){
-          //   _krpano.plugin.getItem('video').pause()
-          // } else {
-          //   _krpano.plugin.getItem('video').play()
-          // }
-        } else if (time >= duration) {
-          if (endState == 'hide') {
-            visible_item = false
-          }
-        } else {
-          visible_item = false
-        }
-      }
-      let interactInfoIdItem = playList
-        .getInteractInfoList()
-        .find((val) => val.interactInfoId == item.interactInfoId)
-      if (interactInfoIdItem.interactInfo.type == 'TextModule') {
-        _krpano.call(
-          `set(layer[${interactInfoIdItem.interactInfoId}].visible, ${visible_item});`
-        )
-      } else if (interactInfoIdItem.interactInfo.type == 'PointClickModule') {
-        let hotspot_list = _krpano.hotspot.getArray()
-        hotspot_list.forEach((item) => {
-          _krpano.call(`set(hotspot[${item.name}].visible, ${visible_item});`)
-        })
-      }
-    })
   }
 }
 

@@ -59,8 +59,6 @@ class PlayerData {
         item.interactConfigJson = json
       })
     })
-
-    console.error(this._json)
   }
 
   concatJsonToInteractNodeList() {
@@ -70,7 +68,7 @@ class PlayerData {
         (info) => info.interactInfoId == item.interactInfoId
       )
     })
-
+    this.addVideoHotspot(this._json.drama?.firstVideoId)
     console.log('interactConfigJson==', this._json)
   }
 
@@ -84,7 +82,7 @@ class PlayerData {
   }
 
   getFactorList() {
-    return this.factorList
+    return this._json.factorList
   }
   getFileJson(url) {
     return new Promise((resolve, reject) => {
@@ -191,16 +189,18 @@ class PlayerData {
    * 添加视频热点
    * interactNodeId:视频参数interactNodeId
    */
-  async setVideoHotspot(interactNodeId) {
-    let listInfo = this.getVidioInteractInfo(interactNodeId)
+  setVideoHotspot(interactNodeId) {
+    let listInfo = this.getVidioInteract(interactNodeId)
     for (let i = 0; i < listInfo.length; i++) {
-      let file = this.jsonUrl.replace('index.json', listInfo[i].interactConfig)
-      let info = await this.getFileJson(file)
-      let type = listInfo[i].interactInfo.type
+      let type = listInfo[i].interactInfoIdJson.interactInfo.type
+      let info = listInfo[i].interactInfoIdJson.interactConfigJson
       if (type == 'TextModule') {
         //文本
-        let id = listInfo[i].interactInfoId
-        info.metas.forEach((item) => {
+        info.metas.map((item) => {
+          let _id = item.id
+          if (!_id) _id = 0
+          let id = listInfo[i].interactInfoId + _id
+          item.name = id
           let style = item.style
           let textSetting = {
             text: item.text,
@@ -226,7 +226,7 @@ class PlayerData {
           kxplayer.addInteractiveHotspot(
             id,
             'TextModule',
-            'tooltip',
+            'layer',
             null,
             textSetting,
             transform2DSetting
@@ -234,8 +234,11 @@ class PlayerData {
         })
       } else if (type == 'PointClickModule') {
         //点选
-        info.btns.forEach((item) => {
-          let id = listInfo[i].interactInfoId + item.id
+        info.btns.map((item) => {
+          let _id = item.id
+          if (!_id) _id = 0
+          let id = listInfo[i].interactInfoId + _id
+          item.name = id
           let action = {}
           if (item.action && item.action.length > 0) action = item.action[0]
           let style = item.style
@@ -252,7 +255,6 @@ class PlayerData {
             beforeTrigger: this.getImageUrl(item.backgroundImageBeforeClick),
             triggering: this.getImageUrl(item.backgroundImageClick),
             afterTrigger: this.getImageUrl(item.backgroundImageAfterClick),
-            action: action,
           }
           let transform2DSetting = {
             x: style.posX,
@@ -277,8 +279,11 @@ class PlayerData {
         })
       } else if (type == 'ClickGroupModule') {
         //点击组合
-        info.btns.forEach((item) => {
-          let id = listInfo[i].interactInfoId + item.id
+        info.btns.map((item) => {
+          let _id = item.id
+          if (!_id) _id = 0
+          let id = listInfo[i].interactInfoId + _id
+          item.name = id
           let action = {}
           if (item.action && item.action.length > 0) action = item.action[0]
           let style = item.style
@@ -295,7 +300,6 @@ class PlayerData {
             beforeTrigger: this.getImageUrl(item.backgroundImageBeforeClick),
             triggering: this.getImageUrl(item.backgroundImageClick),
             afterTrigger: this.getImageUrl(item.backgroundImageAfterClick),
-            action: action,
           }
           let transform2DSetting = {
             x: style.posX,
@@ -311,7 +315,7 @@ class PlayerData {
           }
           kxplayer.addInteractiveHotspot(
             id,
-            'PointClickModule',
+            'ClickGroupModule',
             'hotspot',
             styleSetting,
             textSetting,
@@ -320,6 +324,14 @@ class PlayerData {
         })
       }
     }
+  }
+  /**
+   * 获取视频地址
+   * @param {视频url} videoUrl
+   * @returns
+   */
+  getVideoUrl(videoUrl) {
+    return this.jsonUrl.replace('index.json', videoUrl)
   }
   /**
    * 获取图片地址

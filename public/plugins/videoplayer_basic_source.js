@@ -123,12 +123,6 @@ var krpanoplugin = function () {
         setter: null,
         getter: null,
       },
-      {
-        key: 'playvideo',
-        value: playvideo,
-        setter: null,
-        getter: null,
-      },
     ]
 
     arr.map((item) => {
@@ -308,46 +302,15 @@ var krpanoplugin = function () {
    * 视频切换
    * 播放器不做视频提前缓存，可外部缓存好后传入地址浏览器缓存可以复用
    */
-  function togglevideo(url) {
+  function togglevideo(url, id) {
     let flag = video.paused
     plugin.videourl = url
+    plugin.videoId = id
     flag ? video.pause() : video.play()
-    plugin.lastCurrentTime = Math.random()
-    krpano.actions.updatescreen()
-  }
-
-  /**
-   * 视频切换
-   * 播放器不做视频提前缓存，可外部缓存好后传入地址浏览器缓存可以复用
-   */
-  function playvideo(url, posterurl, videoId, starttime) {
-    // 删除上一个视频的热点和文本
-    krpano.call('loop(hotspot.count GT 0, removehotspot(0));')
-    let list = krpano.layer.getArray()
-    list.forEach((item) => {
-      if (item.name.indexOf('tooltip_') != -1) {
-        krpano.removelayer(item.name, true)
-      }
-    })
-
-    let id = krpano.plugin.getItem('video').videoId
-    let list2 = playList.getAllVideoNodeName(id)
-    list2.forEach((item) => {
-      krpano.removelayer(item.interactInfoId, true)
-    })
-
-    //添加组件
-    playList.addVideoHotspot(videoId)
-
-    let flag = video.paused
-    plugin.videourl = url
-    plugin.posterurl = posterurl
-    plugin.videoId = videoId
     if (video.currentTime == 0) {
       video.currentTime = 0.00001
     }
-    flag ? video.pause() : video.play()
-    plugin.lastCurrentTime = starttime
+    plugin.lastCurrentTime = Math.random()
     krpano.actions.updatescreen()
   }
 }

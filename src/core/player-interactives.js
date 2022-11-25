@@ -32,3 +32,12 @@ export const enumTranslate = {
   ClickGroupModule: 'ClickGroupModule',
   ContinueClickMdule: 'ContinueClickMdule',
 }
+
+// 热点跳转状态
+export const HotToState = {
+  HIDE: 'hide',
+  CountDown: 'countDown',
+  SWITCHVIDEO: 'SWITCHVIDEO',
+  JUMPTIME: 'JUMPTIME',
+  FACTOR: 'FACTOR',
+}
