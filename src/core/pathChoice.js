@@ -109,26 +109,27 @@ export function pathSpotClick(val) {
         compoundlist.shift()
       }
       compoundlist.push(parseInt(hotspotBtn.text))
+
       // 结果
       let ctrls = interactInfoIdItem?.interactConfigJson?.ctrls
-      let conditionConfig = ctrls?.find(
-        (item) => item.conditionConfig != null
-      )?.conditionConfig
-      let conditionValue = conditionConfig.conditionValue
+      ctrls?.forEach((item) => {
+        let conditionConfig = item.conditionConfig
+        let conditionValue = conditionConfig?.conditionValue
 
-      let compoundMode = interactInfoIdItem.interactInfo.compoundMode
-      if (compoundMode == CompoundOrder.DISORDER) {
-        compoundlist = compoundlist.sort()
-        conditionValue = conditionValue.sort()
-      }
-      // 匹配正确
-      if (conditionValue.toString() === compoundlist.toString()) {
-        if (conditionConfig.jumpVideoId != null) {
-          changeVideo(interactNodeId, conditionConfig.jumpVideoId)
-        } else if (conditionConfig.jumpTime != null) {
-          kxplayer.setCurrentTime(conditionConfig.jumpTime / 1000)
+        let compoundMode = interactInfoIdItem.interactInfo.compoundMode
+        if (compoundMode == CompoundOrder.DISORDER) {
+          compoundlist = compoundlist.sort()
+          conditionValue = conditionValue.sort()
         }
-      }
+        // 匹配正确
+        if (conditionValue.toString() === compoundlist.toString()) {
+          if (conditionConfig.jumpVideoId != null) {
+            changeVideo(interactNodeId, conditionConfig.jumpVideoId)
+          } else if (conditionConfig.jumpTime != null) {
+            kxplayer.setCurrentTime(conditionConfig.jumpTime / 1000)
+          }
+        }
+      })
       compoundId = setTimeout(() => {
         compoundlist = []
       }, 2000)
