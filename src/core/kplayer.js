@@ -250,6 +250,7 @@ class KPlayer {
       _krpano.call(
         `
         addhotspot(${name});
+        set(hotspot[${name}].visible,false);
         set(hotspot[${name}].type,text);
         set(hotspot[${name}].keep,true);
         set(hotspot[${name}].zoom,true);
@@ -267,6 +268,7 @@ class KPlayer {
       _krpano.call(
         `
         addlayer(${name});
+        set(layer[${name}].visible,false);
         set(layer[${name}].enabled,false);
         set(layer[${name}].type,text);
         set(layer[${name}].keep,true);
@@ -299,6 +301,7 @@ class KPlayer {
       _krpano.call(
         `
         addhotspot(${name});
+        set(hotspot[${name}].visible,false);
         set(hotspot[${name}].type,image);
         set(hotspot[${name}].keep,true);
         set(hotspot[${name}].zoom,true);
@@ -315,6 +318,7 @@ class KPlayer {
       _krpano.call(
         `
         addlayer(${name});
+        set(layer[${name}].visible,false);
         set(layer[${name}].type,image);
         set(layer[${name}].keep,true);
         set(layer[${name}].zoom,true);
