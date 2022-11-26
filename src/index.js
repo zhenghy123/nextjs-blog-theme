@@ -30,7 +30,7 @@ function createPlayer(id = '', url = '', options = {}) {
         )
         window.playList = playList
 
-        _krpano.actions.showlog()
+        // _krpano.actions.showlog()
         resolve(kplayer)
       },
       onerror: function (err) {
