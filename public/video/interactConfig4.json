@@ -1,124 +1,118 @@
 {
-    "metas": null,
-    "imgs": {
-        "url": "../assets/preview1.png"
+  "metas": null,
+  "imgs": {
+    "url": "../assets/preview1.png"
+  },
+  "btns": [
+    {
+      "id": 1,
+      "text": "1",
+      "style": {
+        "color": "#000",
+        "posX": -10,
+        "posY": -10,
+        "posZ": 30,
+        "width": 100,
+        "heigth": 200,
+        "opacity": 0.5,
+        "rotate": 30,
+        "rotateX": 30,
+        "rotateY": 30,
+        "rotateZ": 30,
+        "fontSize": 32,
+        "scaleX": 1,
+        "scaleY": 1
+      },
+      "audio": "../assets/active.mp3",
+      "backgroundImageBeforeClick": "../assets/preview1.png",
+      "backgroundImageClick": "../assets/preview1.png",
+      "backgroundImageAfterClick": "../assets/preview1.png",
+      "action": []
     },
-    "btns": [
-        {	
-			"id":1,
-            "text": "1",
-            "style": {
-                "color": "#000",
-                "posX": -10,
-                "posY": -10,
-                "posZ": 30,
-                "width": 100,
-                "heigth": 200,
-                "opacity": 0.5,
-                "rotate": 30,
-                "rotateX": 30,
-                "rotateY": 30,
-                "rotateZ": 30,
-                "fontSize": 32,
-                "scaleX": 1,
-                "scaleY": 1
-            },
-            "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/preview1.png",
-            "backgroundImageClick": "../assets/preview1.png", 
-            "backgroundImageAfterClick": "../assets/preview1.png",
-            "action": [
-            ]
-        },
-        {
-			"id":2,
-            "text": "2",
-            "style": {
-                "color": "#000",
-                "posX": -20,
-                "posY": -20,
-                "posZ": 300,
-                "width": 100,
-                "heigth": 200,
-                "opacity": 0.5,
-                "rotate": 30,
-                "rotateX": 30,
-                "rotateY": 30,
-                "rotateZ": 30,
-                "fontSize": 32,
-                "scaleX": 1,
-                "scaleY": 1
-            },
-            "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/preview1.png",
-            "backgroundImageClick": "../assets/preview1.png", 
-            "backgroundImageAfterClick": "../assets/preview1.png",
-            "action": [
-            ]
-        },
-        {
-			"id":3,
-            "text": "3",
-            "style": {
-                "color": "#000",
-                "posX": -30,
-                "posY": -30,
-                "posZ": 300,
-                "width": 100,
-                "heigth": 200,
-                "opacity": 0.5,
-                "rotate": 30,
-                "rotateX": 30,
-                "rotateY": 30,
-                "rotateZ": 30,
-                "fontSize": 32,
-                "scaleX": 1,
-                "scaleY": 1
-            },
-            "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/preview1.png",
-            "backgroundImageClick": "../assets/preview1.png", 
-            "backgroundImageAfterClick": "../assets/preview1.png",
-            "action": [
-            ]
-        },
-        {
-			"id":4,
-            "text": "4",
-            "style": {
-                "color": "#000",
-                "posX": -40,
-                "posY": -40,
-                "posZ": 300,
-                "width": 100,
-                "heigth": 200,
-                "opacity": 0.5,
-                "rotate": 30,
-                "rotateX": 30,
-                "rotateY": 30,
-                "rotateZ": 30,
-                "fontSize": 32,
-                "scaleX": 1,
-                "scaleY": 1
-            },
-            "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/preview1.png",
-            "backgroundImageClick": "../assets/preview1.png", 
-            "backgroundImageAfterClick": "../assets/preview1.png",
-            "action": [
-            ]
-        }
-    ],
-	"ctrls": [
-		{
-		  "conditionConfig": {
-            "conditionValue": [
-              1,
-              2
-            ],
-            "jumpVideoId": "732228246",
-            "errorTip": ""
-          }
-		}
-	]
+    {
+      "id": 2,
+      "text": "2",
+      "style": {
+        "color": "#000",
+        "posX": -20,
+        "posY": -20,
+        "posZ": 300,
+        "width": 100,
+        "heigth": 200,
+        "opacity": 0.5,
+        "rotate": 30,
+        "rotateX": 30,
+        "rotateY": 30,
+        "rotateZ": 30,
+        "fontSize": 32,
+        "scaleX": 1,
+        "scaleY": 1
+      },
+      "audio": "../assets/active.mp3",
+      "backgroundImageBeforeClick": "../assets/preview1.png",
+      "backgroundImageClick": "../assets/preview1.png",
+      "backgroundImageAfterClick": "../assets/preview1.png",
+      "action": []
+    },
+    {
+      "id": 3,
+      "text": "3",
+      "style": {
+        "color": "#000",
+        "posX": -30,
+        "posY": -30,
+        "posZ": 300,
+        "width": 100,
+        "heigth": 200,
+        "opacity": 0.5,
+        "rotate": 30,
+        "rotateX": 30,
+        "rotateY": 30,
+        "rotateZ": 30,
+        "fontSize": 32,
+        "scaleX": 1,
+        "scaleY": 1
+      },
+      "audio": "../assets/active.mp3",
+      "backgroundImageBeforeClick": "../assets/preview1.png",
+      "backgroundImageClick": "../assets/preview1.png",
+      "backgroundImageAfterClick": "../assets/preview1.png",
+      "action": []
+    },
+    {
+      "id": 4,
+      "text": "4",
+      "style": {
+        "color": "#000",
+        "posX": -40,
+        "posY": -40,
+        "posZ": 300,
+        "width": 100,
+        "heigth": 200,
+        "opacity": 0.5,
+        "rotate": 30,
+        "rotateX": 30,
+        "rotateY": 30,
+        "rotateZ": 30,
+        "fontSize": 32,
+        "scaleX": 1,
+        "scaleY": 1
+      },
+      "audio": "../assets/active.mp3",
+      "backgroundImageBeforeClick": "../assets/preview1.png",
+      "backgroundImageClick": "../assets/preview1.png",
+      "backgroundImageAfterClick": "../assets/preview1.png",
+      "action": []
+    }
+  ],
+  "ctrls": [
+    {
+      "conditionConfig": {
+        "conditionValue": [1, 2],
+        "jumpVideoId": "732160621",
+        "jumpTime": 6000,
+        "errorTip": ""
+      }
+    }
+  ]
 }

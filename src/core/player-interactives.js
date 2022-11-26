@@ -41,3 +41,9 @@ export const HotToState = {
   JUMPTIME: 'JUMPTIME',
   FACTOR: 'FACTOR',
 }
+
+// order: 有序式；disorder: 无序式
+export const CompoundOrder = {
+  ORDER: 'order',
+  DISORDER: 'disorder',
+}
