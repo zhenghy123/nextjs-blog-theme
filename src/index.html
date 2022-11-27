@@ -23,11 +23,11 @@
         bottom: 0;
         width: 100%;
         /* height: 40px; */
-        /* background: linear-gradient(-1deg, rgba(0, 0, 0, 0.8), transparent); */
+        background: linear-gradient(-1deg, rgba(0, 0, 0, 0.8), transparent);
       }
       .kplayer-ui .kplayer-controls {
         display: flex;
-        background: linear-gradient(-1deg, rgba(0, 0, 0, 0.8), transparent);
+        /* background: linear-gradient(-1deg, rgba(0, 0, 0, 0.8), transparent); */
         cursor: pointer;
       }
       .kplayer-controls .kplayer-blank {
@@ -65,11 +65,13 @@
         left: 0;
         right: 0;
         outline: none;
-        top: -10px;
+        top: -20px;
         z-index: 35;
+        padding: 0 10px;
+        background: linear-gradient(-1deg, rgb(0 0 0 / 26%), #c50f0f00);
       }
       .progress-outer {
-        background: hsla(0, 0%, 100%, 0.3);
+        /* background: hsla(0, 0%, 100%, 0.3); */
         display: block;
         height: 3px;
         line-height: 3px;
@@ -92,11 +94,10 @@
         position: absolute;
         left: 0;
         top: 0;
-        width: 500px;
-        transition: width 0.3s;
+        width: 12px;
       }
       .progress-played {
-        width: 500px;
+        /* width: 500px; */
         display: block;
         background-image: linear-gradient(-90deg, #fa1f41, #e31106);
         border-radius: 0 1.5px 1.5px 0;
@@ -250,6 +251,29 @@
       })
     }
   }
+
+  function padStart(str, length, pad) {
+    let charstr = String(pad)
+    let len = length >> 0
+    let maxlen = Math.ceil(len / charstr.length)
+    let chars = []
+    let r = String(str)
+    while (maxlen--) {
+      chars.push(charstr)
+    }
+    return chars.join('').substring(0, len - r.length) + r
+  }
+
+  function format(time) {
+    if (window.isNaN(time)) {
+      return ''
+    }
+    let hour = padStart(Math.floor(time / 3600), 2, 0)
+    let minute = padStart(Math.floor((time - hour * 3600) / 60), 2, 0)
+    let second = padStart(Math.floor(time - hour * 3600 - minute * 60), 2, 0)
+    return (hour === '00' ? [minute, second] : [hour, minute, second]).join(':')
+  }
+
   let _player = null
   function videoPlay() {
     _player.play()
@@ -271,6 +295,7 @@
         player._emitter.on('canplay', (event) => {
           duration = event.path[0].duration
           console.log(event)
+          document.querySelector('.duration').textContent = format(duration)
         })
 
         player._emitter.on('play', (event) => {
@@ -297,6 +322,9 @@
           currentTime = event.path[0].currentTime
           let percent = (currentTime / duration) * 100
           document.querySelector('.progress-played').style.width = percent + '%'
+          // console.log(format(currentTime))
+          document.querySelector('.current-time').textContent =
+            format(currentTime)
         })
       })
   }

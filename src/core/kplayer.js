@@ -212,6 +212,7 @@ class KPlayer {
     if (compName == 'TextModule') {
       this.addTextComp(
         name,
+        compName,
         type,
         styleSetting,
         textSetting,
@@ -220,6 +221,7 @@ class KPlayer {
     } else if (compName == 'PointClickModule') {
       this.addOptionBranchComp(
         name,
+        compName,
         type,
         styleSetting,
         textSetting,
@@ -228,6 +230,7 @@ class KPlayer {
     } else if (compName == 'ClickGroupModule') {
       this.addOptionBranchComp(
         name,
+        compName,
         type,
         styleSetting,
         textSetting,
@@ -245,17 +248,24 @@ class KPlayer {
   /**
    * 添加文字热点
    */
-  addTextComp(name, type, styleSetting, textSetting, transform2DSetting) {
+  addTextComp(
+    name,
+    compName,
+    type,
+    styleSetting,
+    textSetting,
+    transform2DSetting
+  ) {
     if (type == 'hotspot') {
       _krpano.call(
         `
         addhotspot(${name});
-        set(hotspot[${name}].visible,false);
         set(hotspot[${name}].type,text);
         set(hotspot[${name}].keep,true);
         set(hotspot[${name}].zoom,true);
         set(hotspot[${name}].edge,center);
         set(hotspot[${name}].bg,false);
+        set(hotspot[${name}].visible,false);
         set(hotspot[${name}].flag,'hotspot');
         set(hotspot[${name}].distorted,true);
         set(hotspot[${name}].ondown,ondownfn);
@@ -268,13 +278,12 @@ class KPlayer {
       _krpano.call(
         `
         addlayer(${name});
-        set(layer[${name}].visible,false);
-        set(layer[${name}].enabled,false);
         set(layer[${name}].type,text);
         set(layer[${name}].keep,true);
         set(layer[${name}].zoom,true);
         set(layer[${name}].edge,center);
         set(layer[${name}].bg,false);
+        set(layer[${name}].visible,false);
         set(layer[${name}].flag,'layer');
         set(layer[${name}].autowidth,auto);
         set(layer[${name}].autoheight,auto);
@@ -284,7 +293,14 @@ class KPlayer {
         `
       )
     }
-    this.setTextComp(name, type, styleSetting, textSetting, transform2DSetting)
+    this.setTextComp(
+      name,
+      compName,
+      type,
+      styleSetting,
+      textSetting,
+      transform2DSetting
+    )
   }
 
   /**
@@ -292,6 +308,7 @@ class KPlayer {
    */
   addOptionBranchComp(
     name,
+    compName,
     type,
     styleSetting,
     textSetting,
@@ -301,11 +318,11 @@ class KPlayer {
       _krpano.call(
         `
         addhotspot(${name});
-        set(hotspot[${name}].visible,false);
         set(hotspot[${name}].type,image);
         set(hotspot[${name}].keep,true);
         set(hotspot[${name}].zoom,true);
         set(hotspot[${name}].edge,center);
+        set(hotspot[${name}].visible,false);
         set(hotspot[${name}].flag,'hotspot');
         set(hotspot[${name}].distorted,true);
         set(hotspot[${name}].ondown,ondownfn);
@@ -318,11 +335,11 @@ class KPlayer {
       _krpano.call(
         `
         addlayer(${name});
-        set(layer[${name}].visible,false);
         set(layer[${name}].type,image);
         set(layer[${name}].keep,true);
         set(layer[${name}].zoom,true);
         set(layer[${name}].edge,center);
+        set(layer[${name}].visible,false);
         set(layer[${name}].flag,'layer');
         set(layer[${name}].ondown,ondownfn);
         set(layer[${name}].onup,onupfn);
@@ -332,6 +349,7 @@ class KPlayer {
     }
     this.setOptionBranchComp(
       name,
+      compName,
       type,
       styleSetting,
       textSetting,
@@ -342,7 +360,14 @@ class KPlayer {
   /**
    * 设置文本组件属性值
    */
-  setTextComp(name, type, styleSetting, textSetting, transform2DSetting) {
+  setTextComp(
+    name,
+    compName,
+    type,
+    styleSetting,
+    textSetting,
+    transform2DSetting
+  ) {
     // 后面如果需要设置别的再加
     //   let css = {
     //     // align: textSetting.align,
@@ -395,6 +420,7 @@ class KPlayer {
 
   setOptionBranchComp(
     name,
+    compName,
     type,
     styleSetting,
     textSetting,
@@ -411,33 +437,35 @@ class KPlayer {
         set(hotspot[${name}].rx,${transform2DSetting?.rotationX || 0});
         set(hotspot[${name}].ry,${transform2DSetting?.rotationY || 0});
         set(hotspot[${name}].rz,${transform2DSetting?.rotationZ || 0});
-        set(hotspot[${name}].scale,${transform2DSetting?.scale || 1});
         set(hotspot[${name}].url,${
           styleSetting?.beforeTrigger ||
-          InteractiveEnums[materialName].beforeTrigger
+          InteractiveEnums[compName].beforeTrigger
         });
        set(hotspot[${name}].beforeTrigger,${
           styleSetting?.beforeTrigger ||
-          InteractiveEnums[materialName].beforeTrigger
+          InteractiveEnums[compName].beforeTrigger
         });
        set(hotspot[${name}].triggering,${
-          styleSetting?.triggering || InteractiveEnums[materialName].triggering
+          styleSetting?.triggering || InteractiveEnums[compName].triggering
         });
         set(hotspot[${name}].afterTrigger,${
-          styleSetting?.afterTrigger ||
-          InteractiveEnums[materialName].afterTrigger
+          styleSetting?.afterTrigger || InteractiveEnums[compName].afterTrigger
         });
-        set(hotspot[${name}].text,${textSetting?.text || '默认文本'});
-        set(hotspot[${name}].html,${textSetting?.text || '默认文本'});
-        set(hotspot[${name}].css,"color:${
-          textSetting?.fill || '0xffffff'
-        };font-size:${textSetting?.fontSize || 16}px;");
+        set(hotspot[${name}].text,${textSetting?.text || ''}); 
+        set(hotspot[${name}].html,${textSetting?.text || ''});
+        set(hotspot[${name}].scale,${transform2DSetting?.scale || 1});
         `
       )
+      this.checkHasLoaded('tooltip_' + name, 'layer').then(() => {
+        _krpano.layer.getItem('tooltip_' + name).html = textSetting?.text || ''
+        _krpano.layer.getItem('tooltip_' + name).css = `color:${
+          textSetting?.fill || '0xffffff'
+        };font-size:${textSetting?.fontSize || 16}px;`
+      })
     } else {
       _krpano.call(
         `
-        set(layer[${name}].x,${
+         set(layer[${name}].x,${
           transform2DSetting?.x ? transform2DSetting?.x + '%' : '50%'
         });
         set(layer[${name}].y,${
@@ -445,32 +473,56 @@ class KPlayer {
         });
         set(layer[${name}].width,${transform2DSetting?.width || '100'});
         set(layer[${name}].height,${transform2DSetting?.height || '100'});
-        set(layer[${name}].rotate,${transform2DSetting?.rotate || 0});
+        set(layer[${name}].rotate,${transform2DSetting?.rotation || 0});
         set(layer[${name}].url,${
           styleSetting?.beforeTrigger ||
-          InteractiveEnums[materialName].beforeTrigger
+          InteractiveEnums[compName].beforeTrigger
         });
         set(layer[${name}].beforeTrigger,${
           styleSetting?.beforeTrigger ||
-          InteractiveEnums[materialName].beforeTrigger
+          InteractiveEnums[compName].beforeTrigger
         });
          set(layer[${name}].triggering,${
-          styleSetting?.triggering || InteractiveEnums[materialName].triggering
+          styleSetting?.triggering || InteractiveEnums[compName].triggering
         });
         set(layer[${name}].afterTrigger,${
-          styleSetting?.afterTrigger ||
-          InteractiveEnums[materialName].afterTrigger
+          styleSetting?.afterTrigger || InteractiveEnums[compName].afterTrigger
         });
-        set(layer[${name}].text,${textSetting?.text || '默认文本'});
-        set(layer[${name}].html,${textSetting?.text || '默认文本'});
-        set(layer[${name}].css,"color:${
-          textSetting?.fill || '0xffffff'
-        };font-size:${textSetting?.fontSize || 16}px;scale:${
-          transform2DSetting?.scaleX || 1
-        }");
+        set(layer[${name}].text,${textSetting?.text || ''});
+        set(layer[${name}].html,${textSetting?.text || ''});
+        set(layer[${name}].scale,${transform2DSetting?.scale || 1});
         `
       )
+      this.checkHasLoaded('tooltip_' + name, 'layer').then(() => {
+        _krpano.layer.getItem('tooltip_' + name).html = textSetting?.text || ''
+        _krpano.layer.getItem('tooltip_' + name).css = `color:${
+          textSetting?.fill || '0xffffff'
+        };font-size:${textSetting?.fontSize || 16}px;`
+      })
     }
+  }
+
+  checkHasLoaded(name, type = 'hotspot') {
+    return new Promise((resolve, reject) => {
+      let count = 0
+      let isLoad = () => {
+        let obj =
+          type == 'hotspot'
+            ? _krpano.hotspot.getItem(name)
+            : _krpano.layer.getItem(name)
+        if (obj) {
+          resolve(name)
+        } else {
+          count++
+          if (count >= 10) {
+            reject(false)
+            return
+          }
+          setTimeout(isLoad, 300)
+        }
+      }
+      isLoad()
+    })
   }
 
   // 获取屏幕中心layer坐标
@@ -534,7 +586,15 @@ class KPlayer {
       }
     })
 
-    let layers = _krpano.layer.getArray()
+    let pluginArr = ['view_frame', 'view_frame_btn', 'video']
+    let layers = _krpano.layer
+      .getArray()
+      .filter(
+        (item) =>
+          item.name.indexOf('border_') == -1 &&
+          item.name.indexOf('tooltip_') == -1 &&
+          !pluginArr.includes(item.name)
+      )
     layers.map((item) => {
       if (names.includes(item.name)) {
         item.visible = true
@@ -563,13 +623,6 @@ class KPlayer {
     })
   }
 
-  toggleHotspot(name, isShow = false) {
-    let hot = _krpano.hotspot.getItem(name)
-    let layer = _krpano.layer.getItem(name)
-    hot && (hot.visible = isShow)
-    layer && (layer.visible = isShow)
-  }
-
   /**
    * 切换场景（视频、图片、黑屏）
    * 注意：热点和插件要设置 keep:true
@@ -587,6 +640,40 @@ class KPlayer {
 
   getHotspot(name, type = 'hotspot') {
     return _krpano.hotspot.getItem(name) || _krpano.layer.getItem(name)
+  }
+  /**
+   * 清空hotspot和layer
+   * 注意：krpano为版本兼容，layer和plugin是一个组件，不能删除一些预设插件
+   */
+  clearComp() {
+    while (_krpano.hotspot.count > 0) {
+      let name = _krpano.hotspot.getItem(0).name
+      _krpano.actions.removehotspot(name)
+    }
+
+    let layer = _krpano.layer.getArray()
+    let index = 0
+    let pluginArr = ['view_frame', 'view_frame_btn', 'video']
+    for (index = 0; index < layer.length; ) {
+      const name = layer[index].name
+      if (pluginArr.includes(name)) {
+        index++
+      } else {
+        console.log('remove layer:', name, index)
+        // _krpano.layer.removeItem(name);
+        _krpano.actions.removelayer(name)
+      }
+    }
+  }
+
+  toggleHotspot(name, type = 'hotspot', isShow = false) {
+    this.checkHasLoaded(name, type).then(() => {
+      let obj =
+        type == 'hotspot'
+          ? _krpano.hotspot.getItem(name)
+          : _krpano.layer.getItem(name)
+      obj && (obj.visible = isShow)
+    })
   }
 
   /**
