@@ -11,7 +11,6 @@ function createPlayer(id = '', url = '', options = {}) {
       html5: 'only',
       consolelog: false,
       onready: function (krpano) {
-        console.log('krpanoJS init ')
         const _krpano = krpano.get('global')
         const _options = {
           ...options,

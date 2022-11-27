@@ -1,7 +1,10 @@
 class PlayerData {
   constructor(url) {
-    this._url = url
+    this._url = url // json地址
+    this._videoPrefix = '' // 文件前缀
+    this._assetsPrefix = ''
     this._json = {}
+    this._compNames = []
     this.jsonUrl = url
     this.factorList = []
     this.init()
@@ -9,30 +12,20 @@ class PlayerData {
   }
 
   init() {
-    // let request = new XMLHttpRequest()
-    // request.open('get', this.jsonUrl)
-    // request.send(null)
-    // request.onload = () => {
-    //   if (request.status == '200') {
-    //     this._json = JSON.parse(request.responseText)
-    //     this.factorList = this._json.factorList
-    //     // 添加视频
-    //     this._json.videoList.forEach((item) => {
-    //       let name = item.videoId
-    //       let videourl = this.jsonUrl.replace('index.json', item.videoPath)
-    //       _krpano.call(
-    //         `
-    //         videointerface_addsource(${name}, ${videourl}, ${this.getImageUrl(
-    //           item.thumbnail
-    //         )});
-    //         `
-    //       )
-    //     })
-
-    //     //添加组件
-    //     this.addVideoHotspot(this._json.drama?.firstVideoId)
-    //   }
-    // }
+    /**
+     * 服务器文件存放目录结构：
+     * - assets
+     *    - img1.png
+     *    - img2.png
+     * -video
+     *    - index.json
+     *    - video1.mp4
+     *    - video2.mp4
+     *    - config1.json
+     *    - config2.json
+     */
+    this._videoPrefix = this._url.replace('index.json', '')
+    this._assetsPrefix = this._url.replace('video/index.json', '')
 
     this.fetchJson(this._url).then((json) => {
       this._json = json
@@ -49,14 +42,15 @@ class PlayerData {
     const interactInfoList = this._json.interactInfoList
     let count = 0
     interactInfoList.map((item) => {
-      let url = this._url.replace('index.json', '') + item.interactConfig
+      let url = this._videoPrefix + item.interactConfig
       this.fetchJson(url).then((json) => {
         count++
+        item.interactConfigJson = json
+
         // 请求完最后一个json开始拼接进interactInfoList
         if (count == interactInfoList.length) {
           this.concatJsonToInteractNodeList()
         }
-        item.interactConfigJson = json
       })
     })
   }
@@ -68,8 +62,9 @@ class PlayerData {
         (info) => info.interactInfoId == item.interactInfoId
       )
     })
-    this.addVideoHotspot(this._json.drama?.firstVideoId)
     console.log('interactConfigJson==', this._json)
+
+    this.addVideoHotspot(this._json.drama?.firstVideoId)
   }
 
   /**
@@ -77,8 +72,9 @@ class PlayerData {
    * @param {String} url
    * @returns Promise<json>
    */
-  fetchJson(url) {
-    return fetch(url).then((response) => response.json())
+  async fetchJson(url) {
+    const response = await fetch(url)
+    return await response.json()
   }
 
   getFactorList() {
@@ -191,6 +187,80 @@ class PlayerData {
       interactConfig.push(info)
     }
     return interactConfig
+  }
+
+  /**
+   * 获取全部互动组件列表
+   * - 不包含组件控制参数
+   * - 只有组件类型和组件配置
+   */
+  getAllInteractInfoIdJson() {
+    let _interactNodeList = this._json.interactNodeList
+    let _interactInfoIdJson = []
+    _interactNodeList.map((item) => {
+      _interactInfoIdJson.push(item.interactInfoIdJson)
+    })
+    return _interactInfoIdJson
+  }
+
+  /**
+   * 一次性添加全部热点信息（默认隐藏）
+   */
+  addAllHotspot() {
+    let _interactInfoIdJson = this.getAllInteractInfoIdJson()
+    _interactInfoIdJson.map((item) => {
+      let type = item.isFollowCamera ? 'layer' : 'hotspot'
+      let compType = item.interactInfo.type
+      let compId = 'a_' + Math.random()
+
+      const { btns, ctrls, imgs, metas } = item.interactConfigJson
+
+      let textSetting = null
+      let styleSetting = null
+      let transform2DSetting = null
+
+      // 文本和互动组件不会同时存在（虽然展示的时候会）
+      let comps = metas || btns
+
+      if (comps) {
+        comps.map((comp) => {
+          let style = comp.style
+          // 注意不能以数字开头，哪怕是字符串
+          let name = 'a_' + comp.id
+          this._compNames.push(name)
+
+          textSetting = {
+            text: comp.text,
+            fontSize: style.fontSize,
+            fill: style.color,
+          }
+
+          // 非文字才会有 styleSetting,默认null
+          if (btns) {
+            styleSetting = {
+              beforeTrigger: this.getImageUrl(comp.backgroundImageBeforeClick),
+              triggering: this.getImageUrl(comp.backgroundImageClick),
+              afterTrigger: this.getImageUrl(comp.backgroundImageAfterClick),
+            }
+          }
+
+          transform2DSetting = {
+            ...style,
+            x: style.posX,
+            y: style.posY,
+          }
+
+          kxplayer.addInteractiveHotspot(
+            name,
+            compType,
+            type,
+            styleSetting,
+            textSetting,
+            transform2DSetting
+          )
+        })
+      }
+    })
   }
 
   /**
@@ -366,6 +436,12 @@ class PlayerData {
   addVideoHotspot(id) {
     let interactNodeId = this.getVideoParam(id)?.interactNodeId
     this.setVideoHotspot(interactNodeId)
+
+    // TODO:根据当前视频和时间判断是否回显
+    // this.addAllHotspot()
+    // setTimeout(() => {
+    //   _player.showHotspot(this._compNames)
+    // }, 2000)
   }
 }
 

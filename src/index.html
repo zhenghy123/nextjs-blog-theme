@@ -294,7 +294,6 @@
         let currentTime = 0
         player._emitter.on('canplay', (event) => {
           duration = event.path[0].duration
-          console.log(event)
           document.querySelector('.duration').textContent = format(duration)
         })
 
@@ -322,7 +321,6 @@
           currentTime = event.path[0].currentTime
           let percent = (currentTime / duration) * 100
           document.querySelector('.progress-played').style.width = percent + '%'
-          // console.log(format(currentTime))
           document.querySelector('.current-time').textContent =
             format(currentTime)
         })
