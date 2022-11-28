@@ -27,7 +27,12 @@
       "backgroundImageBeforeClick": "../assets/preview1.png",
       "backgroundImageClick": "../assets/preview1.png",
       "backgroundImageAfterClick": "../assets/preview1.png",
-      "action": []
+      "action": [
+        {
+            "actionType": "SWITCHVIDEO",
+            "nextVideo": "732228247"
+        }
+    ]
     },
     {
       "id": 2,
@@ -109,7 +114,7 @@
     {
       "conditionConfig": {
         "conditionValue": [1, 2],
-        "jumpVideoId": "732160621",
+        "jumpVideoId": "732228246",
         "jumpTime": 6000,
         "errorTip": ""
       }
