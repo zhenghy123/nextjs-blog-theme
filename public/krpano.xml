@@ -1,7 +1,7 @@
 ﻿<krpano>
 	<include url="./plugins/showtext.xml" />
   <!-- 引入皮肤 -->
-  <include url="./plugins/videointerface.xml" />
+  <!-- <include url="./plugins/videointerface.xml" /> -->
   <!-- 	
 	<image>
 		<sphere url='./imgs/preview1.jpeg' />

@@ -47,7 +47,7 @@ export function pathTimeUpdate(val) {
           if (ctrlsItem.time) {
             timeId = setTimeout(() => {
               if (ctrlsItem.jumpVideoId != null) {
-                changeVideo(interactNodeId, ctrlsItem.jumpVideoId)
+                changeVideo(id, ctrlsItem.jumpVideoId)
                 clearTimeout(timeId)
               } else if (ctrlsItem.jumpTime != null) {
                 kxplayer.setCurrentTime(ctrlsItem.jumpTime / 1000)
@@ -124,7 +124,7 @@ export function pathSpotClick(val) {
         // 匹配正确
         if (conditionValue.toString() === compoundlist.toString()) {
           if (conditionConfig.jumpVideoId != null) {
-            changeVideo(interactNodeId, conditionConfig.jumpVideoId)
+            changeVideo(id, conditionConfig.jumpVideoId)
           } else if (conditionConfig.jumpTime != null) {
             kxplayer.setCurrentTime(conditionConfig.jumpTime / 1000)
           }
@@ -135,18 +135,18 @@ export function pathSpotClick(val) {
       }, 2000)
     } else {
       // 点击
-      pointHotClick(hotspotBtn, interactNodeId)
+      pointHotClick(hotspotBtn, id)
     }
   })
 }
 
 // 热点-点击
-function pointHotClick(hotspotBtn, interactNodeId) {
+function pointHotClick(hotspotBtn, lastVideoId) {
   hotspotBtn?.action?.forEach((actItem) => {
     if (actItem.actionType == HotToState.SWITCHVIDEO) {
       // 切视频
       let nextVideoId = actItem.nextVideo
-      changeVideo(interactNodeId, nextVideoId)
+      changeVideo(lastVideoId, nextVideoId)
     } else if (actItem.actionType == HotToState.JUMPTIME) {
       // 切进度
       kxplayer.setCurrentTime(actItem.jumpTime)
@@ -165,17 +165,15 @@ function pointHotClick(hotspotBtn, interactNodeId) {
   })
 }
 
-function changeVideo(interactNodeId, nextVideoId) {
-  // 删除上一个视频的热点和文本
-  delHotspot(interactNodeId)
+function changeVideo(lastVideoId, nextVideoId) {
+  // 隐藏热点
+  let lastArray = playList.getVideoHotspotName(lastVideoId)
+  kxplayer.showHotspot(lastArray, false)
 
   //切视频
   let nextVideo = playList.getVideoParam(nextVideoId)
   let url = playList.getVideoUrl(nextVideo.videoPath)
   kxplayer.changeVideo(url, nextVideoId)
-
-  // 添加组件
-  playList.addVideoHotspot(nextVideoId)
 }
 
 // 删除视频的热点和文本

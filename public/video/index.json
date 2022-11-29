@@ -55,7 +55,7 @@
       "description": "视频3：又是被感动的一天，直接跳转到时间线的页面",
       "duration": 270,
       "filename": "又是被感动的一天",
-      "videoPath": "video720.mp4",
+      "videoPath": "video360.mp4",
       "interactNodeId": "interactNodeId005,interactNodeId006",
       "thumbnail": "../assets/preview1.jpeg",
       "videoCoding": "h265",
@@ -87,7 +87,7 @@
       "description": "视频5：花园变废草",
       "duration": 106,
       "filename": "花园变废草",
-      "videoPath": "video720.mp4",
+      "videoPath": "video360.mp4",
       "interactNodeId": null,
       "thumbnail": "../assets/preview1.jpeg",
       "videoCoding": "h265",
@@ -191,6 +191,7 @@
     },
     {
       "interactInfoId": "interactInfoId003",
+      "isFollowCamera": true,
       "interactInfo": {
         "type": "TextModule"
       },
@@ -209,6 +210,7 @@
     },
     {
       "interactInfoId": "interactInfoId005",
+      "isFollowCamera": true,
       "interactInfo": {
         "type": "TextModule"
       },

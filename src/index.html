@@ -22,6 +22,7 @@
         position: absolute;
         bottom: 0;
         width: 100%;
+        overflow: hidden;
         /* height: 40px; */
         background: linear-gradient(-1deg, rgba(0, 0, 0, 0.8), transparent);
       }
@@ -59,7 +60,6 @@
 
       .kplayer-progress {
         display: block;
-        position: absolute;
         height: 20px;
         line-height: 20px;
         left: 0;
@@ -431,7 +431,7 @@
         <div class="process">
           <div class="rootNode" onClick="treeClick(${nodeList.id})">
             <img style="position:absolute;width:100%;height:100%" src="${nodeList.img}"></img>
-            <div>${nodeList.label}</div>
+            <div style="position:absolute">${nodeList.label}</div>
           </div>
         </div>
         ${setnodelist(nodeList.children,'root')}
@@ -469,7 +469,7 @@
             <div class="nodeType">
               <div class="nodeInfo" onClick="treeClick(${item.id})">
                 <img style="position:absolute;width:140px;height:100px"  src="${nodeList.img}"></img>
-                <div > ${item.label}</div>
+                <div style="position:absolute"> ${item.label}</div>
               </div>
             </div>
             ${setnodelist(item.children)}
@@ -484,28 +484,16 @@
   }
 
   window.treeClick = (id)=>{
-    // 切视频
-    let interactNodeId = playList.getVideoParam(id)?.interactNodeId
+    // 隐藏热点
+    let curId = kxplayer.getVideoId()
+    let lastArray = playList.getVideoHotspotName(curId)
+    let newArray = playList.getVideoHotspotName(id)
+    kxplayer.showHotspot(lastArray,false)
     
-    let interactlist = playList.getVidioInteract(interactNodeId)
-    interactlist?.forEach((item) => {
-      let interactInfoIdItem = item.interactInfoIdJson
-      let metas = interactInfoIdItem?.interactConfigJson?.metas
-      metas?.forEach((item) => {
-        kxplayer.removeHotspot(item.name?.toLowerCase())
-      })
-      let btns = interactInfoIdItem?.interactConfigJson?.btns
-      btns?.forEach((item) => {
-        kxplayer.removeHotspot(item.name?.toLowerCase())
-      })
-    })
-
+    // 切视频
     let nextVideo = playList.getVideoParam(id)
     let url = playList.getVideoUrl(nextVideo.videoPath)
     kxplayer.changeVideo(url, id)
-
-    // 添加组件
-    playList.addVideoHotspot(id)
 
   }
 
