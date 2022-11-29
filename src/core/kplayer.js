@@ -210,6 +210,7 @@ class KPlayer {
     transform3DSetting = null
   ) {
     if (compName == 'TextModule') {
+      console.log('aaa1:')
       this.addTextComp(
         name,
         compName,
@@ -257,6 +258,7 @@ class KPlayer {
     transform3DSetting
   ) {
     if (type == 'hotspot') {
+      console.log('aaa2:',name)
       _krpano.call(
         `
         addhotspot(${name});
@@ -274,6 +276,7 @@ class KPlayer {
         `
       )
     } else {
+      console.log('aaa3:',name)
       // 注意layer的scale需要加到css上
       _krpano.call(
         `
@@ -573,16 +576,14 @@ class KPlayer {
   }
 
   /**
-   * 批量显示热点
+   * 批量显隐热点
    * @param {Array} names
    */
-  showHotspot(names = []) {
+  showHotspot(names = [], visible) {
     let hots = _krpano.hotspot.getArray()
     hots.map((item) => {
       if (names.includes(item.name)) {
-        item.visible = true
-      } else {
-        item.visible = false
+        item.visible = visible
       }
     })
 
@@ -597,9 +598,7 @@ class KPlayer {
       )
     layers.map((item) => {
       if (names.includes(item.name)) {
-        item.visible = true
-      } else {
-        item.visible = false
+        item.visible = visible
       }
     })
   }

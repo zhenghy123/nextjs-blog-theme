@@ -147,6 +147,21 @@ class PlayerData {
   }
 
   /**
+   * 获取视频下所有热点名称
+   */
+  getVideoHotspotName(id) {
+    let interactNodeId = this.getVideoParam(id)?.interactNodeId
+    let interactNodeIdList = this.getVidioInteract(interactNodeId)
+    let list = []
+    interactNodeIdList.forEach((val) => {
+      let interact = this._compNames.find(
+        (item) => item.interactInfoId == val.interactInfoId
+      )?.name
+      list = list.concat(interact)
+    })
+    return list
+  }
+  /**
    * 获取视频内组合按钮
    * interactNodeId:视频参数interactNodeId
    */
@@ -212,12 +227,11 @@ class PlayerData {
    * 一次性添加全部热点信息（默认隐藏）
    */
   addAllHotspot() {
+    this._compNames = []
     let _interactInfoIdJson = this.getAllInteractInfoIdJson()
     _interactInfoIdJson.map((item) => {
       let type = item.isFollowCamera ? 'layer' : 'hotspot'
       let compType = item.interactInfo.type
-      let compId = 'a_' + Math.random()
-
       const { btns, ctrls, imgs, metas } = item.interactConfigJson
 
       let textSetting = null
@@ -226,14 +240,20 @@ class PlayerData {
 
       // 文本和互动组件不会同时存在（虽然展示的时候会）
       let comps = metas || btns
-
+      let param = {
+        interactInfoId: item.interactInfoId,
+        name: [],
+      }
       if (comps) {
         comps.map((comp) => {
           let style = comp.style
           // 注意不能以数字开头，哪怕是字符串
-          let name = 'a_' + comp.id
-          this._compNames.push(name)
-
+          let _id = comp.id
+          if (!_id) _id = 0
+          let id = item.interactInfoId + _id
+          id = id.toLowerCase() //krpano热点名称都是小写
+          comp.name = id
+          param.name.push(id)
           textSetting = {
             text: comp.text,
             fontSize: style.fontSize,
@@ -256,7 +276,7 @@ class PlayerData {
           }
 
           kxplayer.addInteractiveHotspot(
-            name,
+            id,
             compType,
             type,
             styleSetting,
@@ -264,6 +284,7 @@ class PlayerData {
             transform3DSetting
           )
         })
+        this._compNames.push(param)
       }
     })
   }
@@ -439,11 +460,11 @@ class PlayerData {
    * @param {视频id} id
    */
   addVideoHotspot(id) {
-    let interactNodeId = this.getVideoParam(id)?.interactNodeId
-    this.setVideoHotspot(interactNodeId)
+    // let interactNodeId = this.getVideoParam(id)?.interactNodeId
+    // this.setVideoHotspot(interactNodeId)
 
     // TODO:根据当前视频和时间判断是否回显
-    // this.addAllHotspot()
+    this.addAllHotspot()
     // setTimeout(() => {
     //   _player.showHotspot(this._compNames)
     // }, 2000)
