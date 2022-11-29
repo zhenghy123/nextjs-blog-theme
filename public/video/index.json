@@ -25,7 +25,7 @@
       "filename": "住厂日记",
       "interactNodeId": "interactNodeId001,interactNodeId002",
       "videoPath": "video360.mp4",
-      "thumbnail": "../assets/preview1.png",
+      "thumbnail": "../assets/preview1.jpeg",
       "videoCoding": "h265",
       "outPutFormat": "mp4",
       "mediaHeight": "1920",
@@ -41,7 +41,7 @@
       "filename": "厂弟的隔离感受",
       "videoPath": "video720.mp4",
       "interactNodeId": "interactNodeId003,interactNodeId004",
-      "thumbnail": "../assets/preview2.png",
+      "thumbnail": "../assets/preview1.jpeg",
       "videoCoding": "h265",
       "outPutFormat": "mp4",
       "mediaHeight": "1920",
@@ -55,9 +55,9 @@
       "description": "视频3：又是被感动的一天，直接跳转到时间线的页面",
       "duration": 270,
       "filename": "又是被感动的一天",
-      "videoPath": "zxcv.mp4",
+      "videoPath": "video720.mp4",
       "interactNodeId": "interactNodeId005,interactNodeId006",
-      "thumbnail": "../assets/1O3UCUOGQ7V1R.png",
+      "thumbnail": "../assets/preview1.jpeg",
       "videoCoding": "h265",
       "outPutFormat": "mp4",
       "mediaHeight": "1920",
@@ -71,9 +71,9 @@
       "description": "视频4：厂哥回来了",
       "duration": 106,
       "filename": "又是被感动的一天",
-      "videoPath": "tyui.mp4",
+      "videoPath": "video720.mp4",
       "interactNodeId": null,
-      "thumbnail": "../assets/1O3UCUOGQ7V1R.png",
+      "thumbnail": "../assets/preview1.jpeg",
       "videoCoding": "h265",
       "outPutFormat": "mp4",
       "mediaHeight": "1920",
@@ -87,9 +87,9 @@
       "description": "视频5：花园变废草",
       "duration": 106,
       "filename": "花园变废草",
-      "videoPath": "ghjk.mp4",
+      "videoPath": "video720.mp4",
       "interactNodeId": null,
-      "thumbnail": "../assets/1O3UCUOGQ7V1R.png",
+      "thumbnail": "../assets/preview1.jpeg",
       "videoCoding": "h265",
       "outPutFormat": "mp4",
       "mediaHeight": "1920",
@@ -194,6 +194,7 @@
       "interactInfo": {
         "type": "TextModule"
       },
+      "isFollowCamera": false,
       "interactConfig": "interactConfig3.json"
     },
     {
@@ -211,6 +212,7 @@
       "interactInfo": {
         "type": "TextModule"
       },
+      "isFollowCamera": false,
       "interactConfig": "interactConfig5.json"
     },
     {

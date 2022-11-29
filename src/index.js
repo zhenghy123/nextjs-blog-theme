@@ -20,14 +20,15 @@ function createPlayer(id = '', url = '', options = {}) {
         }
 
         const kplayer = new KPlayer(_options)
+        kplayer.loadJson('http://localhost:8080/video/index.json')
 
         window.kxplayer = kplayer
         window._krpano = _krpano
 
-        const playList = new PlayerData(
-          'http://localhost:8080/video/index.json'
-        )
-        window.playList = playList
+        // const playList = new PlayerData(
+        //   'http://localhost:8080/video/index.json'
+        // )
+        // window.playList = playList
 
         // _krpano.actions.showlog()
         resolve(kplayer)

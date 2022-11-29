@@ -1,31 +1,25 @@
-import '../utils/message.min.js'
-import sty from '../utils/message.min.css'
+import { PlayerEvents } from './player-events'
+import { PlayerControl } from './player-control'
+import '../utils/qmsg'
 
 export class PlayerParse {
   constructor(url, _player) {
     this._url = url // json地址
     this._player = _player
+    this._playerControl = new PlayerControl(_player, this)
 
     this._json = {}
-    this._videoPrefix = '' // 文件前缀
-    this._assetsPrefix = ''
+    this._videoPrefix = url.replace('index.json', '') // 视频、config.json文件前缀
+    this._assetsPrefix = url.replace('video/index.json', '') // 资源文件(图片、音频)前缀
+    this._compNames = [] // 全部互动组件
+    this._factorList = [] // 互动因子
+    this._firstVideoId = ''
+    this._hasLoad = false // 是否处理完json数据
 
-    this._compNames = []
-    this.jsonUrl = url
-    this.factorList = []
     this.init()
-    // window.getPlayList = this.getPlayList.bind(this);
 
-    let style = document.createElement('style')
-    style.textContent = sty
-    document.head.appendChild(style)
-
-    Qmsg.config({
-      // showClose: true,
-      timeout: 800,
-    })
-
-    let count = 10
+    // Qmsg提示插件
+    let count = 3
     let timer = setInterval(() => {
       if (count == 0) {
         clearInterval(timer)
@@ -35,42 +29,72 @@ export class PlayerParse {
     }, 1000)
   }
 
+  /**
+   * 服务器文件存放目录结构：
+   * - assets
+   *    - img1.png
+   *    - img2.png
+   * -video
+   *    - index.json
+   *    - video1.mp4
+   *    - video2.mp4
+   *    - config1.json
+   *    - config2.json
+   */
   init() {
     /**
-     * 服务器文件存放目录结构：
-     * - assets
-     *    - img1.png
-     *    - img2.png
-     * -video
-     *    - index.json
-     *    - video1.mp4
-     *    - video2.mp4
-     *    - config1.json
-     *    - config2.json
+     * 初始化数据顺序：
+     * - 获取index.json
+     * - 获取config.json
+     * - 拼接config到infoItem,拼接infoItem到nodeItem
+     * - 层级结构处理结束
      */
-    this._videoPrefix = this._url.replace('index.json', '')
-    this._assetsPrefix = this._url.replace('video/index.json', '')
-
     this.fetchJson(this._url).then((json) => {
+      console.log('index.json==', json)
       this._json = json
-      console.log('json==', json)
+      this._factorList = json.factorList
+      this._firstVideoId = json.drama.firstVideoId
 
-      // 处理视频地址和封面地址
       json.videoList.map((item) => {
+        // 拼接处理视频地址和封面地址
         item.previewThumbnial =
           this._assetsPrefix + item.thumbnail.replace('../', '')
         item.previewVideoPath = this._videoPrefix + item.videoPath
+        // 初始化视频对象
+        item.video = this.createVideo(item)
       })
 
+      // 获取互动组件配置config.json
       this.fetchInteractConfig()
     })
   }
 
   /**
-   * 获取互动组件配置json
+   * 创建并初始化视频对象
+   * @param {Object} item  videoList item
+   */
+  createVideo(item) {
+    let video = document.createElement('video')
+    video.id = item.videoId
+    video.src = item.previewVideoPath
+    video.poster = item.previewThumbnial
+    video.crossOrigin = 'anonymous'
+    video.preload = true
+
+    this._playerControl.addVideoListener(video)
+
+    // TODO:编码判断：item.videoCoding=='h265'
+    // TODO:格式判断：item.outPutFormat=='mp4'
+
+    return video
+  }
+
+  /**
+   * 获取互动组件配置config.json
    */
   fetchInteractConfig() {
     const interactInfoList = this._json.interactInfoList
+
     let count = 0
     interactInfoList.map((item) => {
       let url = this._videoPrefix + item.interactConfig
@@ -78,19 +102,25 @@ export class PlayerParse {
         count++
         item.interactConfigJson = json
 
-        // 处理图片等地址
-        if (json.metas) {
-          json.metas.map((meta) => {
-            if (meta.url)
-              meta.previewUrl = this._assetsPrefix + meta.url.replace('../', '')
+        // metas 是文本信息，没有图片
+
+        // 处理图片等地址 TODO:imgs暂时没用到
+        if (json.imgs) {
+          let keys = Object.keys(json.imgs)
+          keys.map((key) => {
+            json.imgs['preview' + key] =
+              this._assetsPrefix + key.replace('../', '')
           })
         }
 
+        // 互动组件按钮配置
         if (json.btns) {
           json.btns.map((btn) => {
+            // audio是按钮点击音效，在按钮点击时触发
             if (btn.audio)
               btn.previewAudio =
                 this._assetsPrefix + btn.audio.replace('../', '')
+            // 按钮点击前、中、后背景图
             if (btn.backgroundImageAfterClick)
               btn.previewBackgroundImageAfterClick =
                 this._assetsPrefix +
@@ -102,31 +132,40 @@ export class PlayerParse {
             if (btn.backgroundImageClick)
               btn.previewBackgroundImageClick =
                 this._assetsPrefix + btn.backgroundImageClick.replace('../', '')
+
+            // TODO:点击组合按钮点击记录效果(点击后有个选中效果，再次点击去除选中)
           })
         }
 
-        if (json.imgs) {
-          // TODO
-        }
-
-        // 请求完最后一个json开始拼接进interactInfoList
+        // 请求完最后一个config.json，开始拼接互动组件Info配置进interactNodeList
         if (count == interactInfoList.length) {
-          this.concatJsonToInteractNodeList()
+          this.concatInfoToInteractNodeList()
         }
       })
     })
   }
 
-  concatJsonToInteractNodeList() {
+  /**
+   * 拼接互动组件Info配置进interactNodeList
+   */
+  concatInfoToInteractNodeList() {
     const interactNodeList = this._json.interactNodeList
     interactNodeList.map((item) => {
       item.interactInfoIdJson = this._json.interactInfoList.find(
         (info) => info.interactInfoId == item.interactInfoId
       )
     })
-    console.log('interactConfigJson==', this._json)
 
-    this.addVideoHotspot(this._json.drama?.firstVideoId)
+    // 注：
+    // 至此已处理完互动组件节点（node）、信息（info）、配置(config)，并按层级结构拼接进interactNodeList
+    this._hasLoad = true
+
+    // 一次性全部添加热点，后续根据videoId、组件配置进行显隐
+    this.addAllHotspot()
+    setTimeout(() => {
+      _player.showHotspot(this._compNames)
+    }, 1000)
+    this._playerControl.initFirstVideo()
   }
 
   /**
@@ -139,39 +178,15 @@ export class PlayerParse {
     return await response.json()
   }
 
-  getFactorList() {
-    return this._json.factorList
+  get_factorList() {
+    return this._json._factorList
   }
 
-  setFactorList(arr) {
-    this._json.factorList.map((item) => {
+  set_factorList(arr) {
+    this._json._factorList.map((item) => {
       let arrItem = arr.find((val) => val.key == item.key)
       item.value = eval(item.value + arrItem.operator + arrItem.temp)
     })
-  }
-
-  getFileJson(url) {
-    return new Promise((resolve, reject) => {
-      let request = new XMLHttpRequest()
-      request.open('get', url)
-      request.send(null)
-      request.onload = () => {
-        if (request.status == '200') {
-          let json = JSON.parse(request.responseText)
-          resolve(json)
-        } else {
-          reject({})
-        }
-      }
-    })
-  }
-
-  /**
-   * 获取JSON
-   */
-  getJsonList() {
-    console.log('JsonList:', this._json)
-    return this._json
   }
 
   /**
@@ -196,84 +211,92 @@ export class PlayerParse {
   }
 
   /**
-   * 获取视频JSON
+   * 根据videoId获取视频配置对象
+   * @param {String} videoId
+   * @returns videoItem
    */
-  getVideoParam(id) {
-    let video = this.getPlayList().find((val) => val.videoId == id)
-    return video
+  getVideoItem(videoId) {
+    return this._json.videoList.find((item) => (item.videoId = videoId))
   }
 
   /**
-   * 获取视频内组合按钮
-   * interactNodeId:视频参数interactNodeId
+   * 根据interactNodeId获取互动节点配置
+   * @param {String} interactNodeId
+   * @returns nodeItem
    */
-  getVidioInteract(interactNodeId) {
-    let id = interactNodeId.split(',')
+  getNodeItem(interactNodeId) {
+    return this._json.interactNodeList.find(
+      (item) => (item.interactNodeId = interactNodeId)
+    )
+  }
+
+  /**
+   * 获取当前视频对象的互动组件信息（可能有多个）
+   * @param {String} videoId
+   * @returns Array<nodeItem>
+   */
+  getVideoNodeConfig(videoId) {
+    let videoItem = this.getVideoItem(videoId)
     let list = []
-    id.forEach((item) => {
-      let interactNodeItem = this.getInteractNodeList().find(
-        (val) => val.interactNodeId == item
-      )
-      list.push(interactNodeItem)
+    let ids = videoItem.interactNodeId.split(',')
+    ids.map((id) => {
+      list.push(this.getNodeItem(id))
     })
     return list
   }
 
   /**
-   * 获取视频内组合按钮具体信息
-   * interactNodeId:视频参数interactNodeId
+   * 根据视videoId,当前时间获取要显示的互动组件
+   * @param {String} videoId
+   * @param {Number} time
+   * @returns Array<activeNodeItem>
    */
-  getVidioInteractInfo(interactNodeId) {
-    let list = this.getVidioInteract(interactNodeId)
-    let listInfo = []
-    list.forEach((item) => {
-      let interactInfoIdItem = this.getInteractInfoList().find(
-        (val) => val.interactInfoId == item.interactInfoId
-      )
-      listInfo.push(interactInfoIdItem)
+  getActivetNodeList(videoId, time) {
+    let list = this.getVideoNodeConfig(videoId)
+    let nodes = []
+    list.map((item) => {
+      if (item.startTime <= time && time <= item.startTime + item.duration) {
+        nodes.push(item)
+      }
     })
-    return listInfo
+
+    return nodes
   }
 
   /**
-   * 获取视频内组合按钮跳转信息
-   * interactNodeId:视频参数interactNodeId
-   * '/json/interactConfig1.json'
+   * 根据视videoId,当前时间获取要显示的互动组件的每一项id集合
+   * 用于控制组件批量显示、隐藏
+   * @param {String} videoId
+   * @param {Number} time
+   * @returns Array<id>
    */
-  async getVidioInteractJumpTo(interactNodeId) {
-    let listInfo = this.getVidioInteractInfo(interactNodeId)
-    let interactConfig = []
-    for (let i = 0; i < listInfo.length; i++) {
-      let file = this.jsonUrl.replace('index.json', listInfo[i].interactConfig)
-      let info = await this.getFileJson(file)
-      interactConfig.push(info)
-    }
-    return interactConfig
-  }
+  getActivetCompIds(videoId, time) {
+    let list = this.getActivetNodeList(videoId, time)
+    let ids = []
+    list.map((item) => {
+      const { btns, ctrls, imgs, metas } =
+        item.interactInfoIdJson.interactConfigJson
+      // 文本和互动组件不会同时存在（虽然展示的时候会）
+      let comps = metas || btns
 
-  /**
-   * 获取全部互动组件列表
-   * - 不包含组件控制参数
-   * - 只有组件类型和组件配置
-   */
-  getAllInteractInfoIdJson() {
-    let _interactNodeList = this._json.interactNodeList
-    let _interactInfoIdJson = []
-    _interactNodeList.map((item) => {
-      _interactInfoIdJson.push(item.interactInfoIdJson)
+      if (configJson.comps) {
+        comps.map((comp) => {
+          ids.push(comp.id)
+        })
+      }
     })
-    return _interactInfoIdJson
+    return ids
   }
 
   /**
    * 一次性添加全部热点信息（默认隐藏）
    */
   addAllHotspot() {
-    let _interactInfoIdJson = this.getAllInteractInfoIdJson()
+    let _interactInfoIdJson = this._json.interactInfoList
     _interactInfoIdJson.map((item) => {
       let type = item.isFollowCamera ? 'layer' : 'hotspot'
       let compType = item.interactInfo.type
-      let compId = 'a_' + Math.random()
+      // let compId = 'a_' + Math.random()
 
       const { btns, ctrls, imgs, metas } = item.interactConfigJson
 
@@ -288,6 +311,7 @@ export class PlayerParse {
         comps.map((comp) => {
           let style = comp.style
           // 注意不能以数字开头，哪怕是字符串
+          // TODO:数据造的有问题，先拼接使用
           let name = 'a_' + comp.id
           this._compNames.push(name)
 
@@ -300,9 +324,9 @@ export class PlayerParse {
           // 非文字才会有 styleSetting,默认null
           if (btns) {
             styleSetting = {
-              beforeTrigger: this.getImageUrl(comp.backgroundImageBeforeClick),
-              triggering: this.getImageUrl(comp.backgroundImageClick),
-              afterTrigger: this.getImageUrl(comp.backgroundImageAfterClick),
+              beforeTrigger: comp.previewBackgroundImageBeforeClick,
+              triggering: comp.previewBackgroundImageClick,
+              afterTrigger: comp.previewBackgroundImageAfterClick,
             }
           }
 
@@ -323,186 +347,5 @@ export class PlayerParse {
         })
       }
     })
-  }
-
-  /**
-   * 添加视频热点
-   * interactNodeId:视频参数interactNodeId
-   */
-  setVideoHotspot(interactNodeId) {
-    let listInfo = this.getVidioInteract(interactNodeId)
-    for (let i = 0; i < listInfo.length; i++) {
-      let type = listInfo[i].interactInfoIdJson.interactInfo.type
-      let info = listInfo[i].interactInfoIdJson.interactConfigJson
-      if (type == 'TextModule') {
-        //文本
-        info.metas.map((item) => {
-          let _id = item.id
-          if (!_id) _id = 0
-          let id = listInfo[i].interactInfoId + _id
-          item.name = id
-          let style = item.style
-          let textSetting = {
-            text: item.text,
-            align: 'left',
-            color: style.color,
-            'font-size': style.fontSize,
-            'font-family': '',
-            'font-style': 'italic',
-            'text-decoration': 'line-through',
-          }
-          let transform2DSetting = {
-            x: style.posX,
-            y: style.posY,
-            width: style.width,
-            height: style.height,
-            scaleX: style.scaleX,
-            rotate: style.rotate,
-            opacity: style.opacity,
-            rotateX: style.rotateX,
-            rotateY: style.rotateY,
-            rotateZ: style.rotateZ,
-          }
-          kxplayer.addInteractiveHotspot(
-            id,
-            'TextModule',
-            'layer',
-            null,
-            textSetting,
-            transform2DSetting
-          )
-        })
-      } else if (type == 'PointClickModule') {
-        //点选
-        info.btns.map((item) => {
-          let _id = item.id
-          if (!_id) _id = 0
-          let id = listInfo[i].interactInfoId + _id
-          item.name = id
-          let action = {}
-          if (item.action && item.action.length > 0) action = item.action[0]
-          let style = item.style
-          let textSetting = {
-            text: item.text,
-            align: 'left',
-            color: style.color,
-            'font-size': style.fontSize,
-            'font-family': '',
-            'font-style': 'italic',
-            'text-decoration': 'line-through',
-          }
-          let styleSetting = {
-            beforeTrigger: this.getImageUrl(item.backgroundImageBeforeClick),
-            triggering: this.getImageUrl(item.backgroundImageClick),
-            afterTrigger: this.getImageUrl(item.backgroundImageAfterClick),
-          }
-          let transform2DSetting = {
-            x: style.posX,
-            y: style.posY,
-            width: style.width,
-            height: style.height,
-            scaleX: style.scaleX,
-            rotate: style.rotate,
-            opacity: style.opacity,
-            rotateX: style.rotateX,
-            rotateY: style.rotateY,
-            rotateZ: style.rotateZ,
-          }
-          kxplayer.addInteractiveHotspot(
-            id,
-            'PointClickModule',
-            'hotspot',
-            styleSetting,
-            textSetting,
-            transform2DSetting
-          )
-        })
-      } else if (type == 'ClickGroupModule') {
-        //点击组合
-        info.btns.map((item) => {
-          let _id = item.id
-          if (!_id) _id = 0
-          let id = listInfo[i].interactInfoId + _id
-          item.name = id
-          let action = {}
-          if (item.action && item.action.length > 0) action = item.action[0]
-          let style = item.style
-          let textSetting = {
-            text: item.text,
-            align: 'left',
-            color: style.color,
-            'font-size': style.fontSize,
-            'font-family': '',
-            'font-style': 'italic',
-            'text-decoration': 'line-through',
-          }
-          let styleSetting = {
-            beforeTrigger: this.getImageUrl(item.backgroundImageBeforeClick),
-            triggering: this.getImageUrl(item.backgroundImageClick),
-            afterTrigger: this.getImageUrl(item.backgroundImageAfterClick),
-          }
-          let transform2DSetting = {
-            x: style.posX,
-            y: style.posY,
-            width: style.width,
-            height: style.height,
-            scaleX: style.scaleX,
-            rotate: style.rotate,
-            opacity: style.opacity,
-            rotateX: style.rotateX,
-            rotateY: style.rotateY,
-            rotateZ: style.rotateZ,
-          }
-          kxplayer.addInteractiveHotspot(
-            id,
-            'ClickGroupModule',
-            'hotspot',
-            styleSetting,
-            textSetting,
-            transform2DSetting
-          )
-        })
-      }
-    }
-  }
-  /**
-   * 获取视频地址
-   * @param {视频url} videoUrl
-   * @returns
-   */
-  getVideoUrl(videoUrl) {
-    return this.jsonUrl.replace('index.json', videoUrl)
-  }
-  /**
-   * 获取图片地址
-   * @param {图片url} imgUrl
-   * @returns
-   */
-  getImageUrl(imgUrl) {
-    let imgStr = imgUrl.replace('../', '')
-    return this.jsonUrl.replace('video/index.json', imgStr)
-  }
-  /**
-   * 获取视频下节点名称
-   * @param {视频id} id
-   * @returns
-   */
-  getAllVideoNodeName(id) {
-    let interactNodeId = this.getVideoParam(id)?.interactNodeId
-    return this.getVidioInteractInfo(interactNodeId)
-  }
-  /**
-   * 添加组件
-   * @param {视频id} id
-   */
-  addVideoHotspot(id) {
-    let interactNodeId = this.getVideoParam(id)?.interactNodeId
-    // this.setVideoHotspot(interactNodeId)
-
-    // TODO:根据当前视频和时间判断是否回显
-    this.addAllHotspot()
-    setTimeout(() => {
-      _player.showHotspot(this._compNames)
-    }, 2000)
   }
 }

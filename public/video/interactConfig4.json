@@ -5,7 +5,7 @@
   },
   "btns": [
     {
-      "id": 1,
+      "id": "saddcx3qwdgtrhgrh234234235ewwr",
       "text": "1",
       "style": {
         "color": "#000",
@@ -29,13 +29,13 @@
       "backgroundImageAfterClick": "../assets/preview1.png",
       "action": [
         {
-            "actionType": "SWITCHVIDEO",
-            "nextVideo": "732228247"
+          "actionType": "SWITCHVIDEO",
+          "nextVideo": "732228247"
         }
-    ]
+      ]
     },
     {
-      "id": 2,
+      "id": "saddcx3hgytnjtyh234235ewwr",
       "text": "2",
       "style": {
         "color": "#000",
@@ -60,7 +60,7 @@
       "action": []
     },
     {
-      "id": 3,
+      "id": "saddcx3jntyut4235ewwr",
       "text": "3",
       "style": {
         "color": "#000",
@@ -85,7 +85,7 @@
       "action": []
     },
     {
-      "id": 4,
+      "id": "saddcxjnuyji234235ewwr",
       "text": "4",
       "style": {
         "color": "#000",
@@ -113,7 +113,10 @@
   "ctrls": [
     {
       "conditionConfig": {
-        "conditionValue": [1, 2],
+        "conditionValue": [
+          1,
+          2
+        ],
         "jumpVideoId": "732228246",
         "jumpTime": 6000,
         "errorTip": ""

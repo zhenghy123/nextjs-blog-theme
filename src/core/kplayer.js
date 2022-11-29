@@ -28,7 +28,6 @@ class KPlayer {
 
   init() {
     _krpano.global.ispreview = this._options.ispreview
-    window.hotspotClick = this.hotspotClick.bind(this)
 
     Object.defineProperty(this._options, 'ispreview', {
       set(val) {
@@ -41,16 +40,63 @@ class KPlayer {
       },
     })
 
-    this._emitter.on('timeupdate', (val) => {
-      pathTimeUpdate(val)
+    Object.defineProperty(this._options, 'showFovSet', {
+      set(val) {
+        _krpano.global.showFovSet = val
+        that.toggleFovSetScreen(val)
+      },
+      get() {
+        return that._options.showFovSet
+      },
     })
-    this._emitter.on('hotspotClick', (val) => {
-      pathSpotClick(val)
-    })
+
+    // this._emitter.on('timeupdate', (val) => {
+    //   pathTimeUpdate(val)
+    // })
+    // this._emitter.on('hotspotClick', (val) => {
+    //   pathSpotClick(val)
+    // })
+
+    window.hotspotClick = this.hotspotClick.bind(this)
+    window.setMainFov = this.setMainFov.bind(this)
+    window.draghotspot = this.draghotspot.bind(this)
   }
 
   loadJson(url) {
     this._playerParse = new PlayerParse(url, this)
+  }
+
+  draghotspot(name) {
+    let pos = {}
+    let obj = _krpano.hotspot.getItem(name) || _krpano.layer.getItem(name)
+    if (obj.flag == 'layer') {
+      pos.x = obj.x.replace('%', '')
+      pos.y = obj.y.replace('%', '')
+    } else {
+      pos.x = obj.ath
+      pos.y = obj.atv
+      pos.z = obj.depth
+    }
+
+    if (this._options.draghotspot) {
+      this._options.draghotspot(obj.compid, name, obj.flag, pos)
+    }
+  }
+
+  hotspotClick(name) {
+    let layers = _krpano.layer.getArray()
+    layers.map((item) => {
+      if (
+        item.name.indexOf('border_') != -1 &&
+        item.name !== 'border_' + name
+      ) {
+        item.visible = false
+      }
+    })
+
+    if (this._options.hotspotClick) {
+      this._options.hotspotClick(name)
+    }
   }
 
   displayAllBorder() {
@@ -62,68 +108,102 @@ class KPlayer {
     })
   }
 
-  hotspotClick(name) {
-    const layers = _krpano.layer.getArray()
-    layers.map((item) => {
-      if (
-        item.name.indexOf('border_') != -1 &&
-        item.name !== 'border_' + name
-      ) {
-        item.visible = false
-      }
-    })
-    if (this._options.hotspotClick) {
-      this._options.hotspotClick(name)
-    }
-
-    this._emitter.emit('hotspotClick', name)
-  }
-
   initVideo() {
     // addplugin是异步操作，不能马上获取到添加的plugin对象
+    let _this = this
 
     const checkPluginInit = () => {
       let videoPlugin = _krpano.plugin.getItem('video')
       if (videoPlugin) {
+        console.error('init video ', _this._options.url)
         videoPlugin.DefaultVideoOptions = DefaultVideoOptions
-        videoPlugin.options = this._options
-        videoPlugin._emitter = this._emitter
         videoPlugin.PlayerEvents = PlayerEvents
+        videoPlugin._emitter = _this._emitter
+        videoPlugin._emit = _this._emitter.emit
         // videoPlugin.events = this._options.events
-        videoPlugin.videourl = this._options.url
-        videoPlugin.videoId = this._options.videoId
-        // videoPlugin.url = './plugins/videoplayer.js'
-        videoPlugin.url = './plugins/videoplayer_basic_source.js'
-        console.log('url===', this._options.url)
+        videoPlugin.videourl = _this._options.url
+        videoPlugin.videoId = _this._options.videoId
+        videoPlugin.url = '/plugins/videoplayer_basic_source.js'
+
+        // let video = document.createElement('video')
+        // video.src = 'video/video360.mp4'
+        // video.currentTime = 10
+
+        // setTimeout(() => {
+        //   console.log(1133)
+        //   videoPlugin.togglevideo(video)
+        // }, 3000)
       } else {
-        setTimeout(checkPluginInit, 0)
+        console.log('check')
+        setTimeout(checkPluginInit, 500)
       }
     }
     checkPluginInit()
+  }
+
+  checkVideoPluginIsInit() {
+    return new Promise((resolve) => {
+      let isLoad = () => {
+        let obj =
+          _krpano.plugin.getItem('video') &&
+          _krpano.plugin.getItem('video').togglevideo
+        if (obj) {
+          resolve(true)
+        } else {
+          setTimeout(isLoad, 300)
+        }
+      }
+      isLoad()
+    })
   }
 
   setVideoSrc() {
     _krpano.plugin.getItem('video').videourl = this._options.url
   }
 
-  changeVideo(url, id) {
-    _krpano.plugin.getItem('video').togglevideo(url, id)
+  changeVideo(url) {
+    // 防止为注册完就调用
+    this.checkVideoPluginIsInit().then(() => {
+      _krpano.plugin.getItem('video').togglevideo(url)
+    })
+  }
+
+  toggleFovSetScreen(val) {
+    _krpano.layer.getItem('view_frame').visible = val
   }
 
   /**
-   * 设置初始视角
-   * @param {String} info view字符串对象
-   * @returns {Object}
+   * 设置并返回场景主视角
+   * 不传则返回视角信息
    */
-  setInitialView(info = null) {
-    let view = _krpano.view
-
-    if (info) {
-      const { hlookat, vlookat, fov } = JSON.parse(info)
-      view.hlookat = hlookat
-      view.vlookat = vlookat
-      view.fov = fov
+  setMainFov(view) {
+    if (view) {
+      let _view = typeof view == 'string' ? JSON.parse(view) : view
+      _krpano.view.hlookat = _view.hlookat
+      _krpano.view.vlookat = _view.vlookat
+      _krpano.view.fov = _view.fov || 90
+    } else {
+      view = _krpano.view
     }
+
+    if (this._options.setMainFov) {
+      let str = JSON.stringify({
+        hlookat: view.hlookat,
+        vlookat: view.vlookat,
+        fov: view.fov,
+      })
+      this._options.setMainFov(str)
+    }
+
+    if (this._options.setMainFov) {
+      let str = JSON.stringify({
+        hlookat: view.hlookat,
+        vlookat: view.vlookat,
+        fov: view.fov,
+      })
+      this._options.setMainFov(str)
+    }
+
     return {
       hlookat: view.hlookat,
       vlookat: view.vlookat,
@@ -137,6 +217,10 @@ class KPlayer {
 
   pause() {
     _krpano.plugin.getItem('video').pause()
+  }
+
+  update() {
+    _krpano.plugin.getItem('video').update()
   }
 
   setCurrentTime(time) {
@@ -637,7 +721,20 @@ class KPlayer {
   hideAllBorderSelect() {
     let layers = _krpano.layer.getArray()
     layers.map((item) => {
-      item.visible = false
+      if (item.name.indexOf('border_') != -1) {
+        item.visible = false
+      }
+    })
+  }
+
+  showBorderLayer(name, visible) {
+    let layers = _krpano.layer.getArray()
+    layers.map((item) => {
+      if (item.name == name) {
+        item.visible = visible
+      } else if (item.name.indexOf('border_') != -1) {
+        item.visible = false
+      }
     })
   }
 
@@ -692,6 +789,17 @@ class KPlayer {
           : _krpano.layer.getItem(name)
       obj && (obj.visible = isShow)
     })
+  }
+
+  /**
+   * 切换场景（视频、图片、黑屏）
+   * 注意：热点和插件要设置 keep:true
+   * @param {String} name
+   */
+  changeScene(name) {
+    _krpano.actions.loadscene(name)
+    _krpano.plugin.getItem(0).lastCurrentTime = Math.random()
+    _krpano.actions.updatescreen()
   }
 
   /**
