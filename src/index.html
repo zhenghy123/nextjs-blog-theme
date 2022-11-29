@@ -431,7 +431,7 @@
         <div class="process">
           <div class="rootNode" onClick="treeClick(${nodeList.id})">
             <img style="position:absolute;width:100%;height:100%" src="${nodeList.img}"></img>
-            <div>${nodeList.label}</div>
+            <div style="position:absolute">${nodeList.label}</div>
           </div>
         </div>
         ${setnodelist(nodeList.children,'root')}
@@ -469,7 +469,7 @@
             <div class="nodeType">
               <div class="nodeInfo" onClick="treeClick(${item.id})">
                 <img style="position:absolute;width:140px;height:100px"  src="${nodeList.img}"></img>
-                <div > ${item.label}</div>
+                <div style="position:absolute"> ${item.label}</div>
               </div>
             </div>
             ${setnodelist(item.children)}
