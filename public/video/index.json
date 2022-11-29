@@ -175,6 +175,7 @@
   "interactInfoList": [
     {
       "interactInfoId": "interactInfoId001",
+      "isFollowCamera": false,
       "interactInfo": {
         "type": "TextModule"
       },

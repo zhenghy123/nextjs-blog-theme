@@ -1,6 +1,7 @@
 import { PlayerEvents } from './player-events'
 import { InteractiveEnums } from './player-interactives'
 import { DefaultVideoOptions } from './player-config'
+import { PlayerParse } from './player-json-parse'
 import { pathTimeUpdate, pathSpotClick } from './pathChoice'
 
 import EventEmitter from 'events'
@@ -20,6 +21,7 @@ class KPlayer {
     this._emitter = new EventEmitter()
 
     _krpano = options.krpano
+
     this.init()
     this.initVideo()
   }
@@ -45,6 +47,10 @@ class KPlayer {
     this._emitter.on('hotspotClick', (val) => {
       pathSpotClick(val)
     })
+  }
+
+  loadJson(url) {
+    this._playerParse = new PlayerParse(url, this)
   }
 
   displayAllBorder() {
@@ -202,13 +208,25 @@ class KPlayer {
    * @param {Object} transform2DSetting 组件变换信息
    */
   addInteractiveHotspot(
-    name = 'a' + Math.random(),
-    compName = 'PointClickModule',
-    type = 'hotspot',
+    name,
+    compName,
+    type,
     styleSetting = null,
     textSetting = null,
     transform2DSetting = null
   ) {
+    if (!name) {
+      throw new Error('can not find name param')
+    }
+
+    if (!compName) {
+      throw new Error('can not find compName param')
+    }
+
+    if (!type) {
+      throw new Error('can not find type param')
+    }
+
     if (compName == 'TextModule') {
       this.addTextComp(
         name,
