@@ -228,7 +228,6 @@ class KPlayer {
     }
 
     if (compName == 'TextModule') {
-      console.log('aaa1:')
       this.addTextComp(
         name,
         compName,
@@ -276,7 +275,6 @@ class KPlayer {
     transform3DSetting
   ) {
     if (type == 'hotspot') {
-      console.log('aaa2:',name)
       _krpano.call(
         `
         addhotspot(${name});
@@ -294,7 +292,6 @@ class KPlayer {
         `
       )
     } else {
-      console.log('aaa3:',name)
       // 注意layer的scale需要加到css上
       _krpano.call(
         `
