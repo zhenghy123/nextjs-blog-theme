@@ -7,8 +7,8 @@ class PlayerData {
     this._compNames = []
     this.jsonUrl = url
     this.factorList = []
+    this.treeList = {} //树节点
     this.init()
-    // window.getPlayList = this.getPlayList.bind(this);
   }
 
   init() {
@@ -65,6 +65,7 @@ class PlayerData {
     console.log('interactConfigJson==', this._json)
 
     this.addVideoHotspot(this._json.drama?.firstVideoId)
+    this.setTreeList()
   }
 
   /**
@@ -75,6 +76,10 @@ class PlayerData {
   async fetchJson(url) {
     const response = await fetch(url)
     return await response.json()
+  }
+
+  getFirstVideoId() {
+    return this._json.drama?.firstVideoId
   }
 
   getFactorList() {
@@ -146,9 +151,9 @@ class PlayerData {
    * interactNodeId:视频参数interactNodeId
    */
   getVidioInteract(interactNodeId) {
-    let id = interactNodeId.split(',')
+    let id = interactNodeId?.split(',')
     let list = []
-    id.forEach((item) => {
+    id?.forEach((item) => {
       let interactNodeItem = this.getInteractNodeList().find(
         (val) => val.interactNodeId == item
       )
@@ -217,7 +222,7 @@ class PlayerData {
 
       let textSetting = null
       let styleSetting = null
-      let transform2DSetting = null
+      let transform3DSetting = null
 
       // 文本和互动组件不会同时存在（虽然展示的时候会）
       let comps = metas || btns
@@ -244,7 +249,7 @@ class PlayerData {
             }
           }
 
-          transform2DSetting = {
+          transform3DSetting = {
             ...style,
             x: style.posX,
             y: style.posY,
@@ -256,7 +261,7 @@ class PlayerData {
             type,
             styleSetting,
             textSetting,
-            transform2DSetting
+            transform3DSetting
           )
         })
       }
@@ -289,7 +294,7 @@ class PlayerData {
             'font-style': 'italic',
             'text-decoration': 'line-through',
           }
-          let transform2DSetting = {
+          let transform3DSetting = {
             x: style.posX,
             y: style.posY,
             width: style.width,
@@ -307,7 +312,7 @@ class PlayerData {
             'layer',
             null,
             textSetting,
-            transform2DSetting
+            transform3DSetting
           )
         })
       } else if (type == 'PointClickModule') {
@@ -334,7 +339,7 @@ class PlayerData {
             triggering: this.getImageUrl(item.backgroundImageClick),
             afterTrigger: this.getImageUrl(item.backgroundImageAfterClick),
           }
-          let transform2DSetting = {
+          let transform3DSetting = {
             x: style.posX,
             y: style.posY,
             width: style.width,
@@ -352,7 +357,7 @@ class PlayerData {
             'hotspot',
             styleSetting,
             textSetting,
-            transform2DSetting
+            transform3DSetting
           )
         })
       } else if (type == 'ClickGroupModule') {
@@ -379,7 +384,7 @@ class PlayerData {
             triggering: this.getImageUrl(item.backgroundImageClick),
             afterTrigger: this.getImageUrl(item.backgroundImageAfterClick),
           }
-          let transform2DSetting = {
+          let transform3DSetting = {
             x: style.posX,
             y: style.posY,
             width: style.width,
@@ -397,7 +402,7 @@ class PlayerData {
             'hotspot',
             styleSetting,
             textSetting,
-            transform2DSetting
+            transform3DSetting
           )
         })
       }
@@ -442,6 +447,68 @@ class PlayerData {
     // setTimeout(() => {
     //   _player.showHotspot(this._compNames)
     // }, 2000)
+  }
+
+  getTreeList() {
+    return this.treeList
+  }
+
+  setTreeList() {
+    let id = this._json.drama?.firstVideoId
+    let rootVideo = this.getVideoParam(id)
+    let rootParam = {
+      label: rootVideo.filename,
+      id: rootVideo.videoId,
+      img: this.getImageUrl(rootVideo.thumbnail),
+      children: [],
+    }
+
+    this.pathTree(rootParam, id)
+    this.treeList = rootParam
+  }
+
+  pathTree(paramList, id) {
+    let nextid = this.pathTreeClick(id)
+    nextid.forEach((item) => {
+      let rootVideo = this.getVideoParam(item)
+      let param = {
+        label: rootVideo.filename,
+        id: rootVideo.videoId,
+        img: this.getImageUrl(rootVideo.thumbnail),
+        children: [],
+      }
+      paramList.children.push(param)
+      this.pathTree(param, item)
+    })
+  }
+
+  pathTreeClick(id) {
+    let treeList = []
+    let interactNodeId = this.getVideoParam(id)?.interactNodeId
+    let list = this.getVidioInteract(interactNodeId)
+    list?.forEach((item) => {
+      let interactInfoIdItem = item.interactInfoIdJson
+
+      let ctrls = interactInfoIdItem?.interactConfigJson?.ctrls
+      ctrls?.forEach((item) => {
+        let conditionConfig = item.conditionConfig
+        let video = conditionConfig.jumpVideoId
+        if (video) {
+          treeList.push(video)
+        }
+      })
+      let btns = interactInfoIdItem?.interactConfigJson?.btns
+      btns?.forEach((item) => {
+        item?.action?.forEach((actItem) => {
+          let nextVideoId = actItem.nextVideo
+          if (nextVideoId) {
+            treeList.push(nextVideoId)
+          }
+        })
+      })
+    })
+    let newList = new Set(treeList)
+    return newList
   }
 }
 

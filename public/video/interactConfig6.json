@@ -114,7 +114,7 @@
 			"countDown":{ 
 				"time":1000,
 				"text":"倒计时",
-				"jumpVideoId": "732228247", 
+				"jumpVideoId": "732228246", 
 				"jumpTime": 600 
 			},
 			"conditionConfig": {  

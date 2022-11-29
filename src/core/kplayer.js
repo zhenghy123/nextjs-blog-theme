@@ -169,7 +169,7 @@ class KPlayer {
               info.baseSetting.angleFollow ? 'layer' : 'hotspot',
               group.styleSetting,
               group.textSetting,
-              group.transform2DSetting
+              group.transform3DSetting
             )
           } else if (
             info.baseSetting.name == '点击' ||
@@ -180,7 +180,7 @@ class KPlayer {
               info.baseSetting.angleFollow ? 'layer' : 'hotspot',
               group.styleSetting,
               group.textSetting,
-              group.transform2DSetting
+              group.transform3DSetting
             )
           }
         } else {
@@ -191,7 +191,7 @@ class KPlayer {
             info.baseSetting.angleFollow ? 'layer' : 'hotspot',
             group.styleSetting,
             group.textSetting,
-            group.transform2DSetting
+            group.transform3DSetting
           )
         }
       })
@@ -205,7 +205,7 @@ class KPlayer {
    * @param {String} type 热点类型（hotspot,layer）
    * @param {Object} styleSetting 组件背景信息
    * @param {Object} textSetting 组件文本信息
-   * @param {Object} transform2DSetting 组件变换信息
+   * @param {Object} transform3DSetting 组件变换信息
    */
   addInteractiveHotspot(
     name,
@@ -213,7 +213,7 @@ class KPlayer {
     type,
     styleSetting = null,
     textSetting = null,
-    transform2DSetting = null
+    transform3DSetting = null
   ) {
     if (!name) {
       throw new Error('can not find name param')
@@ -234,7 +234,7 @@ class KPlayer {
         type,
         styleSetting,
         textSetting,
-        transform2DSetting
+        transform3DSetting
       )
     } else if (compName == 'PointClickModule') {
       this.addOptionBranchComp(
@@ -243,7 +243,7 @@ class KPlayer {
         type,
         styleSetting,
         textSetting,
-        transform2DSetting
+        transform3DSetting
       )
     } else if (compName == 'ClickGroupModule') {
       this.addOptionBranchComp(
@@ -252,7 +252,7 @@ class KPlayer {
         type,
         styleSetting,
         textSetting,
-        transform2DSetting
+        transform3DSetting
       )
     }
 
@@ -272,7 +272,7 @@ class KPlayer {
     type,
     styleSetting,
     textSetting,
-    transform2DSetting
+    transform3DSetting
   ) {
     if (type == 'hotspot') {
       _krpano.call(
@@ -317,7 +317,7 @@ class KPlayer {
       type,
       styleSetting,
       textSetting,
-      transform2DSetting
+      transform3DSetting
     )
   }
 
@@ -330,7 +330,7 @@ class KPlayer {
     type,
     styleSetting,
     textSetting,
-    transform2DSetting
+    transform3DSetting
   ) {
     if (type == 'hotspot') {
       _krpano.call(
@@ -371,7 +371,7 @@ class KPlayer {
       type,
       styleSetting,
       textSetting,
-      transform2DSetting
+      transform3DSetting
     )
   }
 
@@ -384,7 +384,7 @@ class KPlayer {
     type,
     styleSetting,
     textSetting,
-    transform2DSetting
+    transform3DSetting
   ) {
     // 后面如果需要设置别的再加
     //   let css = {
@@ -394,7 +394,7 @@ class KPlayer {
     //     // 'font-family': textSetting.fontFamily,
     //     // 'font-style': textSetting.fontStyle,
     //     // 'text-decoration': textSetting.textDecoration,
-    //     scale: transform2DSetting?.scaleX || 1,
+    //     scale: transform3DSetting?.scaleX || 1,
     //   };
     //   params.css = css;
     // }
@@ -402,13 +402,13 @@ class KPlayer {
     if (type == 'hotspot') {
       _krpano.call(
         `
-        set(hotspot[${name}].ath,${transform2DSetting?.x || 0});
-        set(hotspot[${name}].atv,${transform2DSetting?.y || 0});
-        set(hotspot[${name}].depth,${transform2DSetting?.z || 200});
-        set(hotspot[${name}].rx,${transform2DSetting?.rotationX || 0});
-        set(hotspot[${name}].ry,${transform2DSetting?.rotationY || 0});
-        set(hotspot[${name}].rz,${transform2DSetting?.rotationZ || 0});
-        set(hotspot[${name}].scale,${transform2DSetting?.scale || 1});
+        set(hotspot[${name}].ath,${transform3DSetting?.x || 0});
+        set(hotspot[${name}].atv,${transform3DSetting?.y || 0});
+        set(hotspot[${name}].depth,${transform3DSetting?.z || 200});
+        set(hotspot[${name}].rx,${transform3DSetting?.rotationX || 0});
+        set(hotspot[${name}].ry,${transform3DSetting?.rotationY || 0});
+        set(hotspot[${name}].rz,${transform3DSetting?.rotationZ || 0});
+        set(hotspot[${name}].scale,${transform3DSetting?.scale || 1});
         set(hotspot[${name}].html,${textSetting?.text || '默认文本'});
         set(hotspot[${name}].css,"color:${
           textSetting?.fill || '0xffffff'
@@ -419,17 +419,17 @@ class KPlayer {
       _krpano.call(
         `
         set(layer[${name}].x,${
-          transform2DSetting?.x ? transform2DSetting?.x + '%' : '50%'
+          transform3DSetting?.x ? transform3DSetting?.x + '%' : '50%'
         });
         set(layer[${name}].y,${
-          transform2DSetting?.y ? transform2DSetting?.y + '%' : '50%'
+          transform3DSetting?.y ? transform3DSetting?.y + '%' : '50%'
         });
-        set(layer[${name}].rotate,${transform2DSetting?.rotate || 0});
+        set(layer[${name}].rotate,${transform3DSetting?.rotate || 0});
         set(layer[${name}].html,${textSetting?.text || '默认文本'});
         set(layer[${name}].css,"color:${
           textSetting?.fill || '0xffffff'
         };font-size:${textSetting?.fontSize || 16}px;scale:${
-          transform2DSetting?.scaleX || 1
+          transform3DSetting?.scaleX || 1
         }");
         `
       )
@@ -442,19 +442,19 @@ class KPlayer {
     type,
     styleSetting,
     textSetting,
-    transform2DSetting
+    transform3DSetting
   ) {
     if (type == 'hotspot') {
       _krpano.call(
         `
-        set(hotspot[${name}].ath,${transform2DSetting?.x || 0});
-        set(hotspot[${name}].atv,${transform2DSetting?.y || 0});
-        set(hotspot[${name}].depth,${transform2DSetting?.z || 800});
-        set(hotspot[${name}].width,${transform2DSetting?.width || '100'});
-        set(hotspot[${name}].height,${transform2DSetting?.height || '100'});
-        set(hotspot[${name}].rx,${transform2DSetting?.rotationX || 0});
-        set(hotspot[${name}].ry,${transform2DSetting?.rotationY || 0});
-        set(hotspot[${name}].rz,${transform2DSetting?.rotationZ || 0});
+        set(hotspot[${name}].ath,${transform3DSetting?.x || 0});
+        set(hotspot[${name}].atv,${transform3DSetting?.y || 0});
+        set(hotspot[${name}].depth,${transform3DSetting?.z || 800});
+        set(hotspot[${name}].width,${transform3DSetting?.width || '100'});
+        set(hotspot[${name}].height,${transform3DSetting?.height || '100'});
+        set(hotspot[${name}].rx,${transform3DSetting?.rotationX || 0});
+        set(hotspot[${name}].ry,${transform3DSetting?.rotationY || 0});
+        set(hotspot[${name}].rz,${transform3DSetting?.rotationZ || 0});
         set(hotspot[${name}].url,${
           styleSetting?.beforeTrigger ||
           InteractiveEnums[compName].beforeTrigger
@@ -471,7 +471,7 @@ class KPlayer {
         });
         set(hotspot[${name}].text,${textSetting?.text || ''}); 
         set(hotspot[${name}].html,${textSetting?.text || ''});
-        set(hotspot[${name}].scale,${transform2DSetting?.scale || 1});
+        set(hotspot[${name}].scale,${transform3DSetting?.scale || 1});
         `
       )
       this.checkHasLoaded('tooltip_' + name, 'layer').then(() => {
@@ -484,14 +484,14 @@ class KPlayer {
       _krpano.call(
         `
          set(layer[${name}].x,${
-          transform2DSetting?.x ? transform2DSetting?.x + '%' : '50%'
+          transform3DSetting?.x ? transform3DSetting?.x + '%' : '50%'
         });
         set(layer[${name}].y,${
-          transform2DSetting?.y ? transform2DSetting?.y + '%' : '50%'
+          transform3DSetting?.y ? transform3DSetting?.y + '%' : '50%'
         });
-        set(layer[${name}].width,${transform2DSetting?.width || '100'});
-        set(layer[${name}].height,${transform2DSetting?.height || '100'});
-        set(layer[${name}].rotate,${transform2DSetting?.rotation || 0});
+        set(layer[${name}].width,${transform3DSetting?.width || '100'});
+        set(layer[${name}].height,${transform3DSetting?.height || '100'});
+        set(layer[${name}].rotate,${transform3DSetting?.rotation || 0});
         set(layer[${name}].url,${
           styleSetting?.beforeTrigger ||
           InteractiveEnums[compName].beforeTrigger
@@ -508,7 +508,7 @@ class KPlayer {
         });
         set(layer[${name}].text,${textSetting?.text || ''});
         set(layer[${name}].html,${textSetting?.text || ''});
-        set(layer[${name}].scale,${transform2DSetting?.scale || 1});
+        set(layer[${name}].scale,${transform3DSetting?.scale || 1});
         `
       )
       this.checkHasLoaded('tooltip_' + name, 'layer').then(() => {
