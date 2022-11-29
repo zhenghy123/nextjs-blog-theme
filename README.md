@@ -19,3 +19,4 @@ https://www.webpackjs.com/configuration/
 
 ### git提交空文件夹
 find ./ -type d -empty -execdir touch {}/.gitkeep {} \;
+`message.js`:https://blog.csdn.net/u012131025/article/details/118085164
