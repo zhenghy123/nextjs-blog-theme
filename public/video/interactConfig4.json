@@ -11,7 +11,7 @@
         "color": "#000",
         "posX": -10,
         "posY": -10,
-        "posZ": 30,
+        "posZ": 300,
         "width": 100,
         "heigth": 200,
         "opacity": 0.5,
@@ -39,8 +39,8 @@
       "text": "2",
       "style": {
         "color": "#000",
-        "posX": -20,
-        "posY": -20,
+        "posX": -30,
+        "posY": -30,
         "posZ": 300,
         "width": 100,
         "heigth": 200,
@@ -64,7 +64,7 @@
       "text": "3",
       "style": {
         "color": "#000",
-        "posX": -30,
+        "posX": 30,
         "posY": -30,
         "posZ": 300,
         "width": 100,
@@ -90,14 +90,14 @@
       "style": {
         "color": "#000",
         "posX": -40,
-        "posY": -40,
+        "posY": 40,
         "posZ": 300,
         "width": 100,
         "heigth": 200,
         "opacity": 0.5,
         "rotate": 30,
-        "rotateX": 30,
-        "rotateY": 30,
+        "rotateX": 0,
+        "rotateY": 0,
         "rotateZ": 30,
         "fontSize": 32,
         "scaleX": 1,
@@ -113,10 +113,7 @@
   "ctrls": [
     {
       "conditionConfig": {
-        "conditionValue": [
-          1,
-          2
-        ],
+        "conditionValue": [1, 2],
         "jumpVideoId": "732228246",
         "jumpTime": 6000,
         "errorTip": ""

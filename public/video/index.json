@@ -48,7 +48,7 @@
       "mediaWidth": "3840",
       "mediaSize": "524759324",
       "playType": 0,
-      "fovInfo": ""
+      "fovInfo": "{\"hlookat\":0,\"vlookat\":0,\"fov\":180}"
     },
     {
       "videoId": "733419335",

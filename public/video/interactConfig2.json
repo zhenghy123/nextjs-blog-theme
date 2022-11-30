@@ -1,126 +1,126 @@
 {
-    "metas": null,
-    "imgs": {
-        "url": "../assets/preview1.png"
-    },
-    "btns": [
+  "metas": null,
+  "imgs": {
+    "url": "../assets/preview1.png"
+  },
+  "btns": [
+    {
+      "id": "saddcx324e324324234234235ewwr",
+      "text": "按钮1",
+      "style": {
+        "color": "#ff",
+        "posX": -20,
+        "posY": 0,
+        "posZ": 800,
+        "width": 100,
+        "heigth": 50,
+        "opacity": 0.5,
+        "rotate": 0,
+        "rotateX": 0,
+        "rotateY": 0,
+        "rotateZ": 0,
+        "fontSize": 32,
+        "scaleX": 1,
+        "scaleY": 1
+      },
+      "audio": "../assets/active.mp3",
+      "backgroundImageBeforeClick": "../assets/preview1.png",
+      "backgroundImageClick": "../assets/preview2.png",
+      "backgroundImageAfterClick": "../assets/preview3.png",
+      "action": [
         {
-            "id": "saddcx324e324324234234235ewwr",
-            "text": "按钮1",
-            "style": {
-                "color": "#ff",
-                "posX": -10,
-                "posY": 0,
-                "posZ": 800,
-                "width": 100,
-                "heigth": 50,
-                "opacity": 0.5,
-                "rotate": 0,
-                "rotateX": 0,
-                "rotateY": 0,
-                "rotateZ": 0,
-                "fontSize": 32,
-                "scaleX": 1,
-                "scaleY": 1
-            },
-            "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/preview1.png",
-            "backgroundImageClick": "../assets/preview2.png",
-            "backgroundImageAfterClick": "../assets/preview3.png",
-            "action": [
-                {
-                    "actionType": "SWITCHVIDEO",
-                    "nextVideo": "732961994"
-                }
-            ]
-        },
-        {
-            "id": "saddqawdqwder3qecx324e324324234234235ewwr",
-            "text": "按钮2",
-            "style": {
-                "color": "#fff",
-                "posX": 0,
-                "posY": 0,
-                "posZ": 800,
-                "width": 100,
-                "heigth": 50,
-                "opacity": 0.5,
-                "rotate": 0,
-                "rotateX": 0,
-                "rotateY": 0,
-                "rotateZ": 0,
-                "fontSize": 32,
-                "scaleX": 1,
-                "scaleY": 1
-            },
-            "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/preview1.png",
-            "backgroundImageClick": "../assets/preview2.png",
-            "backgroundImageAfterClick": "../assets/preview3.png",
-            "action": [
-                {
-                    "actionType": "SWITCHVIDEO",
-                    "nextVideo": "733419335"
-                }
-            ]
-        },
-        {
-            "id": "saddqwrqwer234234234235ewwr",
-            "text": "按钮3",
-            "style": {
-                "color": "#000",
-                "posX": 10,
-                "posY": 0,
-                "posZ": 800,
-                "width": 100,
-                "heigth": 50,
-                "opacity": 0.5,
-                "rotate": 0,
-                "rotateX": 0,
-                "rotateY": 0,
-                "rotateZ": 0,
-                "fontSize": 32,
-                "scaleX": 1,
-                "scaleY": 1
-            },
-            "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/preview1.png",
-            "backgroundImageClick": "../assets/preview2.png",
-            "backgroundImageAfterClick": "../assets/preview3.png",
-            "showConditionList": [
-                {
-                    "key": "x",
-                    "operator": ">",
-                    "temp": 2
-                },
-                {
-                    "key": "y",
-                    "operator": "<=",
-                    "temp": 5
-                }
-            ],
-            "action": [
-                {
-                    "actionType": "JUMPTIME",
-                    "jumpTime": 8
-                },
-                {
-                    "actionType": "FACTOR",
-                    "factorExpressList": [
-                        {
-                            "key": "x",
-                            "operator": "+",
-                            "temp": 1
-                        },
-                        {
-                            "key": "y",
-                            "operator": "-",
-                            "temp": 2
-                        }
-                    ]
-                }
-            ]
+          "actionType": "SWITCHVIDEO",
+          "nextVideo": "732961994"
         }
-    ],
-    "ctrls": null
+      ]
+    },
+    {
+      "id": "saddqawdqwder3qecx324e324324234234235ewwr",
+      "text": "按钮2",
+      "style": {
+        "color": "#fff",
+        "posX": 0,
+        "posY": 0,
+        "posZ": 800,
+        "width": 100,
+        "heigth": 50,
+        "opacity": 0.5,
+        "rotate": 0,
+        "rotateX": 0,
+        "rotateY": 0,
+        "rotateZ": 0,
+        "fontSize": 32,
+        "scaleX": 1,
+        "scaleY": 1
+      },
+      "audio": "../assets/active.mp3",
+      "backgroundImageBeforeClick": "../assets/preview1.png",
+      "backgroundImageClick": "../assets/preview2.png",
+      "backgroundImageAfterClick": "../assets/preview3.png",
+      "action": [
+        {
+          "actionType": "SWITCHVIDEO",
+          "nextVideo": "733419335"
+        }
+      ]
+    },
+    {
+      "id": "saddqwrqwer234234234235ewwr",
+      "text": "按钮3",
+      "style": {
+        "color": "#000",
+        "posX": 20,
+        "posY": 0,
+        "posZ": 800,
+        "width": 100,
+        "heigth": 50,
+        "opacity": 0.5,
+        "rotate": 0,
+        "rotateX": 0,
+        "rotateY": 0,
+        "rotateZ": 0,
+        "fontSize": 32,
+        "scaleX": 1,
+        "scaleY": 1
+      },
+      "audio": "../assets/active.mp3",
+      "backgroundImageBeforeClick": "../assets/preview1.png",
+      "backgroundImageClick": "../assets/preview2.png",
+      "backgroundImageAfterClick": "../assets/preview3.png",
+      "showConditionList": [
+        {
+          "key": "x",
+          "operator": ">",
+          "temp": 2
+        },
+        {
+          "key": "y",
+          "operator": "<=",
+          "temp": 5
+        }
+      ],
+      "action": [
+        {
+          "actionType": "JUMPTIME",
+          "jumpTime": 8000
+        },
+        {
+          "actionType": "FACTOR",
+          "factorExpressList": [
+            {
+              "key": "x",
+              "operator": "+",
+              "temp": 1
+            },
+            {
+              "key": "y",
+              "operator": "-",
+              "temp": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ctrls": null
 }

@@ -5,7 +5,7 @@
       "text": "输入密码解锁",
       "style": {
         "color": "#000",
-        "posX": 60,
+        "posX": 20,
         "posY": 20,
         "posZ": 300,
         "width": 100,
