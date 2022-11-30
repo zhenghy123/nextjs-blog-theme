@@ -195,15 +195,6 @@ class KPlayer {
       this._options.setMainFov(str)
     }
 
-    if (this._options.setMainFov) {
-      let str = JSON.stringify({
-        hlookat: view.hlookat,
-        vlookat: view.vlookat,
-        fov: view.fov,
-      })
-      this._options.setMainFov(str)
-    }
-
     return {
       hlookat: view.hlookat,
       vlookat: view.vlookat,
@@ -678,11 +669,13 @@ class KPlayer {
    * 批量显隐热点
    * @param {Array} names
    */
-  showHotspot(names = [], visible) {
+  showHotspot(names = [], visible = true) {
     let hots = _krpano.hotspot.getArray()
     hots.map((item) => {
       if (names.includes(item.name)) {
-        item.visible = visible
+        item.visible = true
+      } else {
+        item.visible = false
       }
     })
 
@@ -697,7 +690,9 @@ class KPlayer {
       )
     layers.map((item) => {
       if (names.includes(item.name)) {
-        item.visible = visible
+        item.visible = true
+      } else {
+        item.visible = false
       }
     })
   }

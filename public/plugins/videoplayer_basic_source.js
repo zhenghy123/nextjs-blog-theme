@@ -1,6 +1,6 @@
 /*
-  krpano Basic/Simplified HTML5 Videoplayer Plugin
-  - for krpano 1.19
+	krpano Basic/Simplified HTML5 Videoplayer Plugin
+	- for krpano 1.19
 */
 // 视频事件常量
 
@@ -11,7 +11,6 @@ var krpanoplugin = function () {
   var device = null
   var plugin = null
   var video = null
-  var eventFns = {}
 
   local.registerplugin = function (krpanointerface, pluginpath, pluginobject) {
     krpano = krpanointerface
@@ -26,12 +25,63 @@ var krpanoplugin = function () {
         : document.createElement('video')
     // internal: provide access to the video object for usage as WebGL texture
     plugin.videoDOM = video
+    video.crossOrigin = 'anonymous'
 
-    if (video.currentTime == 0) {
-      video.currentTime = 0.00001
+    if (plugin.videoOptions) {
+      // register attributes
+      plugin.registerattribute(
+        'muted',
+        plugin.videoOptions?.muted,
+        (val) => option_setter(val, 'muted'),
+        () => option_getter('muted')
+      )
+      plugin.registerattribute(
+        'volume',
+        plugin.videoOptions?.volume,
+        (val) => option_setter(val, 'volume'),
+        () => option_getter('volume')
+      )
+      plugin.registerattribute(
+        'poster',
+        plugin.videoOptions?.poster,
+        (val) => option_setter(val, 'poster'),
+        () => option_getter('poster')
+      )
+      plugin.registerattribute(
+        'preload',
+        plugin.videoOptions?.preload,
+        (val) => option_setter(val, 'preload'),
+        () => option_getter('preload')
+      )
+      plugin.registerattribute(
+        'loop',
+        plugin.videoOptions?.loop,
+        (val) => option_setter(val, 'loop'),
+        () => option_getter('loop')
+      )
+      plugin.registerattribute(
+        'autoplay',
+        plugin.videoOptions?.autoplay,
+        (val) => option_setter(val, 'autoplay'),
+        () => option_getter('autoplay')
+      )
     }
-    // 注册属性或方法
-    registerAttrFn.apply()
+
+    plugin.registerattribute(
+      'videourl',
+      plugin.videourl || '',
+      (val) => option_setter(val, 'src'),
+      () => option_getter('src')
+    )
+    plugin.registerattribute('onvideoready', null)
+
+    // register actions
+    plugin.registerattribute('play', play)
+    plugin.registerattribute('pause', pause)
+    plugin.registerattribute('togglepause', togglepause)
+    plugin.registerattribute('togglevideo', togglevideo)
+    plugin.registerattribute('update', update)
+    plugin.registerattribute('seek', seek)
 
     // add state variables
     plugin.videowidth = 0
@@ -39,121 +89,44 @@ var krpanoplugin = function () {
     plugin.havevideosize = false
     plugin.isvideoready = false
 
-    // setVideoOptions()
+    plugin.videoOptions && setVideoOptions()
     setVideoEvents()
+
+    // video.src = krpano.parsepath(plugin.videourl);
 
     // trace some debug info to the log
     krpano.debugmode = true // show debug/trace(0) messages
     krpano.trace(0, 'basic videoplayer video.src=' + video.src)
 
+    // console.log(video);
     check_ready_state()
-  }
-
-  function registerAttrFn() {
-    const arr = [
-      {
-        key: 'videourl',
-        value: plugin.videourl || '',
-        setter: (val) => (video.src = val),
-        getter: () => video.src,
-      },
-      {
-        key: 'volume',
-        value: plugin.volume || 1,
-        setter: (val) => (video.volume = val),
-        getter: () => video.volume,
-      },
-      {
-        key: 'ispaused',
-        value: video.paused,
-        setter: () => {},
-        getter: () => video.paused,
-      },
-      {
-        key: 'time',
-        value: video.currentTime || 0,
-        setter: (val) => (video.currentTime = val),
-        getter: () => video.currentTime,
-      },
-      {
-        key: 'totaltime',
-        value: plugin.duration || 0,
-        setter: () => {},
-        getter: () => video.duration,
-      },
-      {
-        key: 'onvideoready',
-        value: plugin.onvideoready,
-        setter: null,
-        getter: null,
-      },
-      {
-        key: 'play',
-        value: play,
-        setter: null,
-        getter: null,
-      },
-      {
-        key: 'pause',
-        value: pause,
-        setter: null,
-        getter: null,
-      },
-      {
-        key: 'togglepause',
-        value: togglepause,
-        setter: null,
-        getter: null,
-      },
-      {
-        key: 'togglevideo',
-        value: togglevideo,
-        setter: null,
-        getter: null,
-      },
-      {
-        key: 'update',
-        value: update,
-        setter: null,
-        getter: null,
-      },
-      {
-        key: 'seek',
-        value: seek,
-        setter: null,
-        getter: null,
-      },
-    ]
-
-    arr.map((item) => {
-      plugin.registerattribute(item.key, item.value, item.setter, item.getter)
-    })
   }
 
   // 设置视频的属性值
   function setVideoOptions() {
-    Object.keys(plugin.DefaultVideoOptions).map((item) => {
-      console.log('==', item, plugin.options[item])
-      if (plugin.options[item] != undefined) {
-        video.setAttribute(item, plugin.options[item])
-        plugin[item] = plugin.options[item]
-      }
+    if (!plugin.videoOptions) {
+      return
+    }
+    Object.keys(plugin.videoOptions).map((item) => {
+      // console.log("==", item, plugin.videoOptions[item]);
+      video.setAttribute(item, plugin.videoOptions[item])
+      plugin[item] = plugin.videoOptions[item]
     })
 
     // 解决autoplay设置就会生效,可能会存在html video标签和video对象同时播放且播放开始时间不同
-    if (!plugin.options.autoplay) {
+    if (!plugin.videoOptions.autoplay) {
       video.removeAttribute('autoplay')
       // plugin.videoDOM.removeAttribute("autoplay");
     }
 
     // 解决loop设置就会生效
-    if (!plugin.options.loop) {
+    if (!plugin.videoOptions.loop) {
       video.removeAttribute('loop')
       // plugin.videoDOM.removeAttribute("loop");
     }
 
     // 解决muted设置就会生效
-    if (!plugin.options.muted) {
+    if (!plugin.videoOptions.muted) {
       video.removeAttribute('muted')
       // plugin.videoDOM.removeAttribute("muted");
     }
@@ -163,28 +136,32 @@ var krpanoplugin = function () {
 
   // 设置视频的事件
   function setVideoEvents() {
-    let events = plugin.PlayerEvents
-    let keys = Object.keys(events)
-    keys.map((item) => {
-      eventFns[item] = (val) => {
-        plugin.update()
-        plugin._emitter.emit(events[item], val)
-      }
-      video.addEventListener(events[item], eventFns[item], false)
-    })
+    if (plugin.events) {
+      let events = plugin.events
+      let keys = Object.keys(events)
+      keys.map((item) => {
+        video.addEventListener(item, events[item])
+      })
+    }
 
+    // events for getting the video size
+    video.addEventListener('timeupdate', video_timeupdate, false)
     video.addEventListener('loadeddata', check_ready_state, false)
     video.addEventListener('loadedmetadata', check_ready_state, false)
   }
 
   // 注销视频监听
   function removeVideoEvents() {
-    let events = plugin.PlayerEvents
-    let keys = Object.keys(events)
-    keys.map((item) => {
-      video.removeEventListener(events[item], eventFns[item], false)
-    })
+    if (plugin.events) {
+      let events = plugin.events
+      let keys = Object.keys(events)
+      keys.map((item) => {
+        video.removeEventListener('on' + item, events[item])
+      })
+    }
 
+    // events for getting the video size
+    video.removeEventListener('timeupdate', video_timeupdate, false)
     video.removeEventListener('loadeddata', check_ready_state, false)
     video.removeEventListener('loadedmetadata', check_ready_state, false)
   }
@@ -246,14 +223,15 @@ var krpanoplugin = function () {
 
       plugin.lastCurrentTime = Math.random()
       krpano.actions.updatescreen()
-
       plugin.update()
+
+      // console.log('video ready');
     }
   }
 
   function option_setter(val, key) {
-    console.log('option_setter', key, val)
     if (key == 'src' && typeof val == 'object') {
+      // console.log(111, key, val);
       removeVideoEvents()
 
       video = val
@@ -262,7 +240,6 @@ var krpanoplugin = function () {
       setVideoEvents()
       check_ready_state()
     } else {
-      console.log(22, video)
       video.setAttribute(key, val)
     }
   }
@@ -281,10 +258,6 @@ var krpanoplugin = function () {
     video.pause()
   }
 
-  function seek(val) {
-    video.currentTime = video.duration * val
-  }
-
   function togglepause() {
     if (video.paused == false) {
       video.pause()
@@ -293,23 +266,28 @@ var krpanoplugin = function () {
     }
   }
 
+  function video_timeupdate() {
+    update()
+  }
+
   function update() {
     plugin.lastCurrentTime = Math.random()
     krpano.actions.updatescreen()
+  }
+
+  function seek(time) {
+    video.currentTime = time
+    update()
   }
 
   /**
    * 视频切换
    * 播放器不做视频提前缓存，可外部缓存好后传入地址浏览器缓存可以复用
    */
-  function togglevideo(url, id) {
+  function togglevideo(url) {
     let flag = video.paused
     plugin.videourl = url
-    plugin.videoId = id
     flag ? video.pause() : video.play()
-    if (video.currentTime == 0) {
-      video.currentTime = 0.00001
-    }
     plugin.lastCurrentTime = Math.random()
     krpano.actions.updatescreen()
   }

@@ -1,8 +1,8 @@
 ﻿<krpano>
 	<include url="./plugins/showtext.xml" />
-  <!-- 引入皮肤 -->
-  <!-- <include url="./plugins/videointerface.xml" /> -->
-  <!-- 	
+	<!-- 引入皮肤 -->
+	<!-- <include url="./plugins/videointerface.xml" /> -->
+	<!-- 	
 	<image>
 		<sphere url='./imgs/preview1.jpeg' />
 	</image> -->
@@ -58,8 +58,8 @@
 
 	<!-- 预览模式下有点击效果，编辑模式下拖动效果 -->
 	<action name="ondownfn" scope="global">
-		if(ispreview AND flag == 'hotspot',set(hotspot[get(name)].url,get(hotspot[get(name)].triggering)));
-		if(ispreview AND flag == 'layer',set(layer[get(name)].url,get(layer[get(name)].triggering)));
+		if(ispreview AND flag == 'hotspot' AND flag == 'image',set(hotspot[get(name)].url,get(hotspot[get(name)].triggering)));
+		if(ispreview AND flag == 'layer' AND flag == 'image',set(layer[get(name)].url,get(layer[get(name)].triggering)));
 		def(b, string, tolower('vCCCAA'));
 		if(!ispreview,
 			txtadd(bordername, 'border_', get(name));
@@ -77,8 +77,8 @@
 	</action>
 
 	<action name="onupfn">
-		if(ispreview AND flag == 'hotspot',set(hotspot[get(name)].url,get(hotspot[get(name)].beforeTrigger)));
-		if(ispreview AND flag == 'layer',set(layer[get(name)].url,get(layer[get(name)].beforeTrigger)));
+		if(ispreview AND flag == 'hotspot' AND flag == 'image',set(hotspot[get(name)].url,get(hotspot[get(name)].beforeTrigger)));
+		if(ispreview AND flag == 'layer' AND flag == 'image',set(layer[get(name)].url,get(layer[get(name)].beforeTrigger)));
 	</action>
 
 	<!-- 热点上添加文本 -->

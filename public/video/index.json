@@ -104,7 +104,7 @@
       "interactNodeId": "interactNodeId001",
       "title": "选择接下来要去哪",
       "startTime": 0,
-      "duration": 6000,
+      "duration": 3000,
       "playState": "play",
       "endState": "hide",
       "interactInfoId": "interactInfoId001",
@@ -123,9 +123,9 @@
     },
     {
       "interactNodeId": "interactNodeId002",
-      "title": "选择接下来要去哪",
+      "title": "选择接下来要去哪-分支",
       "startTime": 0,
-      "duration": 6000,
+      "duration": 3000,
       "playState": "play",
       "endState": "hide",
       "interactInfoId": "interactInfoId002",
@@ -191,7 +191,6 @@
     },
     {
       "interactInfoId": "interactInfoId003",
-      "isFollowCamera": true,
       "interactInfo": {
         "type": "TextModule"
       },
@@ -214,7 +213,6 @@
       "interactInfo": {
         "type": "TextModule"
       },
-      "isFollowCamera": false,
       "interactConfig": "interactConfig5.json"
     },
     {

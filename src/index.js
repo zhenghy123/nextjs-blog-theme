@@ -1,6 +1,7 @@
 // export const kplayerJS = Promise.resolve(require('./kplayer').default)
 import { KPlayer } from './core/index'
 import PlayerData from './core/player-data'
+import './utils/qmsg'
 
 function createPlayer(id = '', url = '', options = {}) {
   return new Promise((resolve, reject) => {

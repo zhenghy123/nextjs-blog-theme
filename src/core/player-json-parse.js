@@ -1,6 +1,5 @@
 import { PlayerEvents } from './player-events'
 import { PlayerControl } from './player-control'
-import '../utils/qmsg'
 
 export class PlayerParse {
   constructor(url, _player) {
@@ -19,14 +18,14 @@ export class PlayerParse {
     this.init()
 
     // Qmsg提示插件
-    let count = 3
-    let timer = setInterval(() => {
-      if (count == 0) {
-        clearInterval(timer)
-      }
-      Qmsg.info(`倒计时${count}`)
-      count--
-    }, 1000)
+    // let count = 3
+    // let timer = setInterval(() => {
+    //   if (count == 0) {
+    //     clearInterval(timer)
+    //   }
+    //   Qmsg.info(`倒计时${count}`)
+    //   count--
+    // }, 1000)
   }
 
   /**
@@ -163,7 +162,7 @@ export class PlayerParse {
     // 一次性全部添加热点，后续根据videoId、组件配置进行显隐
     this.addAllHotspot()
     setTimeout(() => {
-      _player.showHotspot(this._compNames)
+      // _player.showHotspot(this._compNames)
     }, 1000)
     this._playerControl.initFirstVideo()
   }
@@ -216,7 +215,7 @@ export class PlayerParse {
    * @returns videoItem
    */
   getVideoItem(videoId) {
-    return this._json.videoList.find((item) => (item.videoId = videoId))
+    return this._json.videoList.find((item) => item.videoId == videoId)
   }
 
   /**
@@ -225,9 +224,10 @@ export class PlayerParse {
    * @returns nodeItem
    */
   getNodeItem(interactNodeId) {
-    return this._json.interactNodeList.find(
-      (item) => (item.interactNodeId = interactNodeId)
+    let nodeIttem = this._json.interactNodeList.find(
+      (item) => item.interactNodeId == interactNodeId
     )
+    return nodeIttem
   }
 
   /**
@@ -240,8 +240,10 @@ export class PlayerParse {
     let list = []
     let ids = videoItem.interactNodeId.split(',')
     ids.map((id) => {
-      list.push(this.getNodeItem(id))
+      let item = this.getNodeItem(id)
+      list.push(item)
     })
+
     return list
   }
 
@@ -259,6 +261,7 @@ export class PlayerParse {
         nodes.push(item)
       }
     })
+    console.log('list==2', nodes)
 
     return nodes
   }
@@ -272,20 +275,22 @@ export class PlayerParse {
    */
   getActivetCompIds(videoId, time) {
     let list = this.getActivetNodeList(videoId, time)
+    console.log('list==', list)
     let ids = []
     list.map((item) => {
       const { btns, ctrls, imgs, metas } =
         item.interactInfoIdJson.interactConfigJson
       // 文本和互动组件不会同时存在（虽然展示的时候会）
       let comps = metas || btns
+      console.log('comps', comps)
 
-      if (configJson.comps) {
+      if (comps) {
         comps.map((comp) => {
           ids.push(comp.id)
         })
       }
     })
-    return ids
+    return { ids: ids, activeNodes: list }
   }
 
   /**
@@ -312,7 +317,7 @@ export class PlayerParse {
           let style = comp.style
           // 注意不能以数字开头，哪怕是字符串
           // TODO:数据造的有问题，先拼接使用
-          let name = 'a_' + comp.id
+          let name = comp.id
           this._compNames.push(name)
 
           textSetting = {
@@ -334,6 +339,7 @@ export class PlayerParse {
             ...style,
             x: style.posX,
             y: style.posY,
+            z: style.posZ,
           }
 
           kxplayer.addInteractiveHotspot(

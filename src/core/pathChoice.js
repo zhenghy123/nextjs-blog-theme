@@ -85,6 +85,7 @@ export function pathTimeUpdate(val) {
  * @param {*} val
  */
 export function pathSpotClick(val) {
+  alert(2)
   clearTimeout(compoundId)
   let id = kxplayer.getVideoId()
   let interactNodeId = playList.getVideoParam(id)?.interactNodeId
@@ -142,6 +143,7 @@ export function pathSpotClick(val) {
 
 // 热点-点击
 function pointHotClick(hotspotBtn, lastVideoId) {
+  alert(1)
   hotspotBtn?.action?.forEach((actItem) => {
     if (actItem.actionType == HotToState.SWITCHVIDEO) {
       // 切视频
