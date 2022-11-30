@@ -41,9 +41,12 @@ export class PlayerControl {
       }
     })
 
-    this._player._options.hotspotClick = (id) => {
-      console.log('hotspotClick==', id)
+    this._player._options.hotspotClick = (id, type) => {
+      console.log('hotspotClick==', id, type)
       // 文本无点击反应
+      if (type == 'text') {
+        return
+      }
 
       // 点击音效（都有）
 
@@ -171,9 +174,4 @@ export class PlayerControl {
    * 如果视频设置了fovInfo,切花视频fov
    */
   changeFov() {}
-
-  /**
-   * 如果视频没有设置fovInfo,恢复默认view
-   */
-  gotoInitFov() {}
 }

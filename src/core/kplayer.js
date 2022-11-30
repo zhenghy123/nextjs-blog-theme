@@ -83,7 +83,7 @@ class KPlayer {
     }
   }
 
-  hotspotClick(name) {
+  hotspotClick(name, type) {
     let layers = _krpano.layer.getArray()
     layers.map((item) => {
       if (
@@ -95,7 +95,7 @@ class KPlayer {
     })
 
     if (this._options.hotspotClick) {
-      this._options.hotspotClick(name)
+      this._options.hotspotClick(name, type)
     }
   }
 

@@ -73,7 +73,7 @@
 		<!-- ); -->
 		draghotspot()
 		);
-		js(hotspotClick(get(name)));
+		js(hotspotClick(get(name),get(type)));
 	</action>
 
 	<action name="onupfn">

@@ -1,3 +1,5 @@
 export class PlayerTree {
-  constructor() {}
+  constructor(json, treeClick) {
+    //
+  }
 }
