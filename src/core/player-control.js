@@ -223,7 +223,12 @@ export class PlayerControl {
       if (this.compoundlist.length >= count) {
         this.compoundlist.shift()
       }
-      this.compoundlist.push(parseInt(hotspotBtn.text))
+      if (this.compoundlist.indexOf(parseInt(hotspotBtn.text)) != -1){
+        this.compoundlist = this.compoundlist.filter(item=>item != parseInt(hotspotBtn.text))
+
+      } else {
+        this.compoundlist.push(parseInt(hotspotBtn.text))
+      }      
 
       // 结果
       let ctrls = interactInfoIdItem?.interactConfigJson?.ctrls
