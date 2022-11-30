@@ -269,8 +269,6 @@ export class PlayerParse {
         nodes.push(item)
       }
     })
-    console.log('list==2', nodes)
-
     return nodes
   }
 
@@ -283,15 +281,12 @@ export class PlayerParse {
    */
   getActivetCompIds(videoId, time) {
     let list = this.getActivetNodeList(videoId, time)
-    console.log('list==', list)
     let ids = []
     list.map((item) => {
       const { btns, ctrls, imgs, metas } =
         item.interactInfoIdJson.interactConfigJson
       // 文本和互动组件不会同时存在（虽然展示的时候会）
       let comps = metas || btns
-      console.log('comps', comps)
-
       if (comps) {
         comps.map((comp) => {
           ids.push(comp.id)
@@ -299,26 +294,6 @@ export class PlayerParse {
       }
     })
     return { ids: ids, activeNodes: list }
-  }
-
-  /**
-   * 获取视频下所有热点名称
-   */
-  getVideoHotspotName(videoId) {
-    let list = this.getVideoNodeConfig(videoId)
-    let ids = []
-    list.map((item) => {
-      const { btns, ctrls, imgs, metas } =
-        item.interactInfoIdJson.interactConfigJson
-      // 文本和互动组件不会同时存在（虽然展示的时候会）
-      let comps = metas || btns
-      if (comps) {
-        comps.map((comp) => {
-          ids.push(comp.id)
-        })
-      }
-    })
-    return ids
   }
 
   /**

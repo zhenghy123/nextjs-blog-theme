@@ -673,7 +673,9 @@ class KPlayer {
     let hots = _krpano.hotspot.getArray()
     hots.map((item) => {
       if (names.includes(item.name)) {
-        item.visible = visible
+        item.visible = true
+      } else {
+        item.visible = false
       }
     })
 
@@ -688,7 +690,9 @@ class KPlayer {
       )
     layers.map((item) => {
       if (names.includes(item.name)) {
-        item.visible = visible
+        item.visible = true
+      } else {
+        item.visible = false
       }
     })
   }

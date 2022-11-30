@@ -287,7 +287,7 @@ var krpanoplugin = function () {
   function togglevideo(url) {
     let flag = video.paused
     plugin.videourl = url
-    flag ? video.pause() : video.play()
+    // flag ? video.pause() : video.play()
     plugin.lastCurrentTime = Math.random()
     krpano.actions.updatescreen()
   }

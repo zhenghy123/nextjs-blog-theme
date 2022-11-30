@@ -24,9 +24,9 @@
         "scaleY": 1
       },
       "audio": "../assets/active.mp3",
-      "backgroundImageBeforeClick": "../assets/preview1.png",
-      "backgroundImageClick": "../assets/preview2.png",
-      "backgroundImageAfterClick": "../assets/preview3.png",
+      "backgroundImageBeforeClick": "../assets/preview4.png",
+      "backgroundImageClick": "../assets/preview5.png",
+      "backgroundImageAfterClick": "../assets/preview6.png",
       "action": [
         {
           "actionType": "SWITCHVIDEO",
@@ -54,9 +54,9 @@
         "scaleY": 1
       },
       "audio": "../assets/active.mp3",
-      "backgroundImageBeforeClick": "../assets/preview1.png",
-      "backgroundImageClick": "../assets/preview2.png",
-      "backgroundImageAfterClick": "../assets/preview3.png",
+      "backgroundImageBeforeClick": "../assets/preview4.png",
+      "backgroundImageClick": "../assets/preview5.png",
+      "backgroundImageAfterClick": "../assets/preview6.png",
       "action": [
         {
           "actionType": "SWITCHVIDEO",
@@ -84,19 +84,19 @@
         "scaleY": 1
       },
       "audio": "../assets/active.mp3",
-      "backgroundImageBeforeClick": "../assets/preview1.png",
-      "backgroundImageClick": "../assets/preview2.png",
-      "backgroundImageAfterClick": "../assets/preview3.png",
+      "backgroundImageBeforeClick": "../assets/preview4.png",
+      "backgroundImageClick": "../assets/preview5.png",
+      "backgroundImageAfterClick": "../assets/preview6.png",
       "showConditionList": [
         {
           "key": "x",
-          "operator": ">",
-          "temp": 2
+          "operator": "<=",
+          "temp": 0
         },
         {
           "key": "y",
           "operator": "<=",
-          "temp": 5
+          "temp": 4
         }
       ],
       "action": [
