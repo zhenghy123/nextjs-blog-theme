@@ -52,8 +52,9 @@ export class PlayerParse {
 
       json.videoList.map((item) => {
         // 拼接处理视频地址和封面地址
-        item.previewThumbnial =
-          this._assetsPrefix + item.thumbnail.replace('../', '')
+        item.previewThumbnial = item.thumbnail
+          ? this._assetsPrefix + item.thumbnail.replace('../', '')
+          : ''
         item.previewVideoPath = this._videoPrefix + item.videoPath
         // 初始化视频对象
         item.video = this.createVideo(item)
