@@ -302,8 +302,7 @@ export class PlayerParse {
   getVideoNodeConfig(videoId) {
     let videoItem = this.getVideoItem(videoId)
     let list = []
-    // let ids = videoItem.interactNodeId // videoItem.interactNodeId.split(',')
-    let ids = videoItem.interactNodeId.split(',')
+    let ids = videoItem.interactNodeId // videoItem.interactNodeId.split(',')
     ids.map((id) => {
       let item = this.getNodeItem(id)
       list.push(item)

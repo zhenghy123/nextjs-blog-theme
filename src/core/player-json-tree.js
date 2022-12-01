@@ -82,9 +82,9 @@ export class PlayerTree {
     let id = this._parser._firstVideoId
     let rootVideo = this._parser.getVideoItem(id)
     let rootParam = {
-      label: rootVideo.filename,
-      id: rootVideo.videoId,
-      img: this._parser._assetsPrefix + rootVideo.thumbnail.replace('../', ''),
+      label: rootVideo?.filename,
+      id: rootVideo?.videoId,
+      img: this._parser._assetsPrefix + rootVideo?.thumbnail.replace('../', ''),
       children: [],
     }
 
@@ -97,10 +97,10 @@ export class PlayerTree {
     nextid.forEach((item) => {
       let rootVideo = this._parser.getVideoItem(item)
       let param = {
-        label: rootVideo.filename,
-        id: rootVideo.videoId,
+        label: rootVideo?.filename,
+        id: rootVideo?.videoId,
         img:
-          this._parser._assetsPrefix + rootVideo.thumbnail.replace('../', ''),
+          this._parser._assetsPrefix + rootVideo?.thumbnail.replace('../', ''),
         children: [],
       }
       paramList.children.push(param)
@@ -112,7 +112,7 @@ export class PlayerTree {
     let treeList = []
     let list = []
     let interactNodeId = this._parser.getVideoItem(id)?.interactNodeId
-    let ids = interactNodeId?.split(',')
+    let ids = interactNodeId
     ids?.map((id) => {
       let item = this._parser.getNodeItem(id)
       list.push(item)
