@@ -117,7 +117,7 @@ class KPlayer {
         // videoPlugin.events = this._options.events
         videoPlugin.videourl = _this._options.url
         videoPlugin.videoId = _this._options.videoId
-        videoPlugin.url = '/plugins/videoplayer_basic_source.js'
+        videoPlugin.url = 'plugins/videoplayer_basic_source.js'
 
         // let video = document.createElement('video')
         // video.src = 'video/video360.mp4'

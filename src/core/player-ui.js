@@ -39,10 +39,10 @@ export class PlayerUI {
       </div>
       <div class="kplayer-controls">
         <div class="kplayer-pause icon" >
-          <img src="/assets/svgs/pause.svg" />
+          <img src="assets/svgs/pause.svg" />
         </div>
         <div class="kplayer-play icon hidden" >
-          <img src="/assets/svgs/play.svg" />
+          <img src="assets/svgs/play.svg" />
         </div>
         <div class="kplayer-time">
           <span class="current-time">00:00</span>
@@ -50,13 +50,13 @@ export class PlayerUI {
         </div>
         <div class="kplayer-blank"></div>
         <div class="kplayer-tree icon" >
-            <img src="/assets/svgs/tree.svg" />
+            <img src="assets/svgs/tree.svg" />
          </div>
         <div class="kplayer-volume icon">
-          <img src="/assets/svgs/volume.svg" />
+          <img src="assets/svgs/volume.svg" />
         </div>
         <div class="kplayer-fullscreen icon">
-          <img src="/assets/svgs/fullscreen.svg" />
+          <img src="assets/svgs/fullscreen.svg" />
         </div>
       </div>
       `
