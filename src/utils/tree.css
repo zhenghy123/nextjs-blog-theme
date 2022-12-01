@@ -1,7 +1,8 @@
   .processDesign {
     position: absolute;
-    transform: translateX(50%);
-    top: 10%;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
   }
   .processDesign .process {
     display: inline-block;
