@@ -26,11 +26,13 @@
 </html>
 <script>
   function treeVisibleOFF() {
-    changeClass(document.querySelector('.processDesign'), 'hidden', 'show')
+    let ele = document.querySelector('.nodetree') 
+    ele.className += ' hidden'
   }
 
   function treeVisibleON() {
-    changeClass(document.querySelector('.processDesign'), 'show', 'hidden')
+    let ele = document.querySelector('.nodetree') 
+    ele.className = ele.className.replace(/hidden/g, '')
   }
 
   window.onload = () => {
