@@ -249,7 +249,9 @@ export class PlayerParse {
   set_factorList(arr) {
     this._factorList.map((item) => {
       let arrItem = arr.find((val) => val.key == item.key)
-      item.value = eval(item.value + arrItem.operator + arrItem.temp)
+      if (arrItem && item) {
+        item.value = eval(item.value + arrItem.operator + arrItem.temp)
+      }
     })
   }
 

@@ -236,7 +236,9 @@ export class PlayerControl {
 
     // 点击音效（都有）
     let audio = new Audio()
-    audio.src = this._parser._assetsPrefix + hotspotBtn.audio.replace('../', '')
+    audio.src = hotspotBtn.audio
+      ? this._parser._assetsPrefix + hotspotBtn.audio.replace('../', '')
+      : ''
     audio.play()
 
     if (
@@ -261,7 +263,7 @@ export class PlayerControl {
       let ctrls = interactInfoIdItem?.interactConfigJson?.ctrls
       ctrls?.forEach((item) => {
         let conditionConfig = item.conditionConfig
-        let conditionValue = conditionConfig?.conditionValue
+        let conditionValue = conditionConfig?.conditionValue || []
 
         let compoundMode = interactInfoIdItem.interactInfo.compoundMode
         if (compoundMode == CompoundOrder.DISORDER) {
@@ -269,7 +271,7 @@ export class PlayerControl {
           conditionValue = conditionValue.sort()
         }
         // 匹配正确
-        if (conditionValue.toString() === this.compoundlist.toString()) {
+        if (conditionValue?.toString() === this.compoundlist?.toString()) {
           if (conditionConfig.jumpVideoId != null) {
             // 跳故事节点（分支选项&立即触发）
             this.changeVideo(conditionConfig.jumpVideoId)
@@ -344,7 +346,7 @@ export class PlayerControl {
     let showConditionList = factorItem.showConditionList
     showConditionList?.forEach((item) => {
       let value = factorList?.find((val) => val.key == item.key)?.value
-      if (value && !eval(value + item.operator + item.temp)) {
+      if (item && value && !eval(value + item.operator + item.temp)) {
         visible_item = false
       }
     })
