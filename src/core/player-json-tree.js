@@ -16,7 +16,7 @@ export class PlayerTree {
     ele = `
       <div class="processDesign">
         <div class="process">
-          <div class="rootNode" onClick="treeClick(${nodeList.id})">
+          <div class="rootNode" onClick="treeClick('${nodeList.id}')">
             <img style="position:absolute;width:100%;height:100%" src="${
               nodeList.img
             }"></img>
@@ -60,11 +60,11 @@ export class PlayerTree {
           }">
             <div class="nodeLine"></div>
             <div class="nodeType">
-              <div class="nodeInfo" onClick="treeClick(${item.id})">
-                <img style="position:absolute;width:140px;height:100px"  src="${
+              <div class="nodeInfo" onClick="treeClick('${item.id}')">
+                <img style="position:absolute;width:138px;height:100px"  src="${
                   nodeList.img
                 }"></img>
-                <div style="position:absolute"> ${item.label}</div>
+                <div style="text-align: center;"> ${item.label}</div>
               </div>
             </div>
             ${setnodelist(item.children)}
