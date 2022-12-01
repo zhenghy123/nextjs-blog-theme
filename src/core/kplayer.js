@@ -2,7 +2,6 @@ import { PlayerEvents } from './player-events'
 import { InteractiveEnums } from './player-interactives'
 import { DefaultVideoOptions } from './player-config'
 import { PlayerParse } from './player-json-parse'
-import { pathTimeUpdate, pathSpotClick } from './pathChoice'
 
 import EventEmitter from 'events'
 
@@ -49,13 +48,6 @@ class KPlayer {
         return that._options.showFovSet
       },
     })
-
-    // this._emitter.on('timeupdate', (val) => {
-    //   pathTimeUpdate(val)
-    // })
-    // this._emitter.on('hotspotClick', (val) => {
-    //   pathSpotClick(val)
-    // })
 
     window.hotspotClick = this.hotspotClick.bind(this)
     window.setMainFov = this.setMainFov.bind(this)

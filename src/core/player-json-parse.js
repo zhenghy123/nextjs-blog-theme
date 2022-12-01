@@ -101,7 +101,10 @@ export class PlayerParse {
         if (btns) {
           btns.map((btn) => {
             // audio是按钮点击音效，在按钮点击时触发
-            if (btn.audio) btn.previewAudio = btn.audio
+            if (btn.audio) {
+              btn.previewAudio = btn.audio
+              btn.audioContext = createAudio(btn)
+            }
             // 按钮点击前、中、后背景图
             if (btn.backgroundImageAfterClick)
               btn.previewBackgroundImageAfterClick =
@@ -146,6 +149,16 @@ export class PlayerParse {
     return video
   }
 
+  createAudio(item) {
+    if (!item.previewAudio) {
+      return null
+    }
+    let audio = document.createElement('audio')
+    audio.src = item.previewAudio
+
+    return audio
+  }
+
   /**
    * 获取互动组件配置config.json
    */
@@ -174,9 +187,11 @@ export class PlayerParse {
         if (json.btns) {
           json.btns.map((btn) => {
             // audio是按钮点击音效，在按钮点击时触发
-            if (btn.audio)
+            if (btn.audio) {
               btn.previewAudio =
                 this._assetsPrefix + btn.audio.replace('../', '')
+              btn.audioContext = createAudio(btn)
+            }
             // 按钮点击前、中、后背景图
             if (btn.backgroundImageAfterClick)
               btn.previewBackgroundImageAfterClick =
