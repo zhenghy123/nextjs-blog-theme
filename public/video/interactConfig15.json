@@ -1,0 +1,77 @@
+{
+  "metas": null,
+  "imgs": null,
+  "btns": [
+    {
+      "id": "q401d32e-98fc-34d4-e91d-33447648",
+      "text": "剧情1",
+      "style": {
+        "color": "#fff",
+        "posX": -30,
+        "posY": 0,
+        "posZ": 800,
+        "width": 200,
+        "height": 90,
+        "opacity": 0,
+        "rotate": 0,
+        "rotateX": 0,
+        "rotateY": 0,
+        "rotateZ": 0,
+        "fontSize": 20,
+        "scaleX": 1,
+        "scaleY": 0,
+        "scaleZ": 0
+      },
+      "audio": null,
+      "backgroundImageBeforeClick": "../assets/imgs/pointClick/beforeTrigger.png",
+      "backgroundImageClick": "../assets/imgs/pointClick/triggering.png",
+      "backgroundImageAfterClick": "",
+      "showConditionList": [],
+      "action": [
+        {
+          "actionType": "SWITCHVIDEO",
+          "nextVideo": "be0ac466-779f-54ce-db37-c07d6c37",
+          "skipVideoId": null,
+          "jumpTime": null,
+          "factorExpressList": null
+        }
+      ]
+    },
+    {
+      "id": "i827c11d-77eb-242b-6b22-ec81f020",
+      "text": "剧情2",
+      "style": {
+        "color": "#fff",
+        "posX": 31,
+        "posY": 0,
+        "posZ": 800,
+        "width": 200,
+        "height": 90,
+        "opacity": 0,
+        "rotate": 0,
+        "rotateX": 0,
+        "rotateY": 0,
+        "rotateZ": 0,
+        "fontSize": 20,
+        "scaleX": 1,
+        "scaleY": 0,
+        "scaleZ": 0
+      },
+      "audio": null,
+      "backgroundImageBeforeClick": "../assets/imgs/pointClick/beforeTrigger.png",
+      "backgroundImageClick": "../assets/imgs/pointClick/triggering.png",
+      "backgroundImageAfterClick": "",
+      "showConditionList": [],
+      "action": [
+        {
+          "actionType": "SWITCHVIDEO",
+          "nextVideo": "i27596f4-4408-c4fd-59cc-ece31e0c",
+          "skipVideoId": null,
+          "jumpTime": null,
+          "factorExpressList": null
+        }
+      ]
+    }
+  ],
+  "ctrls": []
+}

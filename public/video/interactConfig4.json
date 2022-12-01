@@ -1,123 +1,28 @@
 {
-  "metas": null,
-  "imgs": {
-    "url": "../assets/preview1.png"
-  },
-  "btns": [
+  "metas": [
     {
-      "id": "saddcx3qwdgtrhgrh234234235ewwr",
-      "text": "1",
+      "id": "asdsssssssde23432",
+      "text": "测试变量1，按钮1一直显示",
       "style": {
-        "color": "#000",
-        "posX": -10,
-        "posY": -10,
-        "posZ": 300,
-        "width": 100,
-        "heigth": 200,
-        "opacity": 0.5,
-        "rotate": 30,
-        "rotateX": 30,
-        "rotateY": 30,
-        "rotateZ": 30,
-        "fontSize": 32,
-        "scaleX": 1,
-        "scaleY": 1
-      },
-      "audio": "../assets/active.mp3",
-      "backgroundImageBeforeClick": "../assets/preview1.png",
-      "backgroundImageClick": "../assets/preview1.png",
-      "backgroundImageAfterClick": "../assets/preview1.png",
-      "action": [
-        {
-          "actionType": "SWITCHVIDEO",
-          "nextVideo": "732228247"
-        }
-      ]
-    },
-    {
-      "id": "saddcx3hgytnjtyh234235ewwr",
-      "text": "2",
-      "style": {
-        "color": "#000",
-        "posX": -30,
-        "posY": -30,
-        "posZ": 300,
-        "width": 100,
-        "heigth": 200,
-        "opacity": 0.5,
-        "rotate": 30,
-        "rotateX": 30,
-        "rotateY": 30,
-        "rotateZ": 30,
-        "fontSize": 32,
-        "scaleX": 1,
-        "scaleY": 1
-      },
-      "audio": "../assets/active.mp3",
-      "backgroundImageBeforeClick": "../assets/preview1.png",
-      "backgroundImageClick": "../assets/preview1.png",
-      "backgroundImageAfterClick": "../assets/preview1.png",
-      "action": []
-    },
-    {
-      "id": "saddcx3jntyut4235ewwr",
-      "text": "3",
-      "style": {
-        "color": "#000",
-        "posX": 30,
-        "posY": -30,
-        "posZ": 300,
-        "width": 100,
-        "heigth": 200,
-        "opacity": 0.5,
-        "rotate": 30,
-        "rotateX": 30,
-        "rotateY": 30,
-        "rotateZ": 30,
-        "fontSize": 32,
-        "scaleX": 1,
-        "scaleY": 1
-      },
-      "audio": "../assets/active.mp3",
-      "backgroundImageBeforeClick": "../assets/preview1.png",
-      "backgroundImageClick": "../assets/preview1.png",
-      "backgroundImageAfterClick": "../assets/preview1.png",
-      "action": []
-    },
-    {
-      "id": "saddcxjnuyji234235ewwr",
-      "text": "4",
-      "style": {
-        "color": "#000",
-        "posX": -40,
-        "posY": 40,
-        "posZ": 300,
-        "width": 100,
-        "heigth": 200,
-        "opacity": 0.5,
-        "rotate": 30,
+        "color": "#70D748FF",
+        "posX": 47,
+        "posY": 35,
+        "posZ": 0,
+        "width": 0,
+        "height": 0,
+        "opacity": 0,
+        "rotate": 0,
         "rotateX": 0,
         "rotateY": 0,
-        "rotateZ": 30,
-        "fontSize": 32,
+        "rotateZ": 0,
+        "fontSize": 20,
         "scaleX": 1,
-        "scaleY": 1
-      },
-      "audio": "../assets/active.mp3",
-      "backgroundImageBeforeClick": "../assets/preview1.png",
-      "backgroundImageClick": "../assets/preview1.png",
-      "backgroundImageAfterClick": "../assets/preview1.png",
-      "action": []
-    }
-  ],
-  "ctrls": [
-    {
-      "conditionConfig": {
-        "conditionValue": [1, 2],
-        "jumpVideoId": "732228246",
-        "jumpTime": 6000,
-        "errorTip": ""
+        "scaleY": 0,
+        "scaleZ": 0
       }
     }
-  ]
+  ],
+  "imgs": null,
+  "btns": null,
+  "ctrls": null
 }

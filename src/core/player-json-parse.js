@@ -2,7 +2,7 @@ import { PlayerEvents } from './player-events'
 import { PlayerControl } from './player-control'
 
 export class PlayerParse {
-  constructor(url, _player) {
+  constructor(url, _player, type = '国标') {
     this._url = url // json地址
     this._player = _player
     this._playerControl = new PlayerControl(_player, this)
@@ -15,17 +15,11 @@ export class PlayerParse {
     this._firstVideoId = ''
     this._hasLoad = false // 是否处理完json数据
 
-    this.init()
-
-    // Qmsg提示插件
-    // let count = 3
-    // let timer = setInterval(() => {
-    //   if (count == 0) {
-    //     clearInterval(timer)
-    //   }
-    //   Qmsg.info(`倒计时${count}`)
-    //   count--
-    // }, 1000)
+    if (type == '国标') {
+      this.init()
+    } else {
+      this.initSelf()
+    }
   }
 
   /**

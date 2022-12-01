@@ -3,227 +3,428 @@
     "name": "互动视频",
     "description": "互动视频简介",
     "fileVersion": "1.0.0",
-    "firstVideoId": "732160621"
+    "firstVideoId": "q56b884b-b505-c44a-d99b-75e9743c"
   },
   "factorList": [
     {
-      "key": "x",
-      "name": "x因子",
-      "value": 0
+      "key": "1669773984229",
+      "name": "数值1",
+      "value": "0"
     },
     {
-      "key": "y",
-      "name": "y因子",
-      "value": 2
+      "key": "1669773984865",
+      "name": "数值2",
+      "value": "0"
     }
   ],
   "videoList": [
     {
-      "videoId": "732160621",
-      "description": "视频1",
-      "duration": 204,
-      "filename": "住厂日记",
-      "interactNodeId": "interactNodeId001,interactNodeId002",
+      "videoId": "jcf2c41b-2c74-84cf-fbff-75185bbf",
+      "description": "",
+      "duration": 254,
+      "filename": "VR- 360 Google Spotlight Story",
+      "interactNodeId": [
+        "interactNodeId001",
+        "interactNodeId002",
+        "interactNodeId003",
+        "interactNodeId004"
+      ],
       "videoPath": "video360.mp4",
-      "thumbnail": "../assets/preview1.jpeg",
-      "videoCoding": "h265",
-      "outPutFormat": "mp4",
-      "mediaHeight": "1920",
+      "thumbnail": "",
+      "videoCoding": "avc1",
+      "outPutFormat": "168",
+      "mediaHeight": "2048",
       "mediaWidth": "3840",
-      "mediaSize": "524759324",
-      "playType": 1,
-      "fovInfo": "{\"hlookat\":0,\"vlookat\":0,\"fov\":75}"
+      "mediaSize": "161800359",
+      "playType": null,
+      "fovInfo": ""
     },
     {
-      "videoId": "732961994",
-      "description": "视频2：厂弟的隔离感受",
-      "duration": 270,
-      "filename": "厂弟的隔离感受",
+      "videoId": "be0ac466-779f-54ce-db37-c07d6c37",
+      "description": "",
+      "duration": 75,
+      "filename": "VR- 战争前线",
+      "interactNodeId": [
+        "interactNodeId005",
+        "interactNodeId006",
+        "interactNodeId007",
+        "interactNodeId008"
+      ],
       "videoPath": "video720.mp4",
-      "interactNodeId": "interactNodeId003,interactNodeId004",
-      "thumbnail": "../assets/preview1.jpeg",
-      "videoCoding": "h265",
-      "outPutFormat": "mp4",
-      "mediaHeight": "1920",
+      "thumbnail": "",
+      "videoCoding": "avc1",
+      "outPutFormat": "168",
+      "mediaHeight": "2160",
       "mediaWidth": "3840",
-      "mediaSize": "524759324",
-      "playType": 0,
-      "fovInfo": "{\"hlookat\":0,\"vlookat\":0,\"fov\":180}"
+      "mediaSize": "149739376",
+      "playType": null,
+      "fovInfo": "{\"hlookat\":12.380385439981065,\"vlookat\":7.932843931212768,\"fov\":99.26419995468233}"
     },
     {
-      "videoId": "733419335",
-      "description": "视频3：又是被感动的一天，直接跳转到时间线的页面",
-      "duration": 270,
-      "filename": "又是被感动的一天",
+      "videoId": "i27596f4-4408-c4fd-59cc-ece31e0c",
+      "description": "",
+      "duration": 101,
+      "filename": "VR- 《Help》剪辑版",
+      "interactNodeId": [
+        "interactNodeId009",
+        "interactNodeId0010",
+        "interactNodeId0011",
+        "interactNodeId0012"
+      ],
       "videoPath": "video360.mp4",
-      "interactNodeId": "interactNodeId005,interactNodeId006",
-      "thumbnail": "../assets/preview1.jpeg",
-      "videoCoding": "h265",
-      "outPutFormat": "mp4",
-      "mediaHeight": "1920",
-      "mediaWidth": "3840",
-      "mediaSize": "524759324",
-      "playType": 0,
-      "fovInfo": ""
+      "thumbnail": "",
+      "videoCoding": "avc1",
+      "outPutFormat": "168",
+      "mediaHeight": "1080",
+      "mediaWidth": "1920",
+      "mediaSize": "176113326",
+      "playType": null,
+      "fovInfo": "{\"hlookat\":-16.628646255450764,\"vlookat\":6.06261239858698,\"fov\":99.26419995468233}"
     },
     {
-      "videoId": "732228246",
-      "description": "视频4：厂哥回来了",
-      "duration": 106,
-      "filename": "又是被感动的一天",
+      "videoId": "q56b884b-b505-c44a-d99b-75e9743c",
+      "description": "",
+      "duration": 244,
+      "filename": "VR- 穿越猎虎座星云",
+      "interactNodeId": [
+        "interactNodeId0013",
+        "interactNodeId0014",
+        "interactNodeId0015",
+        "interactNodeId0016"
+      ],
       "videoPath": "video720.mp4",
-      "interactNodeId": null,
-      "thumbnail": "../assets/preview1.jpeg",
-      "videoCoding": "h265",
-      "outPutFormat": "mp4",
+      "thumbnail": "",
+      "videoCoding": "avc1",
+      "outPutFormat": "168",
       "mediaHeight": "1920",
       "mediaWidth": "3840",
-      "mediaSize": "524759324",
-      "playType": 0,
-      "fovInfo": ""
-    },
-    {
-      "videoId": "732228247",
-      "description": "视频5：花园变废草",
-      "duration": 106,
-      "filename": "花园变废草",
-      "videoPath": "video360.mp4",
-      "interactNodeId": null,
-      "thumbnail": "../assets/preview1.jpeg",
-      "videoCoding": "h265",
-      "outPutFormat": "mp4",
-      "mediaHeight": "1920",
-      "mediaWidth": "3840",
-      "mediaSize": "524759324",
-      "playType": 0,
-      "fovInfo": ""
+      "mediaSize": "243450101",
+      "playType": null,
+      "fovInfo": "{\"hlookat\":3.6462732396971522,\"vlookat\":5.436618608773108,\"fov\":99.26419995468233}"
     }
   ],
   "interactNodeList": [
     {
       "interactNodeId": "interactNodeId001",
-      "title": "选择接下来要去哪",
-      "startTime": 0,
-      "duration": 3000,
+      "title": "点击",
+      "startTime": 31,
+      "duration": 10,
       "playState": "play",
-      "endState": "pause",
-      "interactInfoId": "interactInfoId001",
-      "showConditionList": [
-        {
-          "key": "x",
-          "operator": "<",
-          "temp": 2
-        },
-        {
-          "key": "y",
-          "operator": "<=",
-          "temp": 5
-        }
-      ]
+      "endState": "hide",
+      "interactInfoId": "interactInfoId1",
+      "showConditionList": []
     },
     {
       "interactNodeId": "interactNodeId002",
-      "title": "选择接下来要去哪-分支",
-      "startTime": 0,
-      "duration": 3000,
-      "playState": "play",
-      "endState": "pause",
-      "interactInfoId": "interactInfoId002",
+      "title": "文字",
+      "startTime": 31,
+      "duration": 10,
+      "playState": null,
+      "endState": null,
+      "interactInfoId": "interactInfoId2",
       "showConditionList": []
     },
     {
       "interactNodeId": "interactNodeId003",
-      "title": "输入密码解锁",
+      "title": "点击",
       "startTime": 0,
-      "duration": 10600,
-      "playState": "pause",
-      "endState": "active",
-      "interactInfoId": "interactInfoId003",
+      "duration": 10,
+      "playState": "play",
+      "endState": "hide",
+      "interactInfoId": "interactInfoId3",
       "showConditionList": []
     },
     {
       "interactNodeId": "interactNodeId004",
-      "title": "输入密码解锁",
+      "title": "文字",
       "startTime": 0,
-      "duration": 10600,
-      "playState": "pause",
-      "endState": "active",
-      "interactInfoId": "interactInfoId004",
+      "duration": 10,
+      "playState": null,
+      "endState": null,
+      "interactInfoId": "interactInfoId4",
       "showConditionList": []
     },
     {
       "interactNodeId": "interactNodeId005",
-      "title": "武器最重的两个人",
-      "startTime": 0,
-      "duration": 11600,
-      "playState": "pause",
-      "endState": "active",
-      "interactInfoId": "interactInfoId005",
+      "title": "组合点击",
+      "startTime": 22,
+      "duration": 10,
+      "playState": "play",
+      "endState": "hide",
+      "interactInfoId": "interactInfoId5",
       "showConditionList": []
     },
     {
       "interactNodeId": "interactNodeId006",
-      "title": "武器最重的两个人",
+      "title": "文字",
+      "startTime": 22,
+      "duration": 10,
+      "playState": null,
+      "endState": null,
+      "interactInfoId": "interactInfoId6",
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId007",
+      "title": "组合点击",
       "startTime": 0,
-      "duration": 11600,
-      "playState": "pause",
-      "endState": "active",
-      "interactInfoId": "interactInfoId006",
+      "duration": 10,
+      "playState": "play",
+      "endState": "hide",
+      "interactInfoId": "interactInfoId7",
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId008",
+      "title": "文字",
+      "startTime": 0,
+      "duration": 10,
+      "playState": null,
+      "endState": null,
+      "interactInfoId": "interactInfoId8",
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId009",
+      "title": "组合点击",
+      "startTime": 36,
+      "duration": 10,
+      "playState": "play",
+      "endState": "hide",
+      "interactInfoId": "interactInfoId9",
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId0010",
+      "title": "文字",
+      "startTime": 36,
+      "duration": 10,
+      "playState": null,
+      "endState": null,
+      "interactInfoId": "interactInfoId10",
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId0011",
+      "title": "组合点击",
+      "startTime": 0,
+      "duration": 10,
+      "playState": "play",
+      "endState": "hide",
+      "interactInfoId": "interactInfoId11",
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId0012",
+      "title": "文字",
+      "startTime": 0,
+      "duration": 10,
+      "playState": null,
+      "endState": null,
+      "interactInfoId": "interactInfoId12",
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId0013",
+      "title": "点击",
+      "startTime": 29,
+      "duration": 10,
+      "playState": "play",
+      "endState": "hide",
+      "interactInfoId": "interactInfoId13",
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId0014",
+      "title": "文字",
+      "startTime": 29,
+      "duration": 10,
+      "playState": null,
+      "endState": null,
+      "interactInfoId": "interactInfoId14",
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId0015",
+      "title": "点击",
+      "startTime": 0,
+      "duration": 10,
+      "playState": "play",
+      "endState": "hide",
+      "interactInfoId": "interactInfoId15",
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId0016",
+      "title": "文字",
+      "startTime": 0,
+      "duration": 10,
+      "playState": null,
+      "endState": null,
+      "interactInfoId": "interactInfoId16",
       "showConditionList": []
     }
   ],
   "interactInfoList": [
     {
-      "interactInfoId": "interactInfoId001",
+      "interactInfoId": "interactInfoId1",
       "isFollowCamera": false,
       "interactInfo": {
-        "type": "TextModule"
+        "type": "PointClickModule",
+        "compoundMode": null,
+        "clickCount": null
       },
       "interactConfig": "interactConfig1.json"
     },
     {
-      "interactInfoId": "interactInfoId002",
+      "interactInfoId": "interactInfoId2",
       "isFollowCamera": false,
       "interactInfo": {
-        "type": "PointClickModule"
+        "type": "TextModule",
+        "compoundMode": null,
+        "clickCount": null
       },
       "interactConfig": "interactConfig2.json"
     },
     {
-      "interactInfoId": "interactInfoId003",
+      "interactInfoId": "interactInfoId3",
+      "isFollowCamera": true,
       "interactInfo": {
-        "type": "TextModule"
+        "type": "PointClickModule",
+        "compoundMode": null,
+        "clickCount": null
       },
-      "isFollowCamera": false,
       "interactConfig": "interactConfig3.json"
     },
     {
-      "interactInfoId": "interactInfoId004",
-      "isFollowCamera": false,
+      "interactInfoId": "interactInfoId4",
+      "isFollowCamera": true,
       "interactInfo": {
-        "type": "ClickGroupModule",
-        "compoundMode": "order",
-        "clickCount": "2"
+        "type": "TextModule",
+        "compoundMode": null,
+        "clickCount": null
       },
       "interactConfig": "interactConfig4.json"
     },
     {
-      "interactInfoId": "interactInfoId005",
+      "interactInfoId": "interactInfoId5",
       "isFollowCamera": true,
       "interactInfo": {
-        "type": "TextModule"
+        "type": "ClickGroupModule",
+        "compoundMode": "disorder",
+        "clickCount": null
       },
       "interactConfig": "interactConfig5.json"
     },
     {
-      "interactInfoId": "interactInfoId006",
+      "interactInfoId": "interactInfoId6",
+      "isFollowCamera": true,
+      "interactInfo": {
+        "type": "TextModule",
+        "compoundMode": null,
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig6.json"
+    },
+    {
+      "interactInfoId": "interactInfoId7",
       "isFollowCamera": false,
       "interactInfo": {
         "type": "ClickGroupModule",
-        "compoundMode": "disorder",
-        "clickCount": "2"
+        "compoundMode": "combination",
+        "clickCount": 2
       },
-      "interactConfig": "interactConfig6.json"
+      "interactConfig": "interactConfig7.json"
+    },
+    {
+      "interactInfoId": "interactInfoId8",
+      "isFollowCamera": false,
+      "interactInfo": {
+        "type": "TextModule",
+        "compoundMode": null,
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig8.json"
+    },
+    {
+      "interactInfoId": "interactInfoId9",
+      "isFollowCamera": true,
+      "interactInfo": {
+        "type": "ClickGroupModule",
+        "compoundMode": "order",
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig9.json"
+    },
+    {
+      "interactInfoId": "interactInfoId10",
+      "isFollowCamera": true,
+      "interactInfo": {
+        "type": "TextModule",
+        "compoundMode": null,
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig10.json"
+    },
+    {
+      "interactInfoId": "interactInfoId11",
+      "isFollowCamera": false,
+      "interactInfo": {
+        "type": "ClickGroupModule",
+        "compoundMode": "order",
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig11.json"
+    },
+    {
+      "interactInfoId": "interactInfoId12",
+      "isFollowCamera": false,
+      "interactInfo": {
+        "type": "TextModule",
+        "compoundMode": null,
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig12.json"
+    },
+    {
+      "interactInfoId": "interactInfoId13",
+      "isFollowCamera": true,
+      "interactInfo": {
+        "type": "PointClickModule",
+        "compoundMode": null,
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig13.json"
+    },
+    {
+      "interactInfoId": "interactInfoId14",
+      "isFollowCamera": true,
+      "interactInfo": {
+        "type": "TextModule",
+        "compoundMode": null,
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig14.json"
+    },
+    {
+      "interactInfoId": "interactInfoId15",
+      "isFollowCamera": false,
+      "interactInfo": {
+        "type": "PointClickModule",
+        "compoundMode": null,
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig15.json"
+    },
+    {
+      "interactInfoId": "interactInfoId16",
+      "isFollowCamera": false,
+      "interactInfo": {
+        "type": "TextModule",
+        "compoundMode": null,
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig16.json"
     }
   ]
 }

@@ -1,0 +1,102 @@
+{
+  "metas": null,
+  "imgs": null,
+  "btns": [
+    {
+      "id": "c20ae336-eaf9-f4d6-99e9-d627602c",
+      "text": "",
+      "style": {
+        "color": "#fff",
+        "posX": -19.993088,
+        "posY": 0,
+        "posZ": 800,
+        "width": 100,
+        "height": 100,
+        "opacity": 0,
+        "rotate": 0,
+        "rotateX": 0,
+        "rotateY": 0,
+        "rotateZ": 0,
+        "fontSize": 20,
+        "scaleX": 1,
+        "scaleY": 0,
+        "scaleZ": 0
+      },
+      "audio": null,
+      "backgroundImageBeforeClick": "../assets/imgs/continueClick/beforeTrigger.png",
+      "backgroundImageClick": "../assets/imgs/continueClick/triggering.png",
+      "backgroundImageAfterClick": "../assets/imgs/continueClick/triggering.png",
+      "showConditionList": null,
+      "action": []
+    },
+    {
+      "id": "r28d81cf-3141-b4e4-d911-13495ce2",
+      "text": "",
+      "style": {
+        "color": "#fff",
+        "posX": 0.0069124424,
+        "posY": 0,
+        "posZ": 800,
+        "width": 100,
+        "height": 100,
+        "opacity": 0,
+        "rotate": 0,
+        "rotateX": 0,
+        "rotateY": 0,
+        "rotateZ": 0,
+        "fontSize": 20,
+        "scaleX": 1,
+        "scaleY": 0,
+        "scaleZ": 0
+      },
+      "audio": null,
+      "backgroundImageBeforeClick": "../assets/imgs/continueClick/beforeTrigger.png",
+      "backgroundImageClick": "../assets/imgs/continueClick/triggering.png",
+      "backgroundImageAfterClick": "../assets/imgs/continueClick/triggering.png",
+      "showConditionList": null,
+      "action": []
+    },
+    {
+      "id": "o153797a-c8c2-54a3-ba21-efb59375",
+      "text": "",
+      "style": {
+        "color": "#fff",
+        "posX": 20,
+        "posY": 0,
+        "posZ": 800,
+        "width": 100,
+        "height": 100,
+        "opacity": 0,
+        "rotate": 0,
+        "rotateX": 0,
+        "rotateY": 0,
+        "rotateZ": 0,
+        "fontSize": 20,
+        "scaleX": 1,
+        "scaleY": 0,
+        "scaleZ": 0
+      },
+      "audio": null,
+      "backgroundImageBeforeClick": "../assets/imgs/continueClick/beforeTrigger.png",
+      "backgroundImageClick": "../assets/imgs/continueClick/triggering.png",
+      "backgroundImageAfterClick": "../assets/imgs/continueClick/triggering.png",
+      "showConditionList": null,
+      "action": []
+    }
+  ],
+  "ctrls": [
+    {
+      "conditionConfig": {
+        "conditionValue": [
+          "r28d81cf-3141-b4e4-d911-13495ce2",
+          "o153797a-c8c2-54a3-ba21-efb59375"
+        ],
+        "jumpVideoId": "mda732a0-161c-848b-ea60-16e49d6a",
+        "skipVideoId": null,
+        "jumpTime": null,
+        "errorTip": "点错了~~"
+      },
+      "countDown": null
+    }
+  ]
+}

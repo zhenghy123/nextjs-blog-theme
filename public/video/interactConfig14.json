@@ -1,0 +1,28 @@
+{
+    "metas": [
+        {
+            "id": "asdsdesadff23432",
+            "text": "请选择剧情",
+            "style": {
+                "color": "#04AFDEFF",
+                "posX": 48,
+                "posY": 30,
+                "posZ": 0,
+                "width": 0,
+                "height": 0,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+            }
+        }
+    ],
+    "imgs": null,
+    "btns": null,
+    "ctrls": null
+}
