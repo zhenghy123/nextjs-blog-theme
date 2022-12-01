@@ -1,0 +1,99 @@
+{
+    "metas": null,
+    "imgs": null,
+    "btns": [
+        {
+            "id": "r334fb41-f5c2-f498-6a9f-b2eb7963",
+            "text": "",
+            "style": {
+                "color": "#fff",
+                "posX": -20,
+                "posY": 0,
+                "posZ": 800,
+                "width": 100,
+                "height": 100,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "1597228277561499649.png",
+            "backgroundImageClick": "1597228277561499648.png",
+            "backgroundImageAfterClick": "1597228277561499648.png",
+            "showConditionList": null,
+            "action": []
+        },
+        {
+            "id": "p05811ea-4b13-8473-08c8-5b8d1913",
+            "text": "",
+            "style": {
+                "color": "#fff",
+                "posX": 0.0069124424,
+                "posY": 0,
+                "posZ": 800,
+                "width": 100,
+                "height": 100,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "1597228277561499649.png",
+            "backgroundImageClick": "1597228277561499648.png",
+            "backgroundImageAfterClick": "1597228277561499648.png",
+            "showConditionList": null,
+            "action": []
+        },
+        {
+            "id": "cfb107ec-19e4-4499-b844-5f8712c9",
+            "text": "",
+            "style": {
+                "color": "#fff",
+                "posX": 20.006912,
+                "posY": 0,
+                "posZ": 800,
+                "width": 100,
+                "height": 100,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "1597228277561499649.png",
+            "backgroundImageClick": "1597228277561499648.png",
+            "backgroundImageAfterClick": "1597228277561499648.png",
+            "showConditionList": null,
+            "action": []
+        }
+    ],
+    "ctrls": [
+        {
+            "conditionConfig": {
+                "conditionValue": null,
+                "jumpVideoId": "jcf2c41b-2c74-84cf-fbff-75185bbf",
+                "skipVideoId": null,
+                "jumpTime": null,
+                "errorTip": ""
+            },
+            "countDown": null
+        }
+    ]
+}

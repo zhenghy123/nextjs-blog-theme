@@ -69,6 +69,67 @@ export class PlayerParse {
   }
 
   /**
+   * 后端帮忙处理后的json解析
+   * TODO: 后续自己写方法进行转换
+   */
+  initSelf() {
+    this.fetchJson(this._url).then((json) => {
+      console.log('自转index.json==', json)
+      this._json = json
+      this._factorList = json.factorList
+      this._firstVideoId = json.drama.firstVideoId
+
+      json.videoList.map((item) => {
+        // 拼接处理视频地址和封面地址
+        item.previewThumbnial = item.thumbnail
+        item.previewVideoPath = item.videoPath
+        // 初始化视频对象
+        item.video = this.createVideo(item)
+      })
+
+      // 处理互动组件内图片、音频
+      let interactNodeList = json.interactNodeList
+      interactNodeList.map((item) => {
+        const { imgs, btns } = item.interactInfoIdJson.interactConfigJson
+        // metas 是文本信息，没有图片
+
+        // 处理图片等地址 TODO:imgs暂时没用到
+        if (imgs) {
+          let keys = Object.keys(imgs)
+          keys.map((key) => {
+            imgs['preview' + key] = key
+          })
+        }
+
+        // 互动组件按钮配置
+        if (btns) {
+          btns.map((btn) => {
+            // audio是按钮点击音效，在按钮点击时触发
+            if (btn.audio) btn.previewAudio = btn.audio
+            // 按钮点击前、中、后背景图
+            if (btn.backgroundImageAfterClick)
+              btn.previewBackgroundImageAfterClick =
+                btn.backgroundImageAfterClick
+            if (btn.backgroundImageBeforeClick)
+              btn.previewBackgroundImageBeforeClick =
+                btn.backgroundImageBeforeClick
+            if (btn.backgroundImageClick)
+              btn.previewBackgroundImageClick = btn.backgroundImageClick
+
+            // TODO:点击组合按钮点击记录效果(点击后有个选中效果，再次点击去除选中)
+          })
+        }
+      })
+
+      this._hasLoad = true
+
+      // 一次性全部添加热点，后续根据videoId、组件配置进行显隐
+      this.addAllHotspot()
+      this._playerControl.initFirstVideo()
+    })
+  }
+
+  /**
    * 创建并初始化视频对象
    * @param {Object} item  videoList item
    */
@@ -161,9 +222,6 @@ export class PlayerParse {
 
     // 一次性全部添加热点，后续根据videoId、组件配置进行显隐
     this.addAllHotspot()
-    setTimeout(() => {
-      // _player.showHotspot(this._compNames)
-    }, 1000)
     this._playerControl.initFirstVideo()
   }
 
@@ -238,7 +296,7 @@ export class PlayerParse {
   getVideoNodeConfig(videoId) {
     let videoItem = this.getVideoItem(videoId)
     let list = []
-    let ids = videoItem.interactNodeId.split(',')
+    let ids = videoItem.interactNodeId // videoItem.interactNodeId.split(',')
     ids.map((id) => {
       let item = this.getNodeItem(id)
       list.push(item)

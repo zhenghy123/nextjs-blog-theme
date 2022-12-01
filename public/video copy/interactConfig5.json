@@ -1,0 +1,102 @@
+{
+    "metas": null,
+    "imgs": null,
+    "btns": [
+        {
+            "id": "e533bb2a-7af5-a401-6a1d-7759eae8",
+            "text": "",
+            "style": {
+                "color": "#fff",
+                "posX": 40,
+                "posY": 50,
+                "posZ": 0,
+                "width": 50,
+                "height": 50,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "1597228277561499649.png",
+            "backgroundImageClick": "1597228277561499648.png",
+            "backgroundImageAfterClick": "1597228277561499648.png",
+            "showConditionList": null,
+            "action": []
+        },
+        {
+            "id": "r47afa1e-1663-f405-48b3-1aa64308",
+            "text": "",
+            "style": {
+                "color": "#fff",
+                "posX": 50,
+                "posY": 50,
+                "posZ": 0,
+                "width": 50,
+                "height": 50,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "1597228277561499649.png",
+            "backgroundImageClick": "1597228277561499648.png",
+            "backgroundImageAfterClick": "1597228277561499648.png",
+            "showConditionList": null,
+            "action": []
+        },
+        {
+            "id": "c0a6dcde-c57d-1413-3ae7-00dcf5a3",
+            "text": "",
+            "style": {
+                "color": "#fff",
+                "posX": 60,
+                "posY": 50,
+                "posZ": 0,
+                "width": 50,
+                "height": 50,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "1597228277561499649.png",
+            "backgroundImageClick": "1597228277561499648.png",
+            "backgroundImageAfterClick": "1597228277561499648.png",
+            "showConditionList": null,
+            "action": []
+        }
+    ],
+    "ctrls": [
+        {
+            "conditionConfig": {
+                "conditionValue": [
+                    "e533bb2a-7af5-a401-6a1d-7759eae8",
+                    "c0a6dcde-c57d-1413-3ae7-00dcf5a3"
+                ],
+                "jumpVideoId": "jcf2c41b-2c74-84cf-fbff-75185bbf",
+                "skipVideoId": null,
+                "jumpTime": null,
+                "errorTip": "点错了~~"
+            },
+            "countDown": null
+        }
+    ]
+}

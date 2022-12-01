@@ -1,0 +1,61 @@
+{
+    "metas": null,
+    "imgs": null,
+    "btns": [
+        {
+            "id": "ka4b48cf-d7aa-1441-e858-c451ce0e",
+            "text": "剧情1",
+            "style": {
+                "color": "#fff",
+                "posX": 38,
+                "posY": 50,
+                "posZ": 0,
+                "width": 80,
+                "height": 32,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "1596864952310898688.png",
+            "backgroundImageClick": "1596864952331870208.png",
+            "backgroundImageAfterClick": "",
+            "showConditionList": [],
+            "action": []
+        },
+        {
+            "id": "ob5732f4-a173-04af-6a0e-a29a87b6",
+            "text": "剧情2",
+            "style": {
+                "color": "#fff",
+                "posX": 59,
+                "posY": 50,
+                "posZ": 0,
+                "width": 80,
+                "height": 32,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "1596864952310898688.png",
+            "backgroundImageClick": "1596864952331870208.png",
+            "backgroundImageAfterClick": "",
+            "showConditionList": [],
+            "action": []
+        }
+    ],
+    "ctrls": []
+}

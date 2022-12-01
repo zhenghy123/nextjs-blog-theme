@@ -21,6 +21,12 @@ module.exports = {
   devServer: {
     open: true,
     // port: 8002,
+    proxy: {
+      '//192.168.1.155': {
+        target: 'http://192.168.1.155',
+        // pathRewrite:{"":""}
+      },
+    },
   },
   // devtool: 'cheap-module-eval-source-map', // 'inline-source-map',
   // 'cheap-module-eval-source-map',

@@ -62,8 +62,8 @@ class KPlayer {
     window.draghotspot = this.draghotspot.bind(this)
   }
 
-  loadJson(url) {
-    this._playerParse = new PlayerParse(url, this)
+  loadJson(url, type = '国标') {
+    this._playerParse = new PlayerParse(url, this, type)
   }
 
   draghotspot(name) {
