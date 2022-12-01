@@ -48,7 +48,7 @@
       "mediaWidth": "3840",
       "mediaSize": "524759324",
       "playType": 0,
-      "fovInfo": ""
+      "fovInfo": "{\"hlookat\":0,\"vlookat\":0,\"fov\":180}"
     },
     {
       "videoId": "733419335",
@@ -106,7 +106,7 @@
       "startTime": 0,
       "duration": 3000,
       "playState": "play",
-      "endState": "hide",
+      "endState": "pause",
       "interactInfoId": "interactInfoId001",
       "showConditionList": [
         {
@@ -127,7 +127,7 @@
       "startTime": 0,
       "duration": 3000,
       "playState": "play",
-      "endState": "hide",
+      "endState": "pause",
       "interactInfoId": "interactInfoId002",
       "showConditionList": []
     },

@@ -235,12 +235,20 @@ export class PlayerParse {
     return await response.json()
   }
 
+  /**
+   * 获取互动因子
+   * @returns
+   */
   get_factorList() {
-    return this._json._factorList
+    return this._factorList
   }
 
+  /**
+   * 设置互动因子
+   * @param {*互动因子计算} arr
+   */
   set_factorList(arr) {
-    this._json._factorList.map((item) => {
+    this._factorList.map((item) => {
       let arrItem = arr.find((val) => val.key == item.key)
       item.value = eval(item.value + arrItem.operator + arrItem.temp)
     })
@@ -319,8 +327,6 @@ export class PlayerParse {
         nodes.push(item)
       }
     })
-    console.log('list==2', nodes)
-
     return nodes
   }
 
@@ -333,15 +339,12 @@ export class PlayerParse {
    */
   getActivetCompIds(videoId, time) {
     let list = this.getActivetNodeList(videoId, time)
-    console.log('list==', list)
     let ids = []
     list.map((item) => {
       const { btns, ctrls, imgs, metas } =
         item.interactInfoIdJson.interactConfigJson
       // 文本和互动组件不会同时存在（虽然展示的时候会）
       let comps = metas || btns
-      console.log('comps', comps)
-
       if (comps) {
         comps.map((comp) => {
           ids.push(comp.id)
@@ -351,6 +354,22 @@ export class PlayerParse {
     return { ids: ids, activeNodes: list }
   }
 
+  /**
+   * 根据视interactNodeId,获取每一项id集合
+   */
+  getInteractNodeIds(interactNodeId) {
+    let param = this.getNodeItem(interactNodeId)
+    let ids = []
+    const { btns, metas } = param?.interactInfoIdJson?.interactConfigJson
+    // 文本和互动组件不会同时存在（虽然展示的时候会）
+    let comps = metas || btns
+    if (comps) {
+      comps.map((comp) => {
+        ids.push(comp.id)
+      })
+    }
+    return ids
+  }
   /**
    * 一次性添加全部热点信息（默认隐藏）
    */
@@ -411,5 +430,23 @@ export class PlayerParse {
         })
       }
     })
+  }
+
+  /**
+   * 根据组件热点id获取热点对象
+   * @param {String} id
+   * @returns interactConfigJson
+   */
+  getInteractConfigJsonItem(id) {
+    let infoList = this.getInteractInfoList()
+    let config = {}
+    infoList.forEach((item) => {
+      let btns = item.interactConfigJson.btns
+      let configJson = btns?.find((param) => param.id == id)
+      if (configJson) {
+        config = item
+      }
+    })
+    return config
   }
 }
