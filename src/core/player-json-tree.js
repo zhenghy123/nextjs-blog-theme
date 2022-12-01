@@ -28,7 +28,7 @@ export class PlayerTree {
     `
 
     function setnodelist(childrenList, type) {
-      if (childrenList && childrenList.length > 1) {
+      if (childrenList && childrenList.length >= 1) {
         let list = []
         list.push(
           `<div class="nodewrap">
@@ -84,7 +84,9 @@ export class PlayerTree {
     let rootParam = {
       label: rootVideo?.filename,
       id: rootVideo?.videoId,
-      img: this._parser._assetsPrefix + rootVideo?.thumbnail.replace('../', ''),
+      img: rootVideo?.thumbnail
+        ? this._parser._assetsPrefix + rootVideo?.thumbnail.replace('../', '')
+        : '',
       children: [],
     }
 
@@ -96,15 +98,19 @@ export class PlayerTree {
     let nextid = this.pathTreeClick(id)
     nextid.forEach((item) => {
       let rootVideo = this._parser.getVideoItem(item)
-      let param = {
-        label: rootVideo?.filename,
-        id: rootVideo?.videoId,
-        img:
-          this._parser._assetsPrefix + rootVideo?.thumbnail.replace('../', ''),
-        children: [],
+      if (rootVideo) {
+        let param = {
+          label: rootVideo?.filename,
+          id: rootVideo?.videoId,
+          img: rootVideo?.thumbnail
+            ? this._parser._assetsPrefix +
+              rootVideo?.thumbnail.replace('../', '')
+            : '',
+          children: [],
+        }
+        paramList.children.push(param)
+        this.pathTree(param, item)
       }
-      paramList.children.push(param)
-      this.pathTree(param, item)
     })
   }
 
@@ -117,10 +123,8 @@ export class PlayerTree {
       let item = this._parser.getNodeItem(id)
       list.push(item)
     })
-
     list?.forEach((item) => {
       let interactInfoIdItem = item.interactInfoIdJson
-
       let ctrls = interactInfoIdItem?.interactConfigJson?.ctrls
       ctrls?.forEach((item) => {
         let conditionConfig = item.conditionConfig
