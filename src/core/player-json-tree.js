@@ -23,7 +23,7 @@ export class PlayerTree {
             <div style="position:absolute">${nodeList.label}</div>
           </div>
         </div>
-        ${setnodelist(nodeList.children, 'root')}
+        ${setnodelist(nodeList.children, 'root').join('')}
       </div>
     `
 
@@ -40,7 +40,7 @@ export class PlayerTree {
                 type === 'root' && childrenList.length > 1 ? 'nodeLineRoot' : ''
               }" ></div>
               <div class="nodeport">
-                ${setnodeItemlist(childrenList)}
+                ${setnodeItemlist(childrenList).join('')}
               </div>
             </div>`
         )
@@ -62,7 +62,7 @@ export class PlayerTree {
             <div class="nodeType">
               <div class="nodeInfo" onClick="treeClick('${item.id}')">
                 <img style="position:absolute;width:138px;height:100px"  src="${
-                  nodeList.img
+                  item.img
                 }"></img>
                 <div style="text-align: center;"> ${item.label}</div>
               </div>
