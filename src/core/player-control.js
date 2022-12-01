@@ -49,10 +49,6 @@ export class PlayerControl {
 
       this.pathSpotClick(id)
     }
-
-    this._player._options.setMainFov = (fovInfo) => {
-      console.log('setMainFov==', fovInfo)
-    }
   }
 
   /**
@@ -235,11 +231,7 @@ export class PlayerControl {
     let hotspotBtn = interactInfoList?.find((item) => item.id == id)
 
     // 点击音效（都有）
-    let audio = new Audio()
-    audio.src = hotspotBtn.audio
-      ? this._parser._assetsPrefix + hotspotBtn.audio.replace('../', '')
-      : ''
-    audio.play()
+    hotspotBtn.audioContext && hotspotBtn.audioContext.play()
 
     if (
       interactInfoIdItem?.interactInfo?.type == enumTranslate.ClickGroupModule
