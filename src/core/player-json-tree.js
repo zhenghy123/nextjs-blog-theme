@@ -1,8 +1,8 @@
 export class PlayerTree {
-  constructor(_player, _parser) {
-    this._player = _player
+  constructor(_parser) {
     this._parser = _parser
     this.treeList = {}
+    this.treeClick = this.treeClick.bind(this)
   }
 
   init() {
@@ -16,7 +16,7 @@ export class PlayerTree {
     ele = `
       <div class="processDesign">
         <div class="process">
-          <div class="rootNode" onClick="treeClick('${nodeList.id}')">
+          <div class="rootNode" data-id="${nodeList.id}">
             <img style="position:absolute;width:100%;height:100%" src="${
               nodeList.img
             }"></img>
@@ -60,7 +60,7 @@ export class PlayerTree {
           }">
             <div class="nodeLine"></div>
             <div class="nodeType">
-              <div class="nodeInfo" onClick="treeClick('${item.id}')">
+              <div class="nodeInfo" data-id="${item.id}">
                 <img style="position:absolute;width:138px;height:100px"  src="${
                   item.img
                 }"></img>
@@ -75,7 +75,24 @@ export class PlayerTree {
       return eleItem
     }
 
-    document.getElementById('nodeTree').innerHTML = ele
+    let dom = document.createElement('div')
+    dom.className = 'nodetree'
+    dom.innerHTML = ele
+    document.getElementById('krpanoSWFObject').appendChild(dom)
+
+    let infoList = document.getElementsByClassName('nodeInfo')
+    for (let i = 0; i < infoList.length; i++) {
+      infoList[i].addEventListener('click', this.treeClick)
+    }
+
+    document
+      .querySelector('.rootNode')
+      .addEventListener('click', this.treeClick)
+  }
+
+  treeClick(ele) {
+    let id = ele.path[1].dataset.id || ''
+    this._parser._playerControl.changeVideo(id)
   }
 
   initTreeList() {

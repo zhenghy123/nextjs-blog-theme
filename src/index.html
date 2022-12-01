@@ -22,8 +22,6 @@
   </head>
   <body>
     <div id="krpanoSWFObject"></div>
-
-    <div id="nodeTree"></div>
   </body>
 </html>
 <script>
@@ -33,12 +31,6 @@
 
   function treeVisibleON() {
     changeClass(document.querySelector('.processDesign'), 'show', 'hidden')
-  }
-
-  window.treeClick = (id) => {
-    // 切视频
-    _player._playerParse._playerControl.changeVideo(id)
-    _player._playerParse._playerControl.toggleHotspot()
   }
 
   window.onload = () => {
