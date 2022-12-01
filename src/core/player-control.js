@@ -110,7 +110,7 @@ export class PlayerControl {
       let playState = item.playState
       let endState = item.endState
       // 开始状态
-      if (Math.abs(this._currentTime * 1000 - startTime * 1000) < 0.02) {
+      if (Math.abs(this._currentTime - startTime) < 0.02) {
         if (playState == PlayerEvents.VIDEO_PAUSE) {
           // 组件开始时间点可暂停视频
           this._player.pause()
@@ -122,10 +122,7 @@ export class PlayerControl {
         }
       }
       // 结束状态
-      if (
-        Math.abs(this._currentTime * 1000 - (startTime + duration) * 1000) <
-        0.02
-      ) {
+      if (Math.abs(this._currentTime - (startTime + duration)) < 0.02) {
         if (endState == PlayerEvents.VIDEO_PAUSE) {
           // 组件结束时间点可暂停视频
           this._player.pause()
