@@ -49,8 +49,9 @@ export class PlayerUI {
           <span class="duration">00:00</span>
         </div>
         <div class="kplayer-blank"></div>
-        <div class="kplayer-tree-on icon" onclick="treeVisibleON()">显示</div>
-        <div class="kplayer-tree-off icon" onclick="treeVisibleOFF()">隐藏</div>
+        <div class="kplayer-tree icon" >
+            <img src="/assets/svgs/tree.svg" />
+         </div>
         <div class="kplayer-volume icon">
           <img src="/assets/svgs/volume.svg" />
         </div>
@@ -80,6 +81,7 @@ export class PlayerUI {
 
     this.handleVideoPlay = this.handleVideoPlay.bind(this)
     this.handleVideoPause = this.handleVideoPause.bind(this)
+    this.handleTree = this.handleTree.bind(this)
 
     this.addEvent()
   }
@@ -155,6 +157,10 @@ export class PlayerUI {
     window.cancelAnimationFrame(this.timer)
   }
 
+  handleTree() {
+    this._player._emitter.emit('treeShow')
+  }
+
   addEvent() {
     this._player._emitter.on('canplay', this.videoCanplay)
     this._player._emitter.on('timeupdate', this.videoTimeupdate)
@@ -169,6 +175,9 @@ export class PlayerUI {
     document
       .querySelector('.kplayer-play')
       .addEventListener('click', this.handleVideoPause)
+    document
+      .querySelector('.kplayer-tree')
+      .addEventListener('click', this.handleTree)
   }
 
   removeEvent() {
@@ -185,6 +194,10 @@ export class PlayerUI {
     document
       .querySelector('.kplayer-play')
       .removeEventListener('click', this.handleVideoPause)
+
+    document
+      .querySelector('.kplayer-tree')
+      .removeEventListener('click', this.handleTree)
   }
 
   /**

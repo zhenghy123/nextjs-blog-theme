@@ -1,6 +1,10 @@
+import { changeClass, format } from '../utils/utils'
+
 export class PlayerTree {
-  constructor(_parser) {
+  constructor(_parser, _player) {
     this._parser = _parser
+    this._player = _player
+
     this.treeList = {}
     this.treeClick = this.treeClick.bind(this)
   }
@@ -8,6 +12,17 @@ export class PlayerTree {
   init() {
     this.initTreeList()
     this.createEle()
+
+    this._player._emitter.on('treeShow', this.handleTreeShow)
+  }
+
+  handleTreeShow() {
+    console.log('handleTreeShow')
+    changeClass(document.querySelector('.nodetree'), 'show', 'hidden')
+  }
+
+  handleTreeClose() {
+    changeClass(document.querySelector('.nodetree'), 'hidden', 'show')
   }
 
   createEle() {
@@ -19,11 +34,14 @@ export class PlayerTree {
           <div class="rootNode" data-id="${nodeList.id}">
             <img style="position:absolute;width:100%;height:100%" src="${
               nodeList.img
-            }"></img>
+            }" onerror="this.src='/assets/preview1.jpeg'"></img>
             <div style="position:absolute">${nodeList.label}</div>
           </div>
         </div>
         ${setnodelist(nodeList.children, 'root').join('')}
+      </div>
+      <div class="close">
+          <img src='/assets/svgs/close.svg'>
       </div>
     `
 
@@ -63,7 +81,7 @@ export class PlayerTree {
               <div class="nodeInfo" data-id="${item.id}">
                 <img style="position:absolute;width:138px;height:100px"  src="${
                   item.img
-                }"></img>
+                }" onerror="this.src='/assets/preview1.jpeg'"></img>
                 <div style="text-align: center;"> ${item.label}</div>
               </div>
             </div>
@@ -76,7 +94,7 @@ export class PlayerTree {
     }
 
     let dom = document.createElement('div')
-    dom.className = 'nodetree'
+    dom.className = 'nodetree hidden'
     dom.innerHTML = ele
     document.getElementById('krpanoSWFObject').appendChild(dom)
 
@@ -88,6 +106,10 @@ export class PlayerTree {
     document
       .querySelector('.rootNode')
       .addEventListener('click', this.treeClick)
+
+    document
+      .querySelector('.nodetree .close')
+      .addEventListener('click', this.handleTreeClose)
   }
 
   treeClick(ele) {

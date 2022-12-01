@@ -7,7 +7,7 @@ export class PlayerParse {
     this._url = url // json地址
     this._player = _player
     this._playerControl = new PlayerControl(_player, this)
-    this._playerTree = new PlayerTree(this)
+    this._playerTree = new PlayerTree(this, _player)
 
     this._json = {}
     this._videoPrefix = url.replace('index.json', '') // 视频、config.json文件前缀
