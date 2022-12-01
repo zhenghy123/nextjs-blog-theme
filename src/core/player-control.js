@@ -46,7 +46,6 @@ export class PlayerControl {
       if (type == 'text') {
         return
       }
-      // 点击音效（都有）
 
       this.pathSpotClick(id)
     }
@@ -234,6 +233,12 @@ export class PlayerControl {
     let interactInfoIdItem = this._parser.getInteractConfigJsonItem(id)
     let interactInfoList = interactInfoIdItem?.interactConfigJson?.btns
     let hotspotBtn = interactInfoList?.find((item) => item.id == id)
+
+    // 点击音效（都有）
+    let audio = new Audio()
+    audio.src = this._parser._assetsPrefix + hotspotBtn.audio.replace('../', '')
+    audio.play()
+
     if (
       interactInfoIdItem?.interactInfo?.type == enumTranslate.ClickGroupModule
     ) {

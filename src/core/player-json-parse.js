@@ -1,11 +1,13 @@
 import { PlayerEvents } from './player-events'
 import { PlayerControl } from './player-control'
+import { PlayerTree } from './player-json-tree'
 
 export class PlayerParse {
   constructor(url, _player) {
     this._url = url // json地址
     this._player = _player
     this._playerControl = new PlayerControl(_player, this)
+    this._playerTree = new PlayerTree(_player, this)
 
     this._json = {}
     this._videoPrefix = url.replace('index.json', '') // 视频、config.json文件前缀
@@ -126,6 +128,7 @@ export class PlayerParse {
       // 一次性全部添加热点，后续根据videoId、组件配置进行显隐
       this.addAllHotspot()
       this._playerControl.initFirstVideo()
+      this._playerTree.init()
     })
   }
 
@@ -223,6 +226,7 @@ export class PlayerParse {
     // 一次性全部添加热点，后续根据videoId、组件配置进行显隐
     this.addAllHotspot()
     this._playerControl.initFirstVideo()
+    this._playerTree.init()
   }
 
   /**
@@ -304,7 +308,8 @@ export class PlayerParse {
   getVideoNodeConfig(videoId) {
     let videoItem = this.getVideoItem(videoId)
     let list = []
-    let ids = videoItem.interactNodeId // videoItem.interactNodeId.split(',')
+    // let ids = videoItem.interactNodeId // videoItem.interactNodeId.split(',')
+    let ids = videoItem.interactNodeId.split(',')
     ids.map((id) => {
       let item = this.getNodeItem(id)
       list.push(item)

@@ -2,6 +2,7 @@
 import { KPlayer } from './core/index'
 import PlayerData from './core/player-data'
 import './utils/qmsg'
+import './utils/tree.css'
 
 function createPlayer(id = '', url = '', options = {}) {
   return new Promise((resolve, reject) => {

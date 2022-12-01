@@ -1,0 +1,123 @@
+  .processDesign {
+    position: absolute;
+    transform: translateX(50%);
+    top: 10%;
+  }
+  .processDesign .process {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+  }
+  .processDesign .childNodeItem {
+    width: 140px;
+    border: 1px solid #ddd;
+  }
+  .processDesign .rootNode {
+    width: 140px;
+    height: 100px;
+    margin: 0 auto;
+    border: 1px solid blue;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .processDesign .nodewrap {
+    display: inline-block;
+  }
+  .processDesign .nodeLine {
+    width: 100%;
+    height: 50px;
+    position: relative;
+  }
+  .processDesign .nodeLine:after {
+    position: absolute;
+    content: '';
+    width: 2px;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+    background: #4c6cf5;
+  }
+  .processDesign .nodeType {
+    width: 140px;
+  }
+  .processDesign .nodeLineRoot {
+    width: 50%;
+    position: relative;
+    transform: translateX(69%);
+  }
+  .processDesign .nodeLineRoot:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #4c6cf5;
+  }
+  .processDesign .nodeLine2 {
+    width: 50%;
+    position: relative;
+    transform: translateX(50%);
+  }
+  .processDesign .nodeLine2:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #4c6cf5;
+  }
+  .processDesign .nodeport {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .processDesign .nodeInfo {
+    padding: 0 20px;
+    height: 100px;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .processDesign .nodeItem {
+    margin: 0 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .processDesign .nodeItems:first-child {
+    margin: 0;
+    transform: translateX(-50%);
+    position: relative;
+  }
+  .processDesign .nodeItems:first-child:after {
+    position: absolute;
+    content: '';
+    right: 0;
+    width: 50%;
+    top: 0;
+    height: 2px;
+    background: #4c6cf5;
+  }
+  .processDesign .nodeItems:last-child {
+    margin: 0;
+    transform: translateX(50%);
+    position: relative;
+  }
+  .processDesign .nodeItems:last-child:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    width: 50%;
+    top: 0;
+    height: 2px;
+    background: #4c6cf5;
+  }
