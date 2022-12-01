@@ -2,7 +2,9 @@
 import { KPlayer } from './core/index'
 import PlayerData from './core/player-data'
 import './utils/qmsg'
+import './utils/message.min.css'
 import './utils/tree.css'
+import './skin/ui.css'
 
 function createPlayer(id = '', url = '', options = {}) {
   return new Promise((resolve, reject) => {
@@ -17,6 +19,7 @@ function createPlayer(id = '', url = '', options = {}) {
         const _options = {
           ...options,
           url: url,
+          id: id,
           krpano: _krpano,
           ispreview: true,
         }

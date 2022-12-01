@@ -26,15 +26,6 @@ export class PlayerControl {
 
       // TODO:待优化==
       if (v.path[0].id == this._currentVideoId) {
-        let percent = (this._currentTime / this._currentVideo.duration) * 100
-        document.querySelector('.progress-played').style.width = percent + '%'
-        document.querySelector('.current-time').textContent = format(
-          this._currentTime
-        )
-
-        document.querySelector('.duration').textContent = format(
-          this._currentVideo.duration
-        )
         this.toggleHotspot()
         this.playActiveState()
       }
@@ -324,6 +315,8 @@ export class PlayerControl {
     this._currentVideoId = nextVideoId
     this._player.changeVideo(videoItem.video)
     this.setMainFov(videoItem.fovInfo)
+    this._player._emitter.emit('videoChange')
+
     if (!flag) {
       setTimeout(() => {
         this._currentVideo.play()
