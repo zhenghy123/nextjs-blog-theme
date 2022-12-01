@@ -1,27 +1,132 @@
 {
-  "metas": [
+  "metas": null,
+  "imgs": null,
+  "btns": [
     {
-      "id": "qwerqwde2314214er231ew",
-      "text": "选择接下来去哪",
+      "id": "ufb6175b-377c-b4d4-3826-d25c84d9",
+      "text": "+1",
       "style": {
         "color": "#fff",
-        "posX": 0,
-        "posY": -10,
+        "posX": -31,
+        "posY": 4,
         "posZ": 800,
-        "width": 100,
-        "heigth": 200,
-        "opacity": 0.5,
+        "width": 200,
+        "height": 90,
+        "opacity": 0,
         "rotate": 0,
         "rotateX": 0,
         "rotateY": 0,
         "rotateZ": 0,
         "fontSize": 20,
         "scaleX": 1,
-        "scaleY": 1
-      }
+        "scaleY": 0,
+        "scaleZ": 0
+      },
+      "audio": null,
+      "backgroundImageBeforeClick": "../assets/imgs/pointClick/beforeTrigger.png",
+      "backgroundImageClick": "../assets/imgs/pointClick/triggering.png",
+      "backgroundImageAfterClick": "",
+      "showConditionList": [],
+      "action": [
+        {
+          "actionType": "FACTOR",
+          "nextVideo": null,
+          "skipVideoId": null,
+          "jumpTime": null,
+          "factorExpressList": [
+            {
+              "key": "1669773984865",
+              "operator": "+",
+              "temp": 1,
+              "name": "数值1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "v7dd4b58-698c-f4b6-787e-53dd7f55",
+      "text": ">2展示，点击+1",
+      "style": {
+        "color": "#fff",
+        "posX": 0,
+        "posY": 5,
+        "posZ": 800,
+        "width": 200,
+        "height": 90,
+        "opacity": 0,
+        "rotate": 0,
+        "rotateX": 0,
+        "rotateY": 0,
+        "rotateZ": 0,
+        "fontSize": 20,
+        "scaleX": 1,
+        "scaleY": 0,
+        "scaleZ": 0
+      },
+      "audio": null,
+      "backgroundImageBeforeClick": "../assets/imgs/pointClick/beforeTrigger.png",
+      "backgroundImageClick": "../assets/imgs/pointClick/triggering.png",
+      "backgroundImageAfterClick": "",
+      "showConditionList": [
+        {
+          "key": "1669773984865",
+          "operator": ">",
+          "temp": 2,
+          "name": "数值1"
+        }
+      ],
+      "action": [
+        {
+          "actionType": "FACTOR",
+          "nextVideo": null,
+          "skipVideoId": null,
+          "jumpTime": null,
+          "factorExpressList": [
+            {
+              "key": "1669773984865",
+              "operator": "+",
+              "temp": 1,
+              "name": "数值1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r92c8de4-2ca8-d4da-bbad-46b8a2a6",
+      "text": ">3展示",
+      "style": {
+        "color": "#fff",
+        "posX": 33,
+        "posY": 5,
+        "posZ": 800,
+        "width": 200,
+        "height": 90,
+        "opacity": 0,
+        "rotate": 0,
+        "rotateX": 0,
+        "rotateY": 0,
+        "rotateZ": 0,
+        "fontSize": 20,
+        "scaleX": 1,
+        "scaleY": 0,
+        "scaleZ": 0
+      },
+      "audio": null,
+      "backgroundImageBeforeClick": "../assets/imgs/pointClick/beforeTrigger.png",
+      "backgroundImageClick": "../assets/imgs/pointClick/triggering.png",
+      "backgroundImageAfterClick": "",
+      "showConditionList": [
+        {
+          "key": "1669773984865",
+          "operator": ">",
+          "temp": 3,
+          "name": "数值1"
+        }
+      ],
+      "action": []
     }
   ],
-  "imgs": null,
-  "btns": null,
-  "ctrls": null
+  "ctrls": []
 }

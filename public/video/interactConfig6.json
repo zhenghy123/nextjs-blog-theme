@@ -1,127 +1,28 @@
 {
-    "metas": null,
-    "imgs": {
-        "url": "../assets/preview1.png"
-    },
-    "btns": [
+    "metas": [
         {
-            "id": "saddcx32ntghj34235ewwr",
-            "text": "唐僧",
+            "id": "asdasddsdsde23432",
+            "text": "任意点击两个",
             "style": {
-                "color": "#000",
-                "posX": 100,
-                "posY": 100,
-                "posZ": 300,
-                "width": 100,
-                "heigth": 200,
-                "opacity": 0.5,
-                "rotate": 30,
-                "rotateX": 30,
-                "rotateY": 30,
-                "rotateZ": 30,
-                "fontSize": 32,
+                "color": "#1DC560FF",
+                "posX": 49,
+                "posY": 32,
+                "posZ": 0,
+                "width": 0,
+                "height": 0,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
                 "scaleX": 1,
-                "scaleY": 1
-            },
-            "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/preview1.png",
-            "backgroundImageClick": "../assets/preview1.png",
-            "backgroundImageAfterClick": "../assets/preview1.png",
-            "action": []
-        },
-        {
-            "id": "saddcx324jyuiui7634235ewwr",
-            "text": "猪八戒",
-            "style": {
-                "color": "#000",
-                "posX": 100,
-                "posY": 100,
-                "posZ": 300,
-                "width": 100,
-                "heigth": 200,
-                "opacity": 0.5,
-                "rotate": 30,
-                "rotateX": 30,
-                "rotateY": 30,
-                "rotateZ": 30,
-                "fontSize": 32,
-                "scaleX": 1,
-                "scaleY": 1
-            },
-            "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/preview1.png",
-            "backgroundImageClick": "../assets/preview1.png",
-            "backgroundImageAfterClick": "../assets/preview1.png",
-            "action": []
-        },
-        {
-            "id": "saddcx324cvwet5t34235ewwr",
-            "text": "沙悟净",
-            "style": {
-                "color": "#000",
-                "posX": 100,
-                "posY": 100,
-                "posZ": 300,
-                "width": 100,
-                "heigth": 200,
-                "opacity": 0.5,
-                "rotate": 30,
-                "rotateX": 30,
-                "rotateY": 30,
-                "rotateZ": 30,
-                "fontSize": 32,
-                "scaleX": 1,
-                "scaleY": 1
-            },
-            "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/preview1.png",
-            "backgroundImageClick": "../assets/preview1.png",
-            "backgroundImageAfterClick": "../assets/preview1.png",
-            "action": []
-        },
-        {
-            "id": "saddcdcswre45646523424234235ewwr",
-            "text": "孙悟空",
-            "style": {
-                "color": "#000",
-                "posX": 100,
-                "posY": 100,
-                "posZ": 300,
-                "width": 100,
-                "heigth": 200,
-                "opacity": 0.5,
-                "rotate": 30,
-                "rotateX": 30,
-                "rotateY": 30,
-                "rotateZ": 30,
-                "fontSize": 32,
-                "scaleX": 1,
-                "scaleY": 1
-            },
-            "audio": "../assets/active.mp3",
-            "backgroundImageBeforeClick": "../assets/preview1.png",
-            "backgroundImageClick": "../assets/preview1.png",
-            "backgroundImageAfterClick": "../assets/preview1.png",
-            "action": []
-        }
-    ],
-    "ctrls": [
-        {
-            "countDown": {
-                "time": 1000,
-                "text": "倒计时",
-                "jumpVideoId": "732228246",
-                "jumpTime": 600
-            },
-            "conditionConfig": {
-                "conditionValue": [
-                    2,
-                    4
-                ],
-                "jumpVideoId": "732228247",
-                "jumpTime": 600,
-                "errorTip": ""
+                "scaleY": 0,
+                "scaleZ": 0
             }
         }
-    ]
+    ],
+    "imgs": null,
+    "btns": null,
+    "ctrls": null
 }

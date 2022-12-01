@@ -61,7 +61,7 @@ export class PlayerControl {
   toggleHotspot() {
     const { ids, activeNodes } = this._parser.getActivetCompIds(
       this._currentVideoId,
-      this._currentTime * 1000
+      this._currentTime
     )
 
     let btnItem = []
@@ -97,7 +97,7 @@ export class PlayerControl {
   playActiveState() {
     const { ids, activeNodes } = this._parser.getActivetCompIds(
       this._currentVideoId,
-      this._currentTime * 1000
+      this._currentTime
     )
     // 组件结束时间点可播放视频（继续播放）
     activeNodes?.map((item) => {
@@ -110,7 +110,7 @@ export class PlayerControl {
       let playState = item.playState
       let endState = item.endState
       // 开始状态
-      if (Math.abs(this._currentTime * 1000 - startTime) < 200) {
+      if (Math.abs(this._currentTime - startTime) < 0.02) {
         if (playState == PlayerEvents.VIDEO_PAUSE) {
           // 组件开始时间点可暂停视频
           this._player.pause()
@@ -122,7 +122,7 @@ export class PlayerControl {
         }
       }
       // 结束状态
-      if (Math.abs(this._currentTime * 1000 - (startTime + duration)) < 200) {
+      if (Math.abs(this._currentTime - (startTime + duration)) < 0.02) {
         if (endState == PlayerEvents.VIDEO_PAUSE) {
           // 组件结束时间点可暂停视频
           this._player.pause()
@@ -138,7 +138,7 @@ export class PlayerControl {
               if (ctrlsItem.jumpVideoId != null) {
                 this.changeVideo(ctrlsItem.jumpVideoId)
               } else if (ctrlsItem.jumpTime != null) {
-                this._player.setCurrentTime(ctrlsItem.jumpTime / 1000)
+                this._player.setCurrentTime(ctrlsItem.jumpTime)
               }
             })
           }
@@ -275,7 +275,7 @@ export class PlayerControl {
             this.changeVideo(conditionConfig.jumpVideoId)
           } else if (conditionConfig.jumpTime != null) {
             // 跳当前时间（分支选项&立即触发）
-            this._player.setCurrentTime(conditionConfig.jumpTime / 1000)
+            this._player.setCurrentTime(conditionConfig.jumpTime)
           }
         } else {
           if (
@@ -306,7 +306,7 @@ export class PlayerControl {
         this.changeVideo(nextVideoId)
       } else if (actItem.actionType == HotToState.JUMPTIME) {
         // 跳当前时间（分支选项&立即触发）
-        this._player.setCurrentTime(actItem.jumpTime / 1000)
+        this._player.setCurrentTime(actItem.jumpTime)
       } else if (actItem.actionType == HotToState.FACTOR) {
         //TODO 互动因子提前？
         // 互动因子：互动因控制显隐|互动因子计算（立即重刷toggleHotspot，刷新显隐）
