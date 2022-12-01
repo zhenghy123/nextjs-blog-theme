@@ -9,8 +9,8 @@ function createPlayer(id = '', url = '', options = {}) {
       id: 'kplayer',
       xml: './krpano.xml',
       target: id || 'krpanoSWFObject',
-      html5: 'only',
-      consolelog: false,
+      html5: 'only+webgl',
+      consolelog: true,
       onready: function (krpano) {
         const _krpano = krpano.get('global')
         const _options = {
