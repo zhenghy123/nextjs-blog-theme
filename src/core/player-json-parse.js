@@ -433,7 +433,7 @@ export class PlayerParse {
             z: style.posZ,
           }
 
-          kxplayer.addInteractiveHotspot(
+          this._player.addInteractiveHotspot(
             name,
             compType,
             type,

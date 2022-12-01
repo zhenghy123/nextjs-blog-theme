@@ -38,14 +38,12 @@ export function changeClass(el, newClass, oldClass) {
   }
 
   if (el.classList) {
-    className
+    newClass
       .replace(/(^\s+|\s+$)/g, '')
       .split(/\s+/g)
       .forEach((item) => {
-        console.log(item)
-        let index = el.classList.indexOf(oldClass)
-        el.classList.splice(index, 1, newClass)
-        // item && el.classList.add(item)
+        removeClass(el, oldClass)
+        addClass(el, newClass)
       })
   }
 }

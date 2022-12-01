@@ -2,6 +2,7 @@ import { PlayerEvents } from './player-events'
 import { InteractiveEnums } from './player-interactives'
 import { DefaultVideoOptions } from './player-config'
 import { PlayerParse } from './player-json-parse'
+import { PlayerUI } from './player-ui'
 
 import EventEmitter from 'events'
 
@@ -56,6 +57,7 @@ class KPlayer {
 
   loadJson(url, type = '国标') {
     this._playerParse = new PlayerParse(url, this, type)
+    this._playerUI = new PlayerUI(this)
   }
 
   draghotspot(name) {
