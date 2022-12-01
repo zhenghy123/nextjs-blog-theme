@@ -144,130 +144,6 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
       }
-
-      .processDesign {
-        position: absolute;
-        transform: translateX(50%);
-        top: 10%;
-      }
-      .processDesign .process {
-        display: inline-block;
-        text-align: center;
-        width: 100%;
-      }
-      .processDesign .childNodeItem {
-        width: 140px;
-        border: 1px solid #ddd;
-      }
-      .processDesign .rootNode {
-        width: 140px;
-        height: 100px;
-        margin: 0 auto;
-        border: 1px solid blue;
-        transform: translateX(-50%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        cursor: pointer;
-      }
-      .processDesign .nodewrap {
-        display: inline-block;
-      }
-      .processDesign .nodeLine {
-        width: 100%;
-        height: 50px;
-        position: relative;
-      }
-      .processDesign .nodeLine:after {
-        position: absolute;
-        content: '';
-        width: 2px;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -1px;
-        background: #4c6cf5;
-      }
-      .processDesign .nodeType {
-        width: 140px;
-      }
-      .processDesign .nodeLineRoot {
-        width: 50%;
-        position: relative;
-        transform: translateX(69%);
-      }
-      .processDesign .nodeLineRoot:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: #4c6cf5;
-      }
-      .processDesign .nodeLine2 {
-        width: 50%;
-        position: relative;
-        transform: translateX(50%);
-      }
-      .processDesign .nodeLine2:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: #4c6cf5;
-      }
-      .processDesign .nodeport {
-        flex: 1;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .processDesign .nodeInfo {
-        padding: 0 20px;
-        height: 100px;
-        border: 1px solid blue;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        cursor: pointer;
-      }
-      .processDesign .nodeItem {
-        margin: 0 25px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .processDesign .nodeItems:first-child {
-        margin: 0;
-        transform: translateX(-50%);
-        position: relative;
-      }
-      .processDesign .nodeItems:first-child:after {
-        position: absolute;
-        content: '';
-        right: 0;
-        width: 50%;
-        top: 0;
-        height: 2px;
-        background: #4c6cf5;
-      }
-      .processDesign .nodeItems:last-child {
-        margin: 0;
-        transform: translateX(50%);
-        position: relative;
-      }
-      .processDesign .nodeItems:last-child:after {
-        position: absolute;
-        content: '';
-        left: 0;
-        width: 50%;
-        top: 0;
-        height: 2px;
-        background: #4c6cf5;
-      }
     </style>
   </head>
 
@@ -418,84 +294,10 @@
     changeClass(document.querySelector('.processDesign'), 'show', 'hidden')
   }
 
-  function createEle(nodeList) {
-    let ele = {}
-    ele = `
-      <div class="processDesign">
-        <div class="process">
-          <div class="rootNode" onClick="treeClick(${nodeList.id})">
-            <img style="position:absolute;width:100%;height:100%" src="${
-              nodeList.img
-            }"></img>
-            <div style="position:absolute">${nodeList.label}</div>
-          </div>
-        </div>
-        ${setnodelist(nodeList.children, 'root')}
-      </div>
-    `
-
-    function setnodelist(childrenList, type) {
-      if (childrenList && childrenList.length > 1) {
-        let list = []
-        list.push(
-          `<div class="nodewrap">
-              <div class="nodeLine"></div>
-              <div class="${
-                type !== 'root' && childrenList.length > 1 ? 'nodeLine2' : ''
-              }" ></div>
-              <div class="${
-                type === 'root' && childrenList.length > 1 ? 'nodeLineRoot' : ''
-              }" ></div>
-              <div class="nodeport">
-                ${setnodeItemlist(childrenList)}
-              </div>
-            </div>`
-        )
-        return list
-      } else {
-        return ''
-      }
-    }
-
-    function setnodeItemlist(list) {
-      let eleItem = []
-      list?.map((item, i) => {
-        eleItem.push(
-          `
-          <div  class="nodeItem" :class="${
-            item?.length > 1 ? 'nodeItems' : ''
-          }">
-            <div class="nodeLine"></div>
-            <div class="nodeType">
-              <div class="nodeInfo" onClick="treeClick(${item.id})">
-                <img style="position:absolute;width:140px;height:100px"  src="${
-                  nodeList.img
-                }"></img>
-                <div style="position:absolute"> ${item.label}</div>
-              </div>
-            </div>
-            ${setnodelist(item.children)}
-          </div>
-          `
-        )
-      })
-      return eleItem
-    }
-
-    document.getElementById('nodeTree').innerHTML = ele
-  }
-
   window.treeClick = (id) => {
-    // 隐藏热点
-    let curId = kxplayer.getVideoId()
-    let lastArray = playList.getVideoHotspotName(curId)
-    let newArray = playList.getVideoHotspotName(id)
-    kxplayer.showHotspot(lastArray, false)
-
     // 切视频
-    let nextVideo = playList.getVideoParam(id)
-    let url = playList.getVideoUrl(nextVideo.videoPath)
-    kxplayer.changeVideo(url, id)
+    _player._playerParse._playerControl.changeVideo(id)
+    _player._playerParse._playerControl.toggleHotspot()
   }
 
   window.onload = () => {
@@ -539,10 +341,6 @@
           // document.querySelector('.current-time').textContent =
           //   format(currentTime)
         })
-
-        setTimeout(() => {
-          // createEle(playList.getTreeList())
-        }, 1000)
       })
   }
 </script>
