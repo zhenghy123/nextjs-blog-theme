@@ -25,7 +25,9 @@ function createPlayer(id = '', url = '', options = {}) {
         }
 
         const kplayer = new KPlayer(_options)
-        kplayer.loadJson('http://localhost:8080/video/index.json')
+        kplayer.loadJson(
+          'http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1598275823755010048/demo/video/index.json'
+        )
 
         window.kxplayer = kplayer
         window._krpano = _krpano

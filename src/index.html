@@ -25,16 +25,6 @@
   </body>
 </html>
 <script>
-  function treeVisibleOFF() {
-    let ele = document.querySelector('.nodetree') 
-    ele.className += ' hidden'
-  }
-
-  function treeVisibleON() {
-    let ele = document.querySelector('.nodetree') 
-    ele.className = ele.className.replace(/hidden/g, '')
-  }
-
   window.onload = () => {
     kplayerJS
       .createPlayer('krpanoSWFObject', '/video/video360.mp4', {

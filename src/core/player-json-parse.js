@@ -216,6 +216,10 @@ export class PlayerParse {
         }
       })
     })
+
+    if (interactInfoList.length == 0) {
+      this._playerControl.initFirstVideo()
+    }
   }
 
   /**
