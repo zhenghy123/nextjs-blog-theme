@@ -34,14 +34,14 @@ export class PlayerTree {
           <div class="rootNode" data-id="${nodeList.id}">
             <img style="position:absolute;width:100%;height:100%" src="${
               nodeList.img
-            }" onerror="this.src='/assets/preview1.jpeg'"></img>
+            }" onerror="this.src='./assets/preview1.jpeg'"></img>
             <div style="position:absolute">${nodeList.label}</div>
           </div>
         </div>
         ${setnodelist(nodeList.children, 'root').join('')}
       </div>
       <div class="close">
-          <img src='/assets/svgs/close.svg'>
+          <img src='./assets/svgs/close.svg'>
       </div>
     `
 
@@ -81,7 +81,7 @@ export class PlayerTree {
               <div class="nodeInfo" data-id="${item.id}">
                 <img style="position:absolute;width:138px;height:100px"  src="${
                   item.img
-                }" onerror="this.src='/assets/preview1.jpeg'"></img>
+                }" onerror="this.src='./assets/preview1.jpeg'"></img>
                 <div style="text-align: center;"> ${item.label}</div>
               </div>
             </div>
