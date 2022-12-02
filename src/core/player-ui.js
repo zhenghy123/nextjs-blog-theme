@@ -81,6 +81,7 @@ export class PlayerUI {
     this.handleVideoPlay = this.handleVideoPlay.bind(this)
     this.handleVideoPause = this.handleVideoPause.bind(this)
     this.handleTree = this.handleTree.bind(this)
+    this.handleProgress = this.handleProgress.bind(this)
 
     this.addEvent()
   }
@@ -101,7 +102,7 @@ export class PlayerUI {
     this.videoData[video.id] = video.duration
 
     // 视频全部预加载完
-    if (Object.keys(this.videoData).length == this._videoCount ) {
+    if (Object.keys(this.videoData).length == this._videoCount) {
       this._canplayAll = true
       Qmsg.closeAll()
       this.videoChange()
@@ -154,6 +155,17 @@ export class PlayerUI {
     this._player._emitter.emit('treeShow')
   }
 
+  handleProgress(event) {
+    console.log(event)
+    let offsetX = event.offsetX
+    let offsetWidth = document.querySelector('.progress-outer').offsetWidth
+    let pert = offsetX / offsetWidth
+    let time = this._currentVideoDuration * pert
+    this._currentVideo.currentTime = time
+    document.querySelector('.current-time').textContent = format(time)
+    document.querySelector('.progress-played').style.width = pert * 100 + '%'
+  }
+
   addEvent() {
     this._player._emitter.on('canplay', this.videoCanplay)
     this._player._emitter.on('timeupdate', this.videoTimeupdate)
@@ -165,12 +177,18 @@ export class PlayerUI {
     document
       .querySelector('.kplayer-pause')
       .addEventListener('click', this.handleVideoPlay)
+
     document
       .querySelector('.kplayer-play')
       .addEventListener('click', this.handleVideoPause)
+
     document
       .querySelector('.kplayer-tree')
       .addEventListener('click', this.handleTree)
+
+    document
+      .querySelector('.progress-outer')
+      .addEventListener('click', this.handleProgress)
   }
 
   removeEvent() {
@@ -191,6 +209,10 @@ export class PlayerUI {
     document
       .querySelector('.kplayer-tree')
       .removeEventListener('click', this.handleTree)
+
+    document
+      .querySelector('.progress-outer')
+      .removeEventListener('click', this.handleProgress)
   }
 
   /**
