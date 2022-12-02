@@ -1,4 +1,5 @@
 // export const kplayerJS = Promise.resolve(require('./kplayer').default)
+import Hls from 'hls.js'
 import { KPlayer } from './core/index'
 import './utils/qmsg'
 import './utils/message.min.css'
@@ -45,5 +46,6 @@ let kplayerJS = {
 }
 
 window.kplayerJS = kplayerJS
+window.Hls = Hls
 
 export default kplayerJS
