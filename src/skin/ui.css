@@ -5,6 +5,25 @@
   width: 100%;
   overflow: hidden;
 }
+.kplayer-loading {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 1009;
+  display: flex;
+  left: 0;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+}
+.kplayer-loading img {
+  height: 100px;
+}
+.flex {
+  display: flex;
+}
+
 .kplayer-ui .kplayer-controls {
   display: flex;
   align-items: center;

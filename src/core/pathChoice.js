@@ -23,7 +23,7 @@ export function pathTimeUpdate(val) {
       if (playState == PlayerEvents.VIDEO_PAUSE) {
         kxplayer.pause()
       } else if (playState == PlayerEvents.VIDEO_PLAY && time > 0.01) {
-        kxplayer.play()
+        // kxplayer.play()
       }
     }
     if (time * 1000 - duration < 200 && endState == PlayerEvents.VIDEO_PAUSE) {

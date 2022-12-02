@@ -249,6 +249,8 @@ export class PlayerParse {
     this.addAllHotspot()
     this._playerControl.initFirstVideo()
     this._playerTree.init()
+
+    console.log(this._json)
   }
 
   /**

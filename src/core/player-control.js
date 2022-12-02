@@ -293,8 +293,9 @@ export class PlayerControl {
         let nextVideoId = actItem.nextVideo
         this.changeVideo(nextVideoId)
       } else if (actItem.actionType == HotToState.JUMPTIME) {
+        this._currentVideo.currentTime = actItem.jumpTime
         // 跳当前时间（分支选项&立即触发）
-        this._player.setCurrentTime(actItem.jumpTime)
+        // this._player.setCurrentTime(actItem.jumpTime)
       } else if (actItem.actionType == HotToState.FACTOR) {
         //TODO 互动因子提前？
         // 互动因子：互动因控制显隐|互动因子计算（立即重刷toggleHotspot，刷新显隐）
@@ -326,6 +327,8 @@ export class PlayerControl {
       }, 300)
     }
   }
+
+  changeTime() {}
 
   // 互动因子 显隐状态
   factorState(factorItem) {

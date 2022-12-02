@@ -110,8 +110,6 @@ class KPlayer {
     const checkPluginInit = () => {
       let videoPlugin = _krpano.plugin.getItem('video')
       if (videoPlugin) {
-        console.log(videoPlugin)
-
         let video = this.createVideo(_this._options.url)
         console.error('init video ', video.currentTime, _this._options.url)
         videoPlugin.DefaultVideoOptions = DefaultVideoOptions
