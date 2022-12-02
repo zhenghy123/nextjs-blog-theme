@@ -1,6 +1,7 @@
 // export const kplayerJS = Promise.resolve(require('./kplayer').default)
 import Hls from 'hls.js'
 import { KPlayer } from './core/index'
+import { getUrlParams } from './utils/utils'
 import './utils/qmsg'
 import './utils/message.min.css'
 import './utils/tree.css'
@@ -27,7 +28,8 @@ function createPlayer(id = '', url = '', options = {}) {
         const kplayer = new KPlayer(_options)
         // kplayer.loadJson()
 
-        window._krpano = _krpano
+        window.kplayer = kplayer
+        window.krpano = _krpano
 
         // _krpano.actions.showlog()
         resolve(kplayer)
@@ -43,6 +45,7 @@ function createPlayer(id = '', url = '', options = {}) {
 let kplayerJS = {
   version: '1.0.0',
   createPlayer: createPlayer,
+  getUrlParams: getUrlParams,
 }
 
 window.kplayerJS = kplayerJS

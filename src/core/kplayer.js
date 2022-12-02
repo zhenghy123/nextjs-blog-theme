@@ -3,7 +3,6 @@ import { InteractiveEnums } from './player-interactives'
 import { DefaultVideoOptions } from './player-config'
 import { PlayerParse } from './player-json-parse'
 import { PlayerUI } from './player-ui'
-import { getUrlParams } from '../utils/utils'
 import EventEmitter from 'events'
 
 var _krpano = null
@@ -53,6 +52,8 @@ class KPlayer {
     window.hotspotClick = this.hotspotClick.bind(this)
     window.setMainFov = this.setMainFov.bind(this)
     window.draghotspot = this.draghotspot.bind(this)
+
+    this.loadJson = this.loadJson.bind(this)
   }
 
   loadJson(json, type = 'gb') {
@@ -109,29 +110,49 @@ class KPlayer {
     const checkPluginInit = () => {
       let videoPlugin = _krpano.plugin.getItem('video')
       if (videoPlugin) {
-        console.error('init video ', _this._options.url)
+        console.log(videoPlugin)
+
+        let video = this.createVideo(_this._options.url)
+        console.error('init video ', video.currentTime, _this._options.url)
         videoPlugin.DefaultVideoOptions = DefaultVideoOptions
         videoPlugin.PlayerEvents = PlayerEvents
         videoPlugin._emitter = _this._emitter
         videoPlugin._emit = _this._emitter.emit
         // videoPlugin.events = this._options.events
-        videoPlugin.videourl = _this._options.url
+        videoPlugin.videourl = video
         videoPlugin.videoId = _this._options.videoId
         videoPlugin.url = 'plugins/videoplayer_basic_source.js'
-
-        if (_this._options.url) {
-          let video = document.createElement('video')
-          video.src = _this._options.url
-          video.muted = true
-          video.currentTime = 0.0001
-          this.changeVideo(video)
-          video.play()
-        }
       } else {
         setTimeout(checkPluginInit, 500)
       }
     }
     checkPluginInit()
+  }
+
+  createVideo(url) {
+    let video = null
+    if (typeof url == 'object') {
+      video = url
+    } else {
+      video = document.createElement('video')
+      video.src = url
+    }
+    video.crossOrigin = 'anonymous'
+    video.preload = true
+    video.oncanplay = () => {
+      video.currentTime = 0.001
+    }
+
+    if (video.src.indexOf('.m3u8') != -1) {
+      var hls = new window.Hls()
+      hls.loadSource(video.src)
+      hls.attachMedia(video)
+      hls.on(window.Hls.Events.MANIFEST_PARSED, function () {
+        console.log('==', window.Hls.Events.MANIFEST_PARSED)
+      })
+    }
+
+    return video
   }
 
   checkVideoPluginIsInit() {

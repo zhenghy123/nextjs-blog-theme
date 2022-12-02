@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="assets/svgs/icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./krpano.js"></script>
     <title>kplayer</title>
@@ -26,33 +26,16 @@
 </html>
 <script>
   window.onload = () => {
-    let search = window.location.search
-    let arrObj = search.split('?')
-    let params = {}
-    if (arrObj.length > 1) {
-      let arrPara = arrObj[1].split('&')
-      if (arrPara.length == 1) {
-        arrPara = arrObj[1].split('$')
-      }
-      let arr
-      for (let i = 0; i < arrPara.length; i++) {
-        arr = arrPara[i].split('=')
-        if (arr != null) {
-          params[arr[0]] = unescape(arr[1])
-            .replace(/\ +/g, '')
-            .replace(/[\r\n]/g, '')
+    let json = kplayerJS.getUrlParams('json')
+    let type = kplayerJS.getUrlParams('type')
+    let url = kplayerJS.getUrlParams('url')
+
+    kplayerJS
+      .createPlayer('krpanoSWFObject', url, { showUI: true })
+      .then((player) => {
+        if (json) {
+          player.loadJson(json, type)
         }
-      }
-    }
-
-    let json = params['json']
-    let type = params['type']
-    let url = params['url']
-
-    kplayerJS.createPlayer('krpanoSWFObject', url, {}).then((player) => {
-      if (json) {
-        player.loadJson(json, type)
-      }
-    })
+      })
   }
 </script>
