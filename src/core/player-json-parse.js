@@ -3,7 +3,7 @@ import { PlayerControl } from './player-control'
 import { PlayerTree } from './player-json-tree'
 
 export class PlayerParse {
-  constructor(url, _player, type = '国标') {
+  constructor(url, _player, type = 'gb') {
     this._url = url // json地址
     this._player = _player
     this._playerControl = new PlayerControl(_player, this)
@@ -17,10 +17,11 @@ export class PlayerParse {
     this._firstVideoId = ''
     this._hasLoad = false // 是否处理完json数据
 
-    if (type == '国标') {
-      this.init()
-    } else {
+    // gb 国标  cp 自定义大json
+    if (type == 'cp') {
       this.initSelf()
+    } else {
+      this.init()
     }
   }
 
@@ -104,7 +105,7 @@ export class PlayerParse {
             // audio是按钮点击音效，在按钮点击时触发
             if (btn.audio) {
               btn.previewAudio = btn.audio
-              btn.audioContext = createAudio(btn)
+              btn.audioContext = this.createAudio(btn)
             }
             // 按钮点击前、中、后背景图
             if (btn.backgroundImageAfterClick)
@@ -168,7 +169,7 @@ export class PlayerParse {
 
     let count = 0
     interactInfoList.map((item) => {
-      let url = this._videoPrefix + item.interactConfig
+      let url = this._assetsPrefix + item.interactConfig
       this.fetchJson(url).then((json) => {
         count++
         item.interactConfigJson = json
@@ -191,7 +192,7 @@ export class PlayerParse {
             if (btn.audio) {
               btn.previewAudio =
                 this._assetsPrefix + btn.audio.replace('../', '')
-              btn.audioContext = createAudio(btn)
+              btn.audioContext = this.createAudio(btn)
             }
             // 按钮点击前、中、后背景图
             if (btn.backgroundImageAfterClick)
@@ -438,15 +439,16 @@ export class PlayerParse {
             y: style.posY,
             z: style.posZ,
           }
-
-          this._player.addInteractiveHotspot(
-            name,
-            compType,
-            type,
-            styleSetting,
-            textSetting,
-            transform2DSetting
-          )
+          if (name) {
+            this._player.addInteractiveHotspot(
+              name,
+              compType,
+              type,
+              styleSetting,
+              textSetting,
+              transform2DSetting
+            )
+          }
         })
       }
     })

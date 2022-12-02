@@ -210,6 +210,29 @@ function initCloneByTag(object, tag) {
   }
 }
 
+export function getUrlParams(paraName) {
+  let url = window.location.search
+  let arrObj = url.split('?')
+  let params = {}
+  if (arrObj.length > 1) {
+    let arrPara = arrObj[1].split('&')
+    if (arrPara.length == 1) {
+      arrPara = arrObj[1].split('$')
+    }
+    let arr
+    for (let i = 0; i < arrPara.length; i++) {
+      arr = arrPara[i].split('=')
+      if (arr != null) {
+        params[arr[0]] = unescape(arr[1])
+          .replace(/\ +/g, '')
+          .replace(/[\r\n]/g, '') // 去除空格回车换行符
+      }
+    }
+    // 　　return params;
+  }
+  return paraName ? params[paraName] : params
+}
+
 // export function deepCopy(dst, src) {
 //   if (typeOf(src) === 'Object' && typeOf(dst) === 'Object') {
 //     Object.keys(src).forEach((key) => {

@@ -3,7 +3,7 @@ import { InteractiveEnums } from './player-interactives'
 import { DefaultVideoOptions } from './player-config'
 import { PlayerParse } from './player-json-parse'
 import { PlayerUI } from './player-ui'
-
+import { getUrlParams } from '../utils/utils'
 import EventEmitter from 'events'
 
 var _krpano = null
@@ -55,9 +55,25 @@ class KPlayer {
     window.draghotspot = this.draghotspot.bind(this)
   }
 
-  loadJson(url, type = '国标') {
-    this._playerParse = new PlayerParse(url, this, type)
-    this._playerUI = new PlayerUI(this)
+  loadJson() {
+    let json = getUrlParams('json')
+    let url = getUrlParams('url')
+    if (json) {
+      this._playerParse = new PlayerParse(json, this, getUrlParams('type'))
+      this._playerUI = new PlayerUI(this)
+    } else {
+      if (url) {
+        let video = document.createElement('video')
+        video.src = url
+        if (video.currentTime == 0) {
+          video.currentTime = 0.0001
+        }
+        this.changeVideo(video)
+        video.play()
+      } else {
+        Qmsg.info('数据异常')
+      }
+    }
   }
 
   draghotspot(name) {

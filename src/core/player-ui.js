@@ -97,14 +97,14 @@ export class PlayerUI {
 
   videoCanplay(event) {
     if (this._videoCount == 0) {
-      this._videoCount = this._player._playerParse._json.videoList.length
+      this._videoCount = this._player._playerParse?._json.videoList.length
     }
 
     let video = event.path[0]
     this.videoData[video.id] = video.duration
 
     // 视频全部预加载完
-    if (Object.keys(this.videoData).length == this._videoCount) {
+    if (Object.keys(this.videoData).length == this._videoCount ) {
       this._canplayAll = true
       Qmsg.closeAll()
       this.videoChange()
