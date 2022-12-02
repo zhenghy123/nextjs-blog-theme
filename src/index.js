@@ -1,6 +1,5 @@
 // export const kplayerJS = Promise.resolve(require('./kplayer').default)
 import { KPlayer } from './core/index'
-import PlayerData from './core/player-data'
 import './utils/qmsg'
 import './utils/message.min.css'
 import './utils/tree.css'

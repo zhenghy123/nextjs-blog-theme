@@ -29,8 +29,6 @@ class PlayerData {
 
     this.fetchJson(this._url).then((json) => {
       this._json = json
-      console.log('json==', json)
-
       this.fetchInteractConfig()
     })
   }
@@ -62,7 +60,6 @@ class PlayerData {
         (info) => info.interactInfoId == item.interactInfoId
       )
     })
-    console.log('interactConfigJson==', this._json)
 
     this.addVideoHotspot(this._json.drama?.firstVideoId)
     this.setTreeList()
@@ -113,7 +110,6 @@ class PlayerData {
    * 获取JSON
    */
   getJsonList() {
-    console.log('JsonList:', this._json)
     return this._json
   }
 

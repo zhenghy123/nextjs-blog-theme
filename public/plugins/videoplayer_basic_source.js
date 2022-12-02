@@ -98,7 +98,6 @@ var krpanoplugin = function () {
     krpano.debugmode = true // show debug/trace(0) messages
     krpano.trace(0, 'basic videoplayer video.src=' + video.src)
 
-    // console.log(video);
     check_ready_state()
   }
 
@@ -108,7 +107,6 @@ var krpanoplugin = function () {
       return
     }
     Object.keys(plugin.videoOptions).map((item) => {
-      // console.log("==", item, plugin.videoOptions[item]);
       video.setAttribute(item, plugin.videoOptions[item])
       plugin[item] = plugin.videoOptions[item]
     })
@@ -224,14 +222,11 @@ var krpanoplugin = function () {
       plugin.lastCurrentTime = Math.random()
       krpano.actions.updatescreen()
       plugin.update()
-
-      // console.log('video ready');
     }
   }
 
   function option_setter(val, key) {
     if (key == 'src' && typeof val == 'object') {
-      // console.log(111, key, val);
       removeVideoEvents()
 
       video = val

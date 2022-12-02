@@ -17,7 +17,6 @@ export class PlayerTree {
   }
 
   handleTreeShow() {
-    console.log('handleTreeShow')
     changeClass(document.querySelector('.nodetree'), 'show', 'hidden')
   }
 

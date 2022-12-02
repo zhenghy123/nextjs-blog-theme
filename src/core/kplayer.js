@@ -140,11 +140,9 @@ class KPlayer {
         // video.currentTime = 10
 
         // setTimeout(() => {
-        //   console.log(1133)
         //   videoPlugin.togglevideo(video)
         // }, 3000)
       } else {
-        console.log('check')
         setTimeout(checkPluginInit, 500)
       }
     }
@@ -241,11 +239,9 @@ class KPlayer {
    * @param {*} info 参考互动组件JSON.json
    */
   addComponent(info) {
-    console.log('addComponent==', info)
     if (info.baseSetting.type == 'Interactive') {
       info.interactiveGroup.map((group) => {
         const hotSpot = this.getHotspot(group.id)
-        console.log(hotSpot)
         // 修改组件属性
         if (hotSpot) {
           if (info.baseSetting.name == '文本') {
@@ -269,7 +265,6 @@ class KPlayer {
             )
           }
         } else {
-          console.log('添加组件', group.id)
           this.addInteractiveHotspot(
             group.id,
             info.baseSetting.name,
@@ -775,7 +770,6 @@ class KPlayer {
       if (pluginArr.includes(name)) {
         index++
       } else {
-        console.log('remove layer:', name, index)
         // _krpano.layer.removeItem(name);
         _krpano.actions.removelayer(name)
       }

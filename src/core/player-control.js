@@ -5,7 +5,6 @@ const eventFns = {}
 // 播放器控制
 export class PlayerControl {
   constructor(_player, _parser) {
-    console.log('_player:', _player)
     this._player = _player
     this._parser = _parser
 
@@ -22,8 +21,6 @@ export class PlayerControl {
     //
     this._player._emitter.on('timeupdate', (v) => {
       this._currentTime = v.path[0].currentTime
-      // console.log('yes', this._currentVideoId, v)
-
       // TODO:待优化==
       if (v.path[0].id == this._currentVideoId) {
         this.toggleHotspot()
@@ -32,7 +29,6 @@ export class PlayerControl {
     })
 
     this._player._options.hotspotClick = (id, type) => {
-      console.log('hotspotClick==', id, type)
       // 文本无点击反应
       if (type == 'text') {
         return

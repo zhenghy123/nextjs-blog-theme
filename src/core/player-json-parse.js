@@ -46,7 +46,6 @@ export class PlayerParse {
      * - 层级结构处理结束
      */
     this.fetchJson(this._url).then((json) => {
-      console.log('index.json==', json)
       this._json = json
       this._factorList = json.factorList
       this._firstVideoId = json.drama.firstVideoId
@@ -72,7 +71,6 @@ export class PlayerParse {
    */
   initSelf() {
     this.fetchJson(this._url).then((json) => {
-      console.log('自转index.json==', json)
       this._json = json
       this._factorList = json.factorList
       this._firstVideoId = json.drama.firstVideoId

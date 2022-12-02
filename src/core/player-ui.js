@@ -65,7 +65,6 @@ export class PlayerUI {
     kui.className = 'kplayer-ui'
     kui.innerHTML = tmp
     let id = this._player._options.id
-    console.log()
     document.querySelector('#' + id).appendChild(kui)
   }
 
@@ -87,11 +86,9 @@ export class PlayerUI {
   }
 
   handleVideoPlay() {
-    console.log(111)
     this._currentVideo.play()
   }
   handleVideoPause() {
-    console.log(222)
     this._currentVideo.pause()
   }
 
@@ -142,10 +139,6 @@ export class PlayerUI {
   }
 
   videoPlay() {
-    console.log(
-      document.querySelector('.kplayer-play'),
-      document.querySelector('.kplayer-pause')
-    )
     changeClass(document.querySelector('.kplayer-play'), 'show', 'hidden')
     changeClass(document.querySelector('.kplayer-pause'), 'hidden', 'show')
   }
