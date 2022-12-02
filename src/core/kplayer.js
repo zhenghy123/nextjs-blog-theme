@@ -485,10 +485,10 @@ class KPlayer {
         set(hotspot[${name}].ath,${transform3DSetting?.x || 0});
         set(hotspot[${name}].atv,${transform3DSetting?.y || 0});
         set(hotspot[${name}].depth,${transform3DSetting?.z || 200});
-        set(hotspot[${name}].rx,${transform3DSetting?.rotationX || 0});
-        set(hotspot[${name}].ry,${transform3DSetting?.rotationY || 0});
-        set(hotspot[${name}].rz,${transform3DSetting?.rotationZ || 0});
-        set(hotspot[${name}].scale,${transform3DSetting?.scale || 1});
+        set(hotspot[${name}].rx,${transform3DSetting?.rotateX || 0});
+        set(hotspot[${name}].ry,${transform3DSetting?.rotateY || 0});
+        set(hotspot[${name}].rz,${transform3DSetting?.rotateZ || 0});
+        set(hotspot[${name}].scale,${transform3DSetting?.scaleX || 1});
         set(hotspot[${name}].html,${textSetting?.text || '默认文本'});
         set(hotspot[${name}].css,"color:${
           textSetting?.fill || '0xffffff'
@@ -532,9 +532,9 @@ class KPlayer {
         set(hotspot[${name}].depth,${transform3DSetting?.z || 800});
         set(hotspot[${name}].width,${transform3DSetting?.width || '100'});
         set(hotspot[${name}].height,${transform3DSetting?.height || '100'});
-        set(hotspot[${name}].rx,${transform3DSetting?.rotationX || 0});
-        set(hotspot[${name}].ry,${transform3DSetting?.rotationY || 0});
-        set(hotspot[${name}].rz,${transform3DSetting?.rotationZ || 0});
+        set(hotspot[${name}].rx,${transform3DSetting?.rotateX || 0});
+        set(hotspot[${name}].ry,${transform3DSetting?.rotateY || 0});
+        set(hotspot[${name}].rz,${transform3DSetting?.rotateZ || 0});
         set(hotspot[${name}].url,${
           styleSetting?.beforeTrigger ||
           InteractiveEnums[compName].beforeTrigger
@@ -551,7 +551,7 @@ class KPlayer {
         });
         set(hotspot[${name}].text,${textSetting?.text || ''}); 
         set(hotspot[${name}].html,${textSetting?.text || ''});
-        set(hotspot[${name}].scale,${transform3DSetting?.scale || 1});
+        set(hotspot[${name}].scale,${transform3DSetting?.scaleX || 1});
         `
       )
       this.checkHasLoaded('tooltip_' + name, 'layer').then(() => {
@@ -571,7 +571,7 @@ class KPlayer {
         });
         set(layer[${name}].width,${transform3DSetting?.width || '100'});
         set(layer[${name}].height,${transform3DSetting?.height || '100'});
-        set(layer[${name}].rotate,${transform3DSetting?.rotation || 0});
+        set(layer[${name}].rotate,${transform3DSetting?.rotate || 0});
         set(layer[${name}].url,${
           styleSetting?.beforeTrigger ||
           InteractiveEnums[compName].beforeTrigger
@@ -588,7 +588,7 @@ class KPlayer {
         });
         set(layer[${name}].text,${textSetting?.text || ''});
         set(layer[${name}].html,${textSetting?.text || ''});
-        set(layer[${name}].scale,${transform3DSetting?.scale || 1});
+        set(layer[${name}].scale,${transform3DSetting?.scaleX || 1});
         `
       )
       this.checkHasLoaded('tooltip_' + name, 'layer').then(() => {
