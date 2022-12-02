@@ -224,12 +224,8 @@ export class PlayerControl {
       interactInfoIdItem?.interactInfo?.type == enumTranslate.ClickGroupModule
     ) {
       // 组合点击
-      //TODO  : 任意点击两个？
       let count = interactInfoIdItem.interactInfo.clickCount
       // 条件
-      if (this.compoundlist.length >= count) {
-        this.compoundlist.shift()
-      }
       if (this.compoundlist.indexOf(hotspotBtn.id) != -1) {
         this.compoundlist = this.compoundlist.filter(
           (item) => item != hotspotBtn.id
@@ -237,7 +233,6 @@ export class PlayerControl {
       } else {
         this.compoundlist.push(hotspotBtn.id)
       }
-
       // 结果
       let ctrls = interactInfoIdItem?.interactConfigJson?.ctrls
       ctrls?.forEach((item) => {
@@ -250,7 +245,10 @@ export class PlayerControl {
           conditionValue = conditionValue.sort()
         }
         // 匹配正确
-        if (conditionValue?.toString() === this.compoundlist?.toString()) {
+        if (
+          conditionValue?.toString() === this.compoundlist?.toString() ||
+          this.compoundlist.length == count
+        ) {
           if (conditionConfig.jumpVideoId != null) {
             // 跳故事节点（分支选项&立即触发）
             this.changeVideo(conditionConfig.jumpVideoId)
@@ -267,6 +265,15 @@ export class PlayerControl {
             Qmsg.info(conditionConfig.errorTip || '答案错误')
             this.compoundlist = []
           }
+        }
+      })
+      // 组合点击互动因子更新
+      hotspotBtn?.action?.forEach((actItem) => {
+        if (actItem.actionType == HotToState.FACTOR) {
+          let factorExpressList = actItem.factorExpressList
+          this._parser.set_factorList(factorExpressList)
+
+          this.toggleHotspot()
         }
       })
       setTimeout(() => {
