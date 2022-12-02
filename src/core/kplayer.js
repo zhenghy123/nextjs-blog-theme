@@ -55,25 +55,9 @@ class KPlayer {
     window.draghotspot = this.draghotspot.bind(this)
   }
 
-  loadJson() {
-    let json = getUrlParams('json')
-    let url = getUrlParams('url')
-    if (json) {
-      this._playerParse = new PlayerParse(json, this, getUrlParams('type'))
-      this._playerUI = new PlayerUI(this)
-    } else {
-      if (url) {
-        let video = document.createElement('video')
-        video.src = url
-        if (video.currentTime == 0) {
-          video.currentTime = 0.0001
-        }
-        this.changeVideo(video)
-        video.play()
-      } else {
-        Qmsg.info('数据异常')
-      }
-    }
+  loadJson(json, type = 'gb') {
+    this._playerParse = new PlayerParse(json, this, type)
+    this._playerUI = new PlayerUI(this)
   }
 
   draghotspot(name) {
@@ -135,13 +119,14 @@ class KPlayer {
         videoPlugin.videoId = _this._options.videoId
         videoPlugin.url = 'plugins/videoplayer_basic_source.js'
 
-        // let video = document.createElement('video')
-        // video.src = 'video/video360.mp4'
-        // video.currentTime = 10
-
-        // setTimeout(() => {
-        //   videoPlugin.togglevideo(video)
-        // }, 3000)
+        if (_this._options.url) {
+          let video = document.createElement('video')
+          video.src = _this._options.url
+          video.muted = true
+          video.currentTime = 0.0001
+          this.changeVideo(video)
+          video.play()
+        }
       } else {
         setTimeout(checkPluginInit, 500)
       }

@@ -24,7 +24,7 @@ function createPlayer(id = '', url = '', options = {}) {
         }
 
         const kplayer = new KPlayer(_options)
-        kplayer.loadJson()
+        // kplayer.loadJson()
 
         window._krpano = _krpano
 
