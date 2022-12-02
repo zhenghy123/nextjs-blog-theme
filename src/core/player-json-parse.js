@@ -141,6 +141,15 @@ export class PlayerParse {
     video.crossOrigin = 'anonymous'
     video.preload = true
 
+    if (item.previewVideoPath.indexOf('.m3u8') != -1) {
+      var hls = new window.Hls()
+      hls.loadSource(item.previewVideoPath)
+      hls.attachMedia(video)
+      hls.on(window.Hls.Events.MANIFEST_PARSED, function () {
+        console.log('==', window.Hls.Events.MANIFEST_PARSED)
+      })
+    }
+
     this._playerControl.addVideoListener(video)
 
     // TODO:编码判断：item.videoCoding=='h265'

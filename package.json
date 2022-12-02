@@ -29,6 +29,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "@babel/core": "^7.20.2"
+    "@babel/core": "^7.20.2",
+    "hls.js": "^0.8.5"
   }
 }
