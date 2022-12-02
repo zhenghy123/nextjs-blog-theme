@@ -150,6 +150,8 @@ class KPlayer {
   }
 
   checkVideoPluginIsInit() {
+    let count = 0
+    let timer = null
     return new Promise((resolve) => {
       let isLoad = () => {
         let obj =
@@ -158,7 +160,33 @@ class KPlayer {
         if (obj) {
           resolve(true)
         } else {
-          setTimeout(isLoad, 300)
+          count++
+          if (count >= 50) {
+            clearTimeout(timer)
+            throw new Error('资源加载失败，请刷新浏览器重试')
+          }
+
+          timer = setTimeout(isLoad, 300)
+        }
+      }
+      isLoad()
+    })
+  }
+
+  checkVideoInit(video) {
+    let count = 0
+    let timer = null
+    return new Promise((resolve) => {
+      let isLoad = () => {
+        if (video.readyState == 4 && video.videoWidth) {
+          resolve(true)
+        } else {
+          count++
+          if (count >= 50) {
+            clearTimeout(timer)
+            throw new Error('资源加载失败，请刷新浏览器重试')
+          }
+          timer = setTimeout(isLoad, 100)
         }
       }
       isLoad()
@@ -172,7 +200,13 @@ class KPlayer {
   changeVideo(url) {
     // 防止为注册完就调用
     this.checkVideoPluginIsInit().then(() => {
-      _krpano.plugin.getItem('video').togglevideo(url)
+      if (typeof url == 'object') {
+        this.checkVideoInit(url).then(() => {
+          _krpano.plugin.getItem('video').togglevideo(url)
+        })
+      } else {
+        _krpano.plugin.getItem('video').togglevideo(url)
+      }
     })
   }
 
