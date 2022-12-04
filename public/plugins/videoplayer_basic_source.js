@@ -196,12 +196,7 @@ var krpanoplugin = function () {
   }
 
   function check_ready_state() {
-    if (
-      plugin &&
-      plugin.havevideosize == false &&
-      video.videoWidth > 0 &&
-      video.videoHeight > 0
-    ) {
+    if (plugin && video.videoWidth > 0 && video.videoHeight > 0) {
       // got a valid size
 
       // register the size in krpano
@@ -219,8 +214,6 @@ var krpanoplugin = function () {
       // xml event callback
       krpano.call(plugin.onvideoready, plugin)
 
-      plugin.lastCurrentTime = Math.random()
-      krpano.actions.updatescreen()
       plugin.update()
     }
   }

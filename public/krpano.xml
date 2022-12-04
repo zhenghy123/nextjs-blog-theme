@@ -11,6 +11,11 @@
 		<image>
 			<sphere url="plugin:video" />
 		</image>
+
+		<plugin name="video"
+			visible="true"
+			keep="true"
+		 />
 	</scene>
 
 	<scene name="imgscene" keep="true">
@@ -25,11 +30,6 @@
 		</image>
 	</scene>
 
-	<plugin name="video"
-		pausedonstart="true"
-		loop="true"
-		volume="1.0"
-	 />
 
 	<view hlookat="0" vlookat="0" fovtype="DFOV" fov="130" fovmin="75" fovmax="150" distortion="0.0" />
 

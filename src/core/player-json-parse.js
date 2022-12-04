@@ -140,6 +140,7 @@ export class PlayerParse {
     video.poster = item.previewThumbnial
     video.crossOrigin = 'anonymous'
     video.preload = true
+    video.load()
 
     if (item.previewVideoPath.indexOf('.m3u8') != -1) {
       var hls = new window.Hls()
@@ -164,8 +165,19 @@ export class PlayerParse {
     }
     let audio = document.createElement('audio')
     audio.src = item.previewAudio
+    audio.load()
 
     return audio
+  }
+
+  createImage(url) {
+    let img = document.createElement('img')
+    img.crossOrigin = 'anonymous'
+    if (url) {
+      img.src = url
+    }
+
+    return img
   }
 
   /**
@@ -202,17 +214,23 @@ export class PlayerParse {
               btn.audioContext = this.createAudio(btn)
             }
             // 按钮点击前、中、后背景图
-            if (btn.backgroundImageAfterClick)
+            if (btn.backgroundImageAfterClick) {
               btn.previewBackgroundImageAfterClick =
                 this._assetsPrefix +
                 btn.backgroundImageAfterClick.replace('../', '')
-            if (btn.backgroundImageBeforeClick)
+              this.createImage(btn.previewBackgroundImageAfterClick)
+            }
+            if (btn.backgroundImageBeforeClick) {
               btn.previewBackgroundImageBeforeClick =
                 this._assetsPrefix +
                 btn.backgroundImageBeforeClick.replace('../', '')
-            if (btn.backgroundImageClick)
+              this.createImage(btn.previewBackgroundImageBeforeClick)
+            }
+            if (btn.backgroundImageClick) {
               btn.previewBackgroundImageClick =
                 this._assetsPrefix + btn.backgroundImageClick.replace('../', '')
+              this.createImage(btn.previewBackgroundImageClick)
+            }
 
             // TODO:点击组合按钮点击记录效果(点击后有个选中效果，再次点击去除选中)
           })

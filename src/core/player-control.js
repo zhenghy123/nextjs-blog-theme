@@ -187,6 +187,7 @@ export class PlayerControl {
     this._currentVideo = videoItem.video
     this._player.changeVideo(videoItem.video)
     this.setMainFov(videoItem.fovInfo)
+    this._player._krpano.actions.loadscene('videoscene')
   }
 
   //
@@ -320,10 +321,12 @@ export class PlayerControl {
     this._player.changeVideo(videoItem.video)
     this.setMainFov(videoItem.fovInfo)
     this._player._emitter.emit('videoChange')
+    this._player._krpano.actions.loadscene('videoscene')
 
     if (!flag) {
       setTimeout(() => {
         this._currentVideo.play()
+        // this._player._krpano.actions.loadscene('videoscene')
       }, 300)
     }
   }
