@@ -4,7 +4,7 @@
 
 import { changeClass, removeClass, addClass, format } from '../utils/utils'
 
-const Qs = (s) => {
+const $ = (s) => {
   return document.querySelector(s)
 }
 
@@ -70,14 +70,14 @@ export class PlayerUI {
     kui.className = 'kplayer-ui'
     kui.innerHTML = tmp
     let id = this._player._options.id
-    Qs('#' + id).appendChild(kui)
+    $('#' + id).appendChild(kui)
 
     let loading = document.createElement('div')
     loading.className = 'kplayer-loading hidden'
     loading.innerHTML = `
       <img src="assets/svgs/loading.svg" />
     `
-    Qs('#' + id).appendChild(loading)
+    $('#' + id).appendChild(loading)
   }
 
   init() {
@@ -134,15 +134,15 @@ export class PlayerUI {
   videoTimeupdate(event) {
     let _currentTime = event.path[0].currentTime
     // let percent = (_currentTime / this._currentVideoDuration) * 100
-    // Qs('.progress-played').style.width = percent + '%'
+    // $('.progress-played').style.width = percent + '%'
 
-    Qs('.current-time').textContent = format(_currentTime)
+    $('.current-time').textContent = format(_currentTime)
 
     if (this._currentVideo?.paused) {
       let _currentTime = this._currentVideo.currentTime
       let percent = (_currentTime / this._currentVideoDuration) * 100
 
-      Qs('.progress-played').style.width = percent + '%'
+      $('.progress-played').style.width = percent + '%'
     }
   }
 
@@ -156,23 +156,27 @@ export class PlayerUI {
     this._currentVideo = this._player._playerParse._playerControl._currentVideo
     this._currentVideoDuration = this.videoData[this._currentVideoId]
 
-    Qs('.kplayer-ui .duration').textContent = format(this._currentVideoDuration)
+    console.log('==', format(this._currentVideoDuration))
+
+    $('.kplayer-ui .duration').textContent = format(this._currentVideoDuration)
   }
 
   videoPlaying() {
-    window.cancelAnimationFrame(this.timer)
-
-    this.render()
+    this.isLoading = false
+    this.checkLoading()
   }
 
   videoPlay() {
-    changeClass(Qs('.kplayer-play'), 'show', 'hidden')
-    changeClass(Qs('.kplayer-pause'), 'hidden', 'show')
+    changeClass($('.kplayer-play'), 'show', 'hidden')
+    changeClass($('.kplayer-pause'), 'hidden', 'show')
+
+    window.cancelAnimationFrame(this.timer)
+    this.render()
   }
 
   videoPause() {
-    changeClass(Qs('.kplayer-pause'), 'show', 'hidden')
-    changeClass(Qs('.kplayer-play'), 'hidden', 'show')
+    changeClass($('.kplayer-pause'), 'show', 'hidden')
+    changeClass($('.kplayer-play'), 'hidden', 'show')
 
     window.cancelAnimationFrame(this.timer)
   }
@@ -185,17 +189,17 @@ export class PlayerUI {
     this._currentVideo.pause()
 
     let offsetX = event.offsetX
-    let offsetWidth = Qs('.progress-outer').offsetWidth
+    let offsetWidth = $('.progress-outer').offsetWidth
     let pert = offsetX / offsetWidth
     let time = this._currentVideoDuration * pert
 
     this._currentVideo.currentTime = time
-    Qs('.current-time').textContent = format(time)
-    Qs('.progress-played').style.width = pert * 100 + '%'
+    $('.current-time').textContent = format(time)
+    $('.progress-played').style.width = pert * 100 + '%'
   }
 
   checkLoading() {
-    let loading = Qs('.kplayer-loading')
+    let loading = $('.kplayer-loading')
     if (this.isLoading) {
       changeClass(loading, 'flex', 'hidden')
     } else {
@@ -227,10 +231,10 @@ export class PlayerUI {
     this._player._emitter.on('waiting', this.videoLoading)
     this._player._emitter.on('error', this.videoLoadingHide)
 
-    Qs('.kplayer-pause').addEventListener('click', this.handleVideoPlay)
-    Qs('.kplayer-play').addEventListener('click', this.handleVideoPause)
-    Qs('.kplayer-tree').addEventListener('click', this.handleTree)
-    Qs('.progress-outer').addEventListener('click', this.handleProgress)
+    $('.kplayer-pause').addEventListener('click', this.handleVideoPlay)
+    $('.kplayer-play').addEventListener('click', this.handleVideoPause)
+    $('.kplayer-tree').addEventListener('click', this.handleTree)
+    $('.progress-outer').addEventListener('click', this.handleProgress)
   }
 
   removeEvent() {
@@ -246,10 +250,10 @@ export class PlayerUI {
     this._player._emitter.off('waiting', this.videoLoading)
     this._player._emitter.off('error', this.videoLoadingHide)
 
-    Qs('.kplayer-pause').removeEventListener('click', this.handleVideoPlay)
-    Qs('.kplayer-play').removeEventListener('click', this.handleVideoPause)
-    Qs('.kplayer-tree').removeEventListener('click', this.handleTree)
-    Qs('.progress-outer').removeEventListener('click', this.handleProgress)
+    $('.kplayer-pause').removeEventListener('click', this.handleVideoPlay)
+    $('.kplayer-play').removeEventListener('click', this.handleVideoPause)
+    $('.kplayer-tree').removeEventListener('click', this.handleTree)
+    $('.progress-outer').removeEventListener('click', this.handleProgress)
   }
 
   /**
@@ -259,7 +263,7 @@ export class PlayerUI {
     let _currentTime = this._currentVideo.currentTime
     let percent = (_currentTime / this._currentVideoDuration) * 100
 
-    Qs('.progress-played').style.width = percent + '%'
+    $('.progress-played').style.width = percent + '%'
 
     this._player._emitter.emit('videotime', _currentTime)
 
