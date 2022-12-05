@@ -10,8 +10,16 @@ export class PlayerParse {
     this._playerTree = new PlayerTree(this, _player)
 
     this._json = {}
-    this._videoPrefix = url.replace('index.json', '') // 视频、config.json文件前缀
-    this._assetsPrefix = url.replace('video/index.json', '') // 资源文件(图片、音频)前缀
+    this._videoPrefix = url.replace('index.json', '') // 视频文件前缀
+    // this._assetsPrefix = replace(/sim.*\/index.json/, '').replace(
+    //   /video\/index.json/,
+    //   ''
+    // ) // 资源文件(图片、音频、config)前缀
+    this._assetsPrefix =
+      url.substring(
+        0,
+        url.substring(0, url.lastIndexOf('/') - 1).lastIndexOf('/')
+      ) + '/' // 资源文件(图片、音频、config)前缀
     this._compNames = [] // 全部互动组件
     this._factorList = [] // 互动因子
     this._firstVideoId = ''
@@ -34,8 +42,8 @@ export class PlayerParse {
    *    - index.json
    *    - video1.mp4
    *    - video2.mp4
-   *    - config1.json
-   *    - config2.json
+   *  - config1.json
+   *  - config2.json
    */
   init() {
     /**

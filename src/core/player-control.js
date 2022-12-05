@@ -263,7 +263,7 @@ export class PlayerControl {
             conditionValue.length > 0
           ) {
             // 失败：错误提示
-            Qmsg.info(conditionConfig.errorTip || '答案错误')
+            Qmsg.error(conditionConfig.errorTip || '答案错误')
             this.compoundlist = []
           }
         }
@@ -313,6 +313,7 @@ export class PlayerControl {
     this._currentVideo.pause()
     //切视频
     let videoItem = this._parser.getVideoItem(nextVideoId)
+    console.log('videoItem==', videoItem, nextVideoId)
     if (videoItem.video.currentTime == 0) {
       videoItem.video.currentTime = 0.0001
     }

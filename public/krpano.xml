@@ -77,8 +77,29 @@
 	</action>
 
 	<action name="onupfn">
-		if(ispreview AND flag == 'hotspot' AND flag == 'image',set(hotspot[get(name)].url,get(hotspot[get(name)].beforeTrigger)));
-		if(ispreview AND flag == 'layer' AND flag == 'image',set(layer[get(name)].url,get(layer[get(name)].beforeTrigger)));
+		if(ispreview AND flag == 'hotspot' AND type == 'image',
+				if(get(compname)=='组合点击',
+					set(hotspot[get(name)].checked, calc(!boolean(get(hotspot[get(name)].checked))));
+					if(get(checked),
+						set(hotspot[get(name)].url, get(hotspot[get(name)].afterTrigger)),
+						set(hotspot[get(name)].url, get(hotspot[get(name)].beforeTrigger))
+					),
+					set(hotspot[get(name)].url, get(hotspot[get(name)].beforeTrigger))
+				);
+				
+			
+		);
+		if(ispreview AND flag == 'layer' AND type == 'image',
+			if(get(compname)=='组合点击',
+					set(layer[get(name)].checked, calc(!boolean(get(layer[get(name)].checked))));
+					if(get(checked),
+						set(layer[get(name)].url, get(layer[get(name)].afterTrigger)),
+						set(layer[get(name)].url, get(layer[get(name)].beforeTrigger))
+					),
+					set(layer[get(name)].url, get(layer[get(name)].beforeTrigger))
+				);
+		);
+		if(ispreview==false ,js(draghotspot(get(name))););
 	</action>
 
 	<!-- 热点上添加文本 -->
