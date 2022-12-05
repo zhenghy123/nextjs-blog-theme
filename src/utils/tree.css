@@ -15,7 +15,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   background: #282a2ab5;
-  padding: 40px;
+  padding: 40px 0;
   border-radius: 6px;
   color: #fff;
 }
@@ -67,7 +67,8 @@
   background: #4c6cf5;
 }
 .processDesign .nodeType {
-  width: 140px;
+  padding: 0 40px;
+  width: 100px;
 }
 .processDesign .nodeLineRoot {
   width: 100%;
@@ -76,22 +77,20 @@
 .processDesign .nodeLineRoot:after {
   content: '';
   position: absolute;
-  left: 120px;
-  right: 120px;
+  left: 25%;
+  right: 25%;
   height: 2px;
   background: #4c6cf5;
 }
 .processDesign .nodeLine2 {
-  width: 50%;
-  position: relative;
-  transform: translateX(50%);
+  width: 100%;
 }
 .processDesign .nodeLine2:after {
   content: '';
   position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
+  left: 8.2%;
+  right: 8.2%;
+  height: 1px;
   background: #4c6cf5;
 }
 .processDesign .nodeport {
@@ -110,7 +109,6 @@
   cursor: pointer;
 }
 .processDesign .nodeItem {
-  margin: 0 25px;
   display: flex;
   flex-direction: column;
   align-items: center;

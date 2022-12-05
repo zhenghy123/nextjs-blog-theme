@@ -78,10 +78,10 @@ export class PlayerTree {
             <div class="nodeLine"></div>
             <div class="nodeType">
               <div class="nodeInfo" data-id="${item.id}">
-                <img style="position:absolute;width:138px;height:100px"  src="${
+                <img style="position:absolute;width:98px;height:100px"  src="${
                   item.img
                 }" onerror="this.src='./assets/preview1.jpeg'"></img>
-                <div style="text-align: center;"> ${item.label}</div>
+                <div style="position: relative;text-align: center;"> ${item.label}</div>
               </div>
             </div>
             ${setnodelist(item.children)}
@@ -127,7 +127,7 @@ export class PlayerTree {
         : '',
       children: [],
     }
-
+    
     this.pathTree(rootParam, id)
     this.treeList = rootParam
   }
