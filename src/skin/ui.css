@@ -27,16 +27,17 @@
 .kplayer-ui .kplayer-controls {
   display: flex;
   align-items: center;
-  cursor: pointer;
   background: #00000070;
   height: 40px;
   padding-top: 4px;
+  user-select: none;
 }
 .kplayer-controls .kplayer-blank {
   flex: 1;
 }
 .kplayer-controls .icon {
   padding: 10px;
+  cursor: pointer;
 }
 
 .hidden {

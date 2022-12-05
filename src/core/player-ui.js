@@ -97,6 +97,7 @@ export class PlayerUI {
     this.handleVideoPause = this.handleVideoPause.bind(this)
     this.handleTree = this.handleTree.bind(this)
     this.handleProgress = this.handleProgress.bind(this)
+    this.handleMousedown = this.handleMousedown.bind(this)
 
     this.addEvent()
   }
@@ -185,17 +186,44 @@ export class PlayerUI {
     this._player._emitter.emit('treeShow')
   }
 
-  handleProgress(event) {
-    this._currentVideo.pause()
+  handleMousedown(event) {
+    let screenX = event.screenX
+    let offsetX = event.screenX
+    let dx = 0
 
-    let offsetX = event.offsetX
-    let offsetWidth = $('.progress-outer').offsetWidth
-    let pert = offsetX / offsetWidth
-    let time = this._currentVideoDuration * pert
+    let mousemovefn = (ev) => {
+      dx = ev.screenX - screenX
+      this.handleProgress(ev, offsetX + dx)
+    }
+    let mouseupfn = (ev) => {
+      dx = ev.screenX - screenX
+      this.handleProgress(ev, offsetX + dx)
 
-    this._currentVideo.currentTime = time
-    $('.current-time').textContent = format(time)
-    $('.progress-played').style.width = pert * 100 + '%'
+      window.removeEventListener('mousemove', mousemovefn)
+      window.removeEventListener('mouseup', mouseupfn)
+      window.removeEventListener('mouseleave', mouseupfn)
+    }
+    window.addEventListener('mousemove', mousemovefn)
+    window.addEventListener('mouseup', mouseupfn)
+    window.addEventListener('mouseleave', mouseupfn)
+
+    event.stopPropagation()
+    return false
+  }
+
+  handleProgress(event, x = 0) {
+    Promise.resolve().then(() => {
+      this._currentVideo.pause()
+
+      let offsetX = x || event.offsetX
+      let offsetWidth = $('.progress-outer').offsetWidth
+      let pert = offsetX / offsetWidth
+      let time = this._currentVideoDuration * pert
+
+      this._currentVideo.currentTime = time
+      $('.current-time').textContent = format(time)
+      $('.progress-played').style.width = pert * 100 + '%'
+    })
   }
 
   checkLoading() {
@@ -234,7 +262,8 @@ export class PlayerUI {
     $('.kplayer-pause').addEventListener('click', this.handleVideoPlay)
     $('.kplayer-play').addEventListener('click', this.handleVideoPause)
     $('.kplayer-tree').addEventListener('click', this.handleTree)
-    $('.progress-outer').addEventListener('click', this.handleProgress)
+    $('.progress-outer').addEventListener('mousedown', this.handleProgress)
+    $('.progress-btn').addEventListener('mousedown', this.handleMousedown)
   }
 
   removeEvent() {
@@ -253,7 +282,8 @@ export class PlayerUI {
     $('.kplayer-pause').removeEventListener('click', this.handleVideoPlay)
     $('.kplayer-play').removeEventListener('click', this.handleVideoPause)
     $('.kplayer-tree').removeEventListener('click', this.handleTree)
-    $('.progress-outer').removeEventListener('click', this.handleProgress)
+    $('.progress-outer').removeEventListener('mousedown', this.handleProgress)
+    $('.progress-btn').removeEventListener('mousedown', this.handleMousedown)
   }
 
   /**
