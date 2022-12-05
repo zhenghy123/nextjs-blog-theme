@@ -113,6 +113,7 @@
 			);
 			
 			set(plugin[get(tooltipname)].url,'textfield.swf');
+			set(plugin[get(tooltipname)].keep,true);
 			set(plugin[get(tooltipname)].align,center);
 			set(plugin[get(tooltipname)].autowidth,true);
 			set(plugin[get(tooltipname)].autoheight,true);

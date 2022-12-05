@@ -2,7 +2,7 @@ import { PlayerEvents } from './player-events'
 const eventFns = {}
 
 export function createVideo(url, id = 'a' + Math.random(), poster) {
-  if (url) {
+  if (!url) {
     return null
   }
 
@@ -11,7 +11,7 @@ export function createVideo(url, id = 'a' + Math.random(), poster) {
   video.src = url
   video.poster = poster
   video.crossOrigin = 'anonymous'
-  //   video.currentTime = 0.0001
+  video.currentTime = 0.0001
   video.preload = true
   video.load()
 
@@ -22,6 +22,7 @@ export function createVideo(url, id = 'a' + Math.random(), poster) {
     hls.on(window.Hls.Events.MANIFEST_PARSED, function () {
       console.log('==', window.Hls.Events.MANIFEST_PARSED)
     })
+    video.hlsPlayer = hls
   }
 
   return video
@@ -45,8 +46,8 @@ export function removeVideoListener(video, _emitter) {
   })
 }
 
-export function createAudio(id = 'a' + Math.random(), url) {
-  if (url) {
+export function createAudio(url, id = 'a' + Math.random()) {
+  if (!url) {
     return null
   }
   let audio = document.createElement('audio')
@@ -58,15 +59,15 @@ export function createAudio(id = 'a' + Math.random(), url) {
   return audio
 }
 
-export function createImage(id = 'a' + Math.random(), url) {
-  if (url) {
+export function createImage(url, id = 'a' + Math.random()) {
+  if (!url) {
     return null
   }
 
   let img = document.createElement('img')
   img.id = id
   img.crossOrigin = 'anonymous'
-  img.load()
+  // img.load()
 
   return img
 }
