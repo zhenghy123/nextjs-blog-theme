@@ -36,6 +36,13 @@
         if (json) {
           player.loadJson(json, type)
         }
+        window.addEventListener('message', function (e) {
+          if (typeof e.data == 'string') {
+            console.log('e.data==', e.data) //e.data为传递过来的数据
+            window.jsonValue = JSON.parse(e.data)
+            player.loadJson('xxx', 'cp')
+          }
+        })
       })
   }
 </script>

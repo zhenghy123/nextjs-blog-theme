@@ -15,6 +15,7 @@ class KPlayer {
       ...DefaultVideoOptions,
       ...options,
       ispreview: options.ispreview || false,
+      showUI: options.showUI || false,
     }
 
     this._emitter = new EventEmitter()
