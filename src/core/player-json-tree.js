@@ -31,10 +31,10 @@ export class PlayerTree {
       <div class="processDesign">
         <div class="process">
           <div class="rootNode" data-id="${nodeList.id}">
-            <img style="position:absolute;width:100%;height:100%" src="${
+            <img src="${
               nodeList.img
             }" onerror="this.src='./assets/preview1.jpeg'"></img>
-            <div style="position:absolute">${nodeList.label}</div>
+            <p >${nodeList.label}</p>
           </div>
         </div>
         ${setnodelist(nodeList.children, 'root').join('')}
@@ -49,13 +49,6 @@ export class PlayerTree {
         let list = []
         list.push(
           `<div class="nodewrap">
-              <div class="nodeLine"></div>
-              <div class="${
-                type !== 'root' && childrenList.length > 1 ? 'nodeLine2' : ''
-              }" ></div>
-              <div class="${
-                type === 'root' && childrenList.length > 1 ? 'nodeLineRoot' : ''
-              }" ></div>
               <div class="nodeport">
                 ${setnodeItemlist(childrenList).join('')}
               </div>
@@ -75,13 +68,12 @@ export class PlayerTree {
           <div  class="nodeItem" :class="${
             item?.length > 1 ? 'nodeItems' : ''
           }">
-            <div class="nodeLine"></div>
             <div class="nodeType">
               <div class="nodeInfo" data-id="${item.id}">
-                <img style="position:absolute;width:98px;height:100px"  src="${
+                <img src="${
                   item.img
                 }" onerror="this.src='./assets/preview1.jpeg'"></img>
-                <div style="position: relative;text-align: center;"> ${item.label}</div>
+                <p > ${item.label}</p>
               </div>
             </div>
             ${setnodelist(item.children)}

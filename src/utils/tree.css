@@ -48,56 +48,53 @@
   flex-direction: column;
   cursor: pointer;
 }
+.processDesign .rootNode img{
+  position:absolute;
+  width:100%;
+  height:100%
+}
+.processDesign .rootNode p{
+  position:absolute;
+  width: 100%;
+  word-wrap: break-word;
+}
 .processDesign .nodewrap {
   display: inline-block;
 }
-.processDesign .nodeLine {
-  width: 100%;
-  height: 50px;
-  position: relative;
-}
-.processDesign .nodeLine:after {
-  position: absolute;
-  content: '';
-  width: 2px;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  margin-left: -1px;
-  background: #4c6cf5;
-}
+
 .processDesign .nodeType {
-  padding: 0 40px;
+  padding: 0 20px;
   width: 100px;
-}
-.processDesign .nodeLineRoot {
-  width: 100%;
+  left: 50%;
   position: relative;
+  transform: translate(-50%);
 }
-.processDesign .nodeLineRoot:after {
-  content: '';
+.processDesign .nodeType::before {
+  content: "";
   position: absolute;
-  left: 25%;
-  right: 25%;
-  height: 2px;
-  background: #4c6cf5;
-}
-.processDesign .nodeLine2 {
-  width: 100%;
-}
-.processDesign .nodeLine2:after {
-  content: '';
-  position: absolute;
-  left: 8.2%;
-  right: 8.2%;
-  height: 1px;
-  background: #4c6cf5;
+  top: -20px;
+  left: 50%;
+  border-left: 1px solid blue;
+  width: 0;
+  height: 20px;
 }
 .processDesign .nodeport {
-  flex: 1;
+  padding-top: 20px;
+  position: relative;
+  webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.3s;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+}
+.processDesign .nodeport::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 1px solid blue;
+  width: 0;
+  height: 20px;
 }
 .processDesign .nodeInfo {
   height: 100px;
@@ -108,11 +105,43 @@
   flex-direction: column;
   cursor: pointer;
 }
-.processDesign .nodeItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.processDesign .nodeInfo img{
+  position:absolute;
+  width:98px;
+  height:100px
 }
+.processDesign .nodeInfo p{
+  position: relative;
+  text-align: center;
+  width: 100%;
+  word-wrap: break-word;
+}
+.processDesign .nodeItem {
+  float: left;
+  list-style: none;
+  text-align: center;
+  position: relative;
+  padding: 20px 5px 0 5px;
+  width: 100%;
+}
+.processDesign .nodeItem:first-child::before, .processDesign .nodeItem:last-child::after {
+  border: 0 none;
+}
+.processDesign .nodeItem:after {
+  right: auto;
+  left: 50%;
+  border-left: 1px solid blue;
+}
+.processDesign .nodeItem::before, .processDesign .nodeItem::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  width: 50%;
+  height: 20px;
+  border-top: 1px solid blue;
+}
+
 .processDesign .nodeItems:first-child {
   margin: 0;
   transform: translateX(-50%);
