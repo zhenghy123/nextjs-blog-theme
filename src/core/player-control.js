@@ -323,7 +323,7 @@ export class PlayerControl {
     this.setMainFov(videoItem.fovInfo)
     this._player._emitter.emit('videoChange')
     this._player._krpano.actions.loadscene('videoscene')
-
+    this.toggleHotspot()
     if (!flag) {
       setTimeout(() => {
         this._currentVideo.play()
@@ -331,8 +331,6 @@ export class PlayerControl {
       }, 300)
     }
   }
-
-  changeTime() {}
 
   // 互动因子 显隐状态
   factorState(factorItem) {
