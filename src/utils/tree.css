@@ -56,7 +56,9 @@
 .processDesign .rootNode p{
   position:absolute;
   width: 100%;
-  word-wrap: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .processDesign .nodewrap {
   display: inline-block;
@@ -114,7 +116,9 @@
   position: relative;
   text-align: center;
   width: 100%;
-  word-wrap: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .processDesign .nodeItem {
   float: left;
