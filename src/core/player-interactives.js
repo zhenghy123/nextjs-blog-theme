@@ -13,9 +13,9 @@ export const InteractiveEnums = {
   },
 
   ClickGroupModule: {
-    beforeTrigger: './assets/imgs/optionsBranch/beforeTrigger.png',
-    triggering: './assets/imgs/optionsBranch/triggering.png',
-    afterTrigger: './assets/imgs/optionsBranch/afterTrigger.png',
+    beforeTrigger: './assets/imgs/optionBranch/beforeTrigger.png',
+    triggering: './assets/imgs/optionBranch/triggering.png',
+    afterTrigger: './assets/imgs/optionBranch/afterTrigger.png',
   },
 
   ContinueClickMdule: {

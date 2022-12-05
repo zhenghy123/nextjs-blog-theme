@@ -10,6 +10,12 @@
 - 支持互动因子
 - 国标JSON自解析
 
+### 快速接入
+`javascriptt
+<iframe src="http://36.155.98.104:12480/vr-3d-sdk-web/index.html?json=http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1598643252607787008/demo/video/index.json"></iframe>
+`
+播放器站点html后拼接国标JSON地址：?json=xxx
+
 ### krpano文档
 https://krpano.com/docu/xml/
 

@@ -14,10 +14,10 @@ module.exports = {
     kplayer: [path.resolve(__dirname, './src/index.js')],
   },
   // // 出口
-  // output: {
-  //   path: path.resolve(__dirname, 'dist'),
-  //   filename: '[name].js',
-  // },
+  output: {
+    path: path.resolve(__dirname, 'vr-3d-sdk-web'),
+    // filename: '[name].js',
+  },
   devServer: {
     open: true,
     // port: 8002,

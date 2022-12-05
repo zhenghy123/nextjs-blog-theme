@@ -288,7 +288,8 @@ class KPlayer {
               info.baseSetting.angleFollow ? 'layer' : 'hotspot',
               group.styleSetting,
               group.textSetting,
-              group.transform3DSetting
+              group.transform3DSetting,
+              group.filterSetting
             )
           } else if (
             info.baseSetting.name == '点击' ||
@@ -299,7 +300,8 @@ class KPlayer {
               info.baseSetting.angleFollow ? 'layer' : 'hotspot',
               group.styleSetting,
               group.textSetting,
-              group.transform3DSetting
+              group.transform3DSetting,
+              group.filterSetting
             )
           }
         } else {
@@ -498,11 +500,11 @@ class KPlayer {
    */
   setTextComp(
     name,
-    compName,
     type,
     styleSetting,
     textSetting,
-    transform3DSetting
+    transform3DSetting,
+    filterSetting
   ) {
     // 后面如果需要设置别的再加
     //   let css = {
@@ -527,6 +529,7 @@ class KPlayer {
         set(hotspot[${name}].ry,${transform3DSetting?.rotateY || 0});
         set(hotspot[${name}].rz,${transform3DSetting?.rotateZ || 0});
         set(hotspot[${name}].scale,${transform3DSetting?.scaleX || 1});
+        set(hotspot[${name}].alpha,${1 - filterSetting?.alpha || '1'});
         set(hotspot[${name}].html,${textSetting?.text || '默认文本'});
         set(hotspot[${name}].css,"color:${
           textSetting?.fill || '0xffffff'
@@ -543,6 +546,7 @@ class KPlayer {
           transform3DSetting?.y ? transform3DSetting?.y + '%' : '50%'
         });
         set(layer[${name}].rotate,${transform3DSetting?.rotate || 0});
+        set(layer[${name}].alpha,${1 - filterSetting?.alpha || '1'});
         set(layer[${name}].html,${textSetting?.text || '默认文本'});
         set(layer[${name}].css,"color:${
           textSetting?.fill || '0xffffff'
@@ -560,7 +564,8 @@ class KPlayer {
     type,
     styleSetting,
     textSetting,
-    transform3DSetting
+    transform3DSetting,
+    filterSetting
   ) {
     if (type == 'hotspot') {
       _krpano.call(
@@ -589,6 +594,7 @@ class KPlayer {
         });
         set(hotspot[${name}].text,${textSetting?.text || ''}); 
         set(hotspot[${name}].html,${textSetting?.text || ''});
+        set(hotspot[${name}].alpha,${1 - filterSetting?.alpha || '1'});
         set(hotspot[${name}].scale,${transform3DSetting?.scaleX || 1});
         `
       )
@@ -626,6 +632,7 @@ class KPlayer {
         });
         set(layer[${name}].text,${textSetting?.text || ''});
         set(layer[${name}].html,${textSetting?.text || ''});
+        set(layer[${name}].alpha,${1 - filterSetting?.alpha || '1'});
         set(layer[${name}].scale,${transform3DSetting?.scaleX || 1});
         `
       )

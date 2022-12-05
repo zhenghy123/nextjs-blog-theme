@@ -1,6 +1,12 @@
 import { PlayerEvents } from './player-events'
 import { PlayerControl } from './player-control'
 import { PlayerTree } from './player-json-tree'
+import {
+  createVideo,
+  addVideoListener,
+  createAudio,
+  createImage,
+} from './player-media-utils'
 
 export class PlayerParse {
   constructor(url, _player, type = 'gb') {
@@ -10,8 +16,16 @@ export class PlayerParse {
     this._playerTree = new PlayerTree(this, _player)
 
     this._json = {}
-    this._videoPrefix = url.replace('index.json', '') // 视频、config.json文件前缀
-    this._assetsPrefix = url.replace('video/index.json', '') // 资源文件(图片、音频)前缀
+    this._videoPrefix = url.replace('index.json', '') // 视频文件前缀
+    // this._assetsPrefix = replace(/sim.*\/index.json/, '').replace(
+    //   /video\/index.json/,
+    //   ''
+    // ) // 资源文件(图片、音频、config)前缀
+    this._assetsPrefix =
+      url.substring(
+        0,
+        url.substring(0, url.lastIndexOf('/') - 1).lastIndexOf('/')
+      ) + '/' // 资源文件(图片、音频、config)前缀
     this._compNames = [] // 全部互动组件
     this._factorList = [] // 互动因子
     this._firstVideoId = ''
@@ -34,8 +48,8 @@ export class PlayerParse {
    *    - index.json
    *    - video1.mp4
    *    - video2.mp4
-   *    - config1.json
-   *    - config2.json
+   * - config1.json
+   * - config2.json
    */
   init() {
     /**
@@ -57,7 +71,12 @@ export class PlayerParse {
           : ''
         item.previewVideoPath = this._videoPrefix + item.videoPath
         // 初始化视频对象
-        item.video = this.createVideo(item)
+        item.video = createVideo(
+          item.previewVideoPath,
+          item.videoId,
+          item.previewThumbnial
+        )
+        addVideoListener(item.video, this._player._emitter)
       })
 
       // 获取互动组件配置config.json
@@ -80,45 +99,62 @@ export class PlayerParse {
         item.previewThumbnial = item.thumbnail
         item.previewVideoPath = item.videoPath
         // 初始化视频对象
-        item.video = this.createVideo(item)
+        item.video = createVideo(
+          item.previewVideoPath,
+          item.videoId,
+          item.previewThumbnial
+        )
+        addVideoListener(item.video, this._player._emitter)
       })
 
       // 处理互动组件内图片、音频
-      let interactNodeList = json.interactNodeList
-      interactNodeList.map((item) => {
-        const { imgs, btns } = item.interactInfoIdJson.interactConfigJson
-        // metas 是文本信息，没有图片
+      let dealUrl = (arr) => {
+        arr.map((item) => {
+          const { imgs, btns } =
+            item.interactInfoIdJson?.interactConfigJson ||
+            item.interactConfigJson
+          // metas 是文本信息，没有图片
 
-        // 处理图片等地址 TODO:imgs暂时没用到
-        if (imgs) {
-          let keys = Object.keys(imgs)
-          keys.map((key) => {
-            imgs['preview' + key] = key
-          })
-        }
+          // 处理图片等地址 TODO:imgs暂时没用到
+          if (imgs) {
+            let keys = Object.keys(imgs)
+            keys.map((key) => {
+              imgs['preview' + key] = key
+            })
+          }
 
-        // 互动组件按钮配置
-        if (btns) {
-          btns.map((btn) => {
-            // audio是按钮点击音效，在按钮点击时触发
-            if (btn.audio) {
-              btn.previewAudio = btn.audio
-              btn.audioContext = this.createAudio(btn)
-            }
-            // 按钮点击前、中、后背景图
-            if (btn.backgroundImageAfterClick)
-              btn.previewBackgroundImageAfterClick =
-                btn.backgroundImageAfterClick
-            if (btn.backgroundImageBeforeClick)
-              btn.previewBackgroundImageBeforeClick =
-                btn.backgroundImageBeforeClick
-            if (btn.backgroundImageClick)
-              btn.previewBackgroundImageClick = btn.backgroundImageClick
+          // 互动组件按钮配置
+          if (btns) {
+            btns.map((btn) => {
+              // audio是按钮点击音效，在按钮点击时触发
+              if (btn.audio) {
+                btn.previewAudio = btn.audio
+                btn.audioContext = createAudio(btn.previewAudio)
+              }
+              // 按钮点击前、中、后背景图
+              if (btn.backgroundImageAfterClick) {
+                btn.previewBackgroundImageAfterClick =
+                  btn.backgroundImageAfterClick
+                createImage(btn.previewBackgroundImageAfterClick)
+              }
+              if (btn.backgroundImageBeforeClick) {
+                btn.previewBackgroundImageBeforeClick =
+                  btn.backgroundImageBeforeClick
+                createImage(btn.previewBackgroundImageBeforeClick)
+              }
+              if (btn.backgroundImageClick) {
+                btn.previewBackgroundImageClick = btn.backgroundImageClick
+                createImage(btn.previewBackgroundImageClick)
+              }
 
-            // TODO:点击组合按钮点击记录效果(点击后有个选中效果，再次点击去除选中)
-          })
-        }
-      })
+              // TODO:点击组合按钮点击记录效果(点击后有个选中效果，再次点击去除选中)
+            })
+          }
+        })
+      }
+      dealUrl(json.interactNodeList)
+      dealUrl(json.interactInfoList)
+      // let interactNodeList = json.interactNodeList
 
       this._hasLoad = true
 
@@ -127,57 +163,6 @@ export class PlayerParse {
       this._playerControl.initFirstVideo()
       this._playerTree.init()
     })
-  }
-
-  /**
-   * 创建并初始化视频对象
-   * @param {Object} item  videoList item
-   */
-  createVideo(item) {
-    let video = document.createElement('video')
-    video.id = item.videoId
-    video.src = item.previewVideoPath
-    video.poster = item.previewThumbnial
-    video.crossOrigin = 'anonymous'
-    video.preload = true
-    video.load()
-
-    if (item.previewVideoPath.indexOf('.m3u8') != -1) {
-      var hls = new window.Hls()
-      hls.loadSource(item.previewVideoPath)
-      hls.attachMedia(video)
-      hls.on(window.Hls.Events.MANIFEST_PARSED, function () {
-        console.log('==', window.Hls.Events.MANIFEST_PARSED)
-      })
-    }
-
-    this._playerControl.addVideoListener(video)
-
-    // TODO:编码判断：item.videoCoding=='h265'
-    // TODO:格式判断：item.outPutFormat=='mp4'
-
-    return video
-  }
-
-  createAudio(item) {
-    if (!item.previewAudio) {
-      return null
-    }
-    let audio = document.createElement('audio')
-    audio.src = item.previewAudio
-    audio.load()
-
-    return audio
-  }
-
-  createImage(url) {
-    let img = document.createElement('img')
-    img.crossOrigin = 'anonymous'
-    if (url) {
-      img.src = url
-    }
-
-    return img
   }
 
   /**
@@ -211,25 +196,25 @@ export class PlayerParse {
             if (btn.audio) {
               btn.previewAudio =
                 this._assetsPrefix + btn.audio.replace('../', '')
-              btn.audioContext = this.createAudio(btn)
+              btn.audioContext = createAudio(btn.previewAudio)
             }
             // 按钮点击前、中、后背景图
             if (btn.backgroundImageAfterClick) {
               btn.previewBackgroundImageAfterClick =
                 this._assetsPrefix +
                 btn.backgroundImageAfterClick.replace('../', '')
-              this.createImage(btn.previewBackgroundImageAfterClick)
+              createImage(btn.previewBackgroundImageAfterClick)
             }
             if (btn.backgroundImageBeforeClick) {
               btn.previewBackgroundImageBeforeClick =
                 this._assetsPrefix +
                 btn.backgroundImageBeforeClick.replace('../', '')
-              this.createImage(btn.previewBackgroundImageBeforeClick)
+              createImage(btn.previewBackgroundImageBeforeClick)
             }
             if (btn.backgroundImageClick) {
               btn.previewBackgroundImageClick =
                 this._assetsPrefix + btn.backgroundImageClick.replace('../', '')
-              this.createImage(btn.previewBackgroundImageClick)
+              createImage(btn.previewBackgroundImageClick)
             }
 
             // TODO:点击组合按钮点击记录效果(点击后有个选中效果，再次点击去除选中)

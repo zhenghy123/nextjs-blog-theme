@@ -220,7 +220,7 @@ export class PlayerUI {
   addEvent() {
     this._player._emitter.on('canplay', this.videoCanplay)
     this._player._emitter.on('timeupdate', this.videoTimeupdate)
-    this._player._emitter.on('chengeVideo', this.videoChange)
+    this._player._emitter.on('videoChange', this.videoChange)
     this._player._emitter.on('playing', this.videoPlaying)
     this._player._emitter.on('pause', this.videoPause)
     this._player._emitter.on('play', this.videoPlay)
@@ -240,7 +240,7 @@ export class PlayerUI {
   removeEvent() {
     this._player._emitter.off('canplay', this.videoCanplay)
     this._player._emitter.off('timeupdate', this.videoTimeupdate)
-    this._player._emitter.off('chengeVideo', this.videoChange)
+    this._player._emitter.off('videoChange', this.videoChange)
     this._player._emitter.off('playing', this.videoPlaying)
     this._player._emitter.off('pause', this.videoPause)
     this._player._emitter.off('play', this.videoPlay)
