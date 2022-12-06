@@ -8,7 +8,7 @@ import EventEmitter from 'events'
 var _krpano = null
 
 // 互动视频VR播放器
-class KPlayer {
+export class KPlayer {
   constructor(options = {}) {
     this._krpano = options.krpano
     this._options = {
@@ -867,5 +867,3 @@ class KPlayer {
     // removepano('krpanoHTMLObject');
   }
 }
-
-export default KPlayer

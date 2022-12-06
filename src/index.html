@@ -14,14 +14,14 @@
         margin: 0;
       }
 
-      #krpanoSWFObject {
+      #kplayer-container {
         width: 100%;
         height: 100%;
       }
     </style>
   </head>
   <body>
-    <div id="krpanoSWFObject"></div>
+    <div id="kplayer-container"></div>
   </body>
 </html>
 <script>
@@ -31,7 +31,7 @@
     let url = kplayerJS.getUrlParams('url')
 
     kplayerJS
-      .createPlayer('krpanoSWFObject', url, { showUI: true })
+      .createPlayer('kplayer-container', url, { showUI: true, ispreview: true })
       .then((player) => {
         if (json) {
           player.loadJson(json, type)
