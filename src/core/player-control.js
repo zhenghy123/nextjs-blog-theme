@@ -12,8 +12,10 @@ export class PlayerControl {
     this._currentVideoId = ''
     this._currentVideo = null
 
-    this._timer = null
-    this.compoundlist = []
+    this._timer = -1
+    this._timer1 = -1
+    // 组合点击结果:Map<节点id>(Set<按钮id>）
+    this.conditionValue = new Map()
     this.init()
   }
 
@@ -34,6 +36,8 @@ export class PlayerControl {
         return
       }
 
+      // 注意：如果pathSpotClick内有报错会导致hotspotClick调用两次
+      // （如果存在调用两次的情况请排查pathSpotClick内的代码）
       this.pathSpotClick(id)
     }
   }
@@ -221,53 +225,88 @@ export class PlayerControl {
     // 点击音效（都有）
     hotspotBtn.audioContext && hotspotBtn.audioContext.play()
 
+    // 组合点击
     if (
       interactInfoIdItem?.interactInfo?.type == enumTranslate.ClickGroupModule
     ) {
-      // 组合点击
-      let count = interactInfoIdItem.interactInfo.clickCount
-      // 条件
-      if (this.compoundlist.indexOf(hotspotBtn.id) != -1) {
-        this.compoundlist = this.compoundlist.filter(
-          (item) => item != hotspotBtn.id
-        )
-      } else {
-        this.compoundlist.push(hotspotBtn.id)
+      if (this._timer1) {
+        clearTimeout(this._timer1)
+        this._timer1 = -1
       }
+
+      // 采用 Map(<Set>)的层级嵌套接口，兼容一个画面设置多个组合点击
+      let setObj = this.conditionValue.get(interactInfoIdItem.interactInfoId)
+      if (!!setObj) {
+        if (setObj.has(hotspotBtn.id)) {
+          setObj.delete(hotspotBtn.id)
+        } else {
+          setObj.add(hotspotBtn.id)
+        }
+      } else {
+        this.conditionValue.set(
+          interactInfoIdItem.interactInfoId,
+          new Set().add(hotspotBtn.id)
+        )
+      }
+
+      setObj = this.conditionValue.get(interactInfoIdItem.interactInfoId)
+      if (!setObj) {
+        return
+      }
+
       // 结果
-      let ctrls = interactInfoIdItem?.interactConfigJson?.ctrls
-      ctrls?.forEach((item) => {
+      let ctrls = interactInfoIdItem.interactConfigJson.ctrls
+      ctrls.forEach((item) => {
         let conditionConfig = item.conditionConfig
         let conditionValue = conditionConfig?.conditionValue || []
+        // 组合点击数量（初期只有设置点击次数时会有此值，有序、无序此值为null）
+        let count = interactInfoIdItem.interactInfo.clickCount
+        console.log('答案：', count, conditionValue, [...setObj])
 
+        // 判断有序和无序
         let compoundMode = interactInfoIdItem.interactInfo.compoundMode
+        let answer = [...setObj]
+
         if (compoundMode == CompoundOrder.DISORDER) {
-          this.compoundlist = this.compoundlist.sort()
+          answer = answer.sort()
           conditionValue = conditionValue.sort()
+          console.log('无序组合点击', interactInfoIdItem.interactInfo)
         }
+
         // 匹配正确
-        if (
-          conditionValue?.toString() === this.compoundlist?.toString() ||
-          this.compoundlist.length == count
+        if (conditionValue.length == 0 && !conditionConfig.jumpTime && !count) {
+          Qmsg.error('数据不完整，请设置点击组合组件跳转节点或跳转时间')
+          console.error(
+            `数据不完整，请设置点击组合组件跳转节点或跳转时间 ${interactInfoIdItem.interactInfoId}`,
+            interactInfoIdItem
+          )
+        } else if (
+          (!count && conditionValue.toString() === answer.toString()) ||
+          (count && setObj.size == count)
         ) {
+          // 如果有count代表是点击数量
+
           if (conditionConfig.jumpVideoId != null) {
-            // 跳故事节点（分支选项&立即触发）
+            // 跳故事节点
             this.changeVideo(conditionConfig.jumpVideoId)
           } else if (conditionConfig.jumpTime != null) {
-            // 跳当前时间（分支选项&立即触发）
+            // 跳当前时间
             this._player.setCurrentTime(conditionConfig.jumpTime)
           }
         } else {
           if (
-            conditionValue.length == this.compoundlist.length &&
-            conditionValue.length > 0
+            (!count && conditionValue.length <= answer.length) ||
+            (count && count <= answer.length)
           ) {
+            console.log(conditionValue.length <= answer.length)
             // 失败：错误提示
             Qmsg.error(conditionConfig.errorTip || '答案错误')
-            this.compoundlist = []
+            this.conditionValue.clear()
+            this.clearClickGroupSel()
           }
         }
       })
+
       // 组合点击互动因子更新
       hotspotBtn?.action?.forEach((actItem) => {
         if (actItem.actionType == HotToState.FACTOR) {
@@ -277,13 +316,34 @@ export class PlayerControl {
           this.toggleHotspot()
         }
       })
-      setTimeout(() => {
-        this.compoundlist = []
+
+      this.toggleHotspot()
+      this._timer1 = setTimeout(() => {
+        this.conditionValue.clear()
+        this.clearClickGroupSel()
       }, 5000)
     } else {
       // 点击
       this.pointHotClick(hotspotBtn)
     }
+  }
+
+  /**
+   * 清空组合点击选中效果
+   */
+  clearClickGroupSel() {
+    const { ids } = this._parser.getActivetCompIds(
+      this._currentVideoId,
+      this._currentTime
+    )
+
+    ids.map((id) => {
+      let obj = this._player.getHotspot(id)
+      if (obj.compname == 'ClickGroupModule') {
+        obj.checked = false
+        obj.url = obj.beforetrigger
+      }
+    })
   }
 
   // 热点-点击
