@@ -179,15 +179,19 @@ export class PlayerControl {
   initFirstVideo() {
     this._currentVideoId = this._parser._firstVideoId
     let videoItem = this._parser.getVideoItem(this._parser._firstVideoId)
-
+    
     if (videoItem.video.currentTime == 0) {
       videoItem.video.currentTime = 0.0001
     }
-
-    this._currentVideo = videoItem.video
-    this._player.changeVideo(videoItem.video)
-    this.setMainFov(videoItem.fovInfo)
-    this._player._krpano.actions.loadscene('videoscene')
+    if (this._parser._vrType == '2d') {
+      this._player.setVideoSecVr(videoItem.previewVideoPath)
+      this._currentVideo = krpano.layer.getItem('video2d')
+    } else {
+      this._currentVideo = videoItem.video
+      this._player.changeVideo(videoItem.video)
+      this.setMainFov(videoItem.fovInfo)
+      this._player._krpano.actions.loadscene('videoscene')
+    }
   }
 
   //
@@ -309,25 +313,31 @@ export class PlayerControl {
   }
 
   changeVideo(nextVideoId) {
-    let flag = this._currentVideo.paused
     this._currentVideo.pause()
-    //切视频
+      //切视频
     let videoItem = this._parser.getVideoItem(nextVideoId)
     console.log('videoItem==', videoItem, nextVideoId)
     if (videoItem.video.currentTime == 0) {
       videoItem.video.currentTime = 0.0001
     }
-    this._currentVideo = videoItem.video
-    this._currentVideoId = nextVideoId
-    this._player.changeVideo(videoItem.video)
-    this.setMainFov(videoItem.fovInfo)
-    this._player._emitter.emit('videoChange')
-    this._player._krpano.actions.loadscene('videoscene')
-    this.toggleHotspot()
+    if (this._parser._vrType == '2d') {
+      this._player.setVideoSecVr(videoItem.previewVideoPath)
+      this._currentVideo = krpano.layer.getItem('video2d')
+      this._currentVideoId = nextVideoId
+      this.toggleHotspot()
+    } else {
+      this._currentVideo = videoItem.video
+      this._currentVideoId = nextVideoId
+      this._player.changeVideo(videoItem.video)
+      this.setMainFov(videoItem.fovInfo)
+      this._player._emitter.emit('videoChange')
+      this._player._krpano.actions.loadscene('videoscene')
+      this.toggleHotspot()
+    }
+    let flag = this._currentVideo.paused
     if (!flag) {
       setTimeout(() => {
         this._currentVideo.play()
-        // this._player._krpano.actions.loadscene('videoscene')
       }, 300)
     }
   }

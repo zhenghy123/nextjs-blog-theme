@@ -23,7 +23,13 @@ class KPlayer {
     _krpano = options.krpano
 
     this.init()
-    this.initVideo()
+    
+    if (options.vr != '2d') {
+      this.initVideo()
+      this._plugin = _krpano.plugin.getItem('video')
+    } else {
+      this._plugin = _krpano.layer.getItem('video2d')
+    }
   }
 
   init() {
@@ -57,8 +63,8 @@ class KPlayer {
     this.loadJson = this.loadJson.bind(this)
   }
 
-  loadJson(json, type = 'gb') {
-    this._playerParse = new PlayerParse(json, this, type)
+  loadJson(json, type = 'gb', vr = '3d') {
+    this._playerParse = new PlayerParse(json, this, type, vr)
     this._playerUI = new PlayerUI(this)
   }
 
@@ -160,8 +166,8 @@ class KPlayer {
     return new Promise((resolve) => {
       let isLoad = () => {
         let obj =
-          _krpano.plugin.getItem('video') &&
-          _krpano.plugin.getItem('video').togglevideo
+        _krpano.plugin.getItem('video') &&
+        _krpano.plugin.getItem('video').togglevideo
         if (obj) {
           resolve(true)
         } else {
@@ -199,7 +205,23 @@ class KPlayer {
   }
 
   setVideoSrc() {
-    _krpano.plugin.getItem('video').videourl = this._options.url
+    this._plugin.videourl = this._options.url
+  }
+
+  setVideoSecVr(url){
+    _krpano.actions.removelayer('video2d', true)
+    _krpano.call(
+      `
+      addlayer('video2d');
+      set(layer['video2d'].videourl,${url});
+      set(layer['video2d'].x,'0');
+      set(layer['video2d'].y,'0');
+      set(layer['video2d'].width,'100%');
+      set(layer['video2d'].height,'100%');
+      set(layer['video2d'].url,'./plugins/videoplayer.js');
+      `
+    )
+    this._plugin = _krpano.layer.getItem('video2d')
   }
 
   changeVideo(url) {
@@ -213,6 +235,7 @@ class KPlayer {
         _krpano.plugin.getItem('video').togglevideo(url)
       }
     })
+    this._plugin = _krpano.plugin.getItem('video')
   }
 
   toggleFovSetScreen(val) {
@@ -250,27 +273,27 @@ class KPlayer {
   }
 
   play() {
-    _krpano.plugin.getItem('video').play()
+    this._plugin.play()
   }
 
   pause() {
-    _krpano.plugin.getItem('video').pause()
+    this._plugin.pause()
   }
 
   update() {
-    _krpano.plugin.getItem('video').update()
+    this._plugin.update()
   }
 
   setCurrentTime(time) {
-    _krpano.plugin.getItem('video').time = time
+    this._plugin.time = time
   }
 
   getCurrentTime() {
-    return _krpano.plugin.getItem('video').time
+    return this._plugin.time
   }
 
   getVideoId() {
-    return _krpano.plugin.getItem('video').videoId
+    return this._plugin.videoId
   }
 
   /**
@@ -410,6 +433,7 @@ class KPlayer {
         set(hotspot[${name}].ondown,ondownfn);
         set(hotspot[${name}].onup,onupfn);
         set(hotspot[${name}].onloaded,add_all_the_time_border);
+        set(hotspot[${name}].zorder,'99');
         `
       )
     } else {
@@ -429,6 +453,7 @@ class KPlayer {
         set(layer[${name}].ondown,ondownfn);
         set(layer[${name}].onup,onupfn);
         set(layer[${name}].onloaded,add_all_the_time_border);
+        set(layer[${name}].zorder,'99');
         `
       )
     }
@@ -453,7 +478,7 @@ class KPlayer {
     textSetting,
     transform3DSetting
   ) {
-    if (type == 'hotspot') {
+    if (type == 'hotspot' && this._options.vr != '2d') {
       _krpano.call(
         `
         addhotspot(${name});
@@ -467,6 +492,7 @@ class KPlayer {
         set(hotspot[${name}].ondown,ondownfn);
         set(hotspot[${name}].onup,onupfn);
         set(hotspot[${name}].onloaded,add_all_the_time_tooltip);
+        set(hotspot[${name}].zorder,'99');
         `
       )
     } else {
@@ -483,6 +509,7 @@ class KPlayer {
         set(layer[${name}].ondown,ondownfn);
         set(layer[${name}].onup,onupfn);
         set(layer[${name}].onloaded,add_all_the_time_tooltip);
+        set(layer[${name}].zorder,'99');
         `
       )
     }
@@ -568,7 +595,7 @@ class KPlayer {
     transform3DSetting,
     filterSetting
   ) {
-    if (type == 'hotspot') {
+    if (type == 'hotspot' && this._options.vr != '2d') {
       _krpano.call(
         `
         set(hotspot[${name}].ath,${transform3DSetting?.x || 0});
@@ -606,14 +633,16 @@ class KPlayer {
         };font-size:${textSetting?.fontSize || 16}px;`
       })
     } else {
+      let x = transform3DSetting?.x ? transform3DSetting?.x + '%' : '50%'
+      let y = transform3DSetting?.y ? transform3DSetting?.y + '%' : '50%'
+      if (type == 'hotspot') {
+        x = transform3DSetting?.x / 1920 * 100 + '%' || '0'
+        y = transform3DSetting?.y / 1080 * 100 + '%' || '0'
+      }
       _krpano.call(
         `
-         set(layer[${name}].x,${
-          transform3DSetting?.x ? transform3DSetting?.x + '%' : '50%'
-        });
-        set(layer[${name}].y,${
-          transform3DSetting?.y ? transform3DSetting?.y + '%' : '50%'
-        });
+         set(layer[${name}].x,${x});
+        set(layer[${name}].y,${y});
         set(layer[${name}].width,${transform3DSetting?.width || '100'});
         set(layer[${name}].height,${transform3DSetting?.height || '100'});
         set(layer[${name}].rotate,${transform3DSetting?.rotate || 0});
@@ -730,7 +759,7 @@ class KPlayer {
       }
     })
 
-    let pluginArr = ['view_frame', 'view_frame_btn', 'video']
+    let pluginArr = ['view_frame', 'view_frame_btn', 'video', 'video2d']
     let layers = _krpano.layer
       .getArray()
       .filter(

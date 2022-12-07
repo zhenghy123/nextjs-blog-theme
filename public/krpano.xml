@@ -2,7 +2,7 @@
 	<include url="./plugins/showtext.xml" />
 	<!-- 引入皮肤 -->
 	<!-- <include url="./plugins/videointerface.xml" /> -->
-	<!-- 	
+	<!-- 		
 	<image>
 		<sphere url='./imgs/preview1.jpeg' />
 	</image> -->
@@ -17,6 +17,11 @@
 			keep="true"
 		 />
 	</scene>
+
+	<!-- <layer name="video2d"
+		width="100%" height="100%" align="center" x="0" y="0"
+		url="./plugins/videoplayer.js" videourl="" 
+	/> -->
 
 	<scene name="imgscene" keep="true">
 		<image>

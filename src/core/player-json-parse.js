@@ -9,8 +9,9 @@ import {
 } from './player-media-utils'
 
 export class PlayerParse {
-  constructor(url, _player, type = 'gb') {
+  constructor(url, _player, type = 'gb', vr = '3d') {
     this._url = url // json地址
+    this._vrType = vr
     this._player = _player
     this._playerControl = new PlayerControl(_player, this)
     this._playerTree = new PlayerTree(this, _player)

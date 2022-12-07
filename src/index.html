@@ -29,18 +29,19 @@
     let json = kplayerJS.getUrlParams('json')
     let type = kplayerJS.getUrlParams('type')
     let url = kplayerJS.getUrlParams('url')
+    let vr = kplayerJS.getUrlParams('vr')
 
     kplayerJS
-      .createPlayer('krpanoSWFObject', url, { showUI: true })
+      .createPlayer('krpanoSWFObject', url, { showUI: true , vr: vr })
       .then((player) => {
         if (json) {
-          player.loadJson(json, type)
+          player.loadJson(json, type , vr)
         }
         window.addEventListener('message', function (e) {
           if (typeof e.data == 'string') {
             console.log('e.data==', e.data) //e.data为传递过来的数据
             window.jsonValue = JSON.parse(e.data)
-            player.loadJson('xxx', 'cp')
+            player.loadJson('xxx', 'cp', vr)
           }
         })
       })
