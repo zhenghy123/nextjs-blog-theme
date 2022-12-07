@@ -1,18 +1,14 @@
-// export const kplayerJS = Promise.resolve(require('./kplayer').default)
 import Hls from 'hls.js'
 import { KPlayer } from './core/index'
 import { getUrlParams } from './utils/utils'
-import './utils/qmsg'
-import './utils/message.min.css'
-import './utils/tree.css'
-import './skin/ui.css'
+import './utils/index'
 
 function createPlayer(id = '', url = '', options = {}) {
   return new Promise((resolve, reject) => {
     krpanoJS.embedpano({
       id: 'kplayer',
       xml: './krpano.xml',
-      target: id || 'krpanoSWFObject',
+      target: id || 'kplayer-container',
       html5: 'only+webgl',
       consolelog: true,
       onready: function (krpano) {
@@ -22,7 +18,6 @@ function createPlayer(id = '', url = '', options = {}) {
           url: url,
           id: id,
           krpano: _krpano,
-          ispreview: true,
         }
 
         const kplayer = new KPlayer(_options)
@@ -31,7 +26,7 @@ function createPlayer(id = '', url = '', options = {}) {
         window.kplayer = kplayer
         window.krpano = _krpano
 
-        // _krpano.actions.showlog()
+        _krpano.actions.showlog()
         resolve(kplayer)
       },
       onerror: function (err) {

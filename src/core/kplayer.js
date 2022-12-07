@@ -8,7 +8,7 @@ import EventEmitter from 'events'
 var _krpano = null
 
 // 互动视频VR播放器
-class KPlayer {
+export class KPlayer {
   constructor(options = {}) {
     this._krpano = options.krpano
     this._options = {
@@ -249,8 +249,8 @@ class KPlayer {
   setMainFov(view) {
     if (view) {
       let _view = typeof view == 'string' ? JSON.parse(view) : view
-      _krpano.view.hlookat = _view.hlookat
-      _krpano.view.vlookat = _view.vlookat
+      _krpano.view.hlookat = _view.hlookat || _krpano.view.hlookat
+      _krpano.view.vlookat = _view.vlookat || _krpano.view.vlookat
       _krpano.view.fov = _view.fov || 90
     } else {
       view = _krpano.view
@@ -482,6 +482,7 @@ class KPlayer {
       _krpano.call(
         `
         addhotspot(${name});
+        set(hotspot[${name}].compName,${compName});
         set(hotspot[${name}].type,image);
         set(hotspot[${name}].keep,true);
         set(hotspot[${name}].zoom,true);
@@ -500,6 +501,7 @@ class KPlayer {
       _krpano.call(
         `
         addlayer(${name});
+        set(layer[${name}].compName,${compName});
         set(layer[${name}].type,image);
         set(layer[${name}].keep,true);
         set(layer[${name}].zoom,true);
@@ -896,5 +898,3 @@ class KPlayer {
     // removepano('krpanoHTMLObject');
   }
 }
-
-export default KPlayer

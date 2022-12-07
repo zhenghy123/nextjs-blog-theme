@@ -83,7 +83,7 @@
 
 	<action name="onupfn">
 		if(ispreview AND flag == 'hotspot' AND type == 'image',
-				if(get(compname)=='组合点击',
+				if(get(compname)=='ClickGroupModule',
 					set(hotspot[get(name)].checked, calc(!boolean(get(hotspot[get(name)].checked))));
 					if(get(checked),
 						set(hotspot[get(name)].url, get(hotspot[get(name)].afterTrigger)),
@@ -95,7 +95,7 @@
 			
 		);
 		if(ispreview AND flag == 'layer' AND type == 'image',
-			if(get(compname)=='组合点击',
+			if(get(compname)=='ClickGroupModule',
 					set(layer[get(name)].checked, calc(!boolean(get(layer[get(name)].checked))));
 					if(get(checked),
 						set(layer[get(name)].url, get(layer[get(name)].afterTrigger)),

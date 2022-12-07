@@ -1,5 +1,17 @@
-import KPlayer from './kplayer'
+import { KPlayer } from './kplayer'
+import { DefaultVideoOptions } from './player-config'
+import { PlayerControl } from './player-control'
 import { PlayerEvents } from './player-events'
-import { InteractiveEnums } from './player-interactives'
+import { PlayerParse } from './player-json-parse'
+import { PlayerTree } from './player-json-tree'
+import { PlayerUI } from './player-ui'
 
-export { KPlayer, PlayerEvents, InteractiveEnums }
+export {
+  KPlayer,
+  DefaultVideoOptions,
+  PlayerControl,
+  PlayerEvents,
+  PlayerParse,
+  PlayerTree,
+  PlayerUI,
+}

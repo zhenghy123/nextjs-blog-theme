@@ -87,7 +87,7 @@ export class PlayerTree {
     let dom = document.createElement('div')
     dom.className = 'nodetree hidden'
     dom.innerHTML = ele
-    document.getElementById('krpanoSWFObject').appendChild(dom)
+    document.getElementById(this._player._options.id).appendChild(dom)
 
     let infoList = document.getElementsByClassName('nodeInfo')
     for (let i = 0; i < infoList.length; i++) {
@@ -119,7 +119,7 @@ export class PlayerTree {
         : '',
       children: [],
     }
-    
+
     this.pathTree(rootParam, id)
     this.treeList = rootParam
   }
