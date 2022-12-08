@@ -221,9 +221,13 @@ var krpanoplugin = function () {
   function option_setter(val, key) {
     if (key == 'src' && typeof val == 'object') {
       removeVideoEvents()
-
-      video = val
-      plugin.videoDOM = val
+      if (plugin.sprite) {
+        let lastvideo = document.getElementById(video.id)
+        if (lastvideo) plugin.sprite.removeChild(lastvideo)
+        video = val
+        plugin.videoDOM = val
+        plugin.sprite.appendChild(video)
+      }
       setVideoOptions()
       setVideoEvents()
       check_ready_state()

@@ -31,7 +31,8 @@ export class PlayerParse {
     this._factorList = [] // 互动因子
     this._firstVideoId = ''
     this._hasLoad = false // 是否处理完json数据
-
+    this._canvasHeight = 0
+    this._canvasWidth = 0
     // gb 国标  cp 自定义大json
     if (type == 'cp') {
       this.initSelf()
@@ -64,7 +65,9 @@ export class PlayerParse {
       this._json = json
       this._factorList = json.factorList
       this._firstVideoId = json.drama.firstVideoId
-
+      let firstItem = this.getVideoItem(this._firstVideoId)
+      this._canvasHeight = firstItem?.canvasHeight || 1920
+      this._canvasWidth = firstItem?.canvasWidth || 1080
       json.videoList.map((item) => {
         // 拼接处理视频地址和封面地址
         item.previewThumbnial = item.thumbnail
@@ -102,7 +105,9 @@ export class PlayerParse {
     this._json = json
     this._factorList = json.factorList
     this._firstVideoId = json.drama.firstVideoId
-
+    let firstItem = this.getVideoItem(this._firstVideoId)
+    this._canvasHeight = firstItem?.canvasHeight || 1920
+    this._canvasWidth = firstItem?.canvasWidth || 1080
     json.videoList.map((item) => {
       // 拼接处理视频地址和封面地址
       item.previewThumbnial = item.thumbnail
@@ -417,6 +422,9 @@ export class PlayerParse {
     let _interactInfoIdJson = this._json.interactInfoList
     _interactInfoIdJson.map((item) => {
       let type = item.isFollowCamera ? 'layer' : 'hotspot'
+      if (this._vrType == '2d') {
+        type = 'layer'
+      }
       let compType = item.interactInfo.type
       // let compId = 'a_' + Math.random()
 
@@ -424,11 +432,11 @@ export class PlayerParse {
 
       let textSetting = null
       let styleSetting = null
-      let transform2DSetting = null
+      let transform3DSetting = null
+      let filterSetting = null
 
       // 文本和互动组件不会同时存在（虽然展示的时候会）
       let comps = metas || btns
-
       if (comps) {
         comps.map((comp) => {
           let style = comp.style
@@ -436,10 +444,13 @@ export class PlayerParse {
           // TODO:数据造的有问题，先拼接使用
           let name = comp.id
           this._compNames.push(name)
-
+          let size = 16
+          if (this._vrType == '2d') {
+            size = 20
+          }
           textSetting = {
             text: comp.text,
-            fontSize: style.fontSize,
+            fontSize: style.fontSize || size,
             fill: style.color,
           }
 
@@ -451,12 +462,25 @@ export class PlayerParse {
               afterTrigger: comp.previewBackgroundImageAfterClick,
             }
           }
-
-          transform2DSetting = {
-            ...style,
+          let position = {
             x: style.posX,
             y: style.posY,
             z: style.posZ,
+          }
+          if (this._vrType == '2d') {
+            let x = (position.x / this._canvasWidth) * 100 || '0'
+            let y = (position.y / this._canvasHeight) * 100 || '0'
+            position = {
+              x: x,
+              y: y,
+            }
+          }
+          transform3DSetting = {
+            ...style,
+            ...position,
+          }
+          filterSetting = {
+            alpha: style.opacity || 0,
           }
           if (name) {
             this._player.addInteractiveHotspot(
@@ -465,7 +489,8 @@ export class PlayerParse {
               type,
               styleSetting,
               textSetting,
-              transform2DSetting
+              transform3DSetting,
+              filterSetting
             )
           }
         })

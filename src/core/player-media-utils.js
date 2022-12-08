@@ -13,6 +13,8 @@ export function createVideo(url, id = 'a' + Math.random(), poster) {
   video.crossOrigin = 'anonymous'
   video.currentTime = 0.0001
   video.preload = true
+  video.style.width = '100%'
+  video.style.height = '100%'
   video.load()
 
   if (url.indexOf('.m3u8') != -1) {

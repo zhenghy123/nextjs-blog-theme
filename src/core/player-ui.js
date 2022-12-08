@@ -57,11 +57,11 @@ export class PlayerUI {
         <div class="kplayer-tree icon" >
             <img src="assets/svgs/tree.svg" />
          </div>
-        <div class="kplayer-volume icon">
-          <img src="assets/svgs/volume.svg" />
-        </div>
         <div class="kplayer-fullscreen icon">
           <img src="assets/svgs/fullscreen.svg" />
+        </div>
+        <div class="kplayer-exitscreen icon hidden">
+          <img src="assets/svgs/exitscreen.svg" />
         </div>
       </div>
       `
@@ -98,6 +98,7 @@ export class PlayerUI {
     this.handleTree = this.handleTree.bind(this)
     this.handleProgress = this.handleProgress.bind(this)
     this.handleMousedown = this.handleMousedown.bind(this)
+    this.fullScreenEvent = this.fullScreenEvent.bind(this)
 
     this.addEvent()
   }
@@ -264,6 +265,8 @@ export class PlayerUI {
     $('.kplayer-tree').addEventListener('click', this.handleTree)
     $('.progress-outer').addEventListener('mousedown', this.handleProgress)
     $('.progress-btn').addEventListener('mousedown', this.handleMousedown)
+    $('.kplayer-fullscreen').addEventListener('click', this.fullScreenEvent)
+    $('.kplayer-exitscreen').addEventListener('click', this.fullScreenEvent)
   }
 
   removeEvent() {
@@ -284,6 +287,8 @@ export class PlayerUI {
     $('.kplayer-tree').removeEventListener('click', this.handleTree)
     $('.progress-outer').removeEventListener('mousedown', this.handleProgress)
     $('.progress-btn').removeEventListener('mousedown', this.handleMousedown)
+    $('.kplayer-fullscreen').addEventListener('click', this.fullScreenEvent)
+    $('.kplayer-exitscreen').addEventListener('click', this.fullScreenEvent)
   }
 
   /**
@@ -303,5 +308,53 @@ export class PlayerUI {
   destory() {
     this.removeEvent()
     this._player = null
+  }
+
+  fullScreenEvent() {
+    if (this.checkFull()) {
+      this.exitFullScreen()
+      changeClass($('.kplayer-fullscreen'), 'show', 'hidden')
+      changeClass($('.kplayer-exitscreen'), 'hidden', 'show')
+    } else {
+      this.enterFullScreen()
+      changeClass($('.kplayer-fullscreen'), 'hidden', 'show')
+      changeClass($('.kplayer-exitscreen'), 'show', 'hidden')
+    }
+  }
+
+  // 判断是否全屏
+  checkFull() {
+    var isFull = false
+    if (document.fullscreenEnabled || document.msFullscreenEnabled) {
+      isFull = window.fullScreen || document.webkitIsFullScreen
+      if (isFull === undefined) {
+        isFull = false
+      }
+    }
+    return isFull
+  }
+  // 退出全屏
+  exitFullScreen() {
+    if (document.exitFullscreen) {
+      document.exitFullscreen()
+    } else if (document.webkitCancelFullScreen) {
+      document.webkitCancelFullScreen()
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen()
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen()
+    }
+  }
+  // 进入全屏
+  enterFullScreen() {
+    if (document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen()
+    } else if (document.documentElement.msRequestFullscreen) {
+      document.documentElement.msRequestFullscreen()
+    } else if (document.documentElement.mozRequestFullScreen) {
+      document.documentElement.mozRequestFullScreen()
+    } else if (document.documentElement.webkitRequestFullscreen) {
+      document.documentElement.webkitRequestFullscreen()
+    }
   }
 }

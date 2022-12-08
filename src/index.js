@@ -26,7 +26,7 @@ function createPlayer(id = '', url = '', options = {}) {
         window.kplayer = kplayer
         window.krpano = _krpano
 
-        _krpano.actions.showlog()
+        // _krpano.actions.showlog()
         resolve(kplayer)
       },
       onerror: function (err) {
