@@ -1,6 +1,5 @@
 ## kplayer
 
-
 一款以krpano插件为基础的VR互动视频播放器
 
 ### 特性
@@ -11,18 +10,42 @@
 - 国标JSON自解析
 
 ### 快速接入
-`javascriptt
+
 <iframe src="http://36.155.98.104:12480/vr-3d-sdk-web/index.html?json=http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1598643252607787008/demo/video/index.json"></iframe>
-`
-播放器站点html后拼接国标JSON地址：?json=xxx
+
+- 接入规范
+
+    播放器站点html后拼接国标JSON地址：?json=xxx
+
+    `站点地址`：http://36.155.98.104:12480/vr-3d-sdk-web/index.html
+
+    `3D测试json地址`：?json=http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600740490888814592/demo/video/index.json
+
+    `2D测试地址`：?json=http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/video/index.json
+
+    `单个视频预览地址`：?url=xx&showUI=true
+
+    `yapi后台工具数据转json(暂时用于项目内部预览实现)`：http://180.167.180.242:7866/project/3216/interface/api/179467
+
+
+    `工具预览`:?type=cp
+
+    备注：`工具预览没有json文件，需要动态传递json数据，不能拼接到url后面因为会超长`
+
+    `
+    document.getElementById('xx').contentWindow.postMessage(`${previewJson}`, '*');
+    `
+
 
 ### krpano文档
-https://krpano.com/docu/xml/
+- https://krpano.com/docu/xml/
 
 ### webpack文档
-https://www.webpackjs.com/configuration/
-
+- https://www.webpackjs.com/configuration/
+- https://www.npmjs.com/package/copy-webpack-plugin
 
 ### git提交空文件夹
 find ./ -type d -empty -execdir touch {}/.gitkeep {} \;
-`message.js`:https://blog.csdn.net/u012131025/article/details/118085164
+
+### 插件
+- `message.js`:https://blog.csdn.net/u012131025/article/details/118085164

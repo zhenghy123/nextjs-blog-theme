@@ -94,83 +94,78 @@ export class PlayerParse {
    * TODO: 后续自己写方法进行转换
    */
   async initSelf() {
-    console.error(666, json)
-    let json = {}
-    if (this._url.indexOf('http://') == 0) {
-      json = await this.fetchJson(this._url)
-    } else {
-      console.error(window.jsonValue)
-      json = window.jsonValue
-    }
-
-    this._json = json
-    this._factorList = json.factorList
-    this._firstVideoId = json.drama.firstVideoId
-    let firstItem = this.getVideoItem(this._firstVideoId)
-    this._canvasHeight = firstItem?.canvasHeight || 1920
-    this._canvasWidth = firstItem?.canvasWidth || 1080
-    this._vrType = firstItem?.playType
-    json.videoList.map((item) => {
-      // 拼接处理视频地址和封面地址
-      item.previewThumbnial = item.thumbnail
-      item.previewVideoPath = item.videoPath
-      // 初始化视频对象
-      item.video = createVideo(
-        item.previewVideoPath,
-        item.videoId,
-        item.previewThumbnial
-      )
-      addVideoListener(item.video, this._player._emitter)
-    })
-
-    // 处理互动组件内图片、音频
-    let dealUrl = (arr) => {
-      arr.map((item) => {
-        const { imgs, btns } =
-          item.interactInfoIdJson?.interactConfigJson || item.interactConfigJson
-        // metas 是文本信息，没有图片
-
-        // 处理图片等地址 TODO:imgs暂时没用到
-        if (imgs) {
-          let keys = Object.keys(imgs)
-          keys.map((key) => {
-            imgs['preview' + key] = key
-          })
-        }
-
-        // 互动组件按钮配置
-        if (btns) {
-          btns.map((btn) => {
-            // audio是按钮点击音效，在按钮点击时触发
-            if (btn.audio) {
-              btn.previewAudio = btn.audio
-              btn.audioContext = createAudio(btn.previewAudio)
-            }
-            // 按钮点击前、中、后背景图
-            if (btn.backgroundImageAfterClick) {
-              btn.previewBackgroundImageAfterClick =
-                btn.backgroundImageAfterClick
-              createImage(btn.previewBackgroundImageAfterClick)
-            }
-            if (btn.backgroundImageBeforeClick) {
-              btn.previewBackgroundImageBeforeClick =
-                btn.backgroundImageBeforeClick
-              createImage(btn.previewBackgroundImageBeforeClick)
-            }
-            if (btn.backgroundImageClick) {
-              btn.previewBackgroundImageClick = btn.backgroundImageClick
-              createImage(btn.previewBackgroundImageClick)
-            }
-
-            // TODO:点击组合按钮点击记录效果(点击后有个选中效果，再次点击去除选中)
-          })
-        }
+    this.fetchJson(this._url).then((json) => {
+      // json = JSON.parse(json)
+      console.error('json==', json)
+      this._json = json
+      this._factorList = json.factorList
+      this._firstVideoId = json.drama.firstVideoId
+      let firstItem = this.getVideoItem(this._firstVideoId)
+      this._canvasHeight = firstItem?.canvasHeight || 1920
+      this._canvasWidth = firstItem?.canvasWidth || 1080
+      this._vrType = firstItem?.playType
+      json.videoList.map((item) => {
+        // 拼接处理视频地址和封面地址
+        item.previewThumbnial = item.thumbnail
+        item.previewVideoPath = item.videoPath
+        // 初始化视频对象
+        item.video = createVideo(
+          item.previewVideoPath,
+          item.videoId,
+          item.previewThumbnial
+        )
+        addVideoListener(item.video, this._player._emitter)
       })
-    }
-    dealUrl(json.interactNodeList)
-    dealUrl(json.interactInfoList)
 
-    this.addSceneSource()
+      // 处理互动组件内图片、音频
+      let dealUrl = (arr) => {
+        arr.map((item) => {
+          const { imgs, btns } =
+            item.interactInfoIdJson?.interactConfigJson ||
+            item.interactConfigJson
+          // metas 是文本信息，没有图片
+
+          // 处理图片等地址 TODO:imgs暂时没用到
+          if (imgs) {
+            let keys = Object.keys(imgs)
+            keys.map((key) => {
+              imgs['preview' + key] = key
+            })
+          }
+
+          // 互动组件按钮配置
+          if (btns) {
+            btns.map((btn) => {
+              // audio是按钮点击音效，在按钮点击时触发
+              if (btn.audio) {
+                btn.previewAudio = btn.audio
+                btn.audioContext = createAudio(btn.previewAudio)
+              }
+              // 按钮点击前、中、后背景图
+              if (btn.backgroundImageAfterClick) {
+                btn.previewBackgroundImageAfterClick =
+                  btn.backgroundImageAfterClick
+                createImage(btn.previewBackgroundImageAfterClick)
+              }
+              if (btn.backgroundImageBeforeClick) {
+                btn.previewBackgroundImageBeforeClick =
+                  btn.backgroundImageBeforeClick
+                createImage(btn.previewBackgroundImageBeforeClick)
+              }
+              if (btn.backgroundImageClick) {
+                btn.previewBackgroundImageClick = btn.backgroundImageClick
+                createImage(btn.previewBackgroundImageClick)
+              }
+
+              // TODO:点击组合按钮点击记录效果(点击后有个选中效果，再次点击去除选中)
+            })
+          }
+        })
+      }
+      dealUrl(json.interactNodeList)
+      dealUrl(json.interactInfoList)
+      this.addSceneSource()
+    })
   }
 
   /**
@@ -242,11 +237,13 @@ export class PlayerParse {
   }
 
   addSceneSource() {
-    // 注：
+    // 初始化场景
     // 至此已处理完互动组件节点（node）、信息（info）、配置(config)，并按层级结构拼接进interactNodeList
+    // 一次性全部添加热点，后续根据videoId、组件配置进行显隐
+
     this._hasLoad = true
     this._player.initVideo(this._vrType)
-    // 一次性全部添加热点，后续根据videoId、组件配置进行显隐
+
     this.addAllHotspot()
     this._playerControl.initFirstVideo()
     this._playerTree.init()
