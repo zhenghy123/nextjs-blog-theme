@@ -9,9 +9,9 @@ import {
 } from './player-media-utils'
 
 export class PlayerParse {
-  constructor(url, _player, type = 'gb', vr = '3d') {
+  constructor(url, _player, type = 'gb') {
     this._url = url // json地址
-    this._vrType = vr
+    this._vrType = 1
     this._player = _player
     this._playerControl = new PlayerControl(_player, this)
     this._playerTree = new PlayerTree(this, _player)
@@ -68,6 +68,7 @@ export class PlayerParse {
       let firstItem = this.getVideoItem(this._firstVideoId)
       this._canvasHeight = firstItem?.canvasHeight || 1920
       this._canvasWidth = firstItem?.canvasWidth || 1080
+      this._vrType = firstItem?.playType
       json.videoList.map((item) => {
         // 拼接处理视频地址和封面地址
         item.previewThumbnial = item.thumbnail
@@ -108,6 +109,7 @@ export class PlayerParse {
     let firstItem = this.getVideoItem(this._firstVideoId)
     this._canvasHeight = firstItem?.canvasHeight || 1920
     this._canvasWidth = firstItem?.canvasWidth || 1080
+    this._vrType = firstItem?.playType
     json.videoList.map((item) => {
       // 拼接处理视频地址和封面地址
       item.previewThumbnial = item.thumbnail
@@ -167,14 +169,8 @@ export class PlayerParse {
     }
     dealUrl(json.interactNodeList)
     dealUrl(json.interactInfoList)
-    // let interactNodeList = json.interactNodeList
 
-    this._hasLoad = true
-
-    // 一次性全部添加热点，后续根据videoId、组件配置进行显隐
-    this.addAllHotspot()
-    this._playerControl.initFirstVideo()
-    this._playerTree.init()
+    this.addSceneSource()
   }
 
   /**
@@ -241,10 +237,22 @@ export class PlayerParse {
     })
 
     if (interactInfoList.length == 0) {
-      this._playerControl.initFirstVideo()
+      this.addSceneSource()
     }
   }
 
+  addSceneSource() {
+    // 注：
+    // 至此已处理完互动组件节点（node）、信息（info）、配置(config)，并按层级结构拼接进interactNodeList
+    this._hasLoad = true
+    this._player.initVideo(this._vrType)
+    // 一次性全部添加热点，后续根据videoId、组件配置进行显隐
+    this.addAllHotspot()
+    this._playerControl.initFirstVideo()
+    this._playerTree.init()
+
+    console.log(this._json)
+  }
   /**
    * 拼接互动组件Info配置进interactNodeList
    */
@@ -256,16 +264,7 @@ export class PlayerParse {
       )
     })
 
-    // 注：
-    // 至此已处理完互动组件节点（node）、信息（info）、配置(config)，并按层级结构拼接进interactNodeList
-    this._hasLoad = true
-
-    // 一次性全部添加热点，后续根据videoId、组件配置进行显隐
-    this.addAllHotspot()
-    this._playerControl.initFirstVideo()
-    this._playerTree.init()
-
-    console.log(this._json)
+    this.addSceneSource()
   }
 
   /**
@@ -422,7 +421,7 @@ export class PlayerParse {
     let _interactInfoIdJson = this._json.interactInfoList
     _interactInfoIdJson.map((item) => {
       let type = item.isFollowCamera ? 'layer' : 'hotspot'
-      if (this._vrType == '2d') {
+      if (this._vrType != 1) {
         type = 'layer'
       }
       let compType = item.interactInfo.type
@@ -445,7 +444,7 @@ export class PlayerParse {
           let name = comp.id
           this._compNames.push(name)
           let size = 16
-          if (this._vrType == '2d') {
+          if (this._vrType != 1) {
             size = 20
           }
           textSetting = {
@@ -467,7 +466,7 @@ export class PlayerParse {
             y: style.posY,
             z: style.posZ,
           }
-          if (this._vrType == '2d') {
+          if (this._vrType != 1) {
             let x = (position.x / this._canvasWidth) * 100 || '0'
             let y = (position.y / this._canvasHeight) * 100 || '0'
             position = {

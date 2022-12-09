@@ -23,7 +23,6 @@ export class KPlayer {
     _krpano = options.krpano
 
     this.init()
-    this.initVideo()
   }
 
   init() {
@@ -57,8 +56,8 @@ export class KPlayer {
     this.loadJson = this.loadJson.bind(this)
   }
 
-  loadJson(json, type = 'gb', vr = '3d') {
-    this._playerParse = new PlayerParse(json, this, type, vr)
+  loadJson(json, type = 'gb') {
+    this._playerParse = new PlayerParse(json, this, type)
     this._playerUI = new PlayerUI(this)
   }
 
@@ -104,12 +103,12 @@ export class KPlayer {
     })
   }
 
-  initVideo() {
+  initVideo(type) {
     // addplugin是异步操作，不能马上获取到添加的plugin对象
     let _this = this
 
     const checkPluginInit = () => {
-      if (_this._options.vr != '2d') {
+      if (type == '1') {
         _krpano.actions.loadscene('videoscene')
       } else {
         _krpano.actions.loadscene('videoscene2d')

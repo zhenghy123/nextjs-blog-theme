@@ -1,0 +1,1954 @@
+{
+    "drama": {
+        "name": "sdfsdf",
+        "description": "dfgsdfg",
+        "fileVersion": "1.0.0",
+        "firstVideoId": "rd8e0ef7-b5c0-941e-c8c2-cd1b8958"
+    },
+    "factorList": [
+        {
+            "key": "1670480047844",
+            "name": "数值1",
+            "value": "0"
+        },
+        {
+            "key": "1670480048471",
+            "name": "数值2",
+            "value": "0"
+        }
+    ],
+    "videoList": [
+        {
+            "videoId": "ef88e668-2dfe-d431-5ba8-3ae2b7e1",
+            "description": "",
+            "duration": 228.566,
+            "filename": "图集测试视频1",
+            "interactNodeId": [
+                "interactNodeId001",
+                "interactNodeId002",
+                "interactNodeId003",
+                "interactNodeId004"
+            ],
+            "videoPath": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/video/1600669324723560448.mp4",
+            "thumbnail": "",
+            "videoCoding": "avc1",
+            "outPutFormat": "mp4",
+            "mediaHeight": "720",
+            "mediaWidth": "1280",
+            "mediaSize": "636435",
+            "playType": 0,
+            "fovInfo": "",
+            "canvasHeight": 1080,
+            "canvasWidth": 1920,
+            "previewThumbnial": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600733185673732096.png",
+            "previewVideoPath": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/video/1600669324723560448.mp4",
+            "video": {}
+        },
+        {
+            "videoId": "d3037781-c854-8405-e9df-b5f08c08",
+            "description": "",
+            "duration": 312.468,
+            "filename": "16;9",
+            "interactNodeId": [
+                "interactNodeId005",
+                "interactNodeId006",
+                "interactNodeId007"
+            ],
+            "videoPath": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/video/1600666769402568704.mp4",
+            "thumbnail": "",
+            "videoCoding": "hev1",
+            "outPutFormat": "mp4",
+            "mediaHeight": "720",
+            "mediaWidth": "1280",
+            "mediaSize": "45945729",
+            "playType": 0,
+            "fovInfo": "",
+            "canvasHeight": 1080,
+            "canvasWidth": 1920,
+            "previewThumbnial": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600733311314108416.jpeg",
+            "previewVideoPath": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/video/1600666769402568704.mp4",
+            "video": {}
+        },
+        {
+            "videoId": "rd8e0ef7-b5c0-941e-c8c2-cd1b8958",
+            "description": "",
+            "duration": 184.64,
+            "filename": "图集测试视频2",
+            "interactNodeId": [
+                "interactNodeId008",
+                "interactNodeId009",
+                "interactNodeId0010"
+            ],
+            "videoPath": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/video/1600669569985486848.mp4",
+            "thumbnail": "",
+            "videoCoding": "avc1",
+            "outPutFormat": "mp4",
+            "mediaHeight": "720",
+            "mediaWidth": "1280",
+            "mediaSize": "272003",
+            "playType": 0,
+            "fovInfo": "",
+            "canvasHeight": 1080,
+            "canvasWidth": 1920,
+            "previewThumbnial": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600733206569754624.jpeg",
+            "previewVideoPath": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/video/1600669569985486848.mp4",
+            "video": {}
+        }
+    ],
+    "interactNodeList": [
+        {
+            "interactNodeId": "interactNodeId001",
+            "title": "点击",
+            "startTime": 0,
+            "duration": 10,
+            "playState": "play",
+            "endState": "hide",
+            "interactInfoId": "interactInfoId1",
+            "showConditionList": [],
+            "interactInfoIdJson": {
+                "interactInfoId": "interactInfoId1",
+                "isFollowCamera": false,
+                "interactInfo": {
+                    "type": "PointClickModule",
+                    "compoundMode": null,
+                    "clickCount": null
+                },
+                "interactConfig": "interactConfig1.json",
+                "interactConfigJson": {
+                    "metas": null,
+                    "imgs": null,
+                    "btns": [
+                        {
+                            "id": "b95a33a3-ca01-540b-bb93-44584893",
+                            "text": "x>1",
+                            "style": {
+                                "color": "#fff",
+                                "posX": 733.5401,
+                                "posY": 575,
+                                "posZ": null,
+                                "width": 150,
+                                "height": 70,
+                                "opacity": null,
+                                "rotate": 0,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "audio": null,
+                            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png",
+                            "backgroundImageAfterClick": "",
+                            "showConditionList": [
+                                {
+                                    "key": "1670480047844",
+                                    "operator": ">",
+                                    "temp": 1,
+                                    "name": "数值1"
+                                }
+                            ],
+                            "action": [
+                                {
+                                    "actionType": "JUMPTIME",
+                                    "nextVideo": null,
+                                    "skipVideoId": null,
+                                    "jumpTime": 0,
+                                    "factorExpressList": null
+                                }
+                            ],
+                            "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                            "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png"
+                        },
+                        {
+                            "id": "mf474c5e-fe0c-643b-8afb-a670e462",
+                            "text": "y>1",
+                            "style": {
+                                "color": "#fff",
+                                "posX": 1185,
+                                "posY": 540,
+                                "posZ": null,
+                                "width": 150,
+                                "height": 70,
+                                "opacity": null,
+                                "rotate": 0,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "audio": null,
+                            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png",
+                            "backgroundImageAfterClick": "",
+                            "showConditionList": [
+                                {
+                                    "key": "1670480048471",
+                                    "operator": ">",
+                                    "temp": 1,
+                                    "name": "数值1"
+                                }
+                            ],
+                            "action": [
+                                {
+                                    "actionType": "JUMPTIME",
+                                    "nextVideo": null,
+                                    "skipVideoId": null,
+                                    "jumpTime": 0,
+                                    "factorExpressList": null
+                                }
+                            ],
+                            "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                            "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png"
+                        }
+                    ],
+                    "ctrls": []
+                }
+            }
+        },
+        {
+            "interactNodeId": "interactNodeId002",
+            "title": "文字",
+            "startTime": 0,
+            "duration": 10,
+            "playState": null,
+            "endState": null,
+            "interactInfoId": "interactInfoId2",
+            "showConditionList": [],
+            "interactInfoIdJson": {
+                "interactInfoId": "interactInfoId2",
+                "isFollowCamera": false,
+                "interactInfo": {
+                    "type": "TextModule",
+                    "compoundMode": null,
+                    "clickCount": null
+                },
+                "interactConfig": "interactConfig2.json",
+                "interactConfigJson": {
+                    "metas": [
+                        {
+                            "text": "y>1",
+                            "style": {
+                                "color": "#960D0DFF",
+                                "posX": 1185,
+                                "posY": 389.29276,
+                                "posZ": null,
+                                "width": 0,
+                                "height": 0,
+                                "opacity": null,
+                                "rotate": 0,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "id": "oe77c0fd-9b6d-e414-5b0d-446f61c2"
+                        }
+                    ],
+                    "imgs": null,
+                    "btns": null,
+                    "ctrls": null
+                }
+            }
+        },
+        {
+            "interactNodeId": "interactNodeId003",
+            "title": "文字",
+            "startTime": 0,
+            "duration": 10,
+            "playState": null,
+            "endState": null,
+            "interactInfoId": "interactInfoId3",
+            "showConditionList": [],
+            "interactInfoIdJson": {
+                "interactInfoId": "interactInfoId3",
+                "isFollowCamera": false,
+                "interactInfo": {
+                    "type": "TextModule",
+                    "compoundMode": null,
+                    "clickCount": null
+                },
+                "interactConfig": "interactConfig3.json",
+                "interactConfigJson": {
+                    "metas": [
+                        {
+                            "text": "x>1",
+                            "style": {
+                                "color": "#A01F1FFF",
+                                "posX": 711.23926,
+                                "posY": 390.26602,
+                                "posZ": null,
+                                "width": 0,
+                                "height": 0,
+                                "opacity": null,
+                                "rotate": 0,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "id": "raec2feb-249b-945b-a986-72f75e02"
+                        }
+                    ],
+                    "imgs": null,
+                    "btns": null,
+                    "ctrls": null
+                }
+            }
+        },
+        {
+            "interactNodeId": "interactNodeId004",
+            "title": "点击",
+            "startTime": 0,
+            "duration": 10,
+            "playState": "play",
+            "endState": "hide",
+            "interactInfoId": "interactInfoId4",
+            "showConditionList": [],
+            "interactInfoIdJson": {
+                "interactInfoId": "interactInfoId4",
+                "isFollowCamera": false,
+                "interactInfo": {
+                    "type": "PointClickModule",
+                    "compoundMode": null,
+                    "clickCount": null
+                },
+                "interactConfig": "interactConfig4.json",
+                "interactConfigJson": {
+                    "metas": null,
+                    "imgs": null,
+                    "btns": [
+                        {
+                            "id": "tbd7b241-a5c8-0454-78db-bc8cf0ef",
+                            "text": "x+1",
+                            "style": {
+                                "color": "#fff",
+                                "posX": 733.5401,
+                                "posY": 772.56555,
+                                "posZ": null,
+                                "width": 150,
+                                "height": 70,
+                                "opacity": null,
+                                "rotate": 0,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "audio": null,
+                            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png",
+                            "backgroundImageAfterClick": "",
+                            "showConditionList": [],
+                            "action": [
+                                {
+                                    "actionType": "JUMPTIME",
+                                    "nextVideo": null,
+                                    "skipVideoId": null,
+                                    "jumpTime": 0,
+                                    "factorExpressList": null
+                                },
+                                {
+                                    "actionType": "FACTOR",
+                                    "nextVideo": null,
+                                    "skipVideoId": null,
+                                    "jumpTime": null,
+                                    "factorExpressList": [
+                                        {
+                                            "key": "1670480047844",
+                                            "operator": "+",
+                                            "temp": 1,
+                                            "name": "数值1"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                            "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png"
+                        },
+                        {
+                            "id": "j3b501d2-cd64-b44c-4a7a-892a961a",
+                            "text": "y+1",
+                            "style": {
+                                "color": "#fff",
+                                "posX": 1185,
+                                "posY": 772.5214,
+                                "posZ": null,
+                                "width": 150,
+                                "height": 70,
+                                "opacity": null,
+                                "rotate": 0,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "audio": null,
+                            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png",
+                            "backgroundImageAfterClick": "",
+                            "showConditionList": [],
+                            "action": [
+                                {
+                                    "actionType": "JUMPTIME",
+                                    "nextVideo": null,
+                                    "skipVideoId": null,
+                                    "jumpTime": 0,
+                                    "factorExpressList": null
+                                },
+                                {
+                                    "actionType": "FACTOR",
+                                    "nextVideo": null,
+                                    "skipVideoId": null,
+                                    "jumpTime": null,
+                                    "factorExpressList": [
+                                        {
+                                            "key": "1670480048471",
+                                            "operator": "+",
+                                            "temp": 1,
+                                            "name": "数值1"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                            "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png"
+                        }
+                    ],
+                    "ctrls": []
+                }
+            }
+        },
+        {
+            "interactNodeId": "interactNodeId005",
+            "title": "组合点击",
+            "startTime": 0,
+            "duration": 10,
+            "playState": "play",
+            "endState": "hide",
+            "interactInfoId": "interactInfoId5",
+            "showConditionList": [
+                {
+                    "key": "1670480048471",
+                    "operator": ">",
+                    "temp": 1,
+                    "name": "数值1"
+                }
+            ],
+            "interactInfoIdJson": {
+                "interactInfoId": "interactInfoId5",
+                "isFollowCamera": false,
+                "interactInfo": {
+                    "type": "ClickGroupModule",
+                    "compoundMode": "disorder",
+                    "clickCount": null
+                },
+                "interactConfig": "interactConfig5.json",
+                "interactConfigJson": {
+                    "metas": null,
+                    "imgs": null,
+                    "btns": [
+                        {
+                            "id": "v7fd3c16-0968-449f-e9e6-038ea4f6",
+                            "text": "组合1",
+                            "style": {
+                                "color": "#fff",
+                                "posX": 1183.54,
+                                "posY": 428.5401,
+                                "posZ": null,
+                                "width": 150,
+                                "height": 150,
+                                "opacity": null,
+                                "rotate": 0,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "audio": null,
+                            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "showConditionList": null,
+                            "action": [],
+                            "previewBackgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                            "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png"
+                        },
+                        {
+                            "id": "u050ded0-f1fe-84e9-483e-ca86e561",
+                            "text": "组合2",
+                            "style": {
+                                "color": "#fff",
+                                "posX": 1444.6559,
+                                "posY": 414.02673,
+                                "posZ": null,
+                                "width": 150,
+                                "height": 150,
+                                "opacity": null,
+                                "rotate": 0,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "audio": null,
+                            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "showConditionList": null,
+                            "action": [],
+                            "previewBackgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                            "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png"
+                        },
+                        {
+                            "id": "nd8ee134-721e-d49d-1ab7-2650e354",
+                            "text": "组合3",
+                            "style": {
+                                "color": "#fff",
+                                "posX": 1669.516,
+                                "posY": 412.56683,
+                                "posZ": null,
+                                "width": 150,
+                                "height": 150,
+                                "opacity": null,
+                                "rotate": 0,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "audio": null,
+                            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "showConditionList": null,
+                            "action": [],
+                            "previewBackgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                            "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png"
+                        }
+                    ],
+                    "ctrls": [
+                        {
+                            "conditionConfig": {
+                                "conditionValue": [
+                                    "v7fd3c16-0968-449f-e9e6-038ea4f6",
+                                    "nd8ee134-721e-d49d-1ab7-2650e354"
+                                ],
+                                "jumpVideoId": null,
+                                "skipVideoId": null,
+                                "jumpTime": 0,
+                                "errorTip": ""
+                            },
+                            "countDown": null
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "interactNodeId": "interactNodeId006",
+            "title": "点击",
+            "startTime": 0,
+            "duration": 10,
+            "playState": "play",
+            "endState": "hide",
+            "interactInfoId": "interactInfoId6",
+            "showConditionList": [],
+            "interactInfoIdJson": {
+                "interactInfoId": "interactInfoId6",
+                "isFollowCamera": false,
+                "interactInfo": {
+                    "type": "PointClickModule",
+                    "compoundMode": null,
+                    "clickCount": null
+                },
+                "interactConfig": "interactConfig6.json",
+                "interactConfigJson": {
+                    "metas": null,
+                    "imgs": null,
+                    "btns": [
+                        {
+                            "id": "jffc13af-cb7a-64d5-f9b6-8ddf14ff",
+                            "text": "x+1",
+                            "style": {
+                                "color": "#fff",
+                                "posX": 326.9865,
+                                "posY": 699.3356,
+                                "posZ": null,
+                                "width": 150,
+                                "height": 70,
+                                "opacity": null,
+                                "rotate": 0,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "audio": null,
+                            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png",
+                            "backgroundImageAfterClick": "",
+                            "showConditionList": [],
+                            "action": [
+                                {
+                                    "actionType": "JUMPTIME",
+                                    "nextVideo": null,
+                                    "skipVideoId": null,
+                                    "jumpTime": 0,
+                                    "factorExpressList": null
+                                },
+                                {
+                                    "actionType": "FACTOR",
+                                    "nextVideo": null,
+                                    "skipVideoId": null,
+                                    "jumpTime": null,
+                                    "factorExpressList": [
+                                        {
+                                            "key": "1670480047844",
+                                            "operator": "+",
+                                            "temp": 1,
+                                            "name": "数值1"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                            "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png"
+                        },
+                        {
+                            "id": "s5c0bcb0-100d-449c-1b69-b3c24934",
+                            "text": "y+1",
+                            "style": {
+                                "color": "#fff",
+                                "posX": 1443.196,
+                                "posY": 699.3356,
+                                "posZ": null,
+                                "width": 150,
+                                "height": 70,
+                                "opacity": null,
+                                "rotate": 0,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "audio": null,
+                            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png",
+                            "backgroundImageAfterClick": "",
+                            "showConditionList": [],
+                            "action": [
+                                {
+                                    "actionType": "JUMPTIME",
+                                    "nextVideo": null,
+                                    "skipVideoId": null,
+                                    "jumpTime": 0,
+                                    "factorExpressList": null
+                                },
+                                {
+                                    "actionType": "FACTOR",
+                                    "nextVideo": null,
+                                    "skipVideoId": null,
+                                    "jumpTime": null,
+                                    "factorExpressList": [
+                                        {
+                                            "key": "1670480048471",
+                                            "operator": "+",
+                                            "temp": 1,
+                                            "name": "数值1"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                            "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png"
+                        }
+                    ],
+                    "ctrls": []
+                }
+            }
+        },
+        {
+            "interactNodeId": "interactNodeId007",
+            "title": "组合点击",
+            "startTime": 0,
+            "duration": 10,
+            "playState": "play",
+            "endState": "hide",
+            "interactInfoId": "interactInfoId7",
+            "showConditionList": [
+                {
+                    "key": "1670480047844",
+                    "operator": ">",
+                    "temp": 1,
+                    "name": "数值1"
+                }
+            ],
+            "interactInfoIdJson": {
+                "interactInfoId": "interactInfoId7",
+                "isFollowCamera": false,
+                "interactInfo": {
+                    "type": "ClickGroupModule",
+                    "compoundMode": "order",
+                    "clickCount": null
+                },
+                "interactConfig": "interactConfig7.json",
+                "interactConfigJson": {
+                    "metas": null,
+                    "imgs": null,
+                    "btns": [
+                        {
+                            "id": "c146d057-d8a0-c445-49eb-5db0c3e3",
+                            "text": "组合1",
+                            "style": {
+                                "color": "#fff",
+                                "posX": 205.85753,
+                                "posY": 409.38098,
+                                "posZ": null,
+                                "width": 150,
+                                "height": 150,
+                                "opacity": null,
+                                "rotate": 0,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "audio": null,
+                            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "showConditionList": null,
+                            "action": [],
+                            "previewBackgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                            "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png"
+                        },
+                        {
+                            "id": "oe1479ae-faa9-e403-4a41-dc0e047d",
+                            "text": "组合2",
+                            "style": {
+                                "color": "#fff",
+                                "posX": 430.8575,
+                                "posY": 410.8409,
+                                "posZ": null,
+                                "width": 150,
+                                "height": 150,
+                                "opacity": null,
+                                "rotate": 0,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "audio": null,
+                            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "showConditionList": null,
+                            "action": [],
+                            "previewBackgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                            "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png"
+                        },
+                        {
+                            "id": "wc75b6cb-e23b-74f6-bb12-5b9191b7",
+                            "text": "组合3",
+                            "style": {
+                                "color": "#fff",
+                                "posX": 627.16907,
+                                "posY": 410.8409,
+                                "posZ": null,
+                                "width": 150,
+                                "height": 150,
+                                "opacity": null,
+                                "rotate": 0,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "audio": null,
+                            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "showConditionList": null,
+                            "action": [],
+                            "previewBackgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                            "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                            "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png"
+                        }
+                    ],
+                    "ctrls": [
+                        {
+                            "conditionConfig": {
+                                "conditionValue": [
+                                    "c146d057-d8a0-c445-49eb-5db0c3e3",
+                                    "wc75b6cb-e23b-74f6-bb12-5b9191b7"
+                                ],
+                                "jumpVideoId": null,
+                                "skipVideoId": null,
+                                "jumpTime": 0,
+                                "errorTip": "csdfw"
+                            },
+                            "countDown": null
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "interactNodeId": "interactNodeId008",
+            "title": "点击",
+            "startTime": 0,
+            "duration": 10,
+            "playState": "play",
+            "endState": "hide",
+            "interactInfoId": "interactInfoId8",
+            "showConditionList": [],
+            "interactInfoIdJson": {
+                "interactInfoId": "interactInfoId8",
+                "isFollowCamera": false,
+                "interactInfo": {
+                    "type": "PointClickModule",
+                    "compoundMode": null,
+                    "clickCount": null
+                },
+                "interactConfig": "interactConfig8.json",
+                "interactConfigJson": {
+                    "metas": null,
+                    "imgs": null,
+                    "btns": [
+                        {
+                            "id": "la98093b-e1a3-c4eb-5a23-d47f94b9",
+                            "text": "跳转1",
+                            "style": {
+                                "color": "#DA5252FF",
+                                "posX": 442,
+                                "posY": 724.86633,
+                                "posZ": null,
+                                "width": 1200,
+                                "height": 675,
+                                "opacity": null,
+                                "rotate": 13,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 0.23626766,
+                                "scaleY": 0.23626766,
+                                "scaleZ": null
+                            },
+                            "audio": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600669041020837888.mp3",
+                            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370824580374528.jpg",
+                            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370824580374528.jpg",
+                            "backgroundImageAfterClick": "",
+                            "showConditionList": [],
+                            "action": [
+                                {
+                                    "actionType": "SWITCHVIDEO",
+                                    "nextVideo": "ef88e668-2dfe-d431-5ba8-3ae2b7e1",
+                                    "skipVideoId": null,
+                                    "jumpTime": null,
+                                    "factorExpressList": null
+                                }
+                            ],
+                            "previewAudio": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600669041020837888.mp3",
+                            "audioContext": {},
+                            "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370824580374528.jpg",
+                            "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370824580374528.jpg"
+                        },
+                        {
+                            "id": "n2db3e43-88dd-54d6-cb1d-e4a70278",
+                            "text": "seek40",
+                            "style": {
+                                "color": "#5454C1FF",
+                                "posX": 966.67993,
+                                "posY": 773.9214,
+                                "posZ": null,
+                                "width": 1200,
+                                "height": 675,
+                                "opacity": null,
+                                "rotate": 0,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 0.28062484,
+                                "scaleY": 0.28062484,
+                                "scaleZ": null
+                            },
+                            "audio": null,
+                            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370858130612224.jpg",
+                            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370858130612224.jpg",
+                            "backgroundImageAfterClick": "",
+                            "showConditionList": [],
+                            "action": [
+                                {
+                                    "actionType": "JUMPTIME",
+                                    "nextVideo": null,
+                                    "skipVideoId": null,
+                                    "jumpTime": 40,
+                                    "factorExpressList": null
+                                }
+                            ],
+                            "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370858130612224.jpg",
+                            "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370858130612224.jpg"
+                        },
+                        {
+                            "id": "k541a301-fa0e-e421-989a-b24bfe4a",
+                            "text": "跳转3",
+                            "style": {
+                                "color": "#3C764FFF",
+                                "posX": 1580.2631,
+                                "posY": 689.8222,
+                                "posZ": null,
+                                "width": 1920,
+                                "height": 1080,
+                                "opacity": null,
+                                "rotate": 333,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 0.13958137,
+                                "scaleY": 0.13958137,
+                                "scaleZ": null
+                            },
+                            "audio": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600669020607160320.mp3",
+                            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370870508003328.jpg",
+                            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370870508003328.jpg",
+                            "backgroundImageAfterClick": "",
+                            "showConditionList": [],
+                            "action": [
+                                {
+                                    "actionType": "SWITCHVIDEO",
+                                    "nextVideo": "d3037781-c854-8405-e9df-b5f08c08",
+                                    "skipVideoId": null,
+                                    "jumpTime": null,
+                                    "factorExpressList": null
+                                }
+                            ],
+                            "previewAudio": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600669020607160320.mp3",
+                            "audioContext": {},
+                            "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370870508003328.jpg",
+                            "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370870508003328.jpg"
+                        }
+                    ],
+                    "ctrls": []
+                }
+            }
+        },
+        {
+            "interactNodeId": "interactNodeId009",
+            "title": "文字",
+            "startTime": 0,
+            "duration": 10,
+            "playState": null,
+            "endState": null,
+            "interactInfoId": "interactInfoId9",
+            "showConditionList": [],
+            "interactInfoIdJson": {
+                "interactInfoId": "interactInfoId9",
+                "isFollowCamera": false,
+                "interactInfo": {
+                    "type": "TextModule",
+                    "compoundMode": null,
+                    "clickCount": null
+                },
+                "interactConfig": "interactConfig9.json",
+                "interactConfigJson": {
+                    "metas": [
+                        {
+                            "text": "跳转至视频2",
+                            "style": {
+                                "color": "#50BB89FF",
+                                "posX": 1479.5797,
+                                "posY": 376.76318,
+                                "posZ": null,
+                                "width": 0,
+                                "height": 0,
+                                "opacity": null,
+                                "rotate": 336,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "id": "xe151f1a-4533-148c-da63-62688814"
+                        }
+                    ],
+                    "imgs": null,
+                    "btns": null,
+                    "ctrls": null
+                }
+            }
+        },
+        {
+            "interactNodeId": "interactNodeId0010",
+            "title": "文字",
+            "startTime": 0,
+            "duration": 10,
+            "playState": null,
+            "endState": null,
+            "interactInfoId": "interactInfoId10",
+            "showConditionList": [],
+            "interactInfoIdJson": {
+                "interactInfoId": "interactInfoId10",
+                "isFollowCamera": false,
+                "interactInfo": {
+                    "type": "TextModule",
+                    "compoundMode": null,
+                    "clickCount": null
+                },
+                "interactConfig": "interactConfig10.json",
+                "interactConfigJson": {
+                    "metas": [
+                        {
+                            "text": "跳转至视频1",
+                            "style": {
+                                "color": "#5F2424FF",
+                                "posX": 442,
+                                "posY": 444.4251,
+                                "posZ": null,
+                                "width": 0,
+                                "height": 0,
+                                "opacity": null,
+                                "rotate": 9,
+                                "rotateX": null,
+                                "rotateY": null,
+                                "rotateZ": null,
+                                "fontSize": null,
+                                "scaleX": 1,
+                                "scaleY": 1,
+                                "scaleZ": null
+                            },
+                            "id": "cb0459c1-2cf9-e488-09b0-2248d1b4"
+                        }
+                    ],
+                    "imgs": null,
+                    "btns": null,
+                    "ctrls": null
+                }
+            }
+        }
+    ],
+    "interactInfoList": [
+        {
+            "interactInfoId": "interactInfoId1",
+            "isFollowCamera": false,
+            "interactInfo": {
+                "type": "PointClickModule",
+                "compoundMode": null,
+                "clickCount": null
+            },
+            "interactConfig": "interactConfig1.json",
+            "interactConfigJson": {
+                "metas": null,
+                "imgs": null,
+                "btns": [
+                    {
+                        "id": "b95a33a3-ca01-540b-bb93-44584893",
+                        "text": "x>1",
+                        "style": {
+                            "color": "#fff",
+                            "posX": 733.5401,
+                            "posY": 575,
+                            "posZ": null,
+                            "width": 150,
+                            "height": 70,
+                            "opacity": null,
+                            "rotate": 0,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "audio": null,
+                        "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                        "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png",
+                        "backgroundImageAfterClick": "",
+                        "showConditionList": [
+                            {
+                                "key": "1670480047844",
+                                "operator": ">",
+                                "temp": 1,
+                                "name": "数值1"
+                            }
+                        ],
+                        "action": [
+                            {
+                                "actionType": "JUMPTIME",
+                                "nextVideo": null,
+                                "skipVideoId": null,
+                                "jumpTime": 0,
+                                "factorExpressList": null
+                            }
+                        ],
+                        "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                        "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png"
+                    },
+                    {
+                        "id": "mf474c5e-fe0c-643b-8afb-a670e462",
+                        "text": "y>1",
+                        "style": {
+                            "color": "#fff",
+                            "posX": 1185,
+                            "posY": 540,
+                            "posZ": null,
+                            "width": 150,
+                            "height": 70,
+                            "opacity": null,
+                            "rotate": 0,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "audio": null,
+                        "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                        "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png",
+                        "backgroundImageAfterClick": "",
+                        "showConditionList": [
+                            {
+                                "key": "1670480048471",
+                                "operator": ">",
+                                "temp": 1,
+                                "name": "数值1"
+                            }
+                        ],
+                        "action": [
+                            {
+                                "actionType": "JUMPTIME",
+                                "nextVideo": null,
+                                "skipVideoId": null,
+                                "jumpTime": 0,
+                                "factorExpressList": null
+                            }
+                        ],
+                        "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                        "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png"
+                    }
+                ],
+                "ctrls": []
+            }
+        },
+        {
+            "interactInfoId": "interactInfoId2",
+            "isFollowCamera": false,
+            "interactInfo": {
+                "type": "TextModule",
+                "compoundMode": null,
+                "clickCount": null
+            },
+            "interactConfig": "interactConfig2.json",
+            "interactConfigJson": {
+                "metas": [
+                    {
+                        "text": "y>1",
+                        "style": {
+                            "color": "#960D0DFF",
+                            "posX": 1185,
+                            "posY": 389.29276,
+                            "posZ": null,
+                            "width": 0,
+                            "height": 0,
+                            "opacity": null,
+                            "rotate": 0,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "id": "oe77c0fd-9b6d-e414-5b0d-446f61c2"
+                    }
+                ],
+                "imgs": null,
+                "btns": null,
+                "ctrls": null
+            }
+        },
+        {
+            "interactInfoId": "interactInfoId3",
+            "isFollowCamera": false,
+            "interactInfo": {
+                "type": "TextModule",
+                "compoundMode": null,
+                "clickCount": null
+            },
+            "interactConfig": "interactConfig3.json",
+            "interactConfigJson": {
+                "metas": [
+                    {
+                        "text": "x>1",
+                        "style": {
+                            "color": "#A01F1FFF",
+                            "posX": 711.23926,
+                            "posY": 390.26602,
+                            "posZ": null,
+                            "width": 0,
+                            "height": 0,
+                            "opacity": null,
+                            "rotate": 0,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "id": "raec2feb-249b-945b-a986-72f75e02"
+                    }
+                ],
+                "imgs": null,
+                "btns": null,
+                "ctrls": null
+            }
+        },
+        {
+            "interactInfoId": "interactInfoId4",
+            "isFollowCamera": false,
+            "interactInfo": {
+                "type": "PointClickModule",
+                "compoundMode": null,
+                "clickCount": null
+            },
+            "interactConfig": "interactConfig4.json",
+            "interactConfigJson": {
+                "metas": null,
+                "imgs": null,
+                "btns": [
+                    {
+                        "id": "tbd7b241-a5c8-0454-78db-bc8cf0ef",
+                        "text": "x+1",
+                        "style": {
+                            "color": "#fff",
+                            "posX": 733.5401,
+                            "posY": 772.56555,
+                            "posZ": null,
+                            "width": 150,
+                            "height": 70,
+                            "opacity": null,
+                            "rotate": 0,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "audio": null,
+                        "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                        "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png",
+                        "backgroundImageAfterClick": "",
+                        "showConditionList": [],
+                        "action": [
+                            {
+                                "actionType": "JUMPTIME",
+                                "nextVideo": null,
+                                "skipVideoId": null,
+                                "jumpTime": 0,
+                                "factorExpressList": null
+                            },
+                            {
+                                "actionType": "FACTOR",
+                                "nextVideo": null,
+                                "skipVideoId": null,
+                                "jumpTime": null,
+                                "factorExpressList": [
+                                    {
+                                        "key": "1670480047844",
+                                        "operator": "+",
+                                        "temp": 1,
+                                        "name": "数值1"
+                                    }
+                                ]
+                            }
+                        ],
+                        "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                        "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png"
+                    },
+                    {
+                        "id": "j3b501d2-cd64-b44c-4a7a-892a961a",
+                        "text": "y+1",
+                        "style": {
+                            "color": "#fff",
+                            "posX": 1185,
+                            "posY": 772.5214,
+                            "posZ": null,
+                            "width": 150,
+                            "height": 70,
+                            "opacity": null,
+                            "rotate": 0,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "audio": null,
+                        "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                        "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png",
+                        "backgroundImageAfterClick": "",
+                        "showConditionList": [],
+                        "action": [
+                            {
+                                "actionType": "JUMPTIME",
+                                "nextVideo": null,
+                                "skipVideoId": null,
+                                "jumpTime": 0,
+                                "factorExpressList": null
+                            },
+                            {
+                                "actionType": "FACTOR",
+                                "nextVideo": null,
+                                "skipVideoId": null,
+                                "jumpTime": null,
+                                "factorExpressList": [
+                                    {
+                                        "key": "1670480048471",
+                                        "operator": "+",
+                                        "temp": 1,
+                                        "name": "数值1"
+                                    }
+                                ]
+                            }
+                        ],
+                        "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                        "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png"
+                    }
+                ],
+                "ctrls": []
+            }
+        },
+        {
+            "interactInfoId": "interactInfoId5",
+            "isFollowCamera": false,
+            "interactInfo": {
+                "type": "ClickGroupModule",
+                "compoundMode": "disorder",
+                "clickCount": null
+            },
+            "interactConfig": "interactConfig5.json",
+            "interactConfigJson": {
+                "metas": null,
+                "imgs": null,
+                "btns": [
+                    {
+                        "id": "v7fd3c16-0968-449f-e9e6-038ea4f6",
+                        "text": "组合1",
+                        "style": {
+                            "color": "#fff",
+                            "posX": 1183.54,
+                            "posY": 428.5401,
+                            "posZ": null,
+                            "width": 150,
+                            "height": 150,
+                            "opacity": null,
+                            "rotate": 0,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "audio": null,
+                        "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                        "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "showConditionList": null,
+                        "action": [],
+                        "previewBackgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                        "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png"
+                    },
+                    {
+                        "id": "u050ded0-f1fe-84e9-483e-ca86e561",
+                        "text": "组合2",
+                        "style": {
+                            "color": "#fff",
+                            "posX": 1444.6559,
+                            "posY": 414.02673,
+                            "posZ": null,
+                            "width": 150,
+                            "height": 150,
+                            "opacity": null,
+                            "rotate": 0,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "audio": null,
+                        "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                        "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "showConditionList": null,
+                        "action": [],
+                        "previewBackgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                        "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png"
+                    },
+                    {
+                        "id": "nd8ee134-721e-d49d-1ab7-2650e354",
+                        "text": "组合3",
+                        "style": {
+                            "color": "#fff",
+                            "posX": 1669.516,
+                            "posY": 412.56683,
+                            "posZ": null,
+                            "width": 150,
+                            "height": 150,
+                            "opacity": null,
+                            "rotate": 0,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "audio": null,
+                        "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                        "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "showConditionList": null,
+                        "action": [],
+                        "previewBackgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                        "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png"
+                    }
+                ],
+                "ctrls": [
+                    {
+                        "conditionConfig": {
+                            "conditionValue": [
+                                "v7fd3c16-0968-449f-e9e6-038ea4f6",
+                                "nd8ee134-721e-d49d-1ab7-2650e354"
+                            ],
+                            "jumpVideoId": null,
+                            "skipVideoId": null,
+                            "jumpTime": 0,
+                            "errorTip": ""
+                        },
+                        "countDown": null
+                    }
+                ]
+            }
+        },
+        {
+            "interactInfoId": "interactInfoId6",
+            "isFollowCamera": false,
+            "interactInfo": {
+                "type": "PointClickModule",
+                "compoundMode": null,
+                "clickCount": null
+            },
+            "interactConfig": "interactConfig6.json",
+            "interactConfigJson": {
+                "metas": null,
+                "imgs": null,
+                "btns": [
+                    {
+                        "id": "jffc13af-cb7a-64d5-f9b6-8ddf14ff",
+                        "text": "x+1",
+                        "style": {
+                            "color": "#fff",
+                            "posX": 326.9865,
+                            "posY": 699.3356,
+                            "posZ": null,
+                            "width": 150,
+                            "height": 70,
+                            "opacity": null,
+                            "rotate": 0,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "audio": null,
+                        "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                        "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png",
+                        "backgroundImageAfterClick": "",
+                        "showConditionList": [],
+                        "action": [
+                            {
+                                "actionType": "JUMPTIME",
+                                "nextVideo": null,
+                                "skipVideoId": null,
+                                "jumpTime": 0,
+                                "factorExpressList": null
+                            },
+                            {
+                                "actionType": "FACTOR",
+                                "nextVideo": null,
+                                "skipVideoId": null,
+                                "jumpTime": null,
+                                "factorExpressList": [
+                                    {
+                                        "key": "1670480047844",
+                                        "operator": "+",
+                                        "temp": 1,
+                                        "name": "数值1"
+                                    }
+                                ]
+                            }
+                        ],
+                        "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                        "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png"
+                    },
+                    {
+                        "id": "s5c0bcb0-100d-449c-1b69-b3c24934",
+                        "text": "y+1",
+                        "style": {
+                            "color": "#fff",
+                            "posX": 1443.196,
+                            "posY": 699.3356,
+                            "posZ": null,
+                            "width": 150,
+                            "height": 70,
+                            "opacity": null,
+                            "rotate": 0,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "audio": null,
+                        "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                        "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png",
+                        "backgroundImageAfterClick": "",
+                        "showConditionList": [],
+                        "action": [
+                            {
+                                "actionType": "JUMPTIME",
+                                "nextVideo": null,
+                                "skipVideoId": null,
+                                "jumpTime": 0,
+                                "factorExpressList": null
+                            },
+                            {
+                                "actionType": "FACTOR",
+                                "nextVideo": null,
+                                "skipVideoId": null,
+                                "jumpTime": null,
+                                "factorExpressList": [
+                                    {
+                                        "key": "1670480048471",
+                                        "operator": "+",
+                                        "temp": 1,
+                                        "name": "数值1"
+                                    }
+                                ]
+                            }
+                        ],
+                        "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952310898688.png",
+                        "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1596864952331870208.png"
+                    }
+                ],
+                "ctrls": []
+            }
+        },
+        {
+            "interactInfoId": "interactInfoId7",
+            "isFollowCamera": false,
+            "interactInfo": {
+                "type": "ClickGroupModule",
+                "compoundMode": "order",
+                "clickCount": null
+            },
+            "interactConfig": "interactConfig7.json",
+            "interactConfigJson": {
+                "metas": null,
+                "imgs": null,
+                "btns": [
+                    {
+                        "id": "c146d057-d8a0-c445-49eb-5db0c3e3",
+                        "text": "组合1",
+                        "style": {
+                            "color": "#fff",
+                            "posX": 205.85753,
+                            "posY": 409.38098,
+                            "posZ": null,
+                            "width": 150,
+                            "height": 150,
+                            "opacity": null,
+                            "rotate": 0,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "audio": null,
+                        "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                        "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "showConditionList": null,
+                        "action": [],
+                        "previewBackgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                        "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png"
+                    },
+                    {
+                        "id": "oe1479ae-faa9-e403-4a41-dc0e047d",
+                        "text": "组合2",
+                        "style": {
+                            "color": "#fff",
+                            "posX": 430.8575,
+                            "posY": 410.8409,
+                            "posZ": null,
+                            "width": 150,
+                            "height": 150,
+                            "opacity": null,
+                            "rotate": 0,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "audio": null,
+                        "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                        "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "showConditionList": null,
+                        "action": [],
+                        "previewBackgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                        "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png"
+                    },
+                    {
+                        "id": "wc75b6cb-e23b-74f6-bb12-5b9191b7",
+                        "text": "组合3",
+                        "style": {
+                            "color": "#fff",
+                            "posX": 627.16907,
+                            "posY": 410.8409,
+                            "posZ": null,
+                            "width": 150,
+                            "height": 150,
+                            "opacity": null,
+                            "rotate": 0,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "audio": null,
+                        "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                        "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "showConditionList": null,
+                        "action": [],
+                        "previewBackgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png",
+                        "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499649.png",
+                        "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1597228277561499648.png"
+                    }
+                ],
+                "ctrls": [
+                    {
+                        "conditionConfig": {
+                            "conditionValue": [
+                                "c146d057-d8a0-c445-49eb-5db0c3e3",
+                                "wc75b6cb-e23b-74f6-bb12-5b9191b7"
+                            ],
+                            "jumpVideoId": null,
+                            "skipVideoId": null,
+                            "jumpTime": 0,
+                            "errorTip": "csdfw"
+                        },
+                        "countDown": null
+                    }
+                ]
+            }
+        },
+        {
+            "interactInfoId": "interactInfoId8",
+            "isFollowCamera": false,
+            "interactInfo": {
+                "type": "PointClickModule",
+                "compoundMode": null,
+                "clickCount": null
+            },
+            "interactConfig": "interactConfig8.json",
+            "interactConfigJson": {
+                "metas": null,
+                "imgs": null,
+                "btns": [
+                    {
+                        "id": "la98093b-e1a3-c4eb-5a23-d47f94b9",
+                        "text": "跳转1",
+                        "style": {
+                            "color": "#DA5252FF",
+                            "posX": 442,
+                            "posY": 724.86633,
+                            "posZ": null,
+                            "width": 1200,
+                            "height": 675,
+                            "opacity": null,
+                            "rotate": 13,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 0.23626766,
+                            "scaleY": 0.23626766,
+                            "scaleZ": null
+                        },
+                        "audio": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600669041020837888.mp3",
+                        "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370824580374528.jpg",
+                        "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370824580374528.jpg",
+                        "backgroundImageAfterClick": "",
+                        "showConditionList": [],
+                        "action": [
+                            {
+                                "actionType": "SWITCHVIDEO",
+                                "nextVideo": "ef88e668-2dfe-d431-5ba8-3ae2b7e1",
+                                "skipVideoId": null,
+                                "jumpTime": null,
+                                "factorExpressList": null
+                            }
+                        ],
+                        "previewAudio": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600669041020837888.mp3",
+                        "audioContext": {},
+                        "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370824580374528.jpg",
+                        "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370824580374528.jpg"
+                    },
+                    {
+                        "id": "n2db3e43-88dd-54d6-cb1d-e4a70278",
+                        "text": "seek40",
+                        "style": {
+                            "color": "#5454C1FF",
+                            "posX": 966.67993,
+                            "posY": 773.9214,
+                            "posZ": null,
+                            "width": 1200,
+                            "height": 675,
+                            "opacity": null,
+                            "rotate": 0,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 0.28062484,
+                            "scaleY": 0.28062484,
+                            "scaleZ": null
+                        },
+                        "audio": null,
+                        "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370858130612224.jpg",
+                        "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370858130612224.jpg",
+                        "backgroundImageAfterClick": "",
+                        "showConditionList": [],
+                        "action": [
+                            {
+                                "actionType": "JUMPTIME",
+                                "nextVideo": null,
+                                "skipVideoId": null,
+                                "jumpTime": 40,
+                                "factorExpressList": null
+                            }
+                        ],
+                        "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370858130612224.jpg",
+                        "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370858130612224.jpg"
+                    },
+                    {
+                        "id": "k541a301-fa0e-e421-989a-b24bfe4a",
+                        "text": "跳转3",
+                        "style": {
+                            "color": "#3C764FFF",
+                            "posX": 1580.2631,
+                            "posY": 689.8222,
+                            "posZ": null,
+                            "width": 1920,
+                            "height": 1080,
+                            "opacity": null,
+                            "rotate": 333,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 0.13958137,
+                            "scaleY": 0.13958137,
+                            "scaleZ": null
+                        },
+                        "audio": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600669020607160320.mp3",
+                        "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370870508003328.jpg",
+                        "backgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370870508003328.jpg",
+                        "backgroundImageAfterClick": "",
+                        "showConditionList": [],
+                        "action": [
+                            {
+                                "actionType": "SWITCHVIDEO",
+                                "nextVideo": "d3037781-c854-8405-e9df-b5f08c08",
+                                "skipVideoId": null,
+                                "jumpTime": null,
+                                "factorExpressList": null
+                            }
+                        ],
+                        "previewAudio": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600669020607160320.mp3",
+                        "audioContext": {},
+                        "previewBackgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370870508003328.jpg",
+                        "previewBackgroundImageClick": "http://36.155.98.104:12480/vrnas/nas/cmam/test/cmam_vr/test/1600737337904668672/demo/assets/1600370870508003328.jpg"
+                    }
+                ],
+                "ctrls": []
+            }
+        },
+        {
+            "interactInfoId": "interactInfoId9",
+            "isFollowCamera": false,
+            "interactInfo": {
+                "type": "TextModule",
+                "compoundMode": null,
+                "clickCount": null
+            },
+            "interactConfig": "interactConfig9.json",
+            "interactConfigJson": {
+                "metas": [
+                    {
+                        "text": "跳转至视频2",
+                        "style": {
+                            "color": "#50BB89FF",
+                            "posX": 1479.5797,
+                            "posY": 376.76318,
+                            "posZ": null,
+                            "width": 0,
+                            "height": 0,
+                            "opacity": null,
+                            "rotate": 336,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "id": "xe151f1a-4533-148c-da63-62688814"
+                    }
+                ],
+                "imgs": null,
+                "btns": null,
+                "ctrls": null
+            }
+        },
+        {
+            "interactInfoId": "interactInfoId10",
+            "isFollowCamera": false,
+            "interactInfo": {
+                "type": "TextModule",
+                "compoundMode": null,
+                "clickCount": null
+            },
+            "interactConfig": "interactConfig10.json",
+            "interactConfigJson": {
+                "metas": [
+                    {
+                        "text": "跳转至视频1",
+                        "style": {
+                            "color": "#5F2424FF",
+                            "posX": 442,
+                            "posY": 444.4251,
+                            "posZ": null,
+                            "width": 0,
+                            "height": 0,
+                            "opacity": null,
+                            "rotate": 9,
+                            "rotateX": null,
+                            "rotateY": null,
+                            "rotateZ": null,
+                            "fontSize": null,
+                            "scaleX": 1,
+                            "scaleY": 1,
+                            "scaleZ": null
+                        },
+                        "id": "cb0459c1-2cf9-e488-09b0-2248d1b4"
+                    }
+                ],
+                "imgs": null,
+                "btns": null,
+                "ctrls": null
+            }
+        }
+    ]
+}

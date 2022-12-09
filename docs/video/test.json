@@ -1,0 +1,1896 @@
+{
+  "drama": {
+    "name": "预览使用",
+    "description": "预览使用",
+    "fileVersion": "1.0.0",
+    "firstVideoId": "jf615c4a-e1f4-e4a1-19b7-80813e89"
+  },
+  "factorList": [
+    {
+      "key": "1669979778444",
+      "name": "数值1",
+      "value": "0"
+    },
+    {
+      "key": "1669979778589",
+      "name": "数值2",
+      "value": "0"
+    }
+  ],
+  "videoList": [
+    {
+      "videoId": "tf1a0841-1ada-44e9-b997-ccae0974",
+      "description": "",
+      "duration": 336.41,
+      "filename": "VR-鬼屋密室逃生",
+      "interactNodeId": [],
+      "videoPath": "http://36.155.98.104:12480/vrnas/video/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/0/1597106985965395968.mp4",
+      "thumbnail": "",
+      "videoCoding": "avc1",
+      "outPutFormat": "155",
+      "mediaHeight": "2160",
+      "mediaWidth": "3840",
+      "mediaSize": "335455006",
+      "playType": 1,
+      "fovInfo": "{}",
+      "canvasHeight": 336,
+      "canvasWidth": 599
+    },
+    {
+      "videoId": "g20e906f-a095-74a3-4ba1-2fcc6587",
+      "description": "",
+      "duration": 101.476,
+      "filename": "《Help》剪辑版",
+      "interactNodeId": [
+        "interactNodeId001",
+        "interactNodeId002",
+        "interactNodeId003",
+        "interactNodeId004"
+      ],
+      "videoPath": "http://36.155.98.104:12480/vrnas/video/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/0/1598282509131653120.mp4",
+      "thumbnail": "",
+      "videoCoding": "avc1",
+      "outPutFormat": "155",
+      "mediaHeight": "1080",
+      "mediaWidth": "1920",
+      "mediaSize": "176113326",
+      "playType": 1,
+      "fovInfo": "{}",
+      "canvasHeight": 336,
+      "canvasWidth": 599
+    },
+    {
+      "videoId": "l7e3ec5e-1b7f-d437-faf1-772d43e2",
+      "description": "",
+      "duration": 244.227,
+      "filename": "VR-穿越猎虎座星云",
+      "interactNodeId": [],
+      "videoPath": "http://36.155.98.104:12480/vrnas/video/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/0/1597102853456076800.mp4",
+      "thumbnail": "",
+      "videoCoding": "avc1",
+      "outPutFormat": "155",
+      "mediaHeight": "1920",
+      "mediaWidth": "3840",
+      "mediaSize": "243450101",
+      "playType": 1,
+      "fovInfo": "{}",
+      "canvasHeight": 336,
+      "canvasWidth": 599
+    },
+    {
+      "videoId": "s66f301d-5735-e441-787e-d1e43d61",
+      "description": "",
+      "duration": 75.67,
+      "filename": "VR-战争前线",
+      "interactNodeId": [
+        "interactNodeId005",
+        "interactNodeId006",
+        "interactNodeId007",
+        "interactNodeId008"
+      ],
+      "videoPath": "http://36.155.98.104:12480/vrnas/video/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/0/1597105650234761216.mp4",
+      "thumbnail": "",
+      "videoCoding": "avc1",
+      "outPutFormat": "155",
+      "mediaHeight": "2160",
+      "mediaWidth": "3840",
+      "mediaSize": "149739376",
+      "playType": 1,
+      "fovInfo": "{}",
+      "canvasHeight": 336,
+      "canvasWidth": 599
+    },
+    {
+      "videoId": "jf615c4a-e1f4-e4a1-19b7-80813e89",
+      "description": "",
+      "duration": 254.723,
+      "filename": "360 Google Spotlight Story- Special Deliver",
+      "interactNodeId": ["interactNodeId009", "interactNodeId0010"],
+      "videoPath": "http://36.155.98.104:12480/vrnas/video/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/0/1598283466041139200.mp4",
+      "thumbnail": "",
+      "videoCoding": "avc1",
+      "outPutFormat": "155",
+      "mediaHeight": "2048",
+      "mediaWidth": "3840",
+      "mediaSize": "161800359",
+      "playType": 1,
+      "fovInfo": "{}",
+      "canvasHeight": 336,
+      "canvasWidth": 599
+    }
+  ],
+  "interactInfoList": [
+    {
+      "interactInfoId": "interactInfoId1",
+      "isFollowCamera": true,
+      "interactInfo": {
+        "type": "ClickGroupModule",
+        "compoundMode": "disorder",
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig1.json",
+      "interactConfigJson": {
+        "metas": null,
+        "imgs": null,
+        "btns": [
+          {
+            "id": "nbb46a59-f2a3-344b-cbc9-3c63a491",
+            "text": "组合1",
+            "style": {
+              "color": "#fff",
+              "posX": 40,
+              "posY": 50,
+              "posZ": 0,
+              "width": 50,
+              "height": 50,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "showConditionList": null,
+            "action": []
+          },
+          {
+            "id": "k3748a5f-a8b6-5437-ca54-3823c89a",
+            "text": "组合2",
+            "style": {
+              "color": "#fff",
+              "posX": 50,
+              "posY": 50,
+              "posZ": 0,
+              "width": 50,
+              "height": 50,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "showConditionList": null,
+            "action": []
+          },
+          {
+            "id": "oe7314e5-3df4-743d-9bd0-30bd66d9",
+            "text": "组合3",
+            "style": {
+              "color": "#fff",
+              "posX": 60,
+              "posY": 50,
+              "posZ": 0,
+              "width": 50,
+              "height": 50,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "showConditionList": null,
+            "action": []
+          }
+        ],
+        "ctrls": [
+          {
+            "conditionConfig": {
+              "conditionValue": [
+                "k3748a5f-a8b6-5437-ca54-3823c89a",
+                "oe7314e5-3df4-743d-9bd0-30bd66d9"
+              ],
+              "jumpVideoId": "tf1a0841-1ada-44e9-b997-ccae0974",
+              "skipVideoId": null,
+              "jumpTime": 0,
+              "errorTip": "23232323"
+            },
+            "countDown": null
+          }
+        ]
+      }
+    },
+    {
+      "interactInfoId": "interactInfoId2",
+      "isFollowCamera": true,
+      "interactInfo": {
+        "type": "TextModule",
+        "compoundMode": null,
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig2.json",
+      "interactConfigJson": {
+        "metas": [
+          {
+            "text": "无序两个",
+            "style": {
+              "color": "#fff",
+              "posX": 49,
+              "posY": 27,
+              "posZ": 0,
+              "width": 0,
+              "height": 0,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "id": "v8a7f678-fe6f-d4b5-bb47-e282d59f"
+          }
+        ],
+        "imgs": null,
+        "btns": null,
+        "ctrls": null
+      }
+    },
+    {
+      "interactInfoId": "interactInfoId3",
+      "isFollowCamera": true,
+      "interactInfo": {
+        "type": "ClickGroupModule",
+        "compoundMode": "combination",
+        "clickCount": 2
+      },
+      "interactConfig": "interactConfig3.json",
+      "interactConfigJson": {
+        "metas": null,
+        "imgs": null,
+        "btns": [
+          {
+            "id": "w0a56ac6-4bdf-2480-c9d6-3b96dfca",
+            "text": "组合1",
+            "style": {
+              "color": "#fff",
+              "posX": 40,
+              "posY": 50,
+              "posZ": 0,
+              "width": 50,
+              "height": 50,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "showConditionList": null,
+            "action": []
+          },
+          {
+            "id": "s46a481a-f668-8480-eaf5-82600a49",
+            "text": "组合2",
+            "style": {
+              "color": "#fff",
+              "posX": 50,
+              "posY": 50,
+              "posZ": 0,
+              "width": 50,
+              "height": 50,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "showConditionList": null,
+            "action": []
+          },
+          {
+            "id": "f8905b81-0c3a-44f4-4976-5d6b1955",
+            "text": "组合3",
+            "style": {
+              "color": "#fff",
+              "posX": 60,
+              "posY": 50,
+              "posZ": 0,
+              "width": 50,
+              "height": 50,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "showConditionList": null,
+            "action": []
+          }
+        ],
+        "ctrls": [
+          {
+            "conditionConfig": {
+              "conditionValue": null,
+              "jumpVideoId": "tf1a0841-1ada-44e9-b997-ccae0974",
+              "skipVideoId": null,
+              "jumpTime": 0,
+              "errorTip": ""
+            },
+            "countDown": null
+          }
+        ]
+      }
+    },
+    {
+      "interactInfoId": "interactInfoId4",
+      "isFollowCamera": true,
+      "interactInfo": {
+        "type": "TextModule",
+        "compoundMode": null,
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig4.json",
+      "interactConfigJson": {
+        "metas": [
+          {
+            "text": "任意两个",
+            "style": {
+              "color": "#fff",
+              "posX": 48,
+              "posY": 23,
+              "posZ": 0,
+              "width": 0,
+              "height": 0,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "id": "g39aacc1-3f2f-6446-bb17-2f7999b9"
+          }
+        ],
+        "imgs": null,
+        "btns": null,
+        "ctrls": null
+      }
+    },
+    {
+      "interactInfoId": "interactInfoId5",
+      "isFollowCamera": true,
+      "interactInfo": {
+        "type": "PointClickModule",
+        "compoundMode": null,
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig5.json",
+      "interactConfigJson": {
+        "metas": null,
+        "imgs": null,
+        "btns": [
+          {
+            "id": "s4f112ee-ee0a-3463-ba96-b000023a",
+            "text": "+1",
+            "style": {
+              "color": "#0DA9DDFF",
+              "posX": 30,
+              "posY": 50,
+              "posZ": 0,
+              "width": 80,
+              "height": 32,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/testUserId/1592350658156240896.jpg",
+            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/testUserId/1592350657116053504.jpg",
+            "backgroundImageAfterClick": "",
+            "showConditionList": [],
+            "action": [
+              {
+                "actionType": "JUMPTIME",
+                "nextVideo": null,
+                "skipVideoId": null,
+                "jumpTime": 0,
+                "factorExpressList": null
+              },
+              {
+                "actionType": "FACTOR",
+                "nextVideo": null,
+                "skipVideoId": null,
+                "jumpTime": null,
+                "factorExpressList": [
+                  {
+                    "key": "1669979778444",
+                    "operator": "+",
+                    "temp": 1,
+                    "name": "数值1"
+                  },
+                  {
+                    "key": "1669979778589",
+                    "operator": "+",
+                    "temp": 1,
+                    "name": "数值1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "r5b89dd9-4f7a-a47c-69a4-62f8ec1a",
+            "text": "》3",
+            "style": {
+              "color": "#fff",
+              "posX": 50,
+              "posY": 50,
+              "posZ": 0,
+              "width": 80,
+              "height": 32,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952310898688.png",
+            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952331870208.png",
+            "backgroundImageAfterClick": "",
+            "showConditionList": [
+              {
+                "key": "1669979778444",
+                "operator": ">",
+                "temp": 3,
+                "name": "数值1"
+              }
+            ],
+            "action": [
+              {
+                "actionType": "JUMPTIME",
+                "nextVideo": null,
+                "skipVideoId": null,
+                "jumpTime": 0,
+                "factorExpressList": null
+              }
+            ]
+          },
+          {
+            "id": "j4328311-efd1-84fb-a848-523fba3e",
+            "text": "》3",
+            "style": {
+              "color": "#fff",
+              "posX": 70,
+              "posY": 50,
+              "posZ": 0,
+              "width": 80,
+              "height": 32,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952310898688.png",
+            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952331870208.png",
+            "backgroundImageAfterClick": "",
+            "showConditionList": [
+              {
+                "key": "1669979778589",
+                "operator": ">",
+                "temp": 3,
+                "name": "数值1"
+              }
+            ],
+            "action": [
+              {
+                "actionType": "JUMPTIME",
+                "nextVideo": null,
+                "skipVideoId": null,
+                "jumpTime": 0,
+                "factorExpressList": null
+              }
+            ]
+          }
+        ],
+        "ctrls": []
+      }
+    },
+    {
+      "interactInfoId": "interactInfoId6",
+      "isFollowCamera": true,
+      "interactInfo": {
+        "type": "TextModule",
+        "compoundMode": null,
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig6.json",
+      "interactConfigJson": {
+        "metas": [
+          {
+            "text": "测试变量",
+            "style": {
+              "color": "#fff",
+              "posX": 48,
+              "posY": 22,
+              "posZ": 0,
+              "width": 0,
+              "height": 0,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "id": "d7b2c6fc-4690-a445-a8e6-129c169e"
+          }
+        ],
+        "imgs": null,
+        "btns": null,
+        "ctrls": null
+      }
+    },
+    {
+      "interactInfoId": "interactInfoId7",
+      "isFollowCamera": true,
+      "interactInfo": {
+        "type": "ClickGroupModule",
+        "compoundMode": "order",
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig7.json",
+      "interactConfigJson": {
+        "metas": null,
+        "imgs": null,
+        "btns": [
+          {
+            "id": "fff4b188-589f-9478-eb4b-67af6278",
+            "text": "组合1",
+            "style": {
+              "color": "#fff",
+              "posX": 40,
+              "posY": 50,
+              "posZ": 0,
+              "width": 50,
+              "height": 50,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "showConditionList": null,
+            "action": []
+          },
+          {
+            "id": "d8b9724c-cdb2-740d-b9b7-4abef441",
+            "text": "组合2",
+            "style": {
+              "color": "#fff",
+              "posX": 50,
+              "posY": 50,
+              "posZ": 0,
+              "width": 50,
+              "height": 50,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "showConditionList": null,
+            "action": []
+          },
+          {
+            "id": "o5101251-f5bc-342c-ca92-4be0f8f2",
+            "text": "组合3",
+            "style": {
+              "color": "#fff",
+              "posX": 60,
+              "posY": 50,
+              "posZ": 0,
+              "width": 50,
+              "height": 50,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+            "showConditionList": null,
+            "action": []
+          }
+        ],
+        "ctrls": [
+          {
+            "conditionConfig": {
+              "conditionValue": [
+                "fff4b188-589f-9478-eb4b-67af6278",
+                "o5101251-f5bc-342c-ca92-4be0f8f2"
+              ],
+              "jumpVideoId": "l7e3ec5e-1b7f-d437-faf1-772d43e2",
+              "skipVideoId": null,
+              "jumpTime": 0,
+              "errorTip": "1313131313"
+            },
+            "countDown": null
+          }
+        ]
+      }
+    },
+    {
+      "interactInfoId": "interactInfoId8",
+      "isFollowCamera": true,
+      "interactInfo": {
+        "type": "TextModule",
+        "compoundMode": null,
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig8.json",
+      "interactConfigJson": {
+        "metas": [
+          {
+            "text": "有序两个",
+            "style": {
+              "color": "#fff",
+              "posX": 45,
+              "posY": 24,
+              "posZ": 0,
+              "width": 0,
+              "height": 0,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "id": "f66eaf58-28c1-a450-da87-46a87565"
+          }
+        ],
+        "imgs": null,
+        "btns": null,
+        "ctrls": null
+      }
+    },
+    {
+      "interactInfoId": "interactInfoId9",
+      "isFollowCamera": true,
+      "interactInfo": {
+        "type": "PointClickModule",
+        "compoundMode": null,
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig9.json",
+      "interactConfigJson": {
+        "metas": null,
+        "imgs": null,
+        "btns": [
+          {
+            "id": "g8b51cad-4e2b-7453-b920-335e069c",
+            "text": "选项1",
+            "style": {
+              "color": "#fff",
+              "posX": 30,
+              "posY": 50,
+              "posZ": 0,
+              "width": 80,
+              "height": 32,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952310898688.png",
+            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952331870208.png",
+            "backgroundImageAfterClick": "",
+            "showConditionList": [],
+            "action": [
+              {
+                "actionType": "SWITCHVIDEO",
+                "nextVideo": "g20e906f-a095-74a3-4ba1-2fcc6587",
+                "skipVideoId": null,
+                "jumpTime": null,
+                "factorExpressList": null
+              },
+              {
+                "actionType": "JUMPTIME",
+                "nextVideo": null,
+                "skipVideoId": null,
+                "jumpTime": 0,
+                "factorExpressList": null
+              }
+            ]
+          },
+          {
+            "id": "o66b6234-2215-742c-2957-73c6017e",
+            "text": "选项2",
+            "style": {
+              "color": "#DD1818FF",
+              "posX": 50,
+              "posY": 50,
+              "posZ": 0,
+              "width": 80,
+              "height": 32,
+              "opacity": 0,
+              "rotate": 17,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 2.09,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "audio": "http://36.155.98.104:12480/vrnas/audio/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/0/1594569030298181632.mp3",
+            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/interactive/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10026715/1598492092550815744.png",
+            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/interactive/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10026715/1598492130718982144.png",
+            "backgroundImageAfterClick": "",
+            "showConditionList": [],
+            "action": [
+              {
+                "actionType": "JUMPTIME",
+                "nextVideo": null,
+                "skipVideoId": null,
+                "jumpTime": 30,
+                "factorExpressList": null
+              },
+              {
+                "actionType": "FACTOR",
+                "nextVideo": null,
+                "skipVideoId": null,
+                "jumpTime": null,
+                "factorExpressList": [
+                  {
+                    "key": "1669979778444",
+                    "operator": "+",
+                    "temp": 1,
+                    "name": "数值1"
+                  },
+                  {
+                    "key": "1669979778589",
+                    "operator": "+",
+                    "temp": 1,
+                    "name": "数值1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "l57ab216-8adc-e4bb-4978-ad97c50e",
+            "text": "选项3",
+            "style": {
+              "color": "#fff",
+              "posX": 70,
+              "posY": 50,
+              "posZ": 0,
+              "width": 80,
+              "height": 32,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "audio": null,
+            "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952310898688.png",
+            "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952331870208.png",
+            "backgroundImageAfterClick": "",
+            "showConditionList": [],
+            "action": [
+              {
+                "actionType": "SWITCHVIDEO",
+                "nextVideo": "s66f301d-5735-e441-787e-d1e43d61",
+                "skipVideoId": null,
+                "jumpTime": null,
+                "factorExpressList": null
+              },
+              {
+                "actionType": "JUMPTIME",
+                "nextVideo": null,
+                "skipVideoId": null,
+                "jumpTime": 0,
+                "factorExpressList": null
+              }
+            ]
+          }
+        ],
+        "ctrls": []
+      }
+    },
+    {
+      "interactInfoId": "interactInfoId10",
+      "isFollowCamera": true,
+      "interactInfo": {
+        "type": "TextModule",
+        "compoundMode": null,
+        "clickCount": null
+      },
+      "interactConfig": "interactConfig10.json",
+      "interactConfigJson": {
+        "metas": [
+          {
+            "text": "选择分支12",
+            "style": {
+              "color": "#D72222FF",
+              "posX": 49,
+              "posY": 31,
+              "posZ": 0,
+              "width": 0,
+              "height": 0,
+              "opacity": 0,
+              "rotate": 0,
+              "rotateX": 0,
+              "rotateY": 0,
+              "rotateZ": 0,
+              "fontSize": 20,
+              "scaleX": 1,
+              "scaleY": 0,
+              "scaleZ": 0
+            },
+            "id": "ecfe6f6d-13f5-e418-1aaa-c2dd6689"
+          }
+        ],
+        "imgs": null,
+        "btns": null,
+        "ctrls": null
+      }
+    }
+  ],
+  "interactNodeList": [
+    {
+      "interactNodeId": "interactNodeId001",
+      "title": "组合点击",
+      "startTime": 28.1,
+      "duration": 10,
+      "playState": "play",
+      "endState": "hide",
+      "interactInfoId": "interactInfoId1",
+      "interactInfoIdJson": {
+        "interactInfoId": "interactInfoId1",
+        "isFollowCamera": true,
+        "interactInfo": {
+          "type": "ClickGroupModule",
+          "compoundMode": "disorder",
+          "clickCount": null
+        },
+        "interactConfig": "interactConfig1.json",
+        "interactConfigJson": {
+          "metas": null,
+          "imgs": null,
+          "btns": [
+            {
+              "id": "nbb46a59-f2a3-344b-cbc9-3c63a491",
+              "text": "组合1",
+              "style": {
+                "color": "#fff",
+                "posX": 40,
+                "posY": 50,
+                "posZ": 0,
+                "width": 50,
+                "height": 50,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "audio": null,
+              "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+              "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "showConditionList": null,
+              "action": []
+            },
+            {
+              "id": "k3748a5f-a8b6-5437-ca54-3823c89a",
+              "text": "组合2",
+              "style": {
+                "color": "#fff",
+                "posX": 50,
+                "posY": 50,
+                "posZ": 0,
+                "width": 50,
+                "height": 50,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "audio": null,
+              "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+              "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "showConditionList": null,
+              "action": []
+            },
+            {
+              "id": "oe7314e5-3df4-743d-9bd0-30bd66d9",
+              "text": "组合3",
+              "style": {
+                "color": "#fff",
+                "posX": 60,
+                "posY": 50,
+                "posZ": 0,
+                "width": 50,
+                "height": 50,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "audio": null,
+              "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+              "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "showConditionList": null,
+              "action": []
+            }
+          ],
+          "ctrls": [
+            {
+              "conditionConfig": {
+                "conditionValue": [
+                  "k3748a5f-a8b6-5437-ca54-3823c89a",
+                  "oe7314e5-3df4-743d-9bd0-30bd66d9"
+                ],
+                "jumpVideoId": "tf1a0841-1ada-44e9-b997-ccae0974",
+                "skipVideoId": null,
+                "jumpTime": 0,
+                "errorTip": "23232323"
+              },
+              "countDown": null
+            }
+          ]
+        }
+      },
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId002",
+      "title": "文字",
+      "startTime": 28.1,
+      "duration": 10,
+      "playState": null,
+      "endState": null,
+      "interactInfoId": "interactInfoId2",
+      "interactInfoIdJson": {
+        "interactInfoId": "interactInfoId2",
+        "isFollowCamera": true,
+        "interactInfo": {
+          "type": "TextModule",
+          "compoundMode": null,
+          "clickCount": null
+        },
+        "interactConfig": "interactConfig2.json",
+        "interactConfigJson": {
+          "metas": [
+            {
+              "text": "无序两个",
+              "style": {
+                "color": "#fff",
+                "posX": 49,
+                "posY": 27,
+                "posZ": 0,
+                "width": 0,
+                "height": 0,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "id": "v8a7f678-fe6f-d4b5-bb47-e282d59f"
+            }
+          ],
+          "imgs": null,
+          "btns": null,
+          "ctrls": null
+        }
+      },
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId003",
+      "title": "组合点击",
+      "startTime": 0,
+      "duration": 10,
+      "playState": "play",
+      "endState": "hide",
+      "interactInfoId": "interactInfoId3",
+      "interactInfoIdJson": {
+        "interactInfoId": "interactInfoId3",
+        "isFollowCamera": true,
+        "interactInfo": {
+          "type": "ClickGroupModule",
+          "compoundMode": "combination",
+          "clickCount": 2
+        },
+        "interactConfig": "interactConfig3.json",
+        "interactConfigJson": {
+          "metas": null,
+          "imgs": null,
+          "btns": [
+            {
+              "id": "w0a56ac6-4bdf-2480-c9d6-3b96dfca",
+              "text": "组合1",
+              "style": {
+                "color": "#fff",
+                "posX": 40,
+                "posY": 50,
+                "posZ": 0,
+                "width": 50,
+                "height": 50,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "audio": null,
+              "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+              "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "showConditionList": null,
+              "action": []
+            },
+            {
+              "id": "s46a481a-f668-8480-eaf5-82600a49",
+              "text": "组合2",
+              "style": {
+                "color": "#fff",
+                "posX": 50,
+                "posY": 50,
+                "posZ": 0,
+                "width": 50,
+                "height": 50,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "audio": null,
+              "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+              "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "showConditionList": null,
+              "action": []
+            },
+            {
+              "id": "f8905b81-0c3a-44f4-4976-5d6b1955",
+              "text": "组合3",
+              "style": {
+                "color": "#fff",
+                "posX": 60,
+                "posY": 50,
+                "posZ": 0,
+                "width": 50,
+                "height": 50,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "audio": null,
+              "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+              "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "showConditionList": null,
+              "action": []
+            }
+          ],
+          "ctrls": [
+            {
+              "conditionConfig": {
+                "conditionValue": null,
+                "jumpVideoId": "tf1a0841-1ada-44e9-b997-ccae0974",
+                "skipVideoId": null,
+                "jumpTime": 0,
+                "errorTip": ""
+              },
+              "countDown": null
+            }
+          ]
+        }
+      },
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId004",
+      "title": "文字",
+      "startTime": 0,
+      "duration": 10,
+      "playState": null,
+      "endState": null,
+      "interactInfoId": "interactInfoId4",
+      "interactInfoIdJson": {
+        "interactInfoId": "interactInfoId4",
+        "isFollowCamera": true,
+        "interactInfo": {
+          "type": "TextModule",
+          "compoundMode": null,
+          "clickCount": null
+        },
+        "interactConfig": "interactConfig4.json",
+        "interactConfigJson": {
+          "metas": [
+            {
+              "text": "任意两个",
+              "style": {
+                "color": "#fff",
+                "posX": 48,
+                "posY": 23,
+                "posZ": 0,
+                "width": 0,
+                "height": 0,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "id": "g39aacc1-3f2f-6446-bb17-2f7999b9"
+            }
+          ],
+          "imgs": null,
+          "btns": null,
+          "ctrls": null
+        }
+      },
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId005",
+      "title": "点击",
+      "startTime": 18.4,
+      "duration": 10,
+      "playState": "pause",
+      "endState": "hide",
+      "interactInfoId": "interactInfoId5",
+      "interactInfoIdJson": {
+        "interactInfoId": "interactInfoId5",
+        "isFollowCamera": true,
+        "interactInfo": {
+          "type": "PointClickModule",
+          "compoundMode": null,
+          "clickCount": null
+        },
+        "interactConfig": "interactConfig5.json",
+        "interactConfigJson": {
+          "metas": null,
+          "imgs": null,
+          "btns": [
+            {
+              "id": "s4f112ee-ee0a-3463-ba96-b000023a",
+              "text": "+1",
+              "style": {
+                "color": "#0DA9DDFF",
+                "posX": 30,
+                "posY": 50,
+                "posZ": 0,
+                "width": 80,
+                "height": 32,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "audio": null,
+              "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/testUserId/1592350658156240896.jpg",
+              "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/testUserId/1592350657116053504.jpg",
+              "backgroundImageAfterClick": "",
+              "showConditionList": [],
+              "action": [
+                {
+                  "actionType": "JUMPTIME",
+                  "nextVideo": null,
+                  "skipVideoId": null,
+                  "jumpTime": 0,
+                  "factorExpressList": null
+                },
+                {
+                  "actionType": "FACTOR",
+                  "nextVideo": null,
+                  "skipVideoId": null,
+                  "jumpTime": null,
+                  "factorExpressList": [
+                    {
+                      "key": "1669979778444",
+                      "operator": "+",
+                      "temp": 1,
+                      "name": "数值1"
+                    },
+                    {
+                      "key": "1669979778589",
+                      "operator": "+",
+                      "temp": 1,
+                      "name": "数值1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "r5b89dd9-4f7a-a47c-69a4-62f8ec1a",
+              "text": "》3",
+              "style": {
+                "color": "#fff",
+                "posX": 50,
+                "posY": 50,
+                "posZ": 0,
+                "width": 80,
+                "height": 32,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "audio": null,
+              "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952310898688.png",
+              "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952331870208.png",
+              "backgroundImageAfterClick": "",
+              "showConditionList": [
+                {
+                  "key": "1669979778444",
+                  "operator": ">",
+                  "temp": 3,
+                  "name": "数值1"
+                }
+              ],
+              "action": [
+                {
+                  "actionType": "JUMPTIME",
+                  "nextVideo": null,
+                  "skipVideoId": null,
+                  "jumpTime": 0,
+                  "factorExpressList": null
+                }
+              ]
+            },
+            {
+              "id": "j4328311-efd1-84fb-a848-523fba3e",
+              "text": "》3",
+              "style": {
+                "color": "#fff",
+                "posX": 70,
+                "posY": 50,
+                "posZ": 0,
+                "width": 80,
+                "height": 32,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "audio": null,
+              "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952310898688.png",
+              "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952331870208.png",
+              "backgroundImageAfterClick": "",
+              "showConditionList": [
+                {
+                  "key": "1669979778589",
+                  "operator": ">",
+                  "temp": 3,
+                  "name": "数值1"
+                }
+              ],
+              "action": [
+                {
+                  "actionType": "JUMPTIME",
+                  "nextVideo": null,
+                  "skipVideoId": null,
+                  "jumpTime": 0,
+                  "factorExpressList": null
+                }
+              ]
+            }
+          ],
+          "ctrls": []
+        }
+      },
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId006",
+      "title": "文字",
+      "startTime": 18.4,
+      "duration": 10,
+      "playState": null,
+      "endState": null,
+      "interactInfoId": "interactInfoId6",
+      "interactInfoIdJson": {
+        "interactInfoId": "interactInfoId6",
+        "isFollowCamera": true,
+        "interactInfo": {
+          "type": "TextModule",
+          "compoundMode": null,
+          "clickCount": null
+        },
+        "interactConfig": "interactConfig6.json",
+        "interactConfigJson": {
+          "metas": [
+            {
+              "text": "测试变量",
+              "style": {
+                "color": "#fff",
+                "posX": 48,
+                "posY": 22,
+                "posZ": 0,
+                "width": 0,
+                "height": 0,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "id": "d7b2c6fc-4690-a445-a8e6-129c169e"
+            }
+          ],
+          "imgs": null,
+          "btns": null,
+          "ctrls": null
+        }
+      },
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId007",
+      "title": "组合点击",
+      "startTime": 0,
+      "duration": 10,
+      "playState": "play",
+      "endState": "hide",
+      "interactInfoId": "interactInfoId7",
+      "interactInfoIdJson": {
+        "interactInfoId": "interactInfoId7",
+        "isFollowCamera": true,
+        "interactInfo": {
+          "type": "ClickGroupModule",
+          "compoundMode": "order",
+          "clickCount": null
+        },
+        "interactConfig": "interactConfig7.json",
+        "interactConfigJson": {
+          "metas": null,
+          "imgs": null,
+          "btns": [
+            {
+              "id": "fff4b188-589f-9478-eb4b-67af6278",
+              "text": "组合1",
+              "style": {
+                "color": "#fff",
+                "posX": 40,
+                "posY": 50,
+                "posZ": 0,
+                "width": 50,
+                "height": 50,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "audio": null,
+              "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+              "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "showConditionList": null,
+              "action": []
+            },
+            {
+              "id": "d8b9724c-cdb2-740d-b9b7-4abef441",
+              "text": "组合2",
+              "style": {
+                "color": "#fff",
+                "posX": 50,
+                "posY": 50,
+                "posZ": 0,
+                "width": 50,
+                "height": 50,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "audio": null,
+              "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+              "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "showConditionList": null,
+              "action": []
+            },
+            {
+              "id": "o5101251-f5bc-342c-ca92-4be0f8f2",
+              "text": "组合3",
+              "style": {
+                "color": "#fff",
+                "posX": 60,
+                "posY": 50,
+                "posZ": 0,
+                "width": 50,
+                "height": 50,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "audio": null,
+              "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499649.png",
+              "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "backgroundImageAfterClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1597228277561499648.png",
+              "showConditionList": null,
+              "action": []
+            }
+          ],
+          "ctrls": [
+            {
+              "conditionConfig": {
+                "conditionValue": [
+                  "fff4b188-589f-9478-eb4b-67af6278",
+                  "o5101251-f5bc-342c-ca92-4be0f8f2"
+                ],
+                "jumpVideoId": "l7e3ec5e-1b7f-d437-faf1-772d43e2",
+                "skipVideoId": null,
+                "jumpTime": 0,
+                "errorTip": "1313131313"
+              },
+              "countDown": null
+            }
+          ]
+        }
+      },
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId008",
+      "title": "文字",
+      "startTime": 0,
+      "duration": 10,
+      "playState": null,
+      "endState": null,
+      "interactInfoId": "interactInfoId8",
+      "interactInfoIdJson": {
+        "interactInfoId": "interactInfoId8",
+        "isFollowCamera": true,
+        "interactInfo": {
+          "type": "TextModule",
+          "compoundMode": null,
+          "clickCount": null
+        },
+        "interactConfig": "interactConfig8.json",
+        "interactConfigJson": {
+          "metas": [
+            {
+              "text": "有序两个",
+              "style": {
+                "color": "#fff",
+                "posX": 45,
+                "posY": 24,
+                "posZ": 0,
+                "width": 0,
+                "height": 0,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "id": "f66eaf58-28c1-a450-da87-46a87565"
+            }
+          ],
+          "imgs": null,
+          "btns": null,
+          "ctrls": null
+        }
+      },
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId009",
+      "title": "点击",
+      "startTime": 0,
+      "duration": 10,
+      "playState": "play",
+      "endState": "hide",
+      "interactInfoId": "interactInfoId9",
+      "interactInfoIdJson": {
+        "interactInfoId": "interactInfoId9",
+        "isFollowCamera": true,
+        "interactInfo": {
+          "type": "PointClickModule",
+          "compoundMode": null,
+          "clickCount": null
+        },
+        "interactConfig": "interactConfig9.json",
+        "interactConfigJson": {
+          "metas": null,
+          "imgs": null,
+          "btns": [
+            {
+              "id": "g8b51cad-4e2b-7453-b920-335e069c",
+              "text": "选项1",
+              "style": {
+                "color": "#fff",
+                "posX": 30,
+                "posY": 50,
+                "posZ": 0,
+                "width": 80,
+                "height": 32,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "audio": null,
+              "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952310898688.png",
+              "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952331870208.png",
+              "backgroundImageAfterClick": "",
+              "showConditionList": [],
+              "action": [
+                {
+                  "actionType": "SWITCHVIDEO",
+                  "nextVideo": "g20e906f-a095-74a3-4ba1-2fcc6587",
+                  "skipVideoId": null,
+                  "jumpTime": null,
+                  "factorExpressList": null
+                },
+                {
+                  "actionType": "JUMPTIME",
+                  "nextVideo": null,
+                  "skipVideoId": null,
+                  "jumpTime": 0,
+                  "factorExpressList": null
+                }
+              ]
+            },
+            {
+              "id": "o66b6234-2215-742c-2957-73c6017e",
+              "text": "选项2",
+              "style": {
+                "color": "#DD1818FF",
+                "posX": 50,
+                "posY": 50,
+                "posZ": 0,
+                "width": 80,
+                "height": 32,
+                "opacity": 0,
+                "rotate": 17,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 2.09,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "audio": "http://36.155.98.104:12480/vrnas/audio/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/0/1594569030298181632.mp3",
+              "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/interactive/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10026715/1598492092550815744.png",
+              "backgroundImageClick": "http://36.155.98.104:12480/vrnas/interactive/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10026715/1598492130718982144.png",
+              "backgroundImageAfterClick": "",
+              "showConditionList": [],
+              "action": [
+                {
+                  "actionType": "JUMPTIME",
+                  "nextVideo": null,
+                  "skipVideoId": null,
+                  "jumpTime": 30,
+                  "factorExpressList": null
+                },
+                {
+                  "actionType": "FACTOR",
+                  "nextVideo": null,
+                  "skipVideoId": null,
+                  "jumpTime": null,
+                  "factorExpressList": [
+                    {
+                      "key": "1669979778444",
+                      "operator": "+",
+                      "temp": 1,
+                      "name": "数值1"
+                    },
+                    {
+                      "key": "1669979778589",
+                      "operator": "+",
+                      "temp": 1,
+                      "name": "数值1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "l57ab216-8adc-e4bb-4978-ad97c50e",
+              "text": "选项3",
+              "style": {
+                "color": "#fff",
+                "posX": 70,
+                "posY": 50,
+                "posZ": 0,
+                "width": 80,
+                "height": 32,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "audio": null,
+              "backgroundImageBeforeClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952310898688.png",
+              "backgroundImageClick": "http://36.155.98.104:12480/vrnas/image/source/local/bigFile/d41d8cd98f0/0b204e9800998ecf8427e/user/10024776/1596864952331870208.png",
+              "backgroundImageAfterClick": "",
+              "showConditionList": [],
+              "action": [
+                {
+                  "actionType": "SWITCHVIDEO",
+                  "nextVideo": "s66f301d-5735-e441-787e-d1e43d61",
+                  "skipVideoId": null,
+                  "jumpTime": null,
+                  "factorExpressList": null
+                },
+                {
+                  "actionType": "JUMPTIME",
+                  "nextVideo": null,
+                  "skipVideoId": null,
+                  "jumpTime": 0,
+                  "factorExpressList": null
+                }
+              ]
+            }
+          ],
+          "ctrls": []
+        }
+      },
+      "showConditionList": []
+    },
+    {
+      "interactNodeId": "interactNodeId0010",
+      "title": "文字",
+      "startTime": 0,
+      "duration": 10,
+      "playState": null,
+      "endState": null,
+      "interactInfoId": "interactInfoId10",
+      "interactInfoIdJson": {
+        "interactInfoId": "interactInfoId10",
+        "isFollowCamera": true,
+        "interactInfo": {
+          "type": "TextModule",
+          "compoundMode": null,
+          "clickCount": null
+        },
+        "interactConfig": "interactConfig10.json",
+        "interactConfigJson": {
+          "metas": [
+            {
+              "text": "选择分支12",
+              "style": {
+                "color": "#D72222FF",
+                "posX": 49,
+                "posY": 31,
+                "posZ": 0,
+                "width": 0,
+                "height": 0,
+                "opacity": 0,
+                "rotate": 0,
+                "rotateX": 0,
+                "rotateY": 0,
+                "rotateZ": 0,
+                "fontSize": 20,
+                "scaleX": 1,
+                "scaleY": 0,
+                "scaleZ": 0
+              },
+              "id": "ecfe6f6d-13f5-e418-1aaa-c2dd6689"
+            }
+          ],
+          "imgs": null,
+          "btns": null,
+          "ctrls": null
+        }
+      },
+      "showConditionList": []
+    }
+  ]
+}

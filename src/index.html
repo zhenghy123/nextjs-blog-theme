@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="assets/svgs/icon.svg" />
+    <link rel="icon" href="assets/imgs/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./krpano.js"></script>
     <title>kplayer</title>
@@ -29,19 +29,18 @@
     let json = kplayerJS.getUrlParams('json')
     let type = kplayerJS.getUrlParams('type')
     let url = kplayerJS.getUrlParams('url')
-    let vr = kplayerJS.getUrlParams('vr')
 
     kplayerJS
-      .createPlayer('kplayer-container', url, { showUI: true, vr: vr , ispreview: true })
+      .createPlayer('kplayer-container', url, { showUI: true, ispreview: true })
       .then((player) => {
         if (json) {
-          player.loadJson(json, type , vr)
+          player.loadJson(json, type)
         }
         window.addEventListener('message', function (e) {
           if (typeof e.data == 'string') {
             console.log('e.data==', e.data) //e.data为传递过来的数据
             window.jsonValue = JSON.parse(e.data)
-            player.loadJson('xxx', 'cp', vr)
+            player.loadJson('xxx', 'cp')
           }
         })
       })

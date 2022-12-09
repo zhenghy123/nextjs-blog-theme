@@ -33,7 +33,7 @@ export class PlayerTree {
           <div class="rootNode" data-id="${nodeList.id}">
             <img src="${
               nodeList.img
-            }" onerror="this.src='./assets/error.jpeg'"></img>
+            }" onerror="this.src='./assets/imgs/error.jpeg'"></img>
             <p >${nodeList.label}</p>
           </div>
         </div>
@@ -56,7 +56,7 @@ export class PlayerTree {
         )
         return list
       } else {
-        return ''
+        return []
       }
     }
 
@@ -72,7 +72,7 @@ export class PlayerTree {
               <div class="nodeInfo" data-id="${item.id}">
                 <img src="${
                   item.img
-                }" onerror="this.src='./assets/error.jpeg'"></img>
+                }" onerror="this.src='./assets/imgs/error.jpeg'"></img>
                 <p > ${item.label}</p>
               </div>
             </div>
