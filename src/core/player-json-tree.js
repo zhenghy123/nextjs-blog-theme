@@ -56,7 +56,7 @@ export class PlayerTree {
         )
         return list
       } else {
-        return ''
+        return []
       }
     }
 
