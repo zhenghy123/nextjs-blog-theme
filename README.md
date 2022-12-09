@@ -28,13 +28,11 @@
     `yapi后台工具数据转json(暂时用于项目内部预览实现)`：http://180.167.180.242:7866/project/3216/interface/api/179467
 
 
-    `工具预览`:?type=cp
+    `工具预览`:<iframe src="http://36.155.98.104:12480/vr-3d-sdk-web/index.html" name="jsonStr"></iframe>
 
-    备注：`工具预览没有json文件，需要动态传递json数据，不能拼接到url后面因为会超长`
 
-    `
-    document.getElementById('xx').contentWindow.postMessage(`${previewJson}`, '*');
-    `
+    备注：`工具预览没有json文件，需要动态传递json数据，不能拼接到url后面因为会超长,现把json数据放到name上传递`
+
 
 
 ### krpano文档
