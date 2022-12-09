@@ -28,9 +28,10 @@ export class PlayerTree {
     let nodeList = this.treeList
     let ele = {}
     ele = `
+      <canvas id="canvas"></canvas>
       <div class="processDesign">
         <div class="process">
-          <div class="rootNode" data-id="${nodeList.id}">
+          <div class="rootNode" id="${nodeList.id}" data-id="${nodeList.id}">
             <img src="${
               nodeList.img
             }" onerror="this.src='./assets/imgs/error.jpeg'"></img>
@@ -69,7 +70,7 @@ export class PlayerTree {
             item?.length > 1 ? 'nodeItems' : ''
           }">
             <div class="nodeType">
-              <div class="nodeInfo" data-id="${item.id}">
+              <div class="nodeInfo" id="${item.id}" data-id="${item.id}">
                 <img src="${
                   item.img
                 }" onerror="this.src='./assets/imgs/error.jpeg'"></img>
@@ -85,7 +86,7 @@ export class PlayerTree {
     }
 
     let dom = document.createElement('div')
-    dom.className = 'nodetree hidden'
+    dom.className = 'nodetree'
     dom.innerHTML = ele
     document.getElementById(this._player._options.id).appendChild(dom)
 
@@ -101,6 +102,66 @@ export class PlayerTree {
     document
       .querySelector('.nodetree .close')
       .addEventListener('click', this.handleTreeClose)
+
+    // 画线
+    this.draw()
+
+    this.handleTreeClose()
+  }
+
+  draw() {
+    let nodetreeSize = document
+      .querySelector('.nodetree')
+      ?.getBoundingClientRect()
+    const canvas = document.getElementById('canvas')
+    canvas.width = nodetreeSize.width
+    canvas.height = nodetreeSize.height
+
+    const ctx = canvas.getContext('2d')
+    ctx.beginPath()
+    ctx.strokeStyle = '#0000ff'
+    ctx.lineWidth = '3'
+
+    let rootNodeSize = document
+      .querySelector('.rootNode')
+      ?.getBoundingClientRect()
+    this.treeClickFindCtx(rootNodeSize, this.treeList, ctx)
+
+    ctx.stroke()
+    ctx.closePath()
+  }
+
+  // 各点连线
+  treeClickFindCtx(rootNodeSize, nodeInfo, ctx) {
+    let scrollLeft = document.documentElement.scrollLeft
+    let scrollTop = document.documentElement.scrollTop
+    nodeInfo.children?.forEach((item) => {
+      let nodeInfoSize = document
+        .getElementById(item.id)
+        .getBoundingClientRect()
+
+      let moveX = rootNodeSize.x + rootNodeSize.width / 2 + scrollLeft
+      let moveY = rootNodeSize.y + rootNodeSize.height + scrollTop
+
+      let movetoX = nodeInfoSize.x + nodeInfoSize.width / 2 + scrollLeft
+      let movetoY = nodeInfoSize.y + scrollLeft
+
+      ctx.moveTo(moveX, moveY)
+      ctx.quadraticCurveTo(
+        moveX,
+        moveY + (movetoY - moveY) / 2,
+        moveX + (movetoX - moveX) / 2,
+        moveY + (movetoY - moveY) / 2
+      )
+      ctx.quadraticCurveTo(
+        movetoX,
+        moveY + (movetoY - moveY) / 2,
+        movetoX,
+        movetoY
+      )
+
+      this.treeClickFindCtx(nodeInfoSize, item, ctx)
+    })
   }
 
   treeClick(ele) {
