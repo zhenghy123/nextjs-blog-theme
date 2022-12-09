@@ -367,6 +367,7 @@ export class PlayerControl {
   }
 
   changeVideo(nextVideoId) {
+    if (nextVideoId == this._currentVideoId) return
     this._currentVideo.pause()
     //切视频
     let videoItem = this._parser.getVideoItem(nextVideoId)
