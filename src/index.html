@@ -32,18 +32,25 @@
     let vr = kplayerJS.getUrlParams('vr')
 
     kplayerJS
-      .createPlayer('kplayer-container', url, { showUI: true, vr: vr , ispreview: true })
+      .createPlayer('kplayer-container', url, {
+        showUI: true,
+        vr: vr,
+        ispreview: true,
+      })
       .then((player) => {
         if (json) {
-          player.loadJson(json, type , vr)
+          player.loadJson(json, type, vr)
         }
-        window.addEventListener('message', function (e) {
-          if (typeof e.data == 'string') {
-            console.log('e.data==', e.data) //e.data为传递过来的数据
-            window.jsonValue = JSON.parse(e.data)
-            player.loadJson('xxx', 'cp', vr)
-          }
-        })
+
+        // 项目内部预览通过iframe的name传值
+        if (window?.parent?.frames[0]?.name) {
+          let nameStr = window?.parent?.frames[0]?.name
+          let blob = new Blob([JSON.stringify(nameStr)], {
+            type: 'application/json',
+          })
+          let url = URL.createObjectURL(blob)
+          player.loadJson(url, 'cp', vr)
+        }
       })
   }
 </script>
