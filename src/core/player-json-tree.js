@@ -114,9 +114,7 @@ export class PlayerTree {
     let rootParam = {
       label: rootVideo?.filename,
       id: rootVideo?.videoId,
-      img: rootVideo?.thumbnail
-        ? this._parser._assetsPrefix + rootVideo?.thumbnail.replace('../', '')
-        : '',
+      img: rootVideo?.previewThumbnial,
       children: [],
     }
 
@@ -132,10 +130,7 @@ export class PlayerTree {
         let param = {
           label: rootVideo?.filename,
           id: rootVideo?.videoId,
-          img: rootVideo?.thumbnail
-            ? this._parser._assetsPrefix +
-              rootVideo?.thumbnail.replace('../', '')
-            : '',
+          img: rootVideo?.previewThumbnial,
           children: [],
         }
         paramList.children.push(param)

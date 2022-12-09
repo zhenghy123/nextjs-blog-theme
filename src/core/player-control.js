@@ -368,20 +368,24 @@ export class PlayerControl {
 
   changeVideo(nextVideoId) {
     if (nextVideoId == this._currentVideoId) return
+    let flag = this._currentVideo.paused
     this._currentVideo.pause()
+
     //切视频
     let videoItem = this._parser.getVideoItem(nextVideoId)
     console.log('videoItem==', videoItem, nextVideoId)
     if (videoItem.video.currentTime == 0) {
       videoItem.video.currentTime = 0.0001
     }
+
     this._currentVideo = videoItem.video
     this._currentVideoId = nextVideoId
     this._player.changeVideo(videoItem.video)
     this.setMainFov(videoItem.fovInfo)
     this._player._emitter.emit('videoChange')
+
     this.toggleHotspot()
-    let flag = this._currentVideo.paused
+
     if (!flag) {
       setTimeout(() => {
         this._currentVideo.play()
