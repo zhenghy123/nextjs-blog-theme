@@ -259,7 +259,7 @@ export class PlayerControl {
         let conditionValue = conditionConfig?.conditionValue || []
         // 组合点击数量（初期只有设置点击次数时会有此值，有序、无序此值为null）
         let count = interactInfoIdItem.interactInfo.clickCount
-        console.log('答案：', count, conditionValue, [...setObj])
+        // console.log('答案：', count, conditionValue, [...setObj])
 
         // 判断有序和无序
         let compoundMode = interactInfoIdItem.interactInfo.compoundMode
@@ -324,6 +324,9 @@ export class PlayerControl {
       // 点击
       this.pointHotClick(hotspotBtn)
     }
+    setTimeout(() => {
+      hotspotBtn.audioContext && hotspotBtn.audioContext.pause()
+    }, 1000)
   }
 
   /**
@@ -373,6 +376,9 @@ export class PlayerControl {
 
     //切视频
     let videoItem = this._parser.getVideoItem(nextVideoId)
+    if (!videoItem) {
+      Qmsg.error('内容不存在')
+    }
     console.log('videoItem==', videoItem, nextVideoId)
     if (videoItem.video.currentTime == 0) {
       videoItem.video.currentTime = 0.0001

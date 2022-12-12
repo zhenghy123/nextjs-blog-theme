@@ -35,7 +35,9 @@ export class PlayerTree {
       <div class="processDesign">
         <canvas id="canvas"></canvas>
         <div class="process">
-          <div class="rootNode" id="${nodeList.id}" data-id="${nodeList.id}">
+          <div class="rootNode" id="${nodeList.treeId}" data-id="${
+      nodeList.id
+    }">
             <img src="${
               nodeList.img
             }" onerror="this.src='./assets/imgs/error.jpeg'"></img>
@@ -74,7 +76,7 @@ export class PlayerTree {
             item?.length > 1 ? 'nodeItems' : ''
           }">
             <div class="nodeType">
-              <div class="nodeInfo" id="${item.id}" data-id="${item.id}">
+              <div class="nodeInfo" id="${item.treeId}" data-id="${item.id}">
                 <img src="${
                   item.img
                 }" onerror="this.src='./assets/imgs/error.jpeg'"></img>
@@ -142,7 +144,7 @@ export class PlayerTree {
     let scrollTop = document.documentElement.scrollTop
     nodeInfo.children?.forEach((item) => {
       let nodeInfoSize = document
-        .getElementById(item.id)
+        .getElementById(item.treeId)
         .getBoundingClientRect()
 
       let moveX =
@@ -182,6 +184,7 @@ export class PlayerTree {
     let rootParam = {
       label: rootVideo?.filename,
       id: rootVideo?.videoId,
+      treeId: 'tree_' + rootVideo?.videoId,
       img: rootVideo?.previewThumbnial,
       children: [],
     }
@@ -198,6 +201,7 @@ export class PlayerTree {
         let param = {
           label: rootVideo?.filename,
           id: rootVideo?.videoId,
+          treeId: 'tree_' + rootVideo?.videoId,
           img: rootVideo?.previewThumbnial,
           children: [],
         }

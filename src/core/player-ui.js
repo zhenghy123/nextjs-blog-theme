@@ -161,6 +161,10 @@ export class PlayerUI {
     console.log('==', format(this._currentVideoDuration))
 
     $('.kplayer-ui .duration').textContent = format(this._currentVideoDuration)
+    // 切换后重置进度条
+    let _currentTime = this._currentVideo.currentTime
+    let percent = (_currentTime / this._currentVideoDuration) * 100
+    $('.progress-played').style.width = percent + '%'
   }
 
   videoPlaying() {
