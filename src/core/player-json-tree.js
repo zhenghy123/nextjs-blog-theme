@@ -7,13 +7,17 @@ export class PlayerTree {
 
     this.treeList = {}
     this.treeClick = this.treeClick.bind(this)
+    this.canvasPosition = {}
   }
 
   init() {
     this.initTreeList()
     this.createEle()
 
-    this._player._emitter.on('treeShow', this.handleTreeShow)
+    this._player._emitter.on('treeShow', () => {
+      this.handleTreeShow()
+      this.draw()
+    })
   }
 
   handleTreeShow() {
@@ -28,8 +32,8 @@ export class PlayerTree {
     let nodeList = this.treeList
     let ele = {}
     ele = `
-      <canvas id="canvas"></canvas>
       <div class="processDesign">
+        <canvas id="canvas"></canvas>
         <div class="process">
           <div class="rootNode" id="${nodeList.id}" data-id="${nodeList.id}">
             <img src="${
@@ -111,11 +115,12 @@ export class PlayerTree {
 
   draw() {
     let nodetreeSize = document
-      .querySelector('.nodetree')
+      .querySelector('.processDesign')
       ?.getBoundingClientRect()
     const canvas = document.getElementById('canvas')
     canvas.width = nodetreeSize.width
     canvas.height = nodetreeSize.height
+    this.canvasPosition = nodetreeSize
 
     const ctx = canvas.getContext('2d')
     ctx.beginPath()
@@ -140,11 +145,13 @@ export class PlayerTree {
         .getElementById(item.id)
         .getBoundingClientRect()
 
-      let moveX = rootNodeSize.x + rootNodeSize.width / 2 + scrollLeft
-      let moveY = rootNodeSize.y + rootNodeSize.height + scrollTop
+      let moveX =
+        rootNodeSize.x + rootNodeSize.width / 2 - this.canvasPosition.x
+      let moveY = rootNodeSize.y + rootNodeSize.height - this.canvasPosition.y
 
-      let movetoX = nodeInfoSize.x + nodeInfoSize.width / 2 + scrollLeft
-      let movetoY = nodeInfoSize.y + scrollLeft
+      let movetoX =
+        nodeInfoSize.x + nodeInfoSize.width / 2 - this.canvasPosition.x
+      let movetoY = nodeInfoSize.y - this.canvasPosition.y
 
       ctx.moveTo(moveX, moveY)
       ctx.quadraticCurveTo(

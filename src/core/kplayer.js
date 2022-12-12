@@ -59,6 +59,10 @@ export class KPlayer {
   loadJson(json, type = 'gb') {
     this._playerParse = new PlayerParse(json, this, type)
     this._playerUI = new PlayerUI(this)
+
+    window.addEventListener('resize', () => {
+      this._playerParse._playerTree.draw()
+    })
   }
 
   draghotspot(name) {
