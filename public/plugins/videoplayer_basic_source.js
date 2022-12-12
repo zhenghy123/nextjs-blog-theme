@@ -95,7 +95,7 @@ var krpanoplugin = function () {
     // video.src = krpano.parsepath(plugin.videourl);
 
     // trace some debug info to the log
-    krpano.debugmode = true // show debug/trace(0) messages
+    // krpano.debugmode = true // show debug/trace(0) messages
     krpano.trace(0, 'basic videoplayer video.src=' + video.src)
 
     check_ready_state()
