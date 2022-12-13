@@ -466,7 +466,7 @@ export class PlayerParse {
             fontSize: style.fontSize || size,
             fill: style.color,
           }
-          if (type == 'layer') {
+          if (this._vrType != VideoType.VR && type == 'layer') {
             textSetting.fontSize = textSetting.fontSize * this._kplayerScale
           }
 
@@ -478,12 +478,12 @@ export class PlayerParse {
               afterTrigger: comp.previewBackgroundImageAfterClick,
             }
             // layer没有xy 用宽高
-            if (type == 'layer') {
+            if (this._vrType != VideoType.VR && type == 'layer') {
               style.width = style.scaleX * style.width * this._kplayerScale
               style.height = style.scaleY * style.height * this._kplayerScale
               style.scale = 1
             } else {
-              style.scale = style.scaleX
+              style.scale = style.scaleX * this._kplayerScale
             }
           }
           let position = {

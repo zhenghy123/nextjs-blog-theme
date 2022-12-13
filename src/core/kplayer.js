@@ -99,19 +99,33 @@ export class KPlayer {
       _new_kplayerScaleInverse
     )
     // 重设节点
-    let layers = _krpano.layer.getArray()
+    let layers = _krpano.layer.getArray() //.concat(_krpano.hotspot.getArray())
     layers.map((item) => {
       if (enumTranslateValue.indexOf(item.compname) != -1) {
-        // TextModule 不用设置宽高
-        if (item.compname != 'TextModule') {
-          item.width = item.width * kplayerScaleInverse * _new_kplayerScale
-          item.height = item.height * kplayerScaleInverse * _new_kplayerScale
+        if (this._playerParse._vrType != 1) {
+          // TextModule 不用设置宽高
+          if (item.compname != 'TextModule') {
+            item.width = item.width * kplayerScaleInverse * _new_kplayerScale
+            item.height = item.height * kplayerScaleInverse * _new_kplayerScale
+          }
+          // 设置字体fontsize
+          const reg = /font-size:(\S*)px/
+          let str_size = item.css?.match(reg)[1] || 0
+          let new_size = str_size * kplayerScaleInverse * _new_kplayerScale
+          item.css = item.css?.replace(str_size, new_size)
+        } else {
+          if (item.compname == 'TextModule') {
+            // 字体
+            let start = item.css?.indexOf('scale:') + 6
+            let str_size = item.css?.substring(start, item.css?.length)
+            let new_size = str_size * kplayerScaleInverse * _new_kplayerScale
+            item.css = item.css?.substring(start, -1) + new_size
+          } else {
+            if (item?.name?.indexOf('tooltip_') == -1) {
+              item.scale = item.scale * kplayerScaleInverse * _new_kplayerScale
+            }
+          }
         }
-        // 设置字体fontsize
-        const reg = /font-size:(\S*)px/
-        let str_size = item.css?.match(reg)[1] || 0
-        let new_size = str_size * kplayerScaleInverse * _new_kplayerScale
-        item.css = item.css?.replace(str_size, new_size)
       }
     })
   }
