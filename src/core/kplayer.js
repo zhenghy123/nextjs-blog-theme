@@ -62,6 +62,16 @@ export class KPlayer {
 
     window.addEventListener('resize', () => {
       this._playerParse._playerTree.draw()
+      let container = document.getElementById('kplayer-container')
+      let _height = document.body.clientHeight
+      let _width = document.body.clientWidth
+      if (_width / _height < 16 / 9) {
+        container.classList.remove('kplayer-width')
+        container.classList.add('kplayer-height')
+      } else {
+        container.classList.remove('kplayer-height')
+        container.classList.add('kplayer-width')
+      }
     })
   }
 
