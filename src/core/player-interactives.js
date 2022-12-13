@@ -47,3 +47,9 @@ export const CompoundOrder = {
   ORDER: 'order',
   DISORDER: 'disorder',
 }
+
+// 0: 2D; 1: VR
+export const VideoType = {
+  PLANE: 0,
+  VR: 1,
+}

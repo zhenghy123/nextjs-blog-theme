@@ -685,14 +685,16 @@ export class KPlayer {
         set(layer[${name}].text,${textSetting?.text || ''});
         set(layer[${name}].html,${textSetting?.text || ''});
         set(layer[${name}].alpha,${1 - filterSetting?.alpha || '1'});
-        set(layer[${name}].scale,${transform3DSetting?.scaleX || 1});
+        set(layer[${name}].scale,${transform3DSetting?.scale || 1});
         `
       )
       this.checkHasLoaded('tooltip_' + name, 'layer').then(() => {
         _krpano.layer.getItem('tooltip_' + name).html = textSetting?.text || ''
         _krpano.layer.getItem('tooltip_' + name).css = `color:${
           textSetting?.fill || '0xffffff'
-        };font-size:${textSetting?.fontSize || 16}px;`
+        };font-size:${textSetting?.fontSize || 16}px;transform: scale(${
+          transform3DSetting?.scaleX || 1
+        }, ${transform3DSetting?.scaleY || 1});`
       })
     }
   }
