@@ -30,7 +30,7 @@ export class PlayerTree {
     let dom = document.createElement('div')
     dom.className = 'nodetree hidden'
     dom.innerHTML = `
-        <div class="project-name">工程名</div>
+        <div class="project-name">${this._parser._json.drama.name}</div>
         <div class="close">
             <img src='./assets/svgs/close.svg'>
         </div>
