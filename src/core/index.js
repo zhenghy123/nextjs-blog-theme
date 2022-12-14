@@ -3,7 +3,7 @@ import { DefaultVideoOptions } from './player-config'
 import { PlayerControl } from './player-control'
 import { PlayerEvents } from './player-events'
 import { PlayerParse } from './player-json-parse'
-import { PlayerTree } from './player-json-tree'
+import { PlayerTree } from './player-tree-logicflow'
 import { PlayerUI } from './player-ui'
 
 export {

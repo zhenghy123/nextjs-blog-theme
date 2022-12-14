@@ -30,7 +30,11 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@antv/hierarchy": "^0.6.8",
     "@babel/core": "^7.20.2",
-    "hls.js": "^0.8.5"
+    "@logicflow/core": "^1.1.31",
+    "@logicflow/extension": "^1.1.31",
+    "hls.js": "^0.8.5",
+    "lodash-es": "^4.17.21"
   }
 }

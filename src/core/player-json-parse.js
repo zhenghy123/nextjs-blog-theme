@@ -1,6 +1,6 @@
 import { PlayerEvents } from './player-events'
 import { PlayerControl } from './player-control'
-import { PlayerTree } from './player-json-tree'
+import { PlayerTree } from './player-tree-logicflow'
 import {
   createVideo,
   addVideoListener,

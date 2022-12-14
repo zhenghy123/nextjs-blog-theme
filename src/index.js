@@ -26,7 +26,9 @@ function createPlayer(id = '', url = '', options = {}) {
         window.kplayer = kplayer
         window.krpano = _krpano
 
-        // _krpano.actions.showlog()
+        if (window.location.hostname == 'localhost') {
+          _krpano.debugmode = true
+        }
         resolve(kplayer)
       },
       onerror: function (err) {

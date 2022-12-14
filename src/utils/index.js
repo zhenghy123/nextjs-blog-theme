@@ -1,5 +1,6 @@
 import '../skin/global.less'
 import '../skin/message.min.css'
-import '../skin/tree.css'
+import '../skin/tree.less'
 import '../skin/ui.less'
 import './qmsg'
+import '../skin/tree.logicflow.less'
