@@ -193,9 +193,8 @@ export class PlayerUI {
 
   handleMousedown(event) {
     let screenX = event.clientX
-    let offsetX = event.clientX
+    let offsetX = $('.progress-played').offsetWidth
     let dx = 0
-
     let mousemovefn = (ev) => {
       dx = ev.clientX - screenX
       // this.handleProgress(ev, offsetX + dx)

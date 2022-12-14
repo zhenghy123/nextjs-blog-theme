@@ -29,6 +29,13 @@
         top: 50%;
         transform: translateY(-50%);
       }
+      .kplayer-h5-height {
+        position: relative;
+        width: 56.25vh;
+        height: 100vh;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     </style>
   </head>
   <body>
@@ -60,8 +67,6 @@
           let url = URL.createObjectURL(blob)
           player.loadJson(url, 'cp')
         }
-
-        player.setScreenClient()
       })
   }
 </script>

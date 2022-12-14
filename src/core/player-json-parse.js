@@ -72,12 +72,6 @@ export class PlayerParse {
       let firstItem = this.getVideoItem(this._firstVideoId)
       this._canvasHeight = firstItem?.canvasHeight || 1920
       this._canvasWidth = firstItem?.canvasWidth || 1080
-      let container = this._player._options.id
-      let nodetreeSize = document
-        .getElementById(container)
-        ?.getBoundingClientRect()
-      this._kplayerScale = nodetreeSize.width / this._canvasWidth || 1
-      this._kplayerScaleInverse = this._canvasWidth / nodetreeSize.width || 1
       this._vrType = firstItem?.playType
 
       json.videoList.map((item) => {
@@ -114,12 +108,7 @@ export class PlayerParse {
       let firstItem = this.getVideoItem(this._firstVideoId)
       this._canvasHeight = firstItem?.canvasHeight || 1920
       this._canvasWidth = firstItem?.canvasWidth || 1080
-      let container = this._player._options.id
-      let nodetreeSize = document
-        .getElementById(container)
-        ?.getBoundingClientRect()
-      this._kplayerScale = nodetreeSize.width / this._canvasWidth || 1
-      this._kplayerScaleInverse = this._canvasWidth / nodetreeSize.width || 1
+
       this._vrType = firstItem?.playType
       json.videoList.map((item) => {
         // 拼接处理视频地址和封面地址
@@ -257,6 +246,19 @@ export class PlayerParse {
     // 初始化场景
     // 至此已处理完互动组件节点（node）、信息（info）、配置(config)，并按层级结构拼接进interactNodeList
     // 一次性全部添加热点，后续根据videoId、组件配置进行显隐
+    let container = document.getElementById(this._player._options.id)
+    if (this._canvasWidth / this._canvasHeight < 1) {
+      container.classList.remove('kplayer-height')
+      container.classList.remove('kplayer-width')
+      container.classList.add('kplayer-h5-height')
+    } else {
+      this._player.setScreenClient()
+    }
+    let nodetreeSize = document
+      .getElementById(this._player._options.id)
+      ?.getBoundingClientRect()
+    this._kplayerScale = nodetreeSize.width / this._canvasWidth || 1
+    this._kplayerScaleInverse = this._canvasWidth / nodetreeSize.width || 1
 
     this._hasLoad = true
     this._player.initVideo(this._vrType)

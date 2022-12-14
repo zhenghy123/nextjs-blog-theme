@@ -64,7 +64,16 @@ export class KPlayer {
       //节点树
       this._playerParse._playerTree.windowResize()
       //屏幕 横竖比
-      this.setScreenClient()
+      if (
+        this._playerParse._canvasWidth / this._playerParse._canvasHeight <
+        1
+      ) {
+        container.classList.remove('kplayer-height')
+        container.classList.remove('kplayer-width')
+        container.classList.add('kplayer-h5-height')
+      } else {
+        this.setScreenClient()
+      }
       //2d layer
       this.resetLayerScale()
     })
