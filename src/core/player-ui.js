@@ -192,16 +192,23 @@ export class PlayerUI {
   }
 
   handleMousedown(event) {
-    let screenX = event.screenX
-    let offsetX = event.screenX
+    let screenX = event.clientX
+    let offsetX = event.clientX
     let dx = 0
 
     let mousemovefn = (ev) => {
-      dx = ev.screenX - screenX
-      this.handleProgress(ev, offsetX + dx)
+      dx = ev.clientX - screenX
+      // this.handleProgress(ev, offsetX + dx)
+
+      let offsetWidth = $('.progress-outer').offsetWidth
+      let pert = (offsetX + dx) / offsetWidth
+      let time = this._currentVideoDuration * pert
+
+      $('.current-time').textContent = format(time)
+      $('.progress-played').style.width = pert * 100 + '%'
     }
     let mouseupfn = (ev) => {
-      dx = ev.screenX - screenX
+      dx = ev.clientX - screenX
       this.handleProgress(ev, offsetX + dx)
 
       window.removeEventListener('mousemove', mousemovefn)
