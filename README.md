@@ -36,16 +36,13 @@
 备注：`工具预览没有json文件，需要动态传递json数据，不能拼接到url后面因为会超长,现把json数据放到name上传递`
 
 
-
-### krpano文档
-- https://krpano.com/docu/xml/
-
-### webpack文档
-- https://www.webpackjs.com/configuration/
-- https://www.npmjs.com/package/copy-webpack-plugin
-
 ### git提交空文件夹
 find ./ -type d -empty -execdir touch {}/.gitkeep {} \;
 
 ### 插件
-- `message.js`:https://blog.csdn.net/u012131025/article/details/118085164
+- `message.js`: https://blog.csdn.net/u012131025/article/details/118085164
+- `logicFlow`: http://logic-flow.org/api/logicFlowApi.html#resize
+- `krpano`: https://krpano.com/docu/xml/
+- `webpack`: https://www.webpackjs.com/configuration/
+- `copy-webpack-plugin`: https://www.npmjs.com/package/copy-webpack-plugin
+

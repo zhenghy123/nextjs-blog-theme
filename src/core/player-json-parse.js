@@ -289,8 +289,14 @@ export class PlayerParse {
    * @returns Promise<json>
    */
   async fetchJson(url) {
-    const response = await fetch(url)
-    return await response.json()
+    try {
+      const response = await fetch(url)
+      return await response.json()
+    } catch (error) {
+      Qmsg.closeAll()
+      Qmsg.error({ content: '请检查json地址是否正确！', autoClose: false })
+      throw new Error('请检查json地址是否正确！')
+    }
   }
 
   /**

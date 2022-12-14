@@ -30,6 +30,12 @@ export class PlayerControl {
       }
     })
 
+    this._player._emitter.on('videotime', (v) => {
+      this._currentTime = v
+      this.toggleHotspot()
+      this.playActiveState()
+    })
+
     this._player._options.hotspotClick = (id, type) => {
       // 文本无点击反应
       if (type == 'text') {
@@ -97,11 +103,15 @@ export class PlayerControl {
       let playState = item.playState
       let endState = item.endState
       // 开始状态
-      if (Math.abs(this._currentTime - startTime) < 0.02) {
+      if (
+        Math.abs(this._currentTime - startTime) < 0.02 &&
+        !this._currentVideo.paused
+      ) {
+        console.log('开始状态', playState, item)
         if (playState == PlayerEvents.VIDEO_PAUSE) {
           // 组件开始时间点可暂停视频
           this._player.pause()
-          item.playState = 'active'
+          // item.playState = 'active'
         } else if (playState == PlayerEvents.VIDEO_PLAY) {
           // 组件开始时间点可播放视频（继续播放）
           // this._player.play()
@@ -109,26 +119,49 @@ export class PlayerControl {
         }
       }
       // 结束状态
-      if (Math.abs(this._currentTime - (startTime + duration)) < 0.02) {
+      if (
+        Math.abs(this._currentTime - (startTime + duration)) < 0.02 &&
+        !this._currentVideo.paused
+      ) {
+        console.log('结束状态', endState)
         if (endState == PlayerEvents.VIDEO_PAUSE) {
           // 组件结束时间点可暂停视频
           this._player.pause()
-          item.endState = 'active'
+          // item.endState = 'active'
         } else if (endState == HotToState.CountDown) {
           // 组件结束时间点可触发倒计时--计时结束触发某一个子控件上的事件
-          let ctrls = item.interactInfoIdJson?.interactConfigJson?.ctrls
-          let ctrlsItem = ctrls?.find(
+          const { ctrls = [], btns = [] } =
+            item.interactInfoIdJson?.interactConfigJson
+          let countDown = ctrls?.find(
             (item) => item.countDown != null
           )?.countDown
-          if (ctrlsItem.time) {
-            this.handleCountDown(ctrlsItem.time)?.then(() => {
-              if (ctrlsItem.jumpVideoId != null) {
-                this.changeVideo(ctrlsItem.jumpVideoId)
-              } else if (ctrlsItem.jumpTime != null) {
-                this._player.setCurrentTime(ctrlsItem.jumpTime)
+          if (countDown?.time) {
+            this.handleCountDown(countDown.time * 1000).then(() => {
+              if (countDown.jumpVideoId != null) {
+                this.changeVideo(countDown.jumpVideoId)
+              } else if (countDown.jumpTime != null) {
+                this._currentVideo.currentTime = countDown.jumpTime
               }
             })
           }
+
+          // 分支选项倒计时
+          btns.map((btn) => {
+            let id = ''
+            let time = ''
+            btn.action.map((act) => {
+              id = act.jumpVideoId || act.nextVideo || act.skipVideoId
+              time = act.jumpTime
+            })
+            if (id) {
+              this.changeVideo(id)
+            } else if (time) {
+              this._currentVideo.currentTime = time
+            }
+            // else   {
+            //   throw new Error(`节点${item.id}没有可跳转信息`)
+            // }
+          })
         }
       }
     })
@@ -160,10 +193,11 @@ export class PlayerControl {
    * @returns
    */
   handleCountDown(count) {
-    if (this._timer) {
-      return
-    }
     return new Promise((resolve) => {
+      if (this._timer) {
+        clearInterval(this._timer)
+      }
+
       let _count = count
       this._timer = setInterval(() => {
         Qmsg.info(`倒计时${_count}`)
@@ -283,20 +317,25 @@ export class PlayerControl {
           (count && setObj.size == count)
         ) {
           // 如果有count代表是点击数量
+          // console.log('xx', count, setObj, conditionConfig)
 
           if (conditionConfig.jumpVideoId != null) {
             // 跳故事节点
             this.changeVideo(conditionConfig.jumpVideoId)
+            this.conditionValue.clear()
+            this.clearClickGroupSel()
           } else if (conditionConfig.jumpTime != null) {
             // 跳当前时间
-            this._player.setCurrentTime(conditionConfig.jumpTime)
+            this._currentVideo.currentTime = conditionConfig.jumpTime
+            this.conditionValue.clear()
+            this.clearClickGroupSel()
           }
         } else {
           if (
             (!count && conditionValue.length <= answer.length) ||
             (count && count <= answer.length)
           ) {
-            console.log(conditionValue.length <= answer.length)
+            // console.log(count, conditionValue.length, answer.length)
             // 失败：错误提示
             Qmsg.error(conditionConfig.errorTip || '答案错误')
             this.conditionValue.clear()
@@ -352,7 +391,7 @@ export class PlayerControl {
     hotspotBtn?.action?.forEach((actItem) => {
       if (actItem.actionType == HotToState.SWITCHVIDEO) {
         // 跳故事节点（分支选项&立即触发）
-        let nextVideoId = actItem.nextVideo
+        let nextVideoId = actItem.nextVideo || actItem.skipVideoId
         this.changeVideo(nextVideoId)
       } else if (actItem.actionType == HotToState.JUMPTIME) {
         this._currentVideo.currentTime = actItem.jumpTime
@@ -378,6 +417,7 @@ export class PlayerControl {
     let videoItem = this._parser.getVideoItem(nextVideoId)
     if (!videoItem) {
       Qmsg.error('内容不存在')
+      return
     }
     console.log('videoItem==', videoItem, nextVideoId)
     if (videoItem.video.currentTime == 0) {
