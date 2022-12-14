@@ -104,10 +104,10 @@ export class PlayerControl {
       let endState = item.endState
       // 开始状态
       if (
-        Math.abs(this._currentTime - startTime) < 0.02 &&
+        Math.abs(this._currentTime - startTime) < 0.025 &&
         !this._currentVideo.paused
       ) {
-        console.log('开始状态', playState, item)
+        // console.log('开始状态', playState, item)
         if (playState == PlayerEvents.VIDEO_PAUSE) {
           // 组件开始时间点可暂停视频
           this._player.pause()
@@ -120,10 +120,10 @@ export class PlayerControl {
       }
       // 结束状态
       if (
-        Math.abs(this._currentTime - (startTime + duration)) < 0.02 &&
+        Math.abs(this._currentTime - (startTime + duration)) < 0.025 &&
         !this._currentVideo.paused
       ) {
-        console.log('结束状态', endState)
+        // console.log('结束状态', endState)
         if (endState == PlayerEvents.VIDEO_PAUSE) {
           // 组件结束时间点可暂停视频
           this._player.pause()
@@ -136,7 +136,7 @@ export class PlayerControl {
             (item) => item.countDown != null
           )?.countDown
           if (countDown?.time) {
-            this.handleCountDown(countDown.time * 1000).then(() => {
+            this.handleCountDown(countDown.time).then(() => {
               if (countDown.jumpVideoId != null) {
                 this.changeVideo(countDown.jumpVideoId)
               } else if (countDown.jumpTime != null) {
@@ -146,22 +146,22 @@ export class PlayerControl {
           }
 
           // 分支选项倒计时
-          btns.map((btn) => {
-            let id = ''
-            let time = ''
-            btn.action.map((act) => {
-              id = act.jumpVideoId || act.nextVideo || act.skipVideoId
-              time = act.jumpTime
-            })
-            if (id) {
-              this.changeVideo(id)
-            } else if (time) {
-              this._currentVideo.currentTime = time
-            }
-            // else   {
-            //   throw new Error(`节点${item.id}没有可跳转信息`)
-            // }
-          })
+          // btns.map((btn) => {
+          //   let id = ''
+          //   let time = ''
+          //   btn.action.map((act) => {
+          //     id = act.jumpVideoId || act.nextVideo || act.skipVideoId
+          //     time = act.jumpTime
+          //   })
+          //   if (id) {
+          //     this.changeVideo(id)
+          //   } else if (time) {
+          //     this._currentVideo.currentTime = time
+          //   }
+          //   // else   {
+          //   //   throw new Error(`节点${item.id}没有可跳转信息`)
+          //   // }
+          // })
         }
       }
     })
@@ -302,7 +302,7 @@ export class PlayerControl {
         if (compoundMode == CompoundOrder.DISORDER) {
           answer = answer.sort()
           conditionValue = conditionValue.sort()
-          console.log('无序组合点击', interactInfoIdItem.interactInfo)
+          // console.log('无序组合点击', interactInfoIdItem.interactInfo)
         }
 
         // 匹配正确
@@ -416,10 +416,11 @@ export class PlayerControl {
     //切视频
     let videoItem = this._parser.getVideoItem(nextVideoId)
     if (!videoItem) {
-      Qmsg.error('内容不存在')
+      Qmsg.error('未找到视频，请确认节点是否编辑完成！')
       return
     }
-    console.log('videoItem==', videoItem, nextVideoId)
+    // console.log('videoItem==', videoItem, nextVideoId)
+    videoItem.video.currentTime = 0
     if (videoItem.video.currentTime == 0) {
       videoItem.video.currentTime = 0.0001
     }

@@ -73,10 +73,10 @@ export class PlayerTree {
       nodeList?.forEach((item) => {
         let interactInfoIdItem = item.interactInfoIdJson
         const { ctrls = [], btns = [] } = interactInfoIdItem?.interactConfigJson
-        // console.log('ctrls ', id, ids, item, ctrls, btns)
+        console.log('ctrls ', ctrls)
         ctrls?.forEach((ctrl) => {
           let conditionConfig = ctrl.conditionConfig
-          let videoId = conditionConfig.jumpVideoId
+          let videoId = conditionConfig?.jumpVideoId
           if (videoId) {
             videoIds.push(videoId)
           }
