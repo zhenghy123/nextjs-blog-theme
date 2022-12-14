@@ -15,7 +15,14 @@
         background-color: black;
       }
 
-      #kplayer-container {
+      .kplayer-width {
+        position: relative;
+        width: 177.77vh;
+        height: 100vh;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .kplayer-height {
         position: relative;
         width: 100vw;
         height: 56.25vw;
@@ -53,6 +60,8 @@
           let url = URL.createObjectURL(blob)
           player.loadJson(url, 'cp')
         }
+
+        player.setScreenClient()
       })
   }
 </script>

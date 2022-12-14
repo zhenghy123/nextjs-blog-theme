@@ -1,6 +1,8 @@
 import { PlayerEvents } from './player-events'
 import { PlayerControl } from './player-control'
 import { PlayerTree } from './player-tree-logicflow'
+import { VideoType } from './player-interactives'
+
 import {
   createVideo,
   addVideoListener,
@@ -11,7 +13,7 @@ import {
 export class PlayerParse {
   constructor(url, _player, type = 'gb') {
     this._url = url // json地址
-    this._vrType = 1
+    this._vrType = VideoType.VR
     this._player = _player
     this._playerControl = new PlayerControl(_player, this)
     this._playerTree = new PlayerTree(this, _player)
@@ -33,6 +35,8 @@ export class PlayerParse {
     this._hasLoad = false // 是否处理完json数据
     this._canvasHeight = 0
     this._canvasWidth = 0
+    this._kplayerScale = 1 // 屏幕与设定屏幕比率
+    this._kplayerScaleInverse = 1 // 屏幕与设定屏幕比率倒数
     // gb 国标  cp 自定义大json
     if (type == 'cp') {
       this.initSelf()
@@ -68,7 +72,14 @@ export class PlayerParse {
       let firstItem = this.getVideoItem(this._firstVideoId)
       this._canvasHeight = firstItem?.canvasHeight || 1920
       this._canvasWidth = firstItem?.canvasWidth || 1080
+      let container = this._player._options.id
+      let nodetreeSize = document
+        .getElementById(container)
+        ?.getBoundingClientRect()
+      this._kplayerScale = nodetreeSize.width / this._canvasWidth || 1
+      this._kplayerScaleInverse = this._canvasWidth / nodetreeSize.width || 1
       this._vrType = firstItem?.playType
+
       json.videoList.map((item) => {
         // 拼接处理视频地址和封面地址
         item.previewThumbnial = item.thumbnail
@@ -103,6 +114,12 @@ export class PlayerParse {
       let firstItem = this.getVideoItem(this._firstVideoId)
       this._canvasHeight = firstItem?.canvasHeight || 1920
       this._canvasWidth = firstItem?.canvasWidth || 1080
+      let container = this._player._options.id
+      let nodetreeSize = document
+        .getElementById(container)
+        ?.getBoundingClientRect()
+      this._kplayerScale = nodetreeSize.width / this._canvasWidth || 1
+      this._kplayerScaleInverse = this._canvasWidth / nodetreeSize.width || 1
       this._vrType = firstItem?.playType
       json.videoList.map((item) => {
         // 拼接处理视频地址和封面地址
@@ -418,7 +435,7 @@ export class PlayerParse {
     let _interactInfoIdJson = this._json.interactInfoList
     _interactInfoIdJson.map((item) => {
       let type = item.isFollowCamera ? 'layer' : 'hotspot'
-      if (this._vrType != 1) {
+      if (this._vrType != VideoType.VR) {
         type = 'layer'
       }
       let compType = item.interactInfo.type
@@ -441,13 +458,16 @@ export class PlayerParse {
           let name = comp.id
           this._compNames.push(name)
           let size = 16
-          if (this._vrType != 1) {
+          if (this._vrType != VideoType.VR) {
             size = 20
           }
           textSetting = {
             text: comp.text,
             fontSize: style.fontSize || size,
             fill: style.color,
+          }
+          if (this._vrType != VideoType.VR && type == 'layer') {
+            textSetting.fontSize = textSetting.fontSize * this._kplayerScale
           }
 
           // 非文字才会有 styleSetting,默认null
@@ -457,13 +477,21 @@ export class PlayerParse {
               triggering: comp.previewBackgroundImageClick,
               afterTrigger: comp.previewBackgroundImageAfterClick,
             }
+            // layer没有xy 用宽高
+            if (this._vrType != VideoType.VR && type == 'layer') {
+              style.width = style.scaleX * style.width * this._kplayerScale
+              style.height = style.scaleY * style.height * this._kplayerScale
+              style.scale = 1
+            } else {
+              style.scale = style.scaleX * this._kplayerScale
+            }
           }
           let position = {
             x: style.posX,
             y: style.posY,
             z: style.posZ,
           }
-          if (this._vrType != 1) {
+          if (this._vrType != VideoType.VR) {
             let x = (position.x / this._canvasWidth) * 100 || '0'
             let y = (position.y / this._canvasHeight) * 100 || '0'
             position = {
@@ -510,5 +538,10 @@ export class PlayerParse {
       }
     })
     return config
+  }
+
+  setKplayerScaleInverse(scale, scaleInverse) {
+    this._kplayerScale = scale
+    this._kplayerScaleInverse = scaleInverse
   }
 }

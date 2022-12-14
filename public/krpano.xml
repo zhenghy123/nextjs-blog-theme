@@ -63,8 +63,8 @@
 
 	<!-- 预览模式下有点击效果，编辑模式下拖动效果 -->
 	<action name="ondownfn" scope="global">
-		if(ispreview AND flag == 'hotspot' AND flag == 'image',set(hotspot[get(name)].url,get(hotspot[get(name)].triggering)));
-		if(ispreview AND flag == 'layer' AND flag == 'image',set(layer[get(name)].url,get(layer[get(name)].triggering)));
+		if(ispreview AND flag == 'hotspot' AND type == 'image',set(hotspot[get(name)].url,get(hotspot[get(name)].triggering)));
+		if(ispreview AND flag == 'layer' AND type == 'image',set(layer[get(name)].url,get(layer[get(name)].triggering)));
 		def(b, string, tolower('vCCCAA'));
 		if(!ispreview,
 			txtadd(bordername, 'border_', get(name));
@@ -78,7 +78,6 @@
 		<!-- ); -->
 		draghotspot()
 		);
-		js(hotspotClick(get(name),get(type)));
 	</action>
 
 	<action name="onupfn">
@@ -105,6 +104,7 @@
 				);
 		);
 		if(ispreview==false ,js(draghotspot(get(name))););
+		js(hotspotClick(get(name),get(type)));
 	</action>
 
 	<!-- 热点上添加文本 -->

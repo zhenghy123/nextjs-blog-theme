@@ -1,5 +1,5 @@
 import { PlayerEvents } from './player-events'
-import { InteractiveEnums } from './player-interactives'
+import { InteractiveEnums, enumTranslate } from './player-interactives'
 import { DefaultVideoOptions } from './player-config'
 import { PlayerParse } from './player-json-parse'
 import { PlayerUI } from './player-ui'
@@ -61,7 +61,72 @@ export class KPlayer {
     this._playerUI = new PlayerUI(this)
 
     window.addEventListener('resize', () => {
+      //节点树
       this._playerParse._playerTree.draw()
+      //屏幕 横竖比
+      this.setScreenClient()
+      //2d layer
+      this.resetLayerScale()
+    })
+  }
+
+  setScreenClient() {
+    let container = document.getElementById(this._options.id)
+    let _height = document.body.clientHeight
+    let _width = document.body.clientWidth
+    if (_width / _height < 16 / 9) {
+      container.classList.remove('kplayer-width')
+      container.classList.add('kplayer-height')
+    } else {
+      container.classList.remove('kplayer-height')
+      container.classList.add('kplayer-width')
+    }
+  }
+
+  resetLayerScale() {
+    // 原比例重置
+    let enumTranslateValue = Object.values(enumTranslate)
+    let canvasWidth = this._playerParse._canvasWidth
+    let kplayerScaleInverse = this._playerParse._kplayerScaleInverse
+    // 新比例
+    let nodetreeSize = document
+      .getElementById(this._options.id)
+      ?.getBoundingClientRect()
+    let _new_kplayerScale = nodetreeSize.width / canvasWidth || 1
+    let _new_kplayerScaleInverse = canvasWidth / nodetreeSize.width || 1
+    this._playerParse.setKplayerScaleInverse(
+      _new_kplayerScale,
+      _new_kplayerScaleInverse
+    )
+    // 重设节点
+    let layers = _krpano.layer.getArray() //.concat(_krpano.hotspot.getArray())
+    layers.map((item) => {
+      if (enumTranslateValue.indexOf(item.compname) != -1) {
+        if (this._playerParse._vrType != 1) {
+          // TextModule 不用设置宽高
+          if (item.compname != 'TextModule') {
+            item.width = item.width * kplayerScaleInverse * _new_kplayerScale
+            item.height = item.height * kplayerScaleInverse * _new_kplayerScale
+          }
+          // 设置字体fontsize
+          const reg = /font-size:(\S*)px/
+          let str_size = item.css?.match(reg)[1] || 0
+          let new_size = str_size * kplayerScaleInverse * _new_kplayerScale
+          item.css = item.css?.replace(str_size, new_size)
+        } else {
+          if (item.compname == 'TextModule') {
+            // 字体
+            let start = item.css?.indexOf('scale:') + 6
+            let str_size = item.css?.substring(start, item.css?.length)
+            let new_size = str_size * kplayerScaleInverse * _new_kplayerScale
+            item.css = item.css?.substring(start, -1) + new_size
+          } else {
+            if (item?.name?.indexOf('tooltip_') == -1) {
+              item.scale = item.scale * kplayerScaleInverse * _new_kplayerScale
+            }
+          }
+        }
+      }
     })
   }
 
@@ -440,6 +505,7 @@ export class KPlayer {
       _krpano.call(
         `
         addhotspot(${name});
+        set(hotspot[${name}].compname,${compName});
         set(hotspot[${name}].type,text);
         set(hotspot[${name}].keep,true);
         set(hotspot[${name}].zoom,true);
@@ -459,6 +525,7 @@ export class KPlayer {
       _krpano.call(
         `
         addlayer(${name});
+        set(layer[${name}].compname,${compName});
         set(layer[${name}].type,text);
         set(layer[${name}].keep,true);
         set(layer[${name}].zoom,true);
@@ -502,7 +569,7 @@ export class KPlayer {
       _krpano.call(
         `
         addhotspot(${name});
-        set(hotspot[${name}].compName,${compName});
+        set(hotspot[${name}].compname,${compName});
         set(hotspot[${name}].type,image);
         set(hotspot[${name}].keep,true);
         set(hotspot[${name}].zoom,true);
@@ -521,7 +588,7 @@ export class KPlayer {
       _krpano.call(
         `
         addlayer(${name});
-        set(layer[${name}].compName,${compName});
+        set(layer[${name}].compname,${compName});
         set(layer[${name}].type,image);
         set(layer[${name}].keep,true);
         set(layer[${name}].zoom,true);
@@ -652,6 +719,7 @@ export class KPlayer {
       )
       this.checkHasLoaded('tooltip_' + name, 'layer').then(() => {
         _krpano.layer.getItem('tooltip_' + name).html = textSetting?.text || ''
+        _krpano.layer.getItem('tooltip_' + name).compname = compName
         _krpano.layer.getItem('tooltip_' + name).css = `color:${
           textSetting?.fill || '0xffffff'
         };font-size:${textSetting?.fontSize || 16}px;`
@@ -685,14 +753,17 @@ export class KPlayer {
         set(layer[${name}].text,${textSetting?.text || ''});
         set(layer[${name}].html,${textSetting?.text || ''});
         set(layer[${name}].alpha,${1 - filterSetting?.alpha || '1'});
-        set(layer[${name}].scale,${transform3DSetting?.scaleX || 1});
+        set(layer[${name}].scale,${transform3DSetting?.scale || 1});
         `
       )
       this.checkHasLoaded('tooltip_' + name, 'layer').then(() => {
         _krpano.layer.getItem('tooltip_' + name).html = textSetting?.text || ''
+        _krpano.layer.getItem('tooltip_' + name).compname = compName
         _krpano.layer.getItem('tooltip_' + name).css = `color:${
           textSetting?.fill || '0xffffff'
-        };font-size:${textSetting?.fontSize || 16}px;`
+        };font-size:${textSetting?.fontSize || 16}px;transform: scale(${
+          transform3DSetting?.scaleX || 1
+        }, ${transform3DSetting?.scaleY || 1});`
       })
     }
   }
