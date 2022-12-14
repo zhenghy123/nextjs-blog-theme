@@ -391,7 +391,7 @@ export class PlayerControl {
     hotspotBtn?.action?.forEach((actItem) => {
       if (actItem.actionType == HotToState.SWITCHVIDEO) {
         // 跳故事节点（分支选项&立即触发）
-        let nextVideoId = actItem.nextVideo
+        let nextVideoId = actItem.nextVideo || actItem.skipVideoId
         this.changeVideo(nextVideoId)
       } else if (actItem.actionType == HotToState.JUMPTIME) {
         this._currentVideo.currentTime = actItem.jumpTime
