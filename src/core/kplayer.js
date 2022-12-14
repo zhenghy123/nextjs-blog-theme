@@ -68,6 +68,7 @@ export class KPlayer {
         this._playerParse._canvasWidth / this._playerParse._canvasHeight <
         1
       ) {
+        let container = document.getElementById(this._options.id)
         container.classList.remove('kplayer-height')
         container.classList.remove('kplayer-width')
         container.classList.add('kplayer-h5-height')
