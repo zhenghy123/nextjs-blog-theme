@@ -62,7 +62,7 @@ export class KPlayer {
 
     window.addEventListener('resize', () => {
       //节点树
-      this._playerParse._playerTree.draw()
+      this._playerParse._playerTree.windowResize()
       //屏幕 横竖比
       this.setScreenClient()
       //2d layer

@@ -18,8 +18,9 @@ export class PlayerTree {
     this._player = _player
 
     this.treeList = {}
-    this.treeClick = this.treeClick.bind(this)
     this.canvasPosition = {}
+    this.treeClick = this.treeClick.bind(this)
+    // this.windowResize = this.windowResize.bind(this)
 
     this.lf = null
     this.currentNodeId = null
@@ -51,6 +52,8 @@ export class PlayerTree {
     document
       .querySelector('.nodetree .close')
       .addEventListener('click', this.handleTreeClose)
+
+    // window.addEventListener('resize', this.windowResize)
 
     this.getTreeData()
     this.initLogicFlow()
@@ -259,6 +262,16 @@ export class PlayerTree {
     // console.error(gfdata)
 
     return gfdata
+  }
+
+  windowResize() {
+    this.lf.resize(
+      document.getElementById(this._player._options.id).clientWidth,
+      document.getElementById(this._player._options.id).clientHeight
+    )
+    this.renderLogicFlow()
+    // this.getTreeData()
+    // this.initLogicFlow()
   }
 
   handleTreeShow() {
