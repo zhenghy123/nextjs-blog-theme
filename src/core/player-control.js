@@ -317,11 +317,14 @@ export class PlayerControl {
           (count && setObj.size == count)
         ) {
           // 如果有count代表是点击数量
-          // console.log('xx', count, setObj, conditionConfig)
-
-          if (conditionConfig.jumpVideoId != null) {
+          console.log('xx', count, setObj, conditionConfig)
+          let nextVideoId =
+            conditionConfig.nextVideo ||
+            conditionConfig.jumpVideoId ||
+            conditionConfig.skipVideoId
+          if (nextVideoId) {
             // 跳故事节点
-            this.changeVideo(conditionConfig.jumpVideoId)
+            this.changeVideo(nextVideoId)
             this.conditionValue.clear()
             this.clearClickGroupSel()
           } else if (conditionConfig.jumpTime != null) {
@@ -391,7 +394,8 @@ export class PlayerControl {
     hotspotBtn?.action?.forEach((actItem) => {
       if (actItem.actionType == HotToState.SWITCHVIDEO) {
         // 跳故事节点（分支选项&立即触发）
-        let nextVideoId = actItem.nextVideo || actItem.skipVideoId
+        let nextVideoId =
+          actItem.nextVideo || actItem.jumpVideoId || actItem.skipVideoId
         this.changeVideo(nextVideoId)
       } else if (actItem.actionType == HotToState.JUMPTIME) {
         this._currentVideo.currentTime = actItem.jumpTime
