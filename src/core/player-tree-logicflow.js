@@ -1,4 +1,4 @@
-import { changeClass, format } from '../utils/utils'
+import { changeClass, hasClass, format } from '../utils/utils'
 import {
   LogicFlow,
   GraphConfigData,
@@ -272,6 +272,10 @@ export class PlayerTree {
     this.renderLogicFlow()
     // this.getTreeData()
     // this.initLogicFlow()
+  }
+
+  isTreeShow() {
+    return hasClass(document.querySelector('.nodetree'), 'show')
   }
 
   handleTreeShow() {

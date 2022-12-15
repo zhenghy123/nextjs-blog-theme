@@ -99,6 +99,8 @@ export class PlayerUI {
     this.handleProgress = this.handleProgress.bind(this)
     this.handleMousedown = this.handleMousedown.bind(this)
     this.fullScreenEvent = this.fullScreenEvent.bind(this)
+    this.handUIShow = this.handUIShow.bind(this)
+    this.handUIHide = this.handUIHide.bind(this)
 
     this.addEvent()
   }
@@ -318,6 +320,13 @@ export class PlayerUI {
   destory() {
     this.removeEvent()
     this._player = null
+  }
+
+  handUIShow() {
+    changeClass($('.kplayer-ui'), 'show', 'hidden')
+  }
+  handUIHide() {
+    changeClass($('.kplayer-ui'), 'hidden', 'show')
   }
 
   fullScreenEvent() {

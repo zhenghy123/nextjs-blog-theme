@@ -60,6 +60,16 @@ export class KPlayer {
     this._playerParse = new PlayerParse(json, this, type)
     this._playerUI = new PlayerUI(this)
 
+    document.getElementById(this._options.id).onmouseenter = () => {
+      this._playerUI.handUIShow()
+    }
+
+    document.getElementById(this._options.id).onmouseleave = () => {
+      if (!this._playerParse._playerTree.isTreeShow()) {
+        this._playerUI.handUIHide()
+      }
+    }
+
     window.addEventListener('resize', () => {
       //节点树
       this._playerParse._playerTree.windowResize()
