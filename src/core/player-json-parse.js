@@ -100,7 +100,12 @@ export class PlayerParse {
    */
   async initSelf() {
     this.fetchJson(this._url).then((json) => {
-      json = JSON.parse(json)
+      try {
+        json = JSON.parse(json)
+      } catch (error) {
+        json = json
+      }
+
       console.error('json==', json)
       this._json = json
       this._factorList = json.factorList

@@ -40,7 +40,7 @@ export class PlayerTree {
 
     this._player._emitter.on('treeShow', () => {
       this.handleTreeShow()
-      this.renderLogicFlow()
+      this.initLogicFlow()
 
       if (this._parser._playerControl._currentVideoId) {
         this.lf.getModelById(
