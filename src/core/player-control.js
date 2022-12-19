@@ -137,8 +137,13 @@ export class PlayerControl {
           )?.countDown
           if (countDown?.time) {
             this.handleCountDown(countDown.time).then(() => {
-              if (countDown.jumpVideoId != null) {
-                this.changeVideo(countDown.jumpVideoId)
+              // console.log('countDown', countDown)
+              let nextVideoId =
+                countDown.nextVideo ||
+                countDown.jumpVideoId ||
+                countDown.skipVideoId
+              if (nextVideoId) {
+                this.changeVideo(nextVideoId)
               } else if (countDown.jumpTime != null) {
                 this._currentVideo.currentTime = countDown.jumpTime
               }
